@@ -21,6 +21,29 @@ HA.config = {
   // Ngày hiệu lực của Điều khoản & Chính sách (cập nhật khi sửa nội dung pháp lý)
   legalUpdated: '23/11/2026',
 
+  // Các môn học (thêm/bớt tuỳ ý). lang = ngôn ngữ của nội dung, dùng cho phát âm, tra từ, dịch.
+  subjects: [
+    { id: 'zh', name: 'Tiếng Trung', en: 'Chinese', lang: 'zh', icon: '🇨🇳' },
+    { id: 'en', name: 'Tiếng Anh', en: 'English', lang: 'en', icon: '🇬🇧' },
+    { id: 'ja', name: 'Tiếng Nhật', en: 'Japanese', lang: 'ja', icon: '🇯🇵' },
+    { id: 'ko', name: 'Tiếng Hàn', en: 'Korean', lang: 'ko', icon: '🇰🇷' },
+    { id: 'fr', name: 'Tiếng Pháp', en: 'French', lang: 'fr', icon: '🇫🇷' },
+    { id: 'de', name: 'Tiếng Đức', en: 'German', lang: 'de', icon: '🇩🇪' },
+    { id: 'code', name: 'Lập trình', en: 'Programming', lang: 'code', icon: '💻' },
+    { id: 'other', name: 'Khác', en: 'Other', lang: 'vi', icon: '📚' }
+  ],
+
+  // Hiện các bài đọc mẫu do Hanry Academy soạn trên bảng tin (đặt false để ẩn khi đã có bài thật)
+  showSamplePosts: true,
+
+  // DỊCH MÁY khi rê chuột vào câu / tìm kiếm.
+  //  provider 'mymemory': miễn phí, không cần cài đặt, giới hạn ~5.000 ký tự/ngày cho mỗi người dùng.
+  //  provider 'ai': dịch ý bằng AI qua máy chủ riêng (xem tools/translate-worker/ và docs). Điền endpoint.
+  translate: {
+    provider: 'mymemory',
+    endpoint: ''
+  },
+
   // ---------------------------------------------------------
   // FIREBASE (khuyến nghị để có ĐĂNG NHẬP GMAIL THẬT, lớp học dùng chung,
   // khoá sách bản quyền an toàn trên máy chủ).

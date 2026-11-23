@@ -20,65 +20,73 @@
 
   function parseQ(q) { const o = {}; (q || '').split('&').forEach((kv) => { const [k, v] = kv.split('='); if (k) o[k] = decodeURIComponent(v || ''); }); return o; }
   function poolFrom(q) {
-    if (q.src === 'nb') return HA.nb.list().map((x) => ({ w: x.w, p: x.p, vi: x.vi, en: x.en }));
-    if (q.lesson && HA.lessonById[q.lesson]) return HA.lessonById[q.lesson].vocab.slice();
-    if (q.lv) return HA.lessons.filter((L) => L.level === +q.lv).flatMap((L) => L.vocab);
-    return HA.lessons.filter((L) => L.level <= 2).flatMap((L) => L.vocab);
+    if (q.post) {
+      const P = HA.lessonById[q.post] || (HA.feed.allPosts || []).find((x) => x.id === q.post);
+      return P ? (P.vocab || []).slice() : [];
+    }
+    return HA.nb.list().filter((x) => !x.lang || x.lang === 'zh').map((x) => ({ w: x.w, p: x.p, vi: x.vi, en: x.en }));
   }
   function srcLabel(q) {
-    if (q.src === 'nb') return t('fromNotebook');
-    if (q.lesson && HA.lessonById[q.lesson]) return HA.tr(HA.lessonById[q.lesson].title);
-    if (q.lv) return 'HSK ' + q.lv;
-    return 'HSK 1–2';
+    if (q.post) { const P = HA.lessonById[q.post]; return P ? HA.tr(P.title) || P.title.zh : t('tabVocab'); }
+    return t('fromNotebook');
   }
   const qs = (q) => Object.entries(q).filter(([, v]) => v).map(([k, v]) => k + '=' + encodeURIComponent(v)).join('&');
-  function bestKey(g, q) { return g + ':' + (q.src || q.lesson || q.lv || 'def'); }
+  function bestKey(g, q) { return g + ':' + (q.post || 'nb'); }
   function saveBest(g, q, score, lowerBetter) {
     const k = bestKey(g, q); const b = HA.state.data.games[k];
     if (b == null || (lowerBetter ? score < b : score > b)) { HA.state.data.games[k] = score; HA.saveData(); return true; }
     return false;
   }
 
-  /* ---------- Hub ---------- */
-  HA.route(/^\/games(?:\/(\w+))?(?:\?(.*))?$/, function (game, query) {
-    const q = parseQ(query);
-    if (game) return G.play(game, q);
-    const nbN = HA.nb.list().length;
-    view().innerHTML =
-      '<div class="page-head"><h1>🎮 ' + t('navGames') + '</h1></div>' +
-      '<div class="card"><b>' + t('pickSource') + ':</b><div class="chips-row">' +
-      '<a class="chip big ' + (q.src === 'nb' ? 'on' : '') + '" href="#/games?src=nb">⭐ ' + t('fromNotebook') + ' (' + nbN + ')</a>' +
-      HA.LEVELS.map((l) => '<a class="chip big ' + (+q.lv === l.n ? 'on' : '') + '" style="--c:' + l.color + '" href="#/games?lv=' + l.n + '">' + l.icon + ' ' + l.name + '</a>').join('') +
-      (q.lesson ? '<span class="chip big on">📘 ' + esc(srcLabel(q)) + '</span>' : '') + '</div></div>' +
-      '<div class="games-grid">' + GAMES.map(([id, icon, n, d, c]) => {
-        const b = HA.state.data.games[bestKey(id, q)];
-        return '<a class="game-card" style="--c:' + c + '" href="#/games/' + id + '?' + qs(q) + '"><span class="g-icon">' + icon + '</span><b>' + t(n) + '</b><small>' + t(d) + '</small>' + (b != null ? '<span class="g-best">🏆 ' + b + '</span>' : '') + '</a>';
-      }).join('') + '</div>';
-  });
+  /* ---------- Sound effects ---------- */
+  let ac = null;
+  G.beep = function (good) {
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      (good ? [660, 880] : [220, 180]).forEach((f, i) => {
+        const o = ac.createOscillator(), g = ac.createGain();
+        o.type = good ? 'sine' : 'square'; o.frequency.value = f;
+        g.gain.setValueAtTime(0.0001, ac.currentTime + i * 0.11);
+        g.gain.exponentialRampToValueAtTime(0.1, ac.currentTime + i * 0.11 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + i * 0.11 + 0.18);
+        o.connect(g); g.connect(ac.destination); o.start(ac.currentTime + i * 0.11); o.stop(ac.currentTime + i * 0.11 + 0.2);
+      });
+    } catch (e) {}
+  };
+
+  /* ---------- Game cards (shown inside the Notebook page) ---------- */
+  G.hubHTML = function (q) {
+    q = q || {};
+    return '<div class="games-grid">' + GAMES.map(([id, icon, n, d, c]) => {
+      const b = HA.state.data.games[bestKey(id, q)];
+      return '<a class="game-card" style="--c:' + c + '" href="#/game/' + id + (qs(q) ? '?' + qs(q) : '') + '"><span class="g-icon">' + icon + '</span><b>' + t(n) + '</b><small>' + t(d) + '</small>' + (b != null ? '<span class="g-best">🏆 ' + b + '</span>' : '') + '</a>';
+    }).join('') + '</div>';
+  };
+  HA.route(/^\/game\/(\w+)(?:\?(.*))?$/, function (game, query) { G.play(game, parseQ(query)); });
 
   G.play = function (game, q) {
     const pool = poolFrom(q).filter((v) => v && v.w);
     const uniq = []; const seen = new Set(); pool.forEach((v) => { if (!seen.has(v.w)) { seen.add(v.w); uniq.push(v); } });
     const meta = GAMES.find((g) => g[0] === game);
-    if (!meta) { location.hash = '#/games'; return; }
+    if (!meta) { location.hash = '#/notebook'; return; }
     if (uniq.length < 4 && game !== 'write' && game !== 'flash') {
-      view().innerHTML = '<div class="empty card"><p>' + t('needWords') + '</p><a class="btn green" href="#/games">' + t('back') + '</a></div>';
+      view().innerHTML = '<div class="empty card"><p>' + t('needWords') + '</p><a class="btn green" href="#/notebook">' + t('back') + '</a></div>';
       return;
     }
-    view().innerHTML = '<div class="game-head" style="--c:' + meta[4] + '"><a class="back" href="#/games?' + qs(q) + '">← ' + t('navGames') + '</a><h2>' + meta[1] + ' ' + t(meta[2]) + '</h2><span class="chip">' + esc(srcLabel(q)) + ' · ' + uniq.length + ' ' + t('words') + '</span></div><div id="game" class="game-live"></div>';
+    view().innerHTML = '<div class="game-head" style="--c:' + meta[4] + '"><a class="back" href="' + (q.post ? '#/post/' + encodeURIComponent(q.post) : '#/notebook') + '">← ' + t(q.post ? 'back' : 'navNotebook') + '</a><h2>' + meta[1] + ' ' + t(meta[2]) + '</h2><span class="chip">' + esc(srcLabel(q)) + ' · ' + uniq.length + ' ' + t('words') + '</span></div><div id="game" class="game-live"></div>';
     const box = $('#game');
     ({ flash, match, speed, listen, memory, rain, write: writeGame, tone })[game](box, uniq, q);
   };
 
   function endScreen(box, html, q, game) {
     box.innerHTML = '<div class="card center game-end"><div class="emoji-big">🏁</div><h2>' + t('gameOver') + '</h2>' + html +
-      '<div class="row center wrap"><button class="btn green lg" id="again">🔁 ' + t('retry') + '</button><a class="btn ghost lg" href="#/games?' + qs(q) + '">' + t('navGames') + '</a></div></div>';
+      '<div class="row center wrap"><button class="btn green lg" id="again">🔁 ' + t('retry') + '</button><a class="btn ghost lg" href="#/notebook">' + t('navNotebook') + '</a></div></div>';
     $('#again', box).onclick = () => G.play(game, q);
   }
 
   /* ---------- 1. Flashcards (SRS) ---------- */
   function flash(box, pool, q) {
-    let cards = q.src === 'nb' ? HA.nb.due().map((x) => ({ w: x.w, p: x.p, vi: x.vi, en: x.en })) : shuffle(pool).slice(0, 20);
+    let cards = !q.post ? HA.nb.due().map((x) => ({ w: x.w, p: x.p, vi: x.vi, en: x.en })) : shuffle(pool).slice(0, 20);
     if (!cards.length) cards = shuffle(pool).slice(0, 20);
     if (!cards.length) { box.innerHTML = '<div class="empty card">' + t('notebookEmpty') + '</div>'; return; }
     cards = shuffle(cards);
@@ -92,7 +100,7 @@
         '<div class="row center"><button class="btn red lg" id="no">✘ ' + t('dontKnow') + '</button><button class="btn blue" id="sp">🔊</button><button class="btn green lg" id="yes">✔ ' + t('know') + '</button></div></div>';
       $('#fc', box).onclick = () => { $('#fc', box).classList.toggle('flipped'); HA.zh.speak(c.w); };
       $('#sp', box).onclick = () => HA.zh.speak(c.w);
-      const grade = (ok) => { if (ok) known++; if (HA.nb.has(c.w)) HA.nb.grade(c.w, ok); if (!ok && q.src !== 'nb') cards.push(c); i++; show(); };
+      const grade = (ok) => { if (ok) known++; if (HA.nb.has(c.w)) HA.nb.grade(c.w, ok); if (!ok && !!q.post) cards.push(c); i++; show(); };
       $('#yes', box).onclick = () => grade(true);
       $('#no', box).onclick = () => grade(false);
     }
@@ -123,9 +131,9 @@
         if (!sel) { sel = b; b.classList.add('sel'); return; }
         if (sel === b) { b.classList.remove('sel'); sel = null; return; }
         if (sel.dataset.w === b.dataset.w && sel.dataset.s !== b.dataset.s) {
-          [sel, b].forEach((x) => { x.classList.remove('sel'); x.classList.add('ok'); }); HA.practice.beep(true);
+          [sel, b].forEach((x) => { x.classList.remove('sel'); x.classList.add('ok'); }); G.beep(true);
           if (--left === 0) setTimeout(newRound, 350);
-        } else { mistakes++; HA.practice.beep(false); const a = sel; [a, b].forEach((x) => x.classList.add('bad')); setTimeout(() => [a, b].forEach((x) => x.classList.remove('bad', 'sel')), 400); }
+        } else { mistakes++; G.beep(false); const a = sel; [a, b].forEach((x) => x.classList.add('bad')); setTimeout(() => [a, b].forEach((x) => x.classList.remove('bad', 'sel')), 400); }
         sel = null;
       };
     }
@@ -147,7 +155,7 @@
       $('.p-opts', box).onclick = (e) => {
         const b = e.target.closest('.p-opt'); if (!b) return;
         const ok = opts[+b.dataset.i].w === v.w;
-        b.classList.add(ok ? 'right' : 'wrong'); HA.practice.beep(ok);
+        b.classList.add(ok ? 'right' : 'wrong'); G.beep(ok);
         if (ok) { score += 1 + (streak >= 3 ? 1 : 0); streak++; } else { streak = 0; $$('.p-opt', box)[opts.indexOf(v)].classList.add('right'); }
         setTimeout(() => left > 0 && ask(), ok ? 250 : 700);
       };
@@ -173,7 +181,7 @@
         const ok = opts[+b.dataset.i].w === v.w; if (ok) score++;
         $$('.p-opt', box).forEach((x, k) => { x.disabled = true; if (opts[k].w === v.w) { x.classList.add('right'); x.innerHTML += '<small class="py">' + esc(HA.zh.phon(v.p)) + ' · ' + esc(mean(v)).slice(0, 40) + '</small>'; } });
         if (!ok) b.classList.add('wrong');
-        HA.practice.beep(ok); i++; setTimeout(ask, ok ? 900 : 1700);
+        G.beep(ok); i++; setTimeout(ask, ok ? 900 : 1700);
       };
     }
     ask();
@@ -193,7 +201,7 @@
       if (open.length === 2) {
         moves++; $('#mv', box).textContent = moves;
         const [a, d] = open.map((x) => cards[+x.dataset.i]);
-        if (a.v.w === d.v.w && a.s !== d.s) { open.forEach((x) => x.classList.add('ok')); open = []; HA.practice.beep(true); if (++found === items.length) { const sc = moves; saveBest('memory', q, sc, true); HA.addXP(8); setTimeout(() => endScreen(box, '<p class="big">🧠 ' + moves + ' · ⏱ ' + Math.round((Date.now() - t0) / 1000) + 's</p>', q, 'memory'), 600); } }
+        if (a.v.w === d.v.w && a.s !== d.s) { open.forEach((x) => x.classList.add('ok')); open = []; G.beep(true); if (++found === items.length) { const sc = moves; saveBest('memory', q, sc, true); HA.addXP(8); setTimeout(() => endScreen(box, '<p class="big">🧠 ' + moves + ' · ⏱ ' + Math.round((Date.now() - t0) / 1000) + 's</p>', q, 'memory'), 600); } }
         else setTimeout(() => { open.forEach((x) => x.classList.remove('up')); open = []; }, 900);
       }
     };
@@ -219,7 +227,7 @@
       const H = field.clientHeight;
       drops.forEach((d) => { d.y += dt * 40 * speedF; d.el.style.transform = 'translateY(' + d.y + 'px)'; });
       const missed = drops.filter((d) => d.y > H - 30);
-      missed.forEach((d) => { d.el.classList.add('miss'); setTimeout(() => d.el.remove(), 400); lives--; HA.practice.beep(false); field.insertAdjacentHTML('beforeend', '<div class="reveal" style="left:' + d.el.style.left + '">' + esc(d.v.p) + '</div>'); });
+      missed.forEach((d) => { d.el.classList.add('miss'); setTimeout(() => d.el.remove(), 400); lives--; G.beep(false); field.insertAdjacentHTML('beforeend', '<div class="reveal" style="left:' + d.el.style.left + '">' + esc(d.v.p) + '</div>'); });
       drops = drops.filter((d) => d.y <= H - 30);
       $('#rLives', box).textContent = '❤️'.repeat(Math.max(0, lives)) || '💔';
       if (lives <= 0) { alive = false; const rec = saveBest('rain', q, score); HA.addXP(Math.max(3, score)); return endScreen(box, '<p class="big">⭐ ' + score + '</p>' + (rec ? '<p>🏆 ' + t('best') + '!</p>' : ''), q, 'rain'); }
@@ -230,7 +238,7 @@
       const hit = drops.find((d) => d.key === val);
       if (hit) {
         hit.el.classList.add('pop'); setTimeout(() => hit.el.remove(), 300); drops = drops.filter((d) => d !== hit);
-        score++; speedF = 1 + score * 0.04; inp.value = ''; HA.practice.beep(true); HA.zh.speak(hit.v.w);
+        score++; speedF = 1 + score * 0.04; inp.value = ''; G.beep(true); HA.zh.speak(hit.v.w);
         $('#rScore', box).textContent = '⭐ ' + score;
       }
     };
@@ -258,7 +266,7 @@
         const b = e.target.closest('[data-a]'); if (!b) return;
         const w = ws[+b.dataset.i];
         if (b.dataset.a === 'anim') w.animateCharacter();
-        else w.quiz({ onComplete: () => { HA.practice.beep(true); HA.ui.toast('🎉 ' + t('correct'), 'good'); } });
+        else w.quiz({ onComplete: () => { G.beep(true); HA.ui.toast('🎉 ' + t('correct'), 'good'); } });
       });
     }).catch(() => HA.ui.toast('Hanzi Writer: offline', 'bad'));
   };
@@ -278,9 +286,9 @@
         const size = Math.min(300, window.innerWidth - 60);
         const w = HanziWriter.create('hwg', ch, Object.assign(G.writerOpts(size), { showOutline: false, showHintAfterMisses: 3 }));
         let misses = 0;
-        w.quiz({ onMistake: () => { misses++; }, onComplete: () => { if (misses <= 2) perfect++; HA.practice.beep(true); HA.zh.speak(c); setTimeout(() => { i++; show(); }, 900); } });
+        w.quiz({ onMistake: () => { misses++; }, onComplete: () => { if (misses <= 2) perfect++; G.beep(true); HA.zh.speak(c); setTimeout(() => { i++; show(); }, 900); } });
         $('#hint', box).onclick = () => { w.showOutline(); misses += 2; };
-        $('#anim', box).onclick = () => { misses += 3; w.cancelQuiz(); w.animateCharacter({ onComplete: () => w.quiz({ onMistake: () => misses++, onComplete: () => { HA.practice.beep(true); setTimeout(() => { i++; show(); }, 700); } }) }); };
+        $('#anim', box).onclick = () => { misses += 3; w.cancelQuiz(); w.animateCharacter({ onComplete: () => w.quiz({ onMistake: () => misses++, onComplete: () => { G.beep(true); setTimeout(() => { i++; show(); }, 700); } }) }); };
         $('#skip', box).onclick = () => { i++; show(); };
       }
       show();
@@ -308,7 +316,7 @@
         const right = HA.zh.toneOf(it.py); const ok = +b.dataset.n === right; if (ok) score++;
         $$('.p-opt', box).forEach((x) => { x.disabled = true; if (+x.dataset.n === right) x.classList.add('right'); });
         if (!ok) b.classList.add('wrong');
-        HA.practice.beep(ok); i++; setTimeout(ask, ok ? 700 : 1400);
+        G.beep(ok); i++; setTimeout(ask, ok ? 700 : 1400);
       };
     }
     if (!list.length) { box.innerHTML = '<div class="empty card">' + t('needWords') + '</div>'; return; }

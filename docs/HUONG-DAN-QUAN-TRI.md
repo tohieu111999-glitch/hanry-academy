@@ -8,17 +8,49 @@ Tài liệu dành cho chủ sở hữu và quản trị viên (admin). Đọc t�
 
 | Phần | Mô tả |
 |---|---|
-| Lộ trình học | 29 bài, chia theo HSK 1 → HSK 6. Mỗi bài có 5 phần: **Bài đọc** (hội thoại/bài văn) → **Từ vựng** → **Ngữ pháp** → **Câu hỏi bài đọc** (bài đọc tách riêng với câu hỏi) → **Luyện tập** kiểu Duolingo (tim, XP, nhiều dạng bài) |
-| Chạm để tra | Chạm hoặc di chuột vào bất kỳ chữ nào (trong bài đọc, từ vựng, ngữ pháp, câu hỏi, bài tập) để xem pinyin/chú âm, âm Hán Việt, nghĩa, cách dùng, ví dụ, từ đồng nghĩa/trái nghĩa và nút **Thêm vào sổ tay** |
-| Sổ tay | Lưu từ chưa nhớ, ôn bằng thẻ ghi nhớ theo phương pháp lặp lại ngắt quãng (SRS), xuất/nhập file CSV |
-| Trò chơi | 8 trò: Thẻ ghi nhớ, Ghép cặp tốc độ, Thử thách 60 giây, Luyện nghe, Lật thẻ trí nhớ, Mưa chữ, Luyện viết chữ (từng nét), Đoán thanh điệu |
-| Từ điển | Hơn 120.000 mục từ (CVDICT tiếng Việt + CC-CEDICT tiếng Anh). Tra bằng chữ Hán, pinyin (có hoặc không dấu), tiếng Việt hoặc tiếng Anh. Có thứ tự nét, từ ghép, câu ví dụ trong bài học |
-| Ngôn ngữ | Giao diện: Tiếng Việt / English / 简体中文 / 繁體中文 / 日本語. Chữ: Giản thể hoặc Phồn thể. Phiên âm: Pinyin hoặc Zhuyin (chú âm) |
-| Cộng đồng | Ai đăng nhập cũng soạn được bài và phải ghi rõ **tác giả** và **nguồn** (tự viết / sưu tầm / trích nguồn). Bài của giáo viên và admin hiện ở mục riêng |
-| Lớp học | Giáo viên (đã có key) mở lớp và nhận **mã lớp 6 ký tự**. Học viên nhập mã để vào lớp. Bài đăng có 3 chế độ: Công khai / Trong lớp / Cá nhân |
-| Sách bản quyền | Chỉ hiện với Gmail được admin cấp quyền |
-| Quản trị | Cấp quyền xem sách theo Gmail, tạo key giáo viên, quản lý sách, đọc báo cáo/góp ý, gỡ bài vi phạm |
-| Pháp lý | Điều khoản sử dụng, Chính sách bảo mật, Chính sách Bản quyền & Nội dung (có quy trình khiếu nại và gỡ bỏ), Chính sách Cookie |
+| **Trang chủ (bảng tin)** | Toàn bộ bài đăng của mọi người, giống bảng tin Facebook, lọc được theo môn học. Mỗi bài có nút Thích, Bình luận, Nghe đọc, Báo cáo. |
+| **Ô tìm kiếm** (thay cho từ điển) | Gõ chữ Hán, tiếng Việt, tiếng Anh hoặc pinyin. Web **dịch nghĩa trước** (dịch máy và nghĩa từ điển hơn 120.000 từ), **sau đó gợi ý các bài viết có từ liên quan**. Bấm vào một từ để xem trang chi tiết (thứ tự nét, từ ghép, ví dụ). |
+| **Bài viết** | Chạm hoặc rê chuột vào chữ bất kỳ sẽ hiện pinyin/zhuyin, âm Hán Việt, nghĩa của từ, **nghĩa cả câu** (bản dịch tác giả nhập sẵn, nếu không có thì web tự dịch máy) và nút lưu vào sổ tay. Dùng được cho tiếng Trung, Anh, Nhật, Hàn, Pháp, Đức. Bài lập trình hiển thị dạng code. |
+| **Đăng bài** | Mọi người đã đăng nhập đều đăng được. Bắt buộc ghi tác giả và nguồn. Có nút "Tự dịch các câu". Phần từ vựng, ngữ pháp, câu hỏi là tuỳ chọn. Giáo viên (có key) đăng được thêm vào lớp hoặc ở chế độ cá nhân. |
+| **Lộ trình học** | Phần 1 là **Học đọc phiên âm**, học viên tự chọn **Pinyin** hoặc **Zhuyin**. Gồm 6 bài: thanh điệu, thanh mẫu, vận mẫu, quy tắc, có luyện nghe. Phần 2 trở đi đang để "Đang cập nhật", chờ anh gửi bài. Các môn khác để "Sắp ra mắt". |
+| **Sổ tay** | Từ đã lưu khi đọc bài. Có tab **Trò chơi ôn tập** gồm 8 trò: thẻ ghi nhớ, ghép cặp, 60 giây, luyện nghe, lật thẻ, mưa chữ, luyện viết, thanh điệu. |
+| **Lớp học** | Giáo viên mở lớp và nhận mã 6 ký tự, học viên nhập mã để vào lớp. |
+| **Sách bản quyền** | **Ẩn hoàn toàn** (không hiện trong menu, mở link thì báo 404) với mọi tài khoản chưa được cấp quyền. |
+| **Pháp lý** | Điều khoản, Chính sách bảo mật, **Quyền lợi người dùng**, **Quy tắc cộng đồng**, Bản quyền & quy trình gỡ bài, Cookie. |
+
+> Các bài đọc mẫu cũ (29 bài do Hanry soạn) đang hiện trên bảng tin với nhãn "Bài mẫu". Khi anh đã đăng đủ bài thật, mở `js/config.js` và đặt `showSamplePosts: false` để ẩn chúng.
+
+---
+
+## 1A. Dịch nghĩa câu: miễn phí hoặc dịch ý bằng AI
+
+Trong `js/config.js`, mục `translate`:
+
+- **`provider: 'mymemory'`** (mặc định): miễn phí, không cần cài đặt. Mỗi người dùng được khoảng 5.000 ký tự mỗi ngày. Chất lượng tạm được. Khi hết lượt, web hiện nghĩa từng từ thay thế.
+- **`provider: 'ai'`**: dịch ý tự nhiên như AI, chất lượng tốt hơn nhiều. Cách bật:
+  1. Tạo API key tại https://console.anthropic.com (trả phí theo lượng dùng).
+  2. Tạo tài khoản Cloudflare miễn phí, rồi chạy trong thư mục `tools/translate-worker`:
+     ```bash
+     npm install
+     npx wrangler login
+     npx wrangler secret put ANTHROPIC_API_KEY     # dán key vào đây, KHÔNG dán vào code web
+     npx wrangler deploy
+     ```
+  3. Sửa `ALLOWED_ORIGINS` trong `wrangler.toml` thành địa chỉ web của anh, rồi deploy lại.
+  4. Trong `js/config.js` đặt `translate: { provider: 'ai', endpoint: 'https://hanry-translate.<tên>.workers.dev' }`.
+  5. Nên bật **Rate limiting** trong bảng điều khiển Cloudflare (ví dụ 60 yêu cầu/phút cho mỗi IP) để tránh bị lạm dụng tốn tiền.
+
+Bản dịch anh tự nhập khi đăng bài (sau dấu `|`) luôn được ưu tiên hơn dịch máy.
+
+## 1B. Giọng đọc
+
+Web dùng giọng đọc có sẵn trên máy người học, tự chọn giọng tự nhiên nhất (Natural/Neural/Online/Google), đọc theo từng cụm và ngắt nghỉ ở dấu câu. Giọng đẹp nhất hiện có:
+
+- **Microsoft Edge** (Windows/Mac/Android): có sẵn miễn phí giọng tự nhiên *Xiaoxiao, Yunxi* (giản thể) và *HsiaoChen* (Đài Loan).
+- **Chrome**: giọng "Google 普通话 / 國語(臺灣)".
+- **iPhone/Mac**: vào Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → Tiếng Trung, tải giọng *Tingting/Meijia (Nâng cao)*.
+
+Học viên chọn giọng ở ⚙️ Cài đặt → Giọng đọc, có nút "Nghe thử".
 
 ---
 
@@ -102,36 +134,17 @@ Sau khi mở khoá, giáo viên có thể: mở lớp (nhận mã lớp), đăng
 
 ---
 
-## 6. Thêm hoặc sửa bài học chính thức (trong code)
+## 6. Đăng bài của anh
 
-Các bài nằm trong `js/data/hsk1.js` … `hsk6.js`. Mỗi bài có cấu trúc:
+Cách nhanh nhất: đăng nhập bằng `hanryacademy@gmail.com` → bấm **✍️ Đăng bài** → chọn môn → dán bài, mỗi câu hoặc mỗi đoạn một dòng (hội thoại thì viết `Tên: câu`) → bấm **🌐 Tự dịch các câu** rồi sửa lại bản dịch → **Đăng bài**. Bài của admin có huy hiệu "Quản trị viên".
 
-```js
-HA.L({
-  id: '1-9', lv: 1, emoji: '🎒', kind: 'd',            // kind: 'd' = hội thoại, 'p' = bài văn
-  t: '中文标题|Tiêu đề tiếng Việt|English title',
-  d: 'Mô tả ngắn|Short description',
-  text: `
-Tên người nói|中文句子。|Câu dịch tiếng Việt.|English translation.`,   // bài văn: để trống tên người nói
-  v: `
-từ|pīnyīn|loại từ|nghĩa Việt|English|âm Hán Việt|Câu ví dụ.|Dịch ví dụ.|đồng nghĩa1,đồng nghĩa2|trái nghĩa`,
-  g: [['Tên ngữ pháp (VI)', 'Grammar name (EN)', 'Cấu trúc', 'Giải thích VI', 'Explanation EN',
-       ['例句。', 'Dịch Việt', 'English']]],
-  q: [['问题？', 'Câu hỏi dịch', '*đáp án đúng', 'sai', 'sai', 'sai'],   // trắc nghiệm, dấu * là đáp án đúng
-      ['T', '判断句。', 'Câu nhận định']]                               // đúng/sai: 'T' = đúng, 'F' = sai
-});
-```
-Loại từ: `n` danh từ, `v` động từ, `adj` tính từ, `adv` phó từ, `pron` đại từ, `num` số từ, `mw` lượng từ, `part` trợ từ, `prep` giới từ, `conj` liên từ, `phr` cụm từ, `int` thán từ, `tw` từ chỉ thời gian, `pn` danh từ riêng, `idiom` thành ngữ, `vo` động tân.
-
-Pinyin của câu văn, chữ phồn thể, chú âm, bài tập và trò chơi đều được **tạo tự động**.
-
-Cách nhanh hơn, không cần sửa code: đăng nhập bằng `hanryacademy@gmail.com` → **Cộng đồng → Soạn bài mới**. Bài của admin hiện ở mục "Bài đăng của giáo viên & admin".
+Khi anh gửi bài cho lộ trình, em sẽ soạn thành các phần của Lộ trình học (file `js/learn.js`).
 
 ---
 
 ## 7. Báo cáo, góp ý, gỡ nội dung
 
-- Người dùng gửi qua trang **Góp ý & Báo cáo** hoặc bấm nút 🚩 trên từng bài đăng. Nội dung hiện ở **Quản trị → Báo cáo & góp ý**.
+- Người dùng gửi qua trang **Góp ý & Báo cáo**, hoặc bấm nút 🚩 trên từng bài đăng và bình luận. Nội dung hiện ở **Quản trị → Báo cáo & góp ý**.
 - Trong **Quản trị → Quản lý bài đăng**, bấm 🗑 để gỡ bài vi phạm.
 - Khiếu nại bản quyền: xác nhận đã nhận trong 24 giờ, tạm ẩn bài vi phạm rõ ràng trong 24–72 giờ, cho người đăng 7 ngày để phản hồi (xem trang `#/legal/copyright`).
 - Nên tạo bộ lọc Gmail cho thư có tiêu đề bắt đầu bằng `[Hanry Academy]`.

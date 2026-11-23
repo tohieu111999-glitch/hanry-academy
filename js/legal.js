@@ -10,7 +10,7 @@
       vi: `
 <h1>Điều khoản sử dụng</h1>
 <p class="muted">Có hiệu lực từ ngày ${DATE}</p>
-<p>Chào mừng bạn đến với <b>Hanry Academy</b> ("Hanry Academy", "chúng tôi", "Trang web") — nền tảng học tiếng Trung trực tuyến. Bằng việc truy cập, đăng ký tài khoản hoặc sử dụng bất kỳ chức năng nào của Trang web, bạn xác nhận đã đọc, hiểu và đồng ý bị ràng buộc bởi Điều khoản sử dụng này ("Điều khoản"), <a href="#/legal/privacy">Chính sách bảo mật</a>, <a href="#/legal/copyright">Chính sách Bản quyền &amp; Nội dung</a> và <a href="#/legal/cookies">Chính sách Cookie &amp; Lưu trữ</a>. Nếu không đồng ý, vui lòng ngừng sử dụng Trang web.</p>
+<p>Chào mừng bạn đến với <b>Hanry Academy</b> ("Hanry Academy", "chúng tôi", "Trang web") — nền tảng học tập trực tuyến (ngoại ngữ như tiếng Trung, Anh, Nhật, Hàn, Pháp, Đức, lập trình và các môn khác). Bằng việc truy cập, đăng ký tài khoản hoặc sử dụng bất kỳ chức năng nào của Trang web, bạn xác nhận đã đọc, hiểu và đồng ý bị ràng buộc bởi Điều khoản sử dụng này ("Điều khoản"), <a href="#/legal/privacy">Chính sách bảo mật</a>, <a href="#/legal/copyright">Chính sách Bản quyền &amp; Nội dung</a> và <a href="#/legal/cookies">Chính sách Cookie &amp; Lưu trữ</a>. Nếu không đồng ý, vui lòng ngừng sử dụng Trang web.</p>
 
 <h2>1. Định nghĩa</h2>
 <ul>
@@ -66,7 +66,9 @@
 <p>Nội dung Hanry được bảo hộ bởi pháp luật về sở hữu trí tuệ. Bạn được phép sử dụng cho mục đích học tập cá nhân, phi thương mại. Nghiêm cấm sao chép, tái bản, phân phối, chỉnh sửa, khai thác thương mại Nội dung Hanry khi chưa có sự chấp thuận bằng văn bản của Hanry Academy.</p>
 
 <h2>9. Dữ liệu và phần mềm của bên thứ ba</h2>
-<p>Trang web sử dụng dữ liệu từ điển CVDICT và CC-CEDICT (giấy phép Creative Commons Attribution-ShareAlike 4.0), dữ liệu Unicode Unihan (Unicode License), thư viện pinyin-pro (MIT), Hanzi Writer và dữ liệu Make Me a Hanzi (theo giấy phép tương ứng), dịch vụ Google Firebase, Google Fonts. Các dữ liệu này thuộc quyền của chủ sở hữu tương ứng và được sử dụng theo điều kiện giấy phép của họ. Nghĩa từ điển được dịch tự động có thể chứa sai sót.</p>
+<p>9.1. Trang web sử dụng dữ liệu từ điển CVDICT và CC-CEDICT (giấy phép Creative Commons Attribution-ShareAlike 4.0), dữ liệu Unicode Unihan (Unicode License), thư viện pinyin-pro (MIT), Hanzi Writer và dữ liệu Make Me a Hanzi (theo giấy phép tương ứng), dịch vụ Google Firebase, Google Fonts. Các dữ liệu này thuộc quyền của chủ sở hữu tương ứng và được sử dụng theo điều kiện giấy phép của họ. Nghĩa từ điển được dịch tự động có thể chứa sai sót.</p>
+<p>9.2. <b>Dịch máy và AI.</b> Khi bạn rê chuột vào câu, bấm "Dịch cả bài", "Tự dịch các câu" hoặc tìm kiếm, đoạn văn bản liên quan được gửi tới dịch vụ dịch máy (mặc định: MyMemory của Translated S.r.l., Ý; hoặc máy chủ dịch AI do Hanry Academy vận hành có sử dụng mô hình AI của bên thứ ba nếu được bật). Kết quả dịch chỉ mang tính tham khảo, có thể sai hoặc không sát nghĩa, không thay thế bản dịch chuyên nghiệp, và không được dùng làm căn cứ cho các quyết định pháp lý, y tế, tài chính. Không nhập thông tin cá nhân, bí mật vào ô tìm kiếm hay nội dung cần dịch.</p>
+<p>9.3. <b>Giọng đọc.</b> Phát âm dùng công nghệ tổng hợp giọng nói của trình duyệt/hệ điều hành; chất lượng, giọng và ngữ điệu phụ thuộc thiết bị của bạn.</p>
 
 <h2>10. Dịch vụ, thay đổi và gián đoạn</h2>
 <p>Trang web được cung cấp miễn phí. Chúng tôi có quyền thay đổi, tạm ngừng hoặc chấm dứt toàn bộ hay một phần Trang web, chức năng hoặc nội dung bất kỳ lúc nào. Dữ liệu học tập (tiến độ, sổ tay) được lưu trên trình duyệt của bạn; bạn tự chịu trách nhiệm sao lưu (chức năng "Xuất file").</p>
@@ -80,11 +82,14 @@
 <h2>13. Bồi hoàn</h2>
 <p>Bạn đồng ý bồi hoàn và bảo vệ Hanry Academy, chủ sở hữu và cộng tác viên khỏi mọi khiếu nại, yêu cầu, thiệt hại, chi phí (bao gồm chi phí luật sư hợp lý) phát sinh từ: Nội dung người dùng của bạn; việc bạn vi phạm Điều khoản; hoặc việc bạn xâm phạm quyền của bên thứ ba.</p>
 
+<h2>13A. Bình luận, lượt thích và tương tác</h2>
+<p>Bình luận là Nội dung người dùng và phải tuân thủ <a href="#/legal/community">Quy tắc cộng đồng</a>. Tác giả bài viết và Quản trị viên có thể ẩn hoặc xoá bình luận vi phạm. Lượt thích và bình luận công khai có thể hiển thị tên hiển thị của bạn.</p>
+
 <h2>14. Xử lý vi phạm</h2>
 <p>Tuỳ mức độ, Hanry Academy có quyền: nhắc nhở; gỡ nội dung; hạn chế chức năng; thu hồi quyền Giáo viên hoặc quyền xem Tài liệu bản quyền hạn chế; khoá tạm thời hoặc vĩnh viễn tài khoản; cung cấp thông tin cho cơ quan nhà nước có thẩm quyền theo yêu cầu hợp pháp; yêu cầu bồi thường thiệt hại.</p>
 
 <h2>15. Báo cáo vi phạm và khiếu nại</h2>
-<p>Mọi báo cáo nội dung vi phạm, khiếu nại bản quyền xin gửi qua trang <a href="#/feedback">Góp ý &amp; Báo cáo</a> hoặc email ${MAIL}. Quy trình chi tiết tại <a href="#/legal/copyright">Chính sách Bản quyền &amp; Nội dung</a>.</p>
+<p>Mọi báo cáo nội dung vi phạm, khiếu nại bản quyền xin gửi qua trang <a href="#/feedback">Góp ý &amp; Báo cáo</a> hoặc email ${MAIL}. Quy trình chi tiết tại <a href="#/legal/copyright">Chính sách Bản quyền &amp; Nội dung</a>. Quyền và cam kết đối với người dùng được nêu tại <a href="#/legal/rights">Quyền lợi người dùng</a>.</p>
 
 <h2>16. Luật áp dụng và giải quyết tranh chấp</h2>
 <p>Điều khoản được điều chỉnh bởi pháp luật nước Cộng hoà xã hội chủ nghĩa Việt Nam. Tranh chấp trước hết được giải quyết bằng thương lượng, hoà giải trong vòng 30 ngày kể từ ngày một bên gửi thông báo bằng văn bản. Nếu không thành, tranh chấp được đưa ra Toà án nhân dân có thẩm quyền tại Việt Nam. Quyền lợi của người tiêu dùng theo Luật Bảo vệ quyền lợi người tiêu dùng 2023 không bị hạn chế bởi Điều khoản này.</p>
@@ -100,7 +105,7 @@
       en: `
 <h1>Terms of Service</h1>
 <p class="muted">Effective ${DATE}</p>
-<p>Welcome to <b>Hanry Academy</b> ("we", "the Site"), an online Chinese learning platform. By accessing the Site, creating an account or using any feature, you confirm that you have read, understood and agree to these Terms, our <a href="#/legal/privacy">Privacy Policy</a>, <a href="#/legal/copyright">Copyright &amp; Content Policy</a> and <a href="#/legal/cookies">Cookie &amp; Storage Policy</a>. If you do not agree, please stop using the Site.</p>
+<p>Welcome to <b>Hanry Academy</b> ("we", "the Site"), an online learning platform (languages such as Chinese, English, Japanese, Korean, French, German, programming and other subjects). By accessing the Site, creating an account or using any feature, you confirm that you have read, understood and agree to these Terms, our <a href="#/legal/privacy">Privacy Policy</a>, <a href="#/legal/copyright">Copyright &amp; Content Policy</a> and <a href="#/legal/cookies">Cookie &amp; Storage Policy</a>. If you do not agree, please stop using the Site.</p>
 <h2>1. Definitions</h2><p>"User" means anyone accessing the Site. "Student" is a User with a default account. "Teacher" is a User who activated a valid Teacher Key issued by an Administrator. "Administrator" means the owner of Hanry Academy or persons designated by the owner. "Hanry Content" means curriculum, lessons, exercises, design, code and brand created or licensed by Hanry Academy. "User Content" means anything Users upload. "Restricted Licensed Material" means books or materials visible only to Gmail accounts authorized by an Administrator.</p>
 <h2>2. Eligibility</h2><p>You must have full legal capacity under the laws of Vietnam or your place of residence. Users under 16 may only use the Site with the consent and supervision of a parent or legal guardian. You agree to use the Site lawfully for learning and teaching and to comply with applicable laws, including Vietnamese laws on civil matters, intellectual property, cybersecurity and personal data protection.</p>
 <h2>3. Accounts</h2><p>Sign-in uses Google (Gmail). You are responsible for securing your Google account and all activity under it. Each account is for one individual only; <b>sharing, lending, renting or selling accounts is strictly prohibited</b>, especially accounts with access to Restricted Licensed Material or Teacher rights. Notify us immediately at ${MAIL} of any unauthorized access. You may delete your account at any time from your Profile.</p>
@@ -109,11 +114,12 @@
 <h2>6. Prohibited conduct</h2><ol><li>Posting content that infringes intellectual property, including copying copyrighted books, textbooks or exams without permission.</li><li>Copying, screenshotting, recording, downloading, extracting, distributing, reselling or publicly sharing Restricted Licensed Material in any form.</li><li>Posting unlawful content: content against the State, violent, hateful, discriminatory, pornographic, defamatory or false information, and content prohibited by Vietnamese cybersecurity law and other applicable laws.</li><li>Collecting or disclosing others' personal data without consent.</li><li>Impersonating Hanry Academy, Administrators, Teachers, authors or other persons.</li><li>Advertising, spam, fraud, pyramid schemes, gambling or illegal business.</li><li>Attacking, probing, bypassing access controls, distributing malware, or scraping the Site with bots.</li><li>Any use that violates the law or the rights of others.</li></ol>
 <h2>7. Restricted Licensed Material</h2><p>Access is granted per Gmail address and is personal, time-limited, revocable, non-exclusive and non-transferable, for personal study only. All rights remain with the authors, publishers or rights holders. Upon violation of Section 6.2 or account sharing, we will immediately revoke access, suspend the account, may claim damages and may provide information to competent authorities and/or rights holders.</p>
 <h2>8. Hanry Academy intellectual property</h2><p>Hanry Content is protected by intellectual property law. You may use it for personal, non-commercial study. Copying, republishing, distributing, modifying or commercially exploiting Hanry Content without our written consent is prohibited.</p>
-<h2>9. Third-party data and software</h2><p>The Site uses CVDICT and CC-CEDICT dictionary data (CC BY-SA 4.0), Unicode Unihan data (Unicode License), pinyin-pro (MIT), Hanzi Writer and Make Me a Hanzi data (under their licenses), Google Firebase and Google Fonts. These belong to their respective owners and are used under their license terms. Machine-translated definitions may contain errors.</p>
+<h2>9. Third-party data and software</h2><p>The Site uses CVDICT and CC-CEDICT dictionary data (CC BY-SA 4.0), Unicode Unihan data (Unicode License), pinyin-pro (MIT), Hanzi Writer and Make Me a Hanzi data (under their licenses), Google Firebase and Google Fonts. These belong to their respective owners and are used under their license terms. Machine-translated definitions may contain errors. <b>Machine/AI translation:</b> when you hover a sentence, translate a post or search, the relevant text is sent to a translation service (by default MyMemory by Translated S.r.l., Italy, or an AI translation server operated by Hanry Academy using a third-party AI model if enabled). Translations are for reference only, may be inaccurate, and must not be relied on for legal, medical or financial decisions. Do not enter personal or confidential information. <b>Speech</b> uses your browser/OS voices; quality depends on your device.</p>
 <h2>10. Service changes</h2><p>The Site is free. We may change, suspend or discontinue any part at any time. Learning data (progress, notebook) is stored in your browser; you are responsible for backups (Export feature).</p>
 <h2>11. Disclaimer</h2><p>The Site is provided "as is" and "as available". To the maximum extent permitted by law, we do not warrant uninterrupted or error-free operation, nor the absolute accuracy of definitions, phonetics, synthetic speech or your exam results.</p>
 <h2>12. Limitation of liability</h2><p>To the maximum extent permitted by law, Hanry Academy, its owner and contributors are not liable for indirect, incidental, special or consequential damages, data loss or lost profits arising from use of the Site, User Content or other Users' conduct. Nothing excludes liability that cannot be excluded by law.</p>
 <h2>13. Indemnity</h2><p>You agree to indemnify and hold harmless Hanry Academy, its owner and contributors from any claims, damages and costs (including reasonable attorney fees) arising from your User Content, your breach of these Terms or your infringement of third-party rights.</p>
+<h2>13A. Comments and likes</h2><p>Comments are User Content and must follow the <a href="#/legal/community">Community rules</a>. Post authors and Administrators may hide or remove violating comments. Your display name may be shown with your likes and comments.</p>
 <h2>14. Enforcement</h2><p>We may warn, remove content, restrict features, revoke Teacher or licensed-material access, suspend or terminate accounts, cooperate with lawful requests from authorities, and claim damages.</p>
 <h2>15. Reports and complaints</h2><p>Send reports via <a href="#/feedback">Feedback &amp; Report</a> or ${MAIL}. See the <a href="#/legal/copyright">Copyright &amp; Content Policy</a> for the procedure.</p>
 <h2>16. Governing law and disputes</h2><p>These Terms are governed by the laws of the Socialist Republic of Vietnam. Disputes shall first be resolved by negotiation within 30 days of written notice; failing that, by the competent People's Court in Vietnam. Mandatory consumer protection rights are not limited.</p>
@@ -133,9 +139,10 @@
 <h2>2. Dữ liệu chúng tôi thu thập</h2>
 <table class="tbl"><tr><th>Loại dữ liệu</th><th>Ví dụ</th><th>Nơi lưu</th></tr>
 <tr><td>Dữ liệu tài khoản</td><td>Địa chỉ Gmail, tên hiển thị, ảnh đại diện Google, mã định danh người dùng, vai trò (học viên/giáo viên)</td><td>Google Firebase (máy chủ của Google)</td></tr>
-<tr><td>Nội dung bạn tạo</td><td>Bài học, lớp học, mã lớp, danh sách thành viên lớp, báo cáo/góp ý</td><td>Google Firebase</td></tr>
+<tr><td>Nội dung bạn tạo</td><td>Bài viết, bình luận, lượt thích, lớp học, mã lớp, danh sách thành viên lớp, báo cáo/góp ý</td><td>Google Firebase</td></tr>
+<tr><td>Văn bản cần dịch</td><td>Câu bạn rê chuột, nội dung bạn bấm dịch, từ khoá tìm kiếm</td><td>Gửi tới dịch vụ dịch máy (MyMemory – Translated S.r.l., Ý; hoặc máy chủ dịch AI của Hanry Academy nếu bật) chỉ để trả kết quả dịch; kết quả được lưu đệm trên trình duyệt của bạn</td></tr>
 <tr><td>Quyền truy cập</td><td>Gmail được cấp quyền xem tài liệu bản quyền, key giáo viên đã dùng</td><td>Google Firebase</td></tr>
-<tr><td>Dữ liệu học tập</td><td>XP, chuỗi ngày, tiến độ bài học, sổ tay từ vựng, lịch sử tra từ, cài đặt</td><td><b>Chỉ trên trình duyệt của bạn</b> (localStorage)</td></tr>
+<tr><td>Dữ liệu học tập</td><td>Bài đã đọc, tiến độ lộ trình, sổ tay từ vựng, lịch sử tra từ, cài đặt (ngôn ngữ, giọng đọc)</td><td><b>Chỉ trên trình duyệt của bạn</b> (localStorage)</td></tr>
 <tr><td>Dữ liệu kỹ thuật</td><td>Địa chỉ IP, loại trình duyệt, nhật ký truy cập</td><td>Do nhà cung cấp hạ tầng (GitHub Pages, Google, jsDelivr) tự động ghi nhận</td></tr>
 </table>
 <p>Chúng tôi <b>không</b> thu thập dữ liệu cá nhân nhạy cảm, không thu thập thông tin thanh toán, không dùng cookie quảng cáo hay công cụ theo dõi quảng cáo.</p>
@@ -145,7 +152,7 @@
 <p>Cơ sở xử lý: sự đồng ý của bạn (khi đăng nhập và tích chọn đồng ý), việc thực hiện dịch vụ bạn yêu cầu, và nghĩa vụ pháp lý. Chúng tôi không sử dụng dữ liệu của bạn cho quảng cáo và <b>không bán dữ liệu cá nhân</b>.</p>
 
 <h2>4. Chia sẻ dữ liệu</h2>
-<p>Dữ liệu chỉ được chia sẻ với: (a) nhà cung cấp dịch vụ kỹ thuật cần thiết để vận hành (Google LLC – Firebase Authentication/Firestore; GitHub – lưu trữ trang; jsDelivr – phân phối thư viện; Google Fonts – phông chữ), theo điều khoản bảo mật của họ; (b) Giáo viên của lớp bạn tham gia (thấy bạn là thành viên lớp); (c) cơ quan nhà nước có thẩm quyền khi có yêu cầu hợp pháp. Tên tác giả bạn nhập khi đăng bài công khai sẽ hiển thị công khai.</p>
+<p>Dữ liệu chỉ được chia sẻ với: (a) nhà cung cấp dịch vụ kỹ thuật cần thiết để vận hành (Google LLC – Firebase Authentication/Firestore; GitHub – lưu trữ trang; jsDelivr – phân phối thư viện; Google Fonts – phông chữ; dịch vụ dịch máy MyMemory hoặc nhà cung cấp mô hình AI dùng cho máy chủ dịch nếu được bật), theo điều khoản bảo mật của họ; (b) Giáo viên của lớp bạn tham gia (thấy bạn là thành viên lớp); (c) cơ quan nhà nước có thẩm quyền khi có yêu cầu hợp pháp. Tên tác giả bạn nhập khi đăng bài công khai sẽ hiển thị công khai.</p>
 
 <h2>5. Chuyển dữ liệu ra nước ngoài</h2>
 <p>Máy chủ của Google Firebase và các nhà cung cấp hạ tầng có thể đặt ngoài lãnh thổ Việt Nam. Bằng việc sử dụng Trang web, bạn được thông báo và đồng ý với việc dữ liệu được chuyển và lưu trữ ở nước ngoài; chúng tôi thực hiện các thủ tục, hồ sơ đánh giá tác động theo quy định pháp luật Việt Nam khi thuộc trường hợp phải thực hiện.</p>
@@ -166,7 +173,7 @@
 <p>Khi xảy ra vi phạm dữ liệu cá nhân, chúng tôi sẽ thông báo cho cơ quan có thẩm quyền và người dùng bị ảnh hưởng trong thời hạn luật định (không quá 72 giờ kể từ khi phát hiện, nếu pháp luật yêu cầu).</p>
 
 <h2>11. Phát âm và dịch vụ trình duyệt</h2>
-<p>Chức năng phát âm sử dụng công nghệ tổng hợp giọng nói có sẵn trong trình duyệt/hệ điều hành của bạn; văn bản tiếng Trung có thể được trình duyệt xử lý theo chính sách của nhà cung cấp trình duyệt. Thứ tự nét chữ được tải từ jsDelivr.</p>
+<p>Chức năng phát âm sử dụng công nghệ tổng hợp giọng nói có sẵn trong trình duyệt/hệ điều hành của bạn; văn bản tiếng Trung có thể được trình duyệt xử lý theo chính sách của nhà cung cấp trình duyệt. Thứ tự nét chữ được tải từ jsDelivr. Chúng tôi không ghi âm giọng nói của bạn.</p>
 
 <h2>12. Thay đổi chính sách</h2>
 <p>Chính sách có thể được cập nhật; ngày hiệu lực được ghi ở đầu trang. Thay đổi quan trọng sẽ được thông báo trên Trang web.</p>
@@ -178,9 +185,9 @@
 <p class="muted">Effective ${DATE}</p>
 <p>Hanry Academy respects your privacy and processes personal data in accordance with Vietnam's Personal Data Protection Law, Decree 13/2023/ND-CP and the Cybersecurity Law, and respects corresponding principles of Taiwan's Personal Data Protection Act and the EU GDPR for users in those regions.</p>
 <h2>1. Controller</h2><p>Hanry Academy (${MAIL}; ${PH}).</p>
-<h2>2. Data we collect</h2><ul><li><b>Account data</b>: Gmail address, display name, Google profile photo, user ID, role — stored in Google Firebase.</li><li><b>Content you create</b>: lessons, classes, class codes, class membership, reports — Google Firebase.</li><li><b>Access data</b>: Gmail addresses authorized for licensed material, used teacher keys — Google Firebase.</li><li><b>Learning data</b>: XP, streak, lesson progress, notebook, search history, settings — <b>only in your browser</b> (localStorage).</li><li><b>Technical data</b>: IP address, browser type, access logs automatically recorded by infrastructure providers (GitHub Pages, Google, jsDelivr).</li></ul><p>We do not collect sensitive data or payment information and use no advertising cookies or trackers.</p>
+<h2>2. Data we collect</h2><ul><li><b>Account data</b>: Gmail address, display name, Google profile photo, user ID, role — stored in Google Firebase.</li><li><b>Content you create</b>: lessons, classes, class codes, class membership, reports — Google Firebase.</li><li><b>Access data</b>: Gmail addresses authorized for licensed material, used teacher keys — Google Firebase.</li><li><b>Text to translate</b>: sentences you hover, content you translate and search terms are sent to the translation service (MyMemory by Translated S.r.l., Italy, or Hanry Academy's AI translation server if enabled) only to return a translation; results are cached in your browser.</li><li><b>Interactions</b>: comments and likes — Google Firebase.</li><li><b>Learning data</b>: posts read, course progress, notebook, search history, settings — <b>only in your browser</b> (localStorage).</li><li><b>Technical data</b>: IP address, browser type, access logs automatically recorded by infrastructure providers (GitHub Pages, Google, jsDelivr).</li></ul><p>We do not collect sensitive data or payment information and use no advertising cookies or trackers.</p>
 <h2>3. Purposes and legal basis</h2><p>Account management and authentication; providing learning, class, posting, teacher and licensed-material features; displaying author names; handling reports and complaints; security, fraud and copyright-infringement prevention; legal compliance. Legal bases: your consent, performance of the service you request, and legal obligations. <b>We never sell personal data</b> or use it for advertising.</p>
-<h2>4. Sharing</h2><p>Only with: (a) technical providers needed to operate the Site (Google Firebase, GitHub, jsDelivr, Google Fonts) under their privacy terms; (b) the teacher of a class you join; (c) competent authorities upon lawful request. Author names on public posts are public.</p>
+<h2>4. Sharing</h2><p>Only with: (a) technical providers needed to operate the Site (Google Firebase, GitHub, jsDelivr, Google Fonts, the MyMemory translation service or the AI model provider behind our translation server if enabled) under their privacy terms; (b) the teacher of a class you join; (c) competent authorities upon lawful request. Author names on public posts are public.</p>
 <h2>5. International transfers</h2><p>Provider servers may be located outside Vietnam. By using the Site you are informed of and consent to such transfers; we carry out any impact-assessment filings required by Vietnamese law.</p>
 <h2>6. Retention</h2><p>Account data and content until you delete your account; reports up to 24 months; browser data until you clear it.</p>
 <h2>7. Your rights</h2><p>You have the rights to be informed, consent or refuse, access, rectify, withdraw consent, erase, restrict processing, obtain your data, object, complain, sue and claim compensation as provided by law. Delete your account from your Profile or email ${MAIL}. We respond within 72 hours.</p>
@@ -196,7 +203,7 @@
 <h1>Chính sách Bản quyền &amp; Nội dung</h1>
 <p class="muted">Có hiệu lực từ ngày ${DATE}</p>
 <h2>1. Cam kết tôn trọng bản quyền</h2>
-<p>Hanry Academy tôn trọng quyền tác giả và quyền sở hữu trí tuệ theo Luật Sở hữu trí tuệ Việt Nam, Công ước Berne và các điều ước quốc tế mà Việt Nam là thành viên. Toàn bộ giáo trình HSK 1–6 có sẵn trên Trang web do Hanry Academy tự biên soạn. Dữ liệu từ điển được sử dụng theo giấy phép mở và ghi công đầy đủ: CVDICT (Phong Phan), CC-CEDICT (MDBG) – CC BY-SA 4.0; Unicode Unihan – Unicode License.</p>
+<p>Hanry Academy tôn trọng quyền tác giả và quyền sở hữu trí tuệ theo Luật Sở hữu trí tuệ Việt Nam, Công ước Berne và các điều ước quốc tế mà Việt Nam là thành viên. Các bài đọc mẫu và khoá học phát âm có sẵn trên Trang web do Hanry Academy tự biên soạn. Dữ liệu từ điển được sử dụng theo giấy phép mở và ghi công đầy đủ: CVDICT (Phong Phan), CC-CEDICT (MDBG) – CC BY-SA 4.0; Unicode Unihan – Unicode License.</p>
 
 <h2>2. Quy tắc đăng nội dung</h2>
 <ul>
@@ -228,16 +235,16 @@
 <p>Bấm nút 🚩 trên mỗi bài đăng hoặc gửi qua trang <a href="#/feedback/content">Góp ý &amp; Báo cáo</a>. Nội dung vi phạm pháp luật nghiêm trọng sẽ được gỡ bỏ ngay khi phát hiện và có thể được cung cấp cho cơ quan chức năng theo quy định.</p>
 
 <h2>6. Thương hiệu</h2>
-<p>Tên "Hanry Academy", logo và nhận diện là tài sản của Hanry Academy. Không sử dụng khi chưa được phép. HSK là tên kỳ thi của cơ quan tổ chức tương ứng; Hanry Academy không phải đơn vị tổ chức thi HSK.</p>`,
+<p>Tên "Hanry Academy", logo và nhận diện là tài sản của Hanry Academy. Không sử dụng khi chưa được phép. Tên các kỳ thi, giáo trình, thương hiệu của bên thứ ba (nếu được nhắc đến) thuộc về chủ sở hữu tương ứng.</p>`,
       en: `
 <h1>Copyright &amp; Content Policy</h1>
 <p class="muted">Effective ${DATE}</p>
-<h2>1. Respect for copyright</h2><p>Hanry Academy respects copyright under Vietnamese IP law, the Berne Convention and international treaties. The built-in HSK 1–6 curriculum is written by Hanry Academy. Dictionary data is used under open licenses with attribution: CVDICT (Phong Phan), CC-CEDICT (MDBG) – CC BY-SA 4.0; Unicode Unihan – Unicode License.</p>
+<h2>1. Respect for copyright</h2><p>Hanry Academy respects copyright under Vietnamese IP law, the Berne Convention and international treaties. The built-in sample readings and phonetics course are written by Hanry Academy. Dictionary data is used under open licenses with attribution: CVDICT (Phong Phan), CC-CEDICT (MDBG) – CC BY-SA 4.0; Unicode Unihan – Unicode License.</p>
 <h2>2. Posting rules</h2><ul><li>You <b>must</b> state the real name or pen name of the author.</li><li>You <b>must</b> choose the correct origin: <i>Original</i>, <i>Collected</i> (state where, and ensure permission or free-use status), or <i>Cited source</i> (book, page, website, original author).</li><li>Do not post all or most of copyrighted books, textbooks, exams or articles without written permission.</li><li>Teaching quotations must be reasonable, faithful, credited and must not substitute for the original work.</li><li>Do not post others' images, audio, video or personal data without permission.</li><li>Content must comply with the law and our <a href="#/legal/terms">Terms</a>.</li></ul>
 <h2>3. Restricted licensed material</h2><p>The "Licensed books" area is shown only to Gmail accounts authorized by an Administrator, where the rights holder has permitted it or Hanry Academy holds lawful rights. Large files are hosted on Google Drive with restricted, per-Gmail sharing. Authorized users must <b>not</b> copy, download, screenshot/record, print for distribution, or share links or accounts. Violations result in immediate revocation and possible legal action.</p>
 <h2>4. Notice and takedown</h2><p>Rights holders (or authorized agents) may send a notice to ${MAIL} or via the <a href="#/feedback/copyright">copyright complaint form</a> including: (1) name, address, email, phone; (2) description of the work and proof of rights; (3) exact URL of the allegedly infringing content; (4) a statement that the information is accurate and you are the rights holder or authorized; (5) signature (electronic signature or full name). We acknowledge within 24 hours, disable clearly infringing content within 24–72 hours and notify the poster, who may respond with evidence within 7 days. We then restore or permanently remove the content based on evidence or decisions of competent authorities. Repeat infringers (2+ violations) may be permanently banned. False or abusive notices may carry legal liability.</p>
 <h2>5. Other reports</h2><p>Use the 🚩 button on any post or the <a href="#/feedback/content">Feedback &amp; Report</a> page.</p>
-<h2>6. Trademarks</h2><p>"Hanry Academy", its logo and branding belong to Hanry Academy. HSK is the name of an exam owned by its respective organizer; Hanry Academy is not an HSK test organizer.</p>`
+<h2>6. Trademarks</h2><p>"Hanry Academy", its logo and branding belong to Hanry Academy. Third-party exam names, textbooks and brands mentioned belong to their owners.</p>`
     },
     cookies: {
       vi: `
@@ -246,7 +253,8 @@
 <p>Trang web <b>không sử dụng cookie quảng cáo hay cookie theo dõi của bên thứ ba</b>. Chúng tôi dùng bộ nhớ trình duyệt (localStorage) để Trang web hoạt động:</p>
 <table class="tbl"><tr><th>Khoá</th><th>Mục đích</th></tr>
 <tr><td>ha_settings</td><td>Ngôn ngữ, giản/phồn thể, pinyin/zhuyin, chế độ tối, tốc độ đọc</td></tr>
-<tr><td>ha_data_*</td><td>XP, chuỗi ngày, tiến độ bài học, sổ tay từ vựng, lịch sử tra từ</td></tr>
+<tr><td>ha_data_*</td><td>Bài đã đọc, tiến độ lộ trình, sổ tay từ vựng, lịch sử tra từ</td></tr>
+<tr><td>ha_mt_cache</td><td>Lưu đệm kết quả dịch máy để không phải dịch lại</td></tr>
 <tr><td>ha_consent</td><td>Ghi nhận việc bạn đồng ý Điều khoản</td></tr>
 <tr><td>ha_session, ha_db</td><td>Chỉ ở chế độ cục bộ (thử nghiệm): phiên đăng nhập và dữ liệu demo</td></tr>
 </table>
@@ -255,16 +263,98 @@
       en: `
 <h1>Cookie &amp; Storage Policy</h1>
 <p class="muted">Effective ${DATE}</p>
-<p>We use <b>no advertising or third-party tracking cookies</b>. Browser storage (localStorage) is used for: <b>ha_settings</b> (language, script, phonetics, dark mode, speech rate); <b>ha_data_*</b> (XP, streak, progress, notebook, history); <b>ha_consent</b> (terms acceptance); <b>ha_session, ha_db</b> (local demo mode only). Google Firebase may store essential session data to keep you signed in. Google Fonts and jsDelivr may log IP addresses under their own policies. You can clear this data anytime in your browser settings or with "Clear local learning data" on your Profile.</p>`
+<p>We use <b>no advertising or third-party tracking cookies</b>. Browser storage (localStorage) is used for: <b>ha_settings</b> (language, script, phonetics, dark mode, speech rate); <b>ha_data_*</b> (posts read, course progress, notebook, history); <b>ha_mt_cache</b> (cached machine translations); <b>ha_consent</b> (terms acceptance); <b>ha_session, ha_db</b> (local demo mode only). Google Firebase may store essential session data to keep you signed in. Google Fonts and jsDelivr may log IP addresses under their own policies. You can clear this data anytime in your browser settings or with "Clear local learning data" on your Profile.</p>`
     }
   };
+
+  DOCS.rights = { vi: `
+<h1>Quyền lợi người dùng</h1>
+<p class="muted">Có hiệu lực từ ngày ${DATE}</p>
+<p>Trang này tóm tắt những gì bạn <b>được hưởng</b> khi dùng Hanry Academy và những gì Hanry Academy <b>cam kết</b> với bạn. Trang này là một phần của <a href="#/legal/terms">Điều khoản sử dụng</a> và <a href="#/legal/privacy">Chính sách bảo mật</a>; nếu có điểm nào có lợi hơn cho bạn thì áp dụng điểm có lợi hơn.</p>
+
+<h2>1. Quyền sử dụng dịch vụ</h2>
+<ul><li>Đọc bài, tra từ, dịch câu, lưu sổ tay, luyện tập và tham gia lớp học <b>miễn phí</b>.</li>
+<li>Nếu sau này có chức năng thu phí, chúng tôi sẽ thông báo rõ giá, phạm vi <b>trước ít nhất 30 ngày</b>; không tự động trừ tiền khi bạn chưa đồng ý; các chức năng miễn phí bạn đang dùng không bị thu hồi mà không báo trước.</li>
+<li>Được thông báo trước ít nhất 07 ngày khi Điều khoản thay đổi quan trọng; nếu không đồng ý, bạn có quyền ngừng sử dụng và xoá tài khoản.</li></ul>
+
+<h2>2. Quyền đối với nội dung của bạn</h2>
+<ul><li>Bạn <b>giữ quyền tác giả</b> với bài viết, bình luận của mình. Hanry Academy chỉ được hiển thị trong phạm vi bạn chọn (công khai / lớp học / cá nhân).</li>
+<li>Được sửa, đổi phạm vi hiển thị hoặc xoá nội dung của mình bất kỳ lúc nào.</li>
+<li>Khi nội dung bị ẩn/gỡ, bạn được thông báo lý do (trừ khi pháp luật cấm), được gửi giải trình kèm bằng chứng trong <b>07 ngày</b> và được xem xét lại.</li></ul>
+
+<h2>3. Quyền đối với dữ liệu cá nhân</h2>
+<p>Theo Luật Bảo vệ dữ liệu cá nhân và Nghị định 13/2023/NĐ-CP, bạn có quyền:</p>
+<ol><li>Được biết dữ liệu nào được thu thập, vì sao và lưu ở đâu;</li><li>Đồng ý hoặc không đồng ý; <b>rút lại sự đồng ý</b> bất kỳ lúc nào;</li><li>Truy cập, xem và <b>tải về</b> dữ liệu của mình (nút "Tải dữ liệu của tôi" ở trang Hồ sơ);</li><li>Yêu cầu chỉnh sửa dữ liệu sai;</li><li><b>Xoá</b> dữ liệu và tài khoản (nút "Xoá tài khoản" ở trang Hồ sơ);</li><li>Yêu cầu hạn chế xử lý hoặc phản đối xử lý;</li><li>Khiếu nại, tố cáo, khởi kiện và yêu cầu bồi thường thiệt hại theo quy định pháp luật;</li><li>Tự bảo vệ theo quy định của pháp luật.</li></ol>
+<p>Cách thực hiện: dùng các nút ở trang Hồ sơ, hoặc gửi email tới ${MAIL} (tiêu đề "[Dữ liệu cá nhân]"). Chúng tôi xác nhận đã nhận trong <b>72 giờ</b> và giải quyết trong thời hạn pháp luật quy định. Chúng tôi có thể đề nghị xác minh bạn là chủ tài khoản trước khi xử lý.</p>
+
+<h2>4. Cam kết của Hanry Academy</h2>
+<ul><li><b>Không bán</b> dữ liệu cá nhân; không dùng dữ liệu của bạn cho quảng cáo nhắm mục tiêu; không dùng cookie theo dõi quảng cáo.</li>
+<li>Chỉ thu thập dữ liệu tối thiểu cần cho chức năng bạn dùng; dữ liệu học tập (sổ tay, tiến độ) mặc định chỉ lưu trên thiết bị của bạn.</li>
+<li>Bảo mật bằng HTTPS, đăng nhập Google, phân quyền trên máy chủ; thông báo sự cố lộ lọt dữ liệu cho bạn và cơ quan có thẩm quyền trong thời hạn luật định (không quá 72 giờ khi pháp luật yêu cầu).</li>
+<li>Minh bạch về dịch máy/AI: luôn ghi rõ nội dung nào do máy dịch, không trình bày bản dịch máy như bản dịch chuyên gia.</li>
+<li>Ghi công tác giả và nguồn cho mọi bài đăng; xử lý khiếu nại bản quyền theo quy trình công khai.</li>
+<li>Đối xử bình đẳng, không phân biệt người dùng theo dân tộc, giới tính, tôn giáo, quốc tịch, khuyết tật.</li></ul>
+
+<h2>5. Quyền được an toàn</h2>
+<ul><li>Được báo cáo (nút 🚩) bài viết, bình luận quấy rối, xúc phạm, lừa đảo, vi phạm bản quyền; báo cáo được xem xét ưu tiên trong 24–72 giờ.</li>
+<li>Thông tin người báo cáo được giữ kín với người bị báo cáo, trừ khi pháp luật yêu cầu.</li>
+<li>Trẻ em dưới 16 tuổi được bảo vệ đặc biệt: cha mẹ/người giám hộ có quyền yêu cầu xem, sửa, xoá dữ liệu của trẻ.</li></ul>
+
+<h2>6. Quyền của học viên và giáo viên trong lớp học</h2>
+<ul><li>Học viên được rời lớp bất kỳ lúc nào; giáo viên chỉ thấy tên hiển thị và việc bạn là thành viên lớp, không thấy email hay dữ liệu học tập riêng của bạn.</li>
+<li>Giáo viên giữ quyền tác giả với bài đăng trong lớp và tự quyết định phạm vi chia sẻ.</li></ul>
+
+<h2>7. Quyền đối với tài liệu bản quyền được cấp phép</h2>
+<p>Người được cấp quyền được đọc tài liệu cho mục đích học tập cá nhân trong thời gian được cấp. Khi quyền bị thu hồi, chúng tôi sẽ thông báo qua email (trừ trường hợp vi phạm nghiêm trọng).</p>
+
+<h2>8. Giải quyết khiếu nại</h2>
+<p>Mọi khiếu nại gửi qua <a href="#/feedback">Góp ý &amp; Báo cáo</a> hoặc ${MAIL}, ${PH}. Chúng tôi phản hồi trong 1–3 ngày làm việc. Nếu không đồng ý với kết quả, bạn có quyền yêu cầu cơ quan nhà nước có thẩm quyền giải quyết theo pháp luật Việt Nam, bao gồm Luật Bảo vệ quyền lợi người tiêu dùng 2023.</p>`, en: `
+<h1>User rights</h1>
+<p class="muted">Effective ${DATE}</p>
+<p>This page summarizes what you are entitled to and what Hanry Academy commits to. It is part of the <a href="#/legal/terms">Terms</a> and <a href="#/legal/privacy">Privacy Policy</a>; where it is more favorable to you, it prevails.</p>
+<h2>1. Using the service</h2><ul><li>Reading, word lookup, sentence translation, notebook, practice and classes are <b>free</b>.</li><li>Any future paid feature will be announced with price and scope <b>at least 30 days</b> in advance; you will never be charged without consent.</li><li>Material changes to the Terms are announced at least 7 days ahead; you may stop using the Site and delete your account.</li></ul>
+<h2>2. Your content</h2><ul><li>You <b>keep authorship</b> of your posts and comments; we display them only within the visibility you choose.</li><li>You may edit, change visibility or delete your content at any time.</li><li>If content is hidden or removed, you are told why (unless the law forbids it), may respond with evidence within <b>7 days</b>, and get a review.</li></ul>
+<h2>3. Your personal data</h2><p>You may: be informed; consent or refuse and <b>withdraw consent</b> at any time; access and <b>download</b> your data (Profile → Download my data); correct it; <b>delete</b> it and your account (Profile → Delete account); restrict or object to processing; complain, sue and claim compensation under the law. Email ${MAIL} with subject "[Personal data]". We acknowledge within <b>72 hours</b> and resolve within legal deadlines.</p>
+<h2>4. Our commitments</h2><ul><li>We <b>never sell</b> personal data and do not use it for targeted advertising or tracking cookies.</li><li>We collect the minimum data needed; learning data stays on your device by default.</li><li>HTTPS, Google sign-in, server-side access rules; breach notification within legal deadlines (72 hours where required).</li><li>Machine/AI translations are always labeled and never presented as professional translations.</li><li>Authors and sources are credited on every post; copyright complaints follow a public procedure.</li><li>Equal treatment of all users.</li></ul>
+<h2>5. Safety</h2><ul><li>Report harassment, abuse, fraud or infringement with 🚩; reports are prioritized within 24–72 hours.</li><li>Reporter identities are kept confidential unless the law requires otherwise.</li><li>Children under 16 receive extra protection; parents/guardians may view, correct or delete their data.</li></ul>
+<h2>6. Classes</h2><ul><li>Students may leave a class at any time; teachers see only your display name and membership, not your email or private learning data.</li><li>Teachers keep authorship of class posts.</li></ul>
+<h2>7. Licensed material</h2><p>Authorized users may read licensed material for personal study during the granted period; revocation is notified by email except for serious violations.</p>
+<h2>8. Complaints</h2><p>Use <a href="#/feedback">Feedback &amp; Report</a> or ${MAIL}, ${PH}. We reply within 1–3 business days. You may also refer disputes to competent Vietnamese authorities, including under the 2023 Consumer Protection Law.</p>` };
+  DOCS.community = { vi: `
+<h1>Quy tắc cộng đồng</h1>
+<p class="muted">Có hiệu lực từ ngày ${DATE}</p>
+<p>Hanry Academy là nơi mọi người cùng chia sẻ bài đọc, bài học và giúp nhau học tốt hơn. Để cộng đồng an toàn và hữu ích, mọi bài viết và bình luận cần tuân thủ các quy tắc sau.</p>
+<h2>1. Nên làm</h2>
+<ul><li>Chia sẻ bài đọc, hội thoại, bài giảng có giá trị học tập; ghi đúng tác giả và nguồn.</li><li>Chọn đúng môn học, trình độ; kiểm tra lại bản dịch máy trước khi đăng.</li><li>Góp ý lịch sự, mang tính xây dựng; tôn trọng người mới học.</li></ul>
+<h2>2. Không được đăng</h2>
+<ol><li>Nội dung vi phạm bản quyền: chép nguyên sách, giáo trình, đề thi, bài báo khi chưa được phép; chia sẻ link tải lậu.</li>
+<li>Nội dung vi phạm pháp luật Việt Nam, trong đó có các nội dung bị cấm theo Điều 8 Luật An ninh mạng 2018: chống Nhà nước, xuyên tạc lịch sử, kích động bạo lực, khủng bố, chia rẽ dân tộc, tôn giáo.</li>
+<li>Khiêu dâm, đồi trụy, nội dung bóc lột hoặc gây hại trẻ em (sẽ được báo cho cơ quan chức năng).</li>
+<li>Xúc phạm, bắt nạt, quấy rối, đe doạ, phân biệt đối xử; tiết lộ thông tin cá nhân của người khác.</li>
+<li>Tin giả, lừa đảo, mạo danh người khác hoặc mạo danh Hanry Academy.</li>
+<li>Quảng cáo, spam, đường link độc hại, kinh doanh đa cấp, cờ bạc.</li>
+<li>Mã độc, hướng dẫn tấn công hệ thống (bài lập trình chỉ được chia sẻ cho mục đích học tập hợp pháp).</li></ol>
+<h2>3. Xử lý vi phạm</h2>
+<p>Tuỳ mức độ: (1) nhắc nhở; (2) ẩn hoặc gỡ nội dung; (3) tạm khoá chức năng đăng/bình luận 7–30 ngày; (4) khoá tài khoản vĩnh viễn; (5) chuyển thông tin cho cơ quan có thẩm quyền khi có dấu hiệu vi phạm pháp luật. Vi phạm nghiêm trọng (nội dung bị cấm ở mục 2.2, 2.3) bị gỡ ngay và có thể khoá tài khoản ngay.</p>
+<h2>4. Khiếu nại quyết định</h2>
+<p>Nếu cho rằng nội dung của bạn bị gỡ nhầm, gửi giải trình qua <a href="#/feedback">Góp ý &amp; Báo cáo</a> trong vòng 07 ngày. Chúng tôi xem xét lại và trả lời trong 1–3 ngày làm việc.</p>
+<h2>5. Báo cáo</h2>
+<p>Bấm 🚩 trên bài viết hoặc bình luận. Người báo cáo được giữ kín danh tính.</p>`, en: `
+<h1>Community rules</h1>
+<p class="muted">Effective ${DATE}</p>
+<p>Hanry Academy is a place to share readings and lessons and help each other learn. All posts and comments must follow these rules.</p>
+<h2>1. Do</h2><ul><li>Share content with learning value; credit the author and source.</li><li>Pick the right subject and level; check machine translations before posting.</li><li>Give polite, constructive feedback; respect beginners.</li></ul>
+<h2>2. Do not post</h2><ol><li>Copyright-infringing material (whole books, textbooks, exams, articles without permission; pirated download links).</li><li>Content illegal under Vietnamese law, including content prohibited by Article 8 of the 2018 Cybersecurity Law.</li><li>Pornography or anything exploiting or harming children (reported to authorities).</li><li>Insults, bullying, harassment, threats, discrimination; doxxing.</li><li>Misinformation, scams, impersonation of others or of Hanry Academy.</li><li>Advertising, spam, malicious links, pyramid schemes, gambling.</li><li>Malware or attack instructions (programming posts must serve lawful learning).</li></ol>
+<h2>3. Enforcement</h2><p>Warning; hiding/removal; 7–30 day posting/commenting suspension; permanent ban; referral to authorities where the law is broken. Severe violations (2.2, 2.3) are removed immediately.</p>
+<h2>4. Appeals</h2><p>Appeal within 7 days via <a href="#/feedback">Feedback &amp; Report</a>; we review and reply within 1–3 business days.</p>
+<h2>5. Reporting</h2><p>Use 🚩 on posts or comments. Reporters stay anonymous.</p>` };
 
   HA.route(/^\/legal\/(\w+)$/, function (doc) {
     const d = DOCS[doc];
     if (!d) { location.hash = '#/legal/terms'; return; }
     const lang = HA.state.settings.lang;
     const body = lang === 'vi' ? d.vi : '<p class="note">' + HA.t('legalNotice') + ' <a href="#" id="showVi">Tiếng Việt</a></p>' + d.en;
-    const tabs = [['terms', 'navTerms'], ['privacy', 'navPrivacy'], ['copyright', 'navCopyright'], ['cookies', 'navCookies']];
+    const tabs = [['terms', 'navTerms'], ['privacy', 'navPrivacy'], ['rights', 'navRights'], ['community', 'navCommunityRules'], ['copyright', 'navCopyright'], ['cookies', 'navCookies']];
     document.getElementById('view').innerHTML = '<div class="tabs small">' + tabs.map(([k, n]) => '<a href="#/legal/' + k + '" class="' + (k === doc ? 'on' : '') + '">' + HA.t(n) + '</a>').join('') + '</div><article class="card legal">' + body + '</article>';
     const sv = document.getElementById('showVi');
     if (sv) sv.onclick = (e) => { e.preventDefault(); document.querySelector('.legal').innerHTML = d.vi; };

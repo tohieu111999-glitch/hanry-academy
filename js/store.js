@@ -71,7 +71,7 @@
     has: (w) => S.data.notebook.some((x) => x.w === w),
     add(item) {
       if (!item || !item.w || HA.nb.has(item.w)) return false;
-      S.data.notebook.unshift({ w: item.w, p: item.p || '', m: item.m || '', vi: item.vi || '', en: item.en || '', added: Date.now(), box: 0, due: today() });
+      S.data.notebook.unshift({ w: item.w, lang: item.lang || 'zh', p: item.p || '', m: item.m || '', vi: item.vi || '', en: item.en || '', added: Date.now(), box: 0, due: today() });
       HA.saveData(); return true;
     },
     remove(w) { S.data.notebook = S.data.notebook.filter((x) => x.w !== w); HA.saveData(); },
@@ -98,7 +98,7 @@
    * LOCAL ADAPTER — everything in this browser (demo / offline)
    * ========================================================= */
   function LocalAdapter() {
-    const db = () => LS.get('ha_db', { users: {}, lessons: [], classes: [], books: [], bookAccess: [], keys: [], reports: [] });
+    const db = () => Object.assign({ users: {}, lessons: [], classes: [], books: [], bookAccess: [], keys: [], reports: [], likes: {}, comments: [] }, LS.get('ha_db', {}));
     const put = (d) => LS.set('ha_db', d);
     async function sha(s) {
       if (!crypto.subtle) return s;
@@ -174,7 +174,23 @@
       async deleteKey(key) { const d = db(); d.keys = d.keys.filter((k) => k.key !== key); put(d); },
       async submitReport(r) { const d = db(); r.id = uid(); r.created = Date.now(); r.email = me() ? me().email : r.email || ''; d.reports.push(r); put(d); },
       async listReports() { return db().reports.slice().reverse(); },
-      async deleteReport(id) { const d = db(); d.reports = d.reports.filter((r) => r.id !== id); put(d); }
+      async deleteReport(id) { const d = db(); d.reports = d.reports.filter((r) => r.id !== id); put(d); },
+      async getReactions(ids) {
+        const d = db(); const u = me(); const out = {};
+        ids.forEach((id) => { const l = d.likes[id] || []; out[id] = { likes: l.length, liked: !!(u && l.includes(u.uid)), comments: d.comments.filter((c) => c.postId === id).length }; });
+        return out;
+      },
+      async toggleLike(id) {
+        const d = db(); const u = me(); if (!u) throw new Error(HA.t('needLogin'));
+        const l = d.likes[id] || (d.likes[id] = []); const i = l.indexOf(u.uid);
+        if (i >= 0) l.splice(i, 1); else l.push(u.uid); put(d); return i < 0;
+      },
+      async listComments(id) { return db().comments.filter((c) => c.postId === id).sort((a, b) => a.created - b.created); },
+      async addComment(id, text) {
+        const d = db(); const u = me(); if (!u) throw new Error(HA.t('needLogin'));
+        d.comments.push({ id: uid(), postId: id, uid: u.uid, name: u.name || u.email, text: text.slice(0, 1000), created: Date.now() }); put(d);
+      },
+      async deleteComment(cid) { const d = db(); const u = me(); d.comments = d.comments.filter((c) => !(c.id === cid && (c.uid === u.uid || HA.isAdmin(u)))); put(d); }
     };
     function pub(u) { return { uid: u.uid, email: u.email, name: u.name, role: u.role, verified: true }; }
     return A;
@@ -280,7 +296,34 @@
       async deleteKey(key) { await fs.collection('teacherKeys').doc(key).delete(); },
       async submitReport(r) { r.created = Date.now(); r.email = me() ? me().email : String(r.email || '').slice(0, 120); r.uid = me() ? me().uid : null; await fs.collection('reports').add(r); },
       async listReports() { return all(await fs.collection('reports').orderBy('created', 'desc').limit(200).get()); },
-      async deleteReport(id) { await fs.collection('reports').doc(id).delete(); }
+      async deleteReport(id) { await fs.collection('reports').doc(id).delete(); },
+      async getReactions(ids) {
+        const out = {}; ids.forEach((id) => (out[id] = { likes: 0, liked: false, comments: 0 }));
+        const u = me();
+        for (let i = 0; i < ids.length; i += 30) {
+          const chunk = ids.slice(i, i + 30);
+          const [ls, cs] = await Promise.all([
+            fs.collection('likes').where('postId', 'in', chunk).get().catch(() => ({ docs: [] })),
+            fs.collection('comments').where('postId', 'in', chunk).get().catch(() => ({ docs: [] }))
+          ]);
+          ls.docs.forEach((d) => { const x = d.data(); const r = out[x.postId]; if (r) { r.likes++; if (u && x.uid === u.uid) r.liked = true; } });
+          cs.docs.forEach((d) => { const r = out[d.data().postId]; if (r) r.comments++; });
+        }
+        return out;
+      },
+      async toggleLike(id) {
+        const u = me(); if (!u) throw new Error(HA.t('needLogin'));
+        const ref = fs.collection('likes').doc(id + '__' + u.uid);
+        const s = await ref.get();
+        if (s.exists) { await ref.delete(); return false; }
+        await ref.set({ postId: id, uid: u.uid, created: Date.now() }); return true;
+      },
+      async listComments(id) { return all(await fs.collection('comments').where('postId', '==', id).get()).sort((a, b) => a.created - b.created); },
+      async addComment(id, text) {
+        const u = me(); if (!u) throw new Error(HA.t('needLogin'));
+        await fs.collection('comments').add({ postId: id, uid: u.uid, name: String(u.name || u.email).slice(0, 80), text: text.slice(0, 1000), created: Date.now() });
+      },
+      async deleteComment(cid) { await fs.collection('comments').doc(cid).delete(); }
     };
     return A;
   }

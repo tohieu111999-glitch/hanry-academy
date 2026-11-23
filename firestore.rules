@@ -63,8 +63,9 @@ service cloud.firestore {
         && d.sourceType in ['self', 'collected', 'cited']
         && optStr(d, 'sourceRef', 300)
         && d.visibility in ['public', 'class', 'private']
-        && d.level is int && d.level >= 1 && d.level <= 6
-        && d.text is list && d.text.size() > 0 && d.text.size() <= 200
+        && d.level is int && d.level >= 0 && d.level <= 6
+        && optStr(d, 'subject', 20) && optStr(d, 'lang', 10)
+        && d.text is list && d.text.size() > 0 && d.text.size() <= 400
         && (!('vocab' in d) || d.vocab.size() <= 80)
         && (!('grammar' in d) || d.grammar.size() <= 20)
         && (!('questions' in d) || d.questions.size() <= 30)
@@ -130,6 +131,30 @@ service cloud.firestore {
     match /bookAccess/{em} {
       allow get: if verified() && (email() == em || isAdmin());
       allow list, write: if isAdmin();
+    }
+
+    // ---------- Likes (one doc per post+user) & comments ----------
+    match /likes/{likeId} {
+      allow read: if true;
+      allow create: if verified()
+        && request.resource.data.keys().hasOnly(['postId', 'uid', 'created'])
+        && request.resource.data.uid == request.auth.uid
+        && str(request.resource.data.postId, 120)
+        && likeId == request.resource.data.postId + '__' + request.auth.uid;
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+    match /comments/{cid} {
+      allow read: if true;
+      allow create: if verified()
+        && request.resource.data.keys().hasOnly(['postId', 'uid', 'name', 'text', 'created'])
+        && request.resource.data.uid == request.auth.uid
+        && str(request.resource.data.postId, 120)
+        && str(request.resource.data.name, 80)
+        && str(request.resource.data.text, 1000) && request.resource.data.text.size() > 0;
+      // the commenter, the post's author, or an admin can delete
+      allow delete: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin()
+        || (exists(/databases/$(database)/documents/lessons/$(resource.data.postId))
+            && get(/databases/$(database)/documents/lessons/$(resource.data.postId)).data.ownerUid == request.auth.uid));
     }
 
     // ---------- Reports & feedback ----------

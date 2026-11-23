@@ -338,23 +338,91 @@
     return pinyin;
   };
 
-  /* ---------- TTS ---------- */
+  /* ---------- TTS (natural-sounding: best voice + phrase pauses) ---------- */
+  const VLANG = { zh: 'zh-CN', zht: 'zh-TW', en: 'en-US', ja: 'ja-JP', ko: 'ko-KR', fr: 'fr-FR', de: 'de-DE', vi: 'vi-VN' };
   let voices = [];
-  function loadVoices() { voices = window.speechSynthesis ? speechSynthesis.getVoices() : []; }
+  function loadVoices() { voices = window.speechSynthesis ? speechSynthesis.getVoices() : []; document.dispatchEvent(new CustomEvent('ha:voices')); }
   if (window.speechSynthesis) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
   ZH.canSpeak = () => !!window.speechSynthesis;
-  ZH.speak = function (text, rate) {
+  // Rank voices: neural/natural/online voices sound far less robotic than legacy desktop voices
+  function score(v, want) {
+    let s = 0;
+    const L = v.lang.replace('_', '-');
+    if (L.toLowerCase() === want.toLowerCase()) s += 50; else if (L.slice(0, 2) === want.slice(0, 2)) s += 30; else return -1;
+    if (/natural|neural|online|premium|enhanced|siri/i.test(v.name)) s += 25;
+    if (/google/i.test(v.name)) s += 15;
+    if (/xiaoxiao|xiaoyi|yunxi|yunjian|hsiaochen|hsiaoyu|yunjhe|tingting|meijia|lili|nanami|sunhi|jenny|aria|guy|ava|andrew|emma/i.test(v.name)) s += 10;
+    if (/huihui|kangkang|yaoyao|hanhan|zhiwei|compact|espeak/i.test(v.name)) s -= 10;
+    if (!v.localService) s += 3;
+    return s;
+  }
+  ZH.voicesFor = function (lang) {
+    const want = VLANG[lang] || lang;
+    return voices.map((v) => [v, score(v, want)]).filter((x) => x[1] >= 0).sort((a, b) => b[1] - a[1]).map((x) => x[0]);
+  };
+  function pickVoice(lang) {
+    const st = HA.state ? HA.state.settings : {};
+    const saved = st.voices && st.voices[lang];
+    const list = ZH.voicesFor(lang);
+    return list.find((v) => v.name === saved) || list[0] || null;
+  }
+  // Split into phrases at punctuation so the engine breathes between them
+  function phrases(text, lang) {
+    const out = [];
+    const re = lang === 'zh' || lang === 'zht' || lang === 'ja'
+      ? /[^，,、；;：:。！!？?…\n]+[，,、；;：:。！!？?…]*/g
+      : /[^,;:.!?\n]+[,;:.!?]*/g;
+    (String(text).match(re) || [String(text)]).forEach((p) => { p = p.trim(); if (p) out.push(p); });
+    return out;
+  }
+  function pauseAfter(p) {
+    const c = p.slice(-1);
+    if ('。！？!?…'.includes(c) || c === '.') return 420;
+    if ('，,、；;：:'.includes(c)) return 160;
+    return 60;
+  }
+  let speakToken = 0;
+  ZH.stop = () => { speakToken++; if (window.speechSynthesis) speechSynthesis.cancel(); };
+  // speak(text, rateOrOpts) ; opts: {rate, lang, onend, onphrase}
+  ZH.speak = function (text, opts) {
     if (!window.speechSynthesis) { HA.ui.toast(HA.t('noTts')); return; }
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    const tw = HA.state && HA.state.settings.script === 't';
-    const pref = tw ? ['zh-TW', 'zh-HK', 'zh-CN'] : ['zh-CN', 'zh-TW', 'zh-HK'];
-    let v = null;
-    for (const p of pref) { v = voices.find((x) => x.lang.replace('_', '-').startsWith(p)); if (v) break; }
-    if (!v) v = voices.find((x) => /^zh|cmn/i.test(x.lang));
-    if (v) u.voice = v;
-    u.lang = v ? v.lang : 'zh-CN';
-    u.rate = rate || (HA.state ? HA.state.settings.rate || 0.9 : 0.9);
-    speechSynthesis.speak(u);
+    if (typeof opts === 'number') opts = { rate: opts };
+    opts = opts || {};
+    let lang = opts.lang || 'zh';
+    if (lang === 'zh' && HA.state && HA.state.settings.script === 't') lang = 'zht';
+    ZH.stop();
+    const tok = speakToken;
+    const v = pickVoice(lang);
+    const st = HA.state ? HA.state.settings : {};
+    const rate = opts.rate || st.rate || 0.9;
+    const parts = phrases(text, lang);
+    let i = 0;
+    const next = () => {
+      if (tok !== speakToken) return;
+      if (i >= parts.length) { opts.onend && opts.onend(); return; }
+      const p = parts[i++];
+      const u = new SpeechSynthesisUtterance(p);
+      if (v) u.voice = v;
+      u.lang = v ? v.lang : VLANG[lang] || lang;
+      u.rate = rate;
+      // a slightly lower pitch and a lift on questions make the reading less flat
+      u.pitch = /[？?]$/.test(p) ? 1.08 : 1.0;
+      u.onend = () => setTimeout(next, parts.length > 1 ? pauseAfter(p) : 0);
+      u.onerror = () => setTimeout(next, 50);
+      opts.onphrase && opts.onphrase(p, i - 1);
+      speechSynthesis.speak(u);
+    };
+    next();
+  };
+
+  /* ---------- Generic text rendering for other languages (word hover) ---------- */
+  ZH.renderText = function (text, lang, opts) {
+    if (lang === 'zh') return ZH.render(text, opts);
+    const esc = HA.ui.esc;
+    if (lang === 'code') return '<code class="code-line">' + esc(text) + '</code>';
+    let segs;
+    try { segs = [...new Intl.Segmenter(lang, { granularity: 'word' }).segment(text)]; }
+    catch (e) { segs = text.split(/(\s+|[.,!?;:()"“”])/).filter(Boolean).map((x) => ({ segment: x, isWordLike: /\w/.test(x) })); }
+    return segs.map((s) => (s.isWordLike ? '<span class="w" data-w="' + esc(s.segment) + '" data-lang="' + lang + '">' + esc(s.segment) + '</span>' : esc(s.segment))).join('');
   };
 })();

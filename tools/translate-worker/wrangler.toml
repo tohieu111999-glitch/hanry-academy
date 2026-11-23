@@ -1,0 +1,10 @@
+name = "hanry-translate"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Domains allowed to call this translator (comma separated)
+ALLOWED_ORIGINS = "https://tohieu111999-glitch.github.io"
+
+# Secret (do NOT put it here): run `npx wrangler secret put ANTHROPIC_API_KEY`

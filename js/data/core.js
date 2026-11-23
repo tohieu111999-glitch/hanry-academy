@@ -9,13 +9,14 @@
  */
 (function () {
   HA.LEVELS = [
-    { n: 1, name: 'HSK 1', color: '#58cc02', icon: '🌱', vi: 'Nhập môn', en: 'Beginner' },
-    { n: 2, name: 'HSK 2', color: '#1cb0f6', icon: '🌿', vi: 'Sơ cấp', en: 'Elementary' },
-    { n: 3, name: 'HSK 3', color: '#ce82ff', icon: '🌳', vi: 'Tiền trung cấp', en: 'Pre-intermediate' },
-    { n: 4, name: 'HSK 4', color: '#ff9600', icon: '🏔️', vi: 'Trung cấp', en: 'Intermediate' },
-    { n: 5, name: 'HSK 5', color: '#ff4b4b', icon: '🚀', vi: 'Trung cao cấp', en: 'Upper-intermediate' },
-    { n: 6, name: 'HSK 6', color: '#2b70c9', icon: '👑', vi: 'Cao cấp', en: 'Advanced' }
+    { n: 1, color: '#58cc02', icon: '🌱', vi: 'Sơ cấp 1', en: 'Beginner 1' },
+    { n: 2, color: '#1cb0f6', icon: '🌿', vi: 'Sơ cấp 2', en: 'Beginner 2' },
+    { n: 3, color: '#ce82ff', icon: '🌳', vi: 'Trung cấp 1', en: 'Intermediate 1' },
+    { n: 4, color: '#ff9600', icon: '🏔️', vi: 'Trung cấp 2', en: 'Intermediate 2' },
+    { n: 5, color: '#ff4b4b', icon: '🚀', vi: 'Cao cấp 1', en: 'Advanced 1' },
+    { n: 6, color: '#2b70c9', icon: '👑', vi: 'Cao cấp 2', en: 'Advanced 2' }
   ];
+  HA.LEVELS.forEach((l) => Object.defineProperty(l, 'name', { get: () => HA.tr(l) }));
   HA.POS = {
     n: ['danh từ', 'noun'], v: ['động từ', 'verb'], adj: ['tính từ', 'adjective'], adv: ['phó từ', 'adverb'], pron: ['đại từ', 'pronoun'],
     num: ['số từ', 'numeral'], mw: ['lượng từ', 'measure word'], part: ['trợ từ', 'particle'], prep: ['giới từ', 'preposition'],
@@ -55,8 +56,11 @@
     });
     return L;
   };
+  // Built-in sample reading posts written by Hanry Academy (shown in the feed)
+  const BASE = Date.UTC(2026, 10, 20, 2);
   HA.L = function (src) {
     const L = HA.normalizeLesson(src, true);
+    Object.assign(L, { subject: 'zh', lang: 'zh', author: 'Hanry Academy', authorRole: 'admin', sourceType: 'self', visibility: 'public', sample: true, created: BASE - HA.lessons.length * 36e5 * 7 });
     HA.lessons.push(L);
     HA.lessonById[L.id] = L;
   };

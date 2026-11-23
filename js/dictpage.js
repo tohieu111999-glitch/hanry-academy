@@ -56,7 +56,7 @@
   }
   HA.dictSearch = search;
 
-  HA.route(/^\/dict(?:\/(.+))?$/, function (word) {
+  HA.route(/^\/word(?:\/(.+))?$/, function (word) {
     const lang = HA.state.settings.lang === 'vi' ? 'vi' : 'en';
     const loaded = Z.dict.loaded[lang] || Z.dict.loaded.vi || Z.dict.loaded.en;
     const hist = HA.state.data.history || [];
@@ -65,7 +65,7 @@
       '<div class="row wrap small"><span class="muted">' + (loaded ? '📚 ' + Z.dict.entries.length.toLocaleString() + ' ' + t('entries') : '⏳ ' + t('dictLoading')) + '</span>' +
       '<label><input type="checkbox" id="bothLang"' + (Z.dict.loaded.vi && Z.dict.loaded.en ? ' checked' : '') + '> VI + EN</label></div></div>' +
       '<div class="dict-layout"><div id="dres" class="dres"></div><div id="ddetail" class="ddetail"></div></div>' +
-      (hist.length && !word ? '<div class="card"><b>🕘 ' + t('history') + '</b><div class="chips-row">' + hist.slice(0, 30).map((h) => '<a class="chip zh" href="#/dict/' + encodeURIComponent(h) + '">' + esc(Z.disp(h)) + '</a>').join('') + '</div></div>' : '') +
+      (hist.length && !word ? '<div class="card"><b>🕘 ' + t('history') + '</b><div class="chips-row">' + hist.slice(0, 30).map((h) => '<a class="chip zh" href="#/word/' + encodeURIComponent(h) + '">' + esc(Z.disp(h)) + '</a>').join('') + '</div></div>' : '') +
       '<p class="tiny muted">' + t('dictCredit') + '</p>';
     const inp = $('#dq');
     let timer = null;
@@ -74,12 +74,12 @@
       if (!q) { $('#dres').innerHTML = ''; $('#ddetail').innerHTML = ''; return; }
       if (!loaded) { $('#dres').innerHTML = '<div class="loading">' + t('dictLoading') + '</div>'; return; }
       const res = search(q);
-      $('#dres').innerHTML = res.length ? res.map((e, i) => '<a class="dr ' + (i === 0 ? 'on' : '') + '" href="#/dict/' + encodeURIComponent(e.s) + '" data-w="' + esc(e.s) + '"><span class="zh lg">' + esc(HA.state.settings.script === 't' ? e.t : e.s) + '</span><span class="py">' + esc(Z.phon(Z.pinyinNumToMarks(e.p))) + '</span><span class="m">' + esc(HA.ui.meaningOf(e)).slice(0, 90) + '</span></a>').join('') : '<div class="empty">' + t('notFound') + '</div>';
+      $('#dres').innerHTML = res.length ? res.map((e, i) => '<a class="dr ' + (i === 0 ? 'on' : '') + '" href="#/word/' + encodeURIComponent(e.s) + '" data-w="' + esc(e.s) + '"><span class="zh lg">' + esc(HA.state.settings.script === 't' ? e.t : e.s) + '</span><span class="py">' + esc(Z.phon(Z.pinyinNumToMarks(e.p))) + '</span><span class="m">' + esc(HA.ui.meaningOf(e)).slice(0, 90) + '</span></a>').join('') : '<div class="empty">' + t('notFound') + '</div>';
       if (word) return;
       if (res[0]) showDetail(Z.hasHan(q) && Z.dict.index.has(q) ? Z.toSimp(q) : res[0].s);
     };
     inp.oninput = () => { clearTimeout(timer); timer = setTimeout(run, 250); };
-    inp.onkeydown = (e) => { if (e.key === 'Enter') { const q = inp.value.trim(); if (Z.hasHan(q)) location.hash = '#/dict/' + encodeURIComponent(q); else run(); } };
+    inp.onkeydown = (e) => { if (e.key === 'Enter') { const q = inp.value.trim(); if (Z.hasHan(q)) location.hash = '#/word/' + encodeURIComponent(q); else run(); } };
     $('#dgo').onclick = () => inp.onkeydown({ key: 'Enter' });
     $('#bothLang').onchange = (e) => { if (e.target.checked) { Z.loadDict('vi'); Z.loadDict('en'); } };
     view().onclick = (e) => {
@@ -117,13 +117,13 @@
       '<div class="entry-py"><b>' + esc(py) + '</b> · <span>' + esc(py.split(/\s+/).map(Z.toZhuyin).join(' ')) + '</span>' + (HA.state.settings.lang === 'vi' && Z.hanViet(w) ? ' · <span class="hv">' + t('hanviet') + ': ' + esc(Z.hanViet(w).toUpperCase()) + '</span>' : '') + '</div>' +
       (cur ? '<div class="entry-sec cur"><span class="badge">' + t('builtIn') + '</span> ' + (cur.pos ? '<em class="pos">' + esc(HA.ui.posLabel(cur.pos)) + '</em> ' : '') + '<b>' + esc(HA.ui.meaningOf(cur)) + '</b>' +
         (cur.ex ? '<div class="ex"><div class="zh">' + HA.R(cur.ex[0]) + '</div><div class="muted">' + esc(cur.ex[1]) + '</div></div>' : '') +
-        (cur.syn.length ? '<div>≈ ' + t('synonyms') + ': ' + cur.syn.map((s) => '<a class="chip zh" href="#/dict/' + encodeURIComponent(s) + '">' + esc(Z.disp(s)) + '</a>').join('') + '</div>' : '') +
-        (cur.ant.length ? '<div>≠ ' + t('antonyms') + ': ' + cur.ant.map((s) => '<a class="chip red zh" href="#/dict/' + encodeURIComponent(s) + '">' + esc(Z.disp(s)) + '</a>').join('') + '</div>' : '') + '</div>' : '') +
+        (cur.syn.length ? '<div>≈ ' + t('synonyms') + ': ' + cur.syn.map((s) => '<a class="chip zh" href="#/word/' + encodeURIComponent(s) + '">' + esc(Z.disp(s)) + '</a>').join('') + '</div>' : '') +
+        (cur.ant.length ? '<div>≠ ' + t('antonyms') + ': ' + cur.ant.map((s) => '<a class="chip red zh" href="#/word/' + encodeURIComponent(s) + '">' + esc(Z.disp(s)) + '</a>').join('') + '</div>' : '') + '</div>' : '') +
       list.map((e) => '<div class="entry-sec"><div class="py-s">' + esc(Z.pinyinNumToMarks(e.p)) + ' <small class="muted">' + esc(e.p.split(' ').map((s) => Z.toZhuyin(Z.numToMark(s))).join(' ')) + '</small></div><ol class="defs">' +
         [e.vi && ['🇻🇳', e.vi], e.en && ['🇬🇧', e.en]].filter(Boolean).filter((x) => HA.state.settings.lang === 'vi' || x[0] === '🇬🇧' || !e.en).map(([flag, d]) => d.split('; ').map((s) => '<li>' + flag + ' ' + linkify(s) + '</li>').join('')).join('') + '</ol></div>').join('') +
-      '<div class="entry-sec"><h4>' + t('strokeOrder') + '</h4><div class="stroke-row">' + chars.map((c, i) => '<div class="sbox"><div id="so' + i + '" class="hw grid-bg sm"></div><div class="zh">' + esc(HA.state.settings.script === 't' ? Z.toTradChar(c) : c) + (HA.state.settings.lang === 'vi' && Z.hanViet(c) ? ' <small class="hv">' + esc(Z.hanViet(c).toUpperCase()) + '</small>' : '') + '</div><a class="tiny" href="#/dict/' + encodeURIComponent(c) + '">' + t('openDict') + '</a></div>').join('') + '</div></div>' +
-      (sentences.length ? '<div class="entry-sec"><h4>' + t('inLessons') + '</h4><ul class="examples">' + sentences.map((s) => '<li><button class="icon-btn" data-speak="' + esc(s.x.zh) + '">🔊</button><div><div class="zh">' + HA.R(s.x.zh) + '</div><div class="muted small">' + esc(HA.tr(s.x)) + ' · <a href="#/lesson/' + s.L.id + '">' + esc(HA.tr(s.L.title)) + '</a></div></div></li>').join('') + '</ul></div>' : '') +
-      (compounds.length ? '<div class="entry-sec"><h4>' + t('compounds') + '</h4><div class="compounds">' + compounds.map((e) => '<a href="#/dict/' + encodeURIComponent(e.s) + '"><b class="zh">' + esc(HA.state.settings.script === 't' ? e.t : e.s) + '</b> <small>' + esc(Z.pinyinNumToMarks(e.p)) + '</small><span>' + esc(HA.ui.meaningOf(e)).slice(0, 50) + '</span></a>').join('') + '</div></div>' : '') +
+      '<div class="entry-sec"><h4>' + t('strokeOrder') + '</h4><div class="stroke-row">' + chars.map((c, i) => '<div class="sbox"><div id="so' + i + '" class="hw grid-bg sm"></div><div class="zh">' + esc(HA.state.settings.script === 't' ? Z.toTradChar(c) : c) + (HA.state.settings.lang === 'vi' && Z.hanViet(c) ? ' <small class="hv">' + esc(Z.hanViet(c).toUpperCase()) + '</small>' : '') + '</div><a class="tiny" href="#/word/' + encodeURIComponent(c) + '">' + t('openDict') + '</a></div>').join('') + '</div></div>' +
+      (sentences.length ? '<div class="entry-sec"><h4>' + t('inLessons') + '</h4><ul class="examples">' + sentences.map((s) => '<li><button class="icon-btn" data-speak="' + esc(s.x.zh) + '">🔊</button><div><div class="zh">' + HA.R(s.x.zh) + '</div><div class="muted small">' + esc(HA.tr(s.x)) + ' · <a href="#/post/' + s.L.id + '">' + esc(HA.tr(s.L.title)) + '</a></div></div></li>').join('') + '</ul></div>' : '') +
+      (compounds.length ? '<div class="entry-sec"><h4>' + t('compounds') + '</h4><div class="compounds">' + compounds.map((e) => '<a href="#/word/' + encodeURIComponent(e.s) + '"><b class="zh">' + esc(HA.state.settings.script === 't' ? e.t : e.s) + '</b> <small>' + esc(Z.pinyinNumToMarks(e.p)) + '</small><span>' + esc(HA.ui.meaningOf(e)).slice(0, 50) + '</span></a>').join('') + '</div></div>' : '') +
       '</div>';
     HA.games.loadHW().then(() => tok === detailTok && chars.forEach((c, i) => {
       const el = document.getElementById('so' + i); if (!el) return;
@@ -133,6 +133,6 @@
     })).catch(() => {});
   }
   function linkify(s) {
-    return esc(s).replace(/([\u3400-\u9fff]+)(?:\|([\u3400-\u9fff]+))?(\[[^\]]+\])?/g, (m, a, b) => '<a class="zh" href="#/dict/' + encodeURIComponent(b || a) + '">' + (b || a) + '</a>');
+    return esc(s).replace(/([\u3400-\u9fff]+)(?:\|([\u3400-\u9fff]+))?(\[[^\]]+\])?/g, (m, a, b) => '<a class="zh" href="#/word/' + encodeURIComponent(b || a) + '">' + (b || a) + '</a>');
   }
 })();

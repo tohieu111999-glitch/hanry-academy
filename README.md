@@ -1,16 +1,18 @@
-# Hanry Academy 汉
+# Hanry Academy
 
-Nền tảng học tiếng Trung từ HSK 1 đến HSK 6, thiết kế theo kiểu chơi game như Duolingo. Web là trang tĩnh: chỉ cần HTML, CSS và JavaScript, không cần bước build, chạy được trên GitHub Pages.
+Nền tảng học ngoại ngữ (Trung, Anh, Nhật, Hàn, Pháp, Đức) và lập trình, xoay quanh các bài đọc do cộng đồng, giáo viên và Hanry Academy đăng tải. Web là trang tĩnh: chỉ cần HTML, CSS và JavaScript, không cần bước build, chạy được trên GitHub Pages.
 
 ## Tính năng
-- **29 bài học**, chia thành 6 cấp độ (HSK 1 → 6). Mỗi bài có: Bài đọc/Hội thoại → Từ vựng → Ngữ pháp → Câu hỏi bài đọc → Luyện tập kiểu Duolingo (tim, XP, chuỗi ngày).
-- **Chạm hoặc di chuột vào bất kỳ chữ nào** để xem pinyin/chú âm, âm Hán Việt, nghĩa, ví dụ, từ đồng nghĩa/trái nghĩa và nút thêm vào **sổ tay**.
-- **Sổ tay từ vựng** ôn theo phương pháp lặp lại ngắt quãng (SRS), xuất/nhập file CSV.
-- **8 trò chơi**: thẻ ghi nhớ, ghép cặp tốc độ, thử thách 60 giây, luyện nghe, lật thẻ, mưa chữ, luyện viết chữ (Hanzi Writer), đoán thanh điệu.
-- **Từ điển 120.000+ mục từ** giống Hanzii: tra bằng chữ Hán, pinyin, tiếng Việt, tiếng Anh; có thứ tự nét, từ ghép, câu ví dụ.
-- **5 ngôn ngữ giao diện**: Việt, Anh, Trung giản thể, Trung phồn thể, Nhật. Chọn được chữ **giản/phồn thể** và phiên âm **pinyin/zhuyin**.
-- **Cộng đồng**: soạn bài có ghi tác giả và nguồn. **Lớp học**: giáo viên mở lớp bằng key do admin cấp, học viên vào lớp bằng mã lớp. **Sách bản quyền**: chỉ Gmail được cấp quyền mới xem được.
-- Trang **Điều khoản**, **Chính sách bảo mật**, **Bản quyền & Nội dung**, **Cookie**, **Góp ý/Báo cáo**, **Liên hệ**.
+- **Trang chủ là bảng tin bài đăng** (giống Facebook): lọc theo môn, có thích, bình luận, nghe đọc, báo cáo.
+- **Ô tìm kiếm**: dịch nghĩa trước (dịch máy và từ điển 120.000+ từ), sau đó gợi ý các bài có từ liên quan.
+- **Rê chuột hoặc chạm vào chữ** để xem pinyin/zhuyin, âm Hán Việt, nghĩa của từ, nghĩa cả câu, và lưu vào sổ tay.
+- **Lộ trình học**: phần 1 là học đọc Pinyin hoặc Zhuyin (theo lựa chọn của người học), các phần sau cập nhật dần.
+- **Sổ tay** kèm 8 trò chơi ôn tập.
+- **Giọng đọc tự nhiên**: tự chọn giọng tốt nhất trên máy, ngắt nghỉ theo dấu câu, người học chọn được giọng.
+- **Lớp học** có key giáo viên và mã lớp. **Sách bản quyền** ẩn hoàn toàn nếu tài khoản chưa được cấp quyền.
+- Giao diện 5 ngôn ngữ, chữ giản/phồn thể (chuẩn Đài Loan qua OpenCC).
+- Pháp lý đầy đủ: Điều khoản, Bảo mật, Quyền lợi người dùng, Quy tắc cộng đồng, Bản quyền & gỡ bài, Cookie.
+- Tuỳ chọn dịch ý bằng AI qua máy chủ riêng (`tools/translate-worker`, Cloudflare Worker gọi Claude API).
 
 ## Chạy thử trên máy
 ```bash
@@ -29,13 +31,17 @@ js/config.js          liên hệ, email admin, Firebase
 js/i18n.js            bản dịch giao diện 5 ngôn ngữ
 js/zh.js              xử lý chữ Hán: tách từ, pinyin, zhuyin, phồn thể, phát âm
 js/store.js           dữ liệu người dùng, chế độ cục bộ và Firebase
-js/app.js             điều hướng, trang chủ, lộ trình, bài học, sổ tay, hồ sơ
-js/practice.js        luyện tập kiểu Duolingo
+js/app.js             khung trang, điều hướng, cài đặt, đăng nhập, hồ sơ
+js/feed.js            bảng tin, tìm kiếm, trang bài viết, đăng bài, thích/bình luận
+js/learn.js           lộ trình học (học đọc pinyin/zhuyin)
+js/notebook.js        sổ tay và trò chơi ôn tập
+js/translate.js       dịch máy (MyMemory hoặc máy chủ AI)
 js/games.js           8 trò chơi
-js/dictpage.js        từ điển
-js/social.js          cộng đồng, soạn bài, lớp học, sách, quản trị, góp ý, liên hệ
+js/dictpage.js        trang chi tiết từ (mở từ tìm kiếm)
+js/social.js          lớp học, sách, quản trị, góp ý, liên hệ
 js/legal.js           điều khoản và chính sách
-js/data/hsk*.js       nội dung bài học
+js/data/hsk*.js       các bài đọc mẫu
+tools/translate-worker/ máy chủ dịch AI (tuỳ chọn)
 data/*.tsv            dữ liệu từ điển (tạo bằng tools/build-dict.mjs)
 firestore.rules       luật phân quyền phía máy chủ
 ```
@@ -43,7 +49,7 @@ firestore.rules       luật phân quyền phía máy chủ
 ## Giấy phép dữ liệu bên thứ ba
 - CVDICT © Phong Phan và CC-CEDICT © MDBG: giấy phép CC BY-SA 4.0 (file `data/dict-vi.tsv`, `data/dict-en.tsv`, chia sẻ lại theo cùng giấy phép).
 - Unicode Unihan: Unicode License (`data/hanviet.tsv`).
-- pinyin-pro: MIT (`js/vendor/pinyin-pro.js`).
+- pinyin-pro: MIT (`js/vendor/pinyin-pro.js`). opencc-js: MIT (`js/vendor/opencc-cn2t.js`).
 - Hanzi Writer và dữ liệu Make Me a Hanzi: tải từ jsDelivr khi chạy.
 
 Nội dung bài học, giao diện và mã nguồn © Hanry Academy. Bảo lưu mọi quyền.

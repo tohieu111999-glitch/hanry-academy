@@ -109,10 +109,12 @@
   function onTipClick(e) {
     const b = e.target.closest('[data-act]'); if (!b) return;
     const w = b.dataset.w;
-    if (b.dataset.act === 'speak') HA.zh.speak(w);
-    if (b.dataset.act === 'dict') { ui.hideTip(); ui.closeModal(); location.hash = '#/dict/' + encodeURIComponent(w); }
+    const lang = b.dataset.lang || 'zh';
+    if (b.dataset.act === 'speak') HA.zh.speak(w, { lang });
+    if (b.dataset.act === 'dict') { ui.hideTip(); ui.closeModal(); location.hash = '#/word/' + encodeURIComponent(w); }
     if (b.dataset.act === 'note') {
-      const added = HA.nb.toggle(ui.noteItem(w, b.dataset.p));
+      const item = lang === 'zh' ? ui.noteItem(w, b.dataset.p) : { w, p: '', lang, vi: b.dataset.m || '', en: b.dataset.m || '' };
+      const added = HA.nb.toggle(item);
       ui.toast(added ? HA.t('added') : HA.t('removed'), added ? 'good' : '');
       b.outerHTML = '<button class="btn sm ' + (added ? 'ghost' : 'yellow') + '" data-act="note" data-w="' + ui.esc(w) + '" data-p="' + ui.esc(b.dataset.p) + '">' + (added ? '✓ ' + HA.t('inNote') : '⭐ ' + HA.t('addNote')) + '</button>';
       document.dispatchEvent(new CustomEvent('ha:notebook'));
@@ -122,8 +124,51 @@
     const t = ensureTip();
     if (curEl) curEl.classList.remove('active');
     curEl = el; el.classList.add('active');
-    t.innerHTML = ui.wordCardHTML(el.dataset.w, el.dataset.p, true);
+    const lang = el.dataset.lang || 'zh';
+    t.innerHTML = (lang === 'zh' ? ui.wordCardHTML(el.dataset.w, el.dataset.p, true) : foreignCard(el.dataset.w, lang)) + sentenceBlock(el, lang);
     t.classList.add('show');
+    place(el);
+    fillAsync(t, el);
+  }
+  function foreignCard(w, lang) {
+    const inNb = HA.nb.has(w);
+    return '<div class="wc-head"><span class="wc-zh">' + ui.esc(w) + '</span><button class="icon-btn" data-act="speak" data-lang="' + lang + '" data-w="' + ui.esc(w) + '">🔊</button></div>' +
+      '<div class="wc-mean" data-fill="word">' + HA.t('loading') + '</div>' +
+      '<div class="wc-actions"><button class="btn sm ' + (inNb ? 'ghost' : 'yellow') + '" data-act="note" data-lang="' + lang + '" data-w="' + ui.esc(w) + '">' + (inNb ? '✓ ' + HA.t('inNote') : '⭐ ' + HA.t('addNote')) + '</button></div>';
+  }
+  function sentenceBlock(el, lang) {
+    const ctx = el.closest('[data-src]');
+    if (!ctx || lang === 'code') return '';
+    const src = ctx.dataset.src;
+    if (!src || src === el.dataset.w) return '';
+    const tr = ctx.dataset.tr;
+    return '<div class="wc-sec wc-sent"><div class="row between"><b>📝 ' + HA.t('sentMeaning') + '</b><button class="icon-btn" data-act="speak" data-lang="' + lang + '" data-w="' + ui.esc(src) + '">🔊</button></div>' +
+      '<div data-fill="sent" data-src="' + ui.esc(src) + '">' + (tr ? ui.esc(tr) : '<span class="muted">' + HA.t('translating') + '</span>') + '</div>' +
+      (tr ? '' : '') + '</div>';
+  }
+  function fillAsync(t, el) {
+    const lang = el.dataset.lang || 'zh';
+    const w = el.dataset.w;
+    const wf = t.querySelector('[data-fill="word"]');
+    if (wf) HA.mt.translate(w, lang, null, 'word').then((m) => {
+      if (curEl !== el) return;
+      wf.textContent = m;
+      const nb = t.querySelector('[data-act="note"]'); if (nb) nb.dataset.m = m;
+      place(el);
+    }).catch(() => { if (curEl === el) wf.innerHTML = '<span class="muted">' + HA.t('mtUnavailable') + '</span>'; });
+    const sf = t.querySelector('[data-fill="sent"]');
+    const ctx = el.closest('[data-src]');
+    if (sf && ctx && !ctx.dataset.tr) HA.mt.translate(sf.dataset.src, lang).then((m) => {
+      if (curEl !== el) return;
+      sf.textContent = m; place(el);
+    }).catch(() => {
+      if (curEl !== el) return;
+      sf.innerHTML = lang === 'zh' ? '<span class="muted small">' + HA.t('glossNote') + '</span><br>' + ui.esc(HA.mt.gloss(sf.dataset.src)) : '<span class="muted">' + HA.t('mtUnavailable') + '</span>';
+      place(el);
+    });
+  }
+  function place(el) {
+    const t = tip;
     const r = el.getBoundingClientRect();
     const tw = Math.min(340, window.innerWidth - 16);
     t.style.width = tw + 'px';

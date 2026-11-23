@@ -139,7 +139,13 @@
   };
 
   /* ---------- Script conversion ---------- */
-  ZH.toTradChar = (c) => D.s2t.get(c) || c;
+  // Simplified -> Traditional (Taiwan standard) via OpenCC; dictionary map as fallback
+  let cc = null;
+  ZH.cc = function (s) {
+    if (!cc && window.OpenCC) { try { cc = window.OpenCC.Converter({ from: 'cn', to: 'tw' }); } catch (e) { cc = null; } }
+    return cc ? cc(s) : null;
+  };
+  ZH.toTradChar = (c) => { const r = ZH.cc(c); return r && [...r].length === 1 ? r : D.s2t.get(c) || c; };
   ZH.toSimp = function (text) {
     return [...(text || '')].map((c) => (D.sSet.has(c) ? c : D.t2s.get(c) || c)).join('');
   };
@@ -200,6 +206,8 @@
     const simpText = tokens.map((t) => (t.han ? t.simp : t.text)).join('');
     let pp = [];
     try { pp = window.pinyinPro.pinyin(simpText, { type: 'array', toneSandhi: false }); } catch (e) { pp = []; }
+    const tradAll = ZH.cc(simpText);
+    const tradChars = tradAll && [...tradAll].length === [...simpText].length ? [...tradAll] : null;
     let pos = 0;
     tokens.forEach((t) => {
       const len = [...(t.han ? t.simp : t.text)].length;
@@ -207,8 +215,11 @@
         const ctx = pp.slice(pos, pos + len);
         t.py = choosePinyin(t, ctx, len);
         // traditional rendering
-        const tr = (t.ents || []).find((x) => x.s === t.simp && !/^[A-Z]/.test(x.p)) || (t.ents || [])[0];
-        t.trad = tr && [...tr.t].length === len ? tr.t : [...t.simp].map(ZH.toTradChar).join('');
+        if (tradChars) t.trad = tradChars.slice(pos, pos + len).join('');
+        else {
+          const tr = (t.ents || []).find((x) => x.s === t.simp && !/^[A-Z]/.test(x.p)) || (t.ents || [])[0];
+          t.trad = tr && [...tr.t].length === len ? tr.t : [...t.simp].map(ZH.toTradChar).join('');
+        }
       }
       pos += len;
     });

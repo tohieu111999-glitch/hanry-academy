@@ -22,6 +22,14 @@
     user: null
   });
   HA.saveSettings = () => LS.set('ha_settings', S.settings);
+  // Link options, e.g. ?script=t&phon=zhuyin&lang=vi  (script: s|t, phon: pinyin|zhuyin)
+  try {
+    const q = new URLSearchParams(location.search);
+    if (['s', 't'].includes(q.get('script'))) S.settings.script = q.get('script');
+    if (['pinyin', 'zhuyin'].includes(q.get('phon'))) S.settings.phon = q.get('phon');
+    if (['vi', 'en', 'zhs', 'zht', 'ja'].includes(q.get('lang'))) S.settings.lang = q.get('lang');
+    if (q.toString()) HA.saveSettings();
+  } catch (e) {}
 
   /* ---------- Per-user learning data (stored on device) ---------- */
   const uk = () => 'ha_data_' + (S.user ? S.user.email : 'guest');

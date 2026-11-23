@@ -559,3 +559,6 @@ details.adv summary { cursor: pointer; font-weight: 800; }
   .reading .line.indent { margin-left: 8px; }
   .lb-title { font-size: 1.3rem; }
 }
+/* plain reading (no pinyin/zhuyin above characters) */
+body.no-ruby .reading, body.no-ruby .post-body, body.no-ruby .q-text, body.no-ruby .opt, body.no-ruby .prac li, body.no-ruby .g-ex, body.no-ruby .vr-ex { line-height: 1.9; }
+body.no-ruby .reading .line { padding-top: 4px; padding-bottom: 4px; }

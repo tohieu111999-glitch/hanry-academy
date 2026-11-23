@@ -257,8 +257,8 @@
       (P.official ? '<div class="lesson-banner"><span class="lb-level">' + esc(levelCode) + (P.exam ? ' · ' + esc(P.exam) : '') + '</span><div><div class="zh lb-title">' + F.render(P.title.zh, P) + '</div><div class="muted">' + esc(P.title.vi || '') + '</div></div></div>' : '') +
       (sec.length ? '<nav class="sec-nav"><button data-goto="sec-read">📖 ' + t('tabRead') + '</button>' + sec.map((x) => '<button data-goto="' + x.id + '">' + x.icon + ' ' + x.title + '</button>').join('') + '<button data-goto="comments">💬 ' + t('comments') + '</button></nav>' : '') +
       '<div class="toolbar" id="sec-read">' + (lang !== 'code' ? '<button class="btn sm blue" id="playAll">▶ ' + t('playAll') + '</button><button class="btn sm ghost" id="stopAll">■</button>' : '') +
-      (isZh ? '<button class="btn sm ' + (S.settings.showRuby ? 'purple' : 'ghost') + '" id="toggleRuby">' + (S.settings.phon === 'zhuyin' ? 'ㄅㄆㄇ' : 'pīnyīn') + '</button>' : '') +
-      '<button class="btn sm ' + (showTr ? 'orange' : 'ghost') + '" id="toggleTrans">' + (showTr ? t('hideTrans') : t('showTrans')) + '</button>' +
+      (isZh ? '<button class="btn sm ' + (S.settings.showRuby ? 'purple' : 'ghost') + '" id="toggleRuby">' + (S.settings.showRuby ? '✓ ' : '') + (S.settings.phon === 'zhuyin' ? t('showZhuyin') : t('showPinyin')) + '</button>' : '') +
+      '<button class="btn sm ' + (showTr ? 'orange' : 'ghost') + '" id="toggleTrans">' + (showTr ? '✓ ' + t('showTrans') : t('showTrans')) + '</button>' +
       (lang !== 'code' ? '<button class="btn sm ghost" id="mtAll">🌐 ' + t('translateAll') + '</button>' : '') + '</div>' +
       '<p class="hint">💡 ' + t('tapHint') + '</p>' +
       '<div class="reading card ' + (P.kind === 'dialogue' ? 'dlg' : 'psg') + '">' + reading + '</div>' +
@@ -320,7 +320,7 @@
       const id = e.target.id;
       if (id === 'playAll') F.playAll(P, $('.reading'));
       if (id === 'stopAll') HA.zh.stop();
-      if (id === 'toggleRuby') { S.settings.showRuby = !S.settings.showRuby; HA.saveSettings(); HA.zh.clearCache(); renderPost(P); }
+      if (id === 'toggleRuby') { S.settings.showRuby = !S.settings.showRuby; HA.saveSettings(); HA.zh.clearCache(); document.body.classList.toggle('no-ruby', !S.settings.showRuby); renderPost(P); }
       if (id === 'toggleTrans') { S.settings.showTrans = !S.settings.showTrans; HA.saveSettings(); renderPost(P); }
       if (id === 'addAll') { let n = 0; P.vocab.forEach((v) => { if (HA.nb.add({ w: v.w, p: v.p, vi: v.vi, en: v.en, lang })) n++; }); HA.ui.toast(t('added') + ' (+' + n + ')', 'good'); }
       if (id === 'mtAll') {

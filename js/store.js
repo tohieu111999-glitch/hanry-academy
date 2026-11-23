@@ -9,7 +9,7 @@
   const today = () => new Date().toISOString().slice(0, 10);
   HA.today = today;
 
-  const defSettings = { lang: 'vi', script: 's', phon: 'pinyin', showRuby: true, showTrans: true, dark: false, rate: 0.85, dailyGoal: 30, cookieOk: false };
+  const defSettings = { lang: 'vi', script: 's', phon: 'pinyin', showRuby: false, showTrans: false, dark: false, rate: 0.85, dailyGoal: 30, cookieOk: false };
   const navLang = (navigator.language || 'vi').toLowerCase();
   if (!LS.get('ha_settings')) {
     if (navLang.startsWith('ja')) defSettings.lang = 'ja';
@@ -22,6 +22,8 @@
     user: null
   });
   HA.saveSettings = () => LS.set('ha_settings', S.settings);
+  // v3: reading shows plain characters; pinyin/zhuyin and translations appear only when the reader turns them on
+  if (!S.settings.plainV3) { S.settings.showRuby = false; S.settings.showTrans = false; S.settings.plainV3 = true; HA.saveSettings(); }
   // Link options, e.g. ?script=t&phon=zhuyin&lang=vi  (script: s|t, phon: pinyin|zhuyin)
   try {
     const q = new URLSearchParams(location.search);

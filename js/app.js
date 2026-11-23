@@ -16,6 +16,7 @@
   HA.renderShell = function () {
     document.documentElement.lang = { vi: 'vi', en: 'en', zhs: 'zh-Hans', zht: 'zh-Hant', ja: 'ja' }[S.settings.lang];
     document.documentElement.dataset.theme = S.settings.dark ? 'dark' : 'light';
+    document.body.classList.toggle('no-ruby', !S.settings.showRuby);
     const u = S.user;
     const route = (location.hash.split('?')[0].split('/').slice(0, 2).join('/')) || '#/';
     const isActive = (h) => (h === '#/' ? ['#/', '#', '', '#/post', '#/search'].includes(route) : route === h || (h === '#/notebook' && route === '#/game'));

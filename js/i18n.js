@@ -366,6 +366,8 @@
     grammarPractice: ['Bài tập dịch Việt → Trung', 'Translation practice', '翻译练习', '翻譯練習', '翻訳練習'],
     readingPath: ['Bài đọc theo cấp độ', 'Readings by level', '分级阅读', '分級閱讀', 'レベル別読解'],
     readingPathD: ['Bài đọc kèm câu hỏi, từ vựng, ngữ pháp và bài tập do Hanry Academy biên soạn.', 'Readings with questions, vocabulary, grammar and exercises by Hanry Academy.', 'Hanry Academy 编写的课文，附问题、生词、语法和练习。', 'Hanry Academy 編寫的課文，附問題、生詞、語法和練習。', 'Hanry Academy による問題・単語・文法・練習付きの読解。'],
+    showPinyin: ['Hiện pinyin', 'Show pinyin', '显示拼音', '顯示拼音', 'ピンイン表示'],
+    showZhuyin: ['Hiện chú âm', 'Show zhuyin', '显示注音', '顯示注音', '注音表示'],
     other: ['Khác', 'Other', '其他', '其他', 'その他']
   };
   HA.t = function (key) {

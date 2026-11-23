@@ -134,6 +134,28 @@ Sau khi mở khoá, giáo viên có thể: mở lớp (nhận mã lớp), đăng
 
 ---
 
+## 5A. Nhập bài đọc từ file PDF (theo mẫu của Hanry Academy)
+
+Các bài đọc chính thức (ví dụ *錯誤 – Sai Lầm*, *青春 – Tuổi trẻ*…) được chuyển tự động từ PDF sang `data/posts/official.json`:
+
+```bash
+pip install pdfplumber
+python3 tools/import-lesson.py duong-dan/bai-1.pdf duong-dan/bai-2.pdf ...
+```
+
+Công cụ đọc theo mẫu PDF của anh, gồm:
+- 【Bài đọc】: tiêu đề Trung/Việt, `Cấp độ: A1 | TOCFL`. Đoạn thụt lề được hiểu là đoạn hội thoại.
+- 【Câu hỏi】: các nhóm 認知題 / 應用題 / 進階題 / 陷阱題, bảng ✅ Đáp án kèm giải thích.
+- 【Dịch bài đọc】 (nếu có).
+- I. 【Từ Vựng】 (bảng). II. 【Ngữ Pháp】 kèm bài tập và đáp án mẫu. III. 【Bài tập bổ sung】 (điền từ, sắp xếp câu, viết đoạn văn, dịch 2 chiều).
+- Thẻ câu kết ở cuối bài.
+
+Nhập lại cùng một bài thì công cụ cập nhật bài cũ, không tạo bài trùng. Nếu PDF chưa có 【Dịch bài đọc】, bản dịch tiếng Việt do trợ lý AI soạn sẽ được giữ lại và hiện kèm ghi chú "chưa qua biên tập". Khi anh thêm 【Dịch bài đọc】 vào PDF rồi nhập lại, bản của anh sẽ thay thế bản AI.
+
+Bài đã nhập xuất hiện trên **bảng tin** (nhãn "Chính thức") và trong **Lộ trình học → Phần 2: Bài đọc theo cấp độ** (A1, A2, B1…).
+
+---
+
 ## 6. Đăng bài của anh
 
 Cách nhanh nhất: đăng nhập bằng `hanryacademy@gmail.com` → bấm **✍️ Đăng bài** → chọn môn → dán bài, mỗi câu hoặc mỗi đoạn một dòng (hội thoại thì viết `Tên: câu`) → bấm **🌐 Tự dịch các câu** rồi sửa lại bản dịch → **Đăng bài**. Bài của admin có huy hiệu "Quản trị viên".

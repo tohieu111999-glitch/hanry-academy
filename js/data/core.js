@@ -8,13 +8,14 @@
  *  q:   ['Question zh', 'Question vi', '*correct', 'wrong', ...]  or  ['T'|'F', 'statement zh', 'statement vi']
  */
 (function () {
+  // Proficiency levels (CEFR-style, used by TOCFL bands too)
   HA.LEVELS = [
-    { n: 1, color: '#58cc02', icon: '🌱', vi: 'Sơ cấp 1', en: 'Beginner 1' },
-    { n: 2, color: '#1cb0f6', icon: '🌿', vi: 'Sơ cấp 2', en: 'Beginner 2' },
-    { n: 3, color: '#ce82ff', icon: '🌳', vi: 'Trung cấp 1', en: 'Intermediate 1' },
-    { n: 4, color: '#ff9600', icon: '🏔️', vi: 'Trung cấp 2', en: 'Intermediate 2' },
-    { n: 5, color: '#ff4b4b', icon: '🚀', vi: 'Cao cấp 1', en: 'Advanced 1' },
-    { n: 6, color: '#2b70c9', icon: '👑', vi: 'Cao cấp 2', en: 'Advanced 2' }
+    { n: 1, code: 'A1', color: '#58cc02', icon: '🌱', vi: 'A1 · Nhập môn', en: 'A1 · Beginner' },
+    { n: 2, code: 'A2', color: '#1cb0f6', icon: '🌿', vi: 'A2 · Sơ cấp', en: 'A2 · Elementary' },
+    { n: 3, code: 'B1', color: '#ce82ff', icon: '🌳', vi: 'B1 · Trung cấp', en: 'B1 · Intermediate' },
+    { n: 4, code: 'B2', color: '#ff9600', icon: '🏔️', vi: 'B2 · Trung cao cấp', en: 'B2 · Upper-intermediate' },
+    { n: 5, code: 'C1', color: '#ff4b4b', icon: '🚀', vi: 'C1 · Cao cấp', en: 'C1 · Advanced' },
+    { n: 6, code: 'C2', color: '#2b70c9', icon: '👑', vi: 'C2 · Thành thạo', en: 'C2 · Proficient' }
   ];
   HA.LEVELS.forEach((l) => Object.defineProperty(l, 'name', { get: () => HA.tr(l) }));
   HA.POS = {
@@ -63,6 +64,18 @@
     Object.assign(L, { subject: 'zh', lang: 'zh', author: 'Hanry Academy', authorRole: 'admin', sourceType: 'self', visibility: 'public', sample: true, created: BASE - HA.lessons.length * 36e5 * 7 });
     HA.lessons.push(L);
     HA.lessonById[L.id] = L;
+  };
+  // Official reading lessons imported from Hanry Academy PDFs (tools/import-lesson.py)
+  HA.official = [];
+  HA.loadOfficial = function () {
+    if (HA._officialP) return HA._officialP;
+    HA._officialP = fetch('data/posts/official.json').then((r) => (r.ok ? r.json() : [])).then((list) => {
+      HA.official = list.map((L) => Object.assign({ official: true, user: false }, L));
+      HA.official.forEach((L) => { HA.lessonById[L.id] = L; (L.vocab || []).forEach((v) => HA.zh.addCurated(v, L.id)); });
+      HA.zh.clearCache();
+      return HA.official;
+    }).catch(() => []);
+    return HA._officialP;
   };
   HA.registerCurated = function () {
     HA.lessons.forEach((L) => L.vocab.forEach((v) => HA.zh.addCurated(v, L.id)));

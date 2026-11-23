@@ -1,0 +1,3463 @@
+[
+ {
+  "id": "tocfl-a1-tuoi-tre",
+  "subject": "zh",
+  "lang": "zh",
+  "kind": "passage",
+  "emoji": "📖",
+  "title": {
+   "zh": "青春",
+   "vi": "Tuổi trẻ",
+   "en": ""
+  },
+  "level": 1,
+  "levelCode": "A1",
+  "exam": "TOCFL",
+  "author": "Hanry Academy",
+  "authorRole": "admin",
+  "sourceType": "self",
+  "visibility": "public",
+  "official": true,
+  "text": [
+   {
+    "sp": "",
+    "zh": "青春是很美好的時光。",
+    "vi": "Tuổi trẻ là quãng thời gian rất đẹp.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "我們年輕的時候，有很多時間，身體也很健康。我們可以去上學，可以去旅行，也可以認識很多新朋友。",
+    "vi": "Khi còn trẻ, chúng ta có rất nhiều thời gian, cơ thể cũng rất khỏe mạnh. Chúng ta có thể đi học, có thể đi du lịch, cũng có thể làm quen với rất nhiều bạn mới.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "我叫小明。我今年十八歲。",
+    "vi": "Tôi tên là Tiểu Minh. Năm nay tôi mười tám tuổi.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "我喜歡青春，因為每天都很開心。",
+    "vi": "Tôi thích tuổi trẻ, vì mỗi ngày đều rất vui.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "早上，我和朋友一起去上學。下課以後，我們一起去吃東西、聊天。晚上，我看書，聽音樂。",
+    "vi": "Buổi sáng, tôi cùng bạn bè đi học. Tan học, chúng tôi cùng nhau đi ăn, trò chuyện. Buổi tối, tôi đọc sách, nghe nhạc.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "我覺得現在的生活很好。我有夢想，我有朋友，我也有健康的身體。",
+    "vi": "Tôi thấy cuộc sống bây giờ rất tốt. Tôi có ước mơ, có bạn bè, cũng có một cơ thể khỏe mạnh.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "青春的時候，我們有很大的夢想。",
+    "vi": "Khi còn trẻ, chúng ta có những ước mơ rất lớn.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "有人想當醫生，有人想去旅行，也有人想學很多東西。",
+    "vi": "Có người muốn làm bác sĩ, có người muốn đi du lịch, cũng có người muốn học thật nhiều thứ.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "讓我們每天多笑一笑，好好珍惜這段美好的時光。",
+    "vi": "Mỗi ngày chúng ta hãy cười nhiều hơn một chút, trân trọng thật tốt quãng thời gian tươi đẹp này.",
+    "en": "",
+    "indent": false
+   }
+  ],
+  "trSource": "ai",
+  "questions": [
+   {
+    "type": "mc",
+    "cat": "認知題 – Nhận biết",
+    "q": "青春是什麼樣的時光？",
+    "o": [
+     "很忙碌、很累的時光",
+     "很美好的時光",
+     "很無聊的時光",
+     "很難過的時光"
+    ],
+    "a": 1,
+    "why": "Bài mở đầu nêu rõ: 青春是很美好的時光。"
+   },
+   {
+    "type": "mc",
+    "cat": "認知題 – Nhận biết",
+    "q": "年輕的時候，我們有什麼？",
+    "o": [
+     "很多錢和很多工作",
+     "很多時間和健康的身體",
+     "很多煩惱和壓力",
+     "很多老朋友和家人"
+    ],
+    "a": 1,
+    "why": "Bài nêu: có nhiều thời gian và thân thể khỏe mạnh."
+   },
+   {
+    "type": "mc",
+    "cat": "應用題 – Vận dụng",
+    "q": "小明下課以後做什麼？",
+    "o": [
+     "一個人回家睡覺",
+     "去圖書館看書",
+     "和朋友一起去吃東西、聊天",
+     "去上補習班"
+    ],
+    "a": 2,
+    "why": "Bài nêu: sau giờ học, Tiểu Minh và bạn bè cùng đi ăn và trò chuyện."
+   },
+   {
+    "type": "mc",
+    "cat": "應用題 – Vận dụng",
+    "q": "根據文章，青春的時候，我們有什麼？",
+    "o": [
+     "大的夢想",
+     "很多工作和責任",
+     "很多錢",
+     "很多時間壓力"
+    ],
+    "a": 0,
+    "why": "Bài nêu: 青春的時候，我們有很大的夢想。"
+   },
+   {
+    "type": "mc",
+    "cat": "進階題 – Nâng cao",
+    "q": "小明覺得現在的生活怎麼樣？",
+    "o": [
+     "太忙了，沒有時間休息",
+     "很無聊，什麼都不想做",
+     "很好，有夢想、有朋友、有健康",
+     "很難，因為要讀很多書"
+    ],
+    "a": 2,
+    "why": "Bài nêu: 我覺得現在的生活很好。我有夢想，我有朋友，我也有健康的身體。"
+   },
+   {
+    "type": "mc",
+    "cat": "進階題 – Nâng cao",
+    "q": "文章最後說「好好珍惜這段美好的時光」，這句話的意思是什麼？",
+    "o": [
+     "我們要趕快長大，不要浪費時間",
+     "我們要認真讀書，考好成績",
+     "青春很珍貴，我們要好好把握和享受它",
+     "我們要每天早起，不要睡懶覺"
+    ],
+    "a": 2,
+    "why": "珍惜 = trân trọng; câu này kêu gọi ta quý trọng và tận hưởng tuổi trẻ tươi đẹp."
+   },
+   {
+    "type": "mc",
+    "cat": "陷阱題 – Câu đánh lừa",
+    "q": "關於這篇文章，哪一句話是對的？",
+    "o": [
+     "小明每天晚上都和朋友出去玩",
+     "文章說青春很短，所以我們應該難過",
+     "小明喜歡青春，因為每天很開心，也有夢想和朋友",
+     "文章說只有去旅行才能讓青春更美好"
+    ],
+    "a": 2,
+    "why": "A sai (tối tiểu Minh ở nhà đọc sách nghe nhạc); B sai (bài không nói buồn); D sai (du lịch chỉ là một ví dụ). Chỉ C đúng với nội dung bài."
+   }
+  ],
+  "vocab": [
+   {
+    "w": "青春",
+    "p": "qīng chūn",
+    "vi": "Tuổi trẻ, tuổi xuân",
+    "note": "Tích cực; văn nói và viết; thường gợi cảm giác đẹp, tươi trẻ",
+    "ex": [
+     "青春很短，要好好珍惜。",
+     "Tuổi trẻ rất ngắn, phải trân trọng."
+    ]
+   },
+   {
+    "w": "美好",
+    "p": "měi hǎo",
+    "vi": "Đẹp đẽ, tốt lành",
+    "note": "Tích cực; văn nói và viết; dùng cho thời gian, kỷ niệm, cuộc sống",
+    "ex": [
+     "今天天氣很好，真是美好的一天。",
+     "Hôm nay thời tiết rất đẹp, thật là một ngày tuyệt vời."
+    ]
+   },
+   {
+    "w": "時光",
+    "p": "shí guāng",
+    "vi": "Thời gian, khoảng thời gian",
+    "note": "Văn viết nhẹ; tích cực; gợi cảm giác trân quý hơn 時間",
+    "ex": [
+     "童年的時光是最快樂的。",
+     "Khoảng thời gian thơ ấu là vui vẻ nhất."
+    ]
+   },
+   {
+    "w": "年輕",
+    "p": "nián qīng",
+    "vi": "Trẻ, còn trẻ",
+    "note": "Tích cực; văn nói và viết; đối lập với 老",
+    "ex": [
+     "她很年輕，才二十歲。",
+     "Cô ấy rất trẻ, mới hai mươi tuổi."
+    ]
+   },
+   {
+    "w": "健康",
+    "p": "jiàn kāng",
+    "vi": "Khỏe mạnh, sức khỏe",
+    "note": "Tích cực; dùng cả tính từ lẫn danh từ; rất phổ biến",
+    "ex": [
+     "多運動對健康很好。",
+     "Tập thể dục nhiều rất tốt cho sức khỏe."
+    ]
+   },
+   {
+    "w": "旅行",
+    "p": "lǚ xíng",
+    "vi": "Du lịch, đi du lịch",
+    "note": "Tích cực; phổ biến A1; đi với 去、喜歡",
+    "ex": [
+     "我喜歡去旅行，認識新的地方。",
+     "Tôi thích đi du lịch, khám phá những nơi mới."
+    ]
+   },
+   {
+    "w": "認識",
+    "p": "rèn shì",
+    "vi": "Biết, quen biết, làm quen",
+    "note": "Trung tính; rất phổ biến A1; dùng cho người và địa điểm",
+    "ex": [
+     "我想認識更多新朋友。",
+     "Tôi muốn làm quen với nhiều bạn bè mới hơn."
+    ]
+   },
+   {
+    "w": "新朋友",
+    "p": "xīn péng yǒu",
+    "vi": "Bạn mới",
+    "note": "Tích cực; cụm phổ biến A1; đi với 認識、交",
+    "ex": [
+     "來台灣以後，我認識了很多新朋友。",
+     "Sau khi đến Đài Loan, tôi đã quen được nhiều bạn mới."
+    ]
+   },
+   {
+    "w": "夢想",
+    "p": "mèng xiǎng",
+    "vi": "Ước mơ",
+    "note": "Tích cực; phổ biến A1–A2; dùng với 有、實現",
+    "ex": [
+     "我的夢想是去很多國家旅行。",
+     "Ước mơ của tôi là đi du lịch nhiều quốc gia."
+    ]
+   },
+   {
+    "w": "開心",
+    "p": "kāi xīn",
+    "vi": "Vui vẻ, vui lòng",
+    "note": "Tích cực; văn nói rất phổ biến; nhẹ nhàng hơn 快樂",
+    "ex": [
+     "今天和朋友出去玩，很開心！",
+     "Hôm nay đi chơi với bạn bè, vui lắm!"
+    ]
+   },
+   {
+    "w": "快樂",
+    "p": "kuài lè",
+    "vi": "Hạnh phúc, vui mừng",
+    "note": "Tích cực; dùng cả văn nói lẫn viết; sâu hơn 開心 một chút",
+    "ex": [
+     "希望你每天都快樂。",
+     "Chúc bạn mỗi ngày đều hạnh phúc."
+    ]
+   },
+   {
+    "w": "珍惜",
+    "p": "zhēn xī",
+    "vi": "Trân trọng, quý trọng",
+    "note": "Tích cực; văn nói và viết; thường đi với 時間、朋友、機會",
+    "ex": [
+     "要珍惜身邊的每一個人。",
+     "Hãy trân trọng mỗi người ở bên cạnh mình."
+    ]
+   },
+   {
+    "w": "笑",
+    "p": "xiào",
+    "vi": "Cười",
+    "note": "Tích cực; rất phổ biến A1; có thể là động từ và danh từ",
+    "ex": [
+     "她笑起來很好看。",
+     "Cô ấy cười lên trông rất đẹp."
+    ]
+   },
+   {
+    "w": "聊天",
+    "p": "liáo tiān",
+    "vi": "Trò chuyện, tán gẫu",
+    "note": "Tích cực; văn nói thân mật; rất phổ biến A1",
+    "ex": [
+     "我喜歡和朋友一起聊天。",
+     "Tôi thích trò chuyện cùng bạn bè."
+    ]
+   },
+   {
+    "w": "上學",
+    "p": "shàng xué",
+    "vi": "Đi học",
+    "note": "Trung tính; rất phổ biến A1; đối lập với 放學、下課",
+    "ex": [
+     "我每天早上八點去上學。",
+     "Mỗi sáng tôi đi học lúc tám giờ."
+    ]
+   },
+   {
+    "w": "下課",
+    "p": "xià kè",
+    "vi": "Tan học, hết giờ học",
+    "note": "Trung tính; phổ biến A1; đối lập với 上課",
+    "ex": [
+     "下課以後，我去打球。",
+     "Sau khi tan học, tôi đi đánh bóng."
+    ]
+   },
+   {
+    "w": "書",
+    "p": "shū",
+    "vi": "Sách",
+    "note": "Trung tính; rất phổ biến A1; đi với 看、讀、買",
+    "ex": [
+     "我每天晚上看書。",
+     "Mỗi tối tôi đọc sách."
+    ]
+   },
+   {
+    "w": "音樂",
+    "p": "yīn yuè",
+    "vi": "Âm nhạc",
+    "note": "Tích cực; rất phổ biến A1; đi với 聽、喜歡",
+    "ex": [
+     "我喜歡聽音樂，很放鬆。",
+     "Tôi thích nghe nhạc, rất thư giãn."
+    ]
+   },
+   {
+    "w": "生活",
+    "p": "shēng huó",
+    "vi": "Cuộc sống, sinh hoạt",
+    "note": "Trung tính; rất phổ biến A1; dùng cả danh từ lẫn động từ",
+    "ex": [
+     "我在台北的生活很好。",
+     "Cuộc sống của tôi ở Đài Bắc rất tốt."
+    ]
+   },
+   {
+    "w": "多…一點",
+    "p": "duō… yī diǎn",
+    "vi": "Thêm một chút..., nhiều hơn một chút",
+    "note": "Cụm trạng ngữ; văn nói; dùng trước động từ để khuyến khích làm nhiều hơn",
+    "ex": [
+     "每天多喝一點水，對身體好。",
+     "Mỗi ngày uống thêm một chút nước, tốt cho cơ thể."
+    ]
+   }
+  ],
+  "grammar": [
+   {
+    "title": "我叫……，我今年……歲",
+    "titleVi": "Tôi tên là..., năm nay tôi... tuổi",
+    "pinyin": "wǒ jiào…, wǒ jīn nián… suì",
+    "meaning": "Tôi tên là..., năm nay tôi... tuổi",
+    "usage": "Cách tự giới thiệu cơ bản nhất. 叫 = được gọi là / tên là; 今年 = năm nay; số tuổi + 歲. Đây là mẫu câu A1 quan trọng nhất, xuất hiện trong hầu hết các bài thi TOCFL sơ cấp.",
+    "note": "Không cần 是 trước tuổi – Sai: 我今年是十八歲 → Đúng:我今年十八歲. Số + 歲 đứng thẳng sau từ chỉ thời gian, không cần động từ ở giữa.",
+    "example": [
+     "我叫小明。我今年十八歲。",
+     "Tôi tên là Tiểu Minh. Năm nay tôi mười tám tuổi."
+    ],
+    "practice": [
+     {
+      "q": "Tôi tên là Lan. Năm nay tôi hai mươi tuổi.",
+      "a": "我叫小蘭。我今年二十歲。"
+     },
+     {
+      "q": "Cô ấy tên là Tiểu Hoa. Năm nay cô ấy mười sáu tuổi.",
+      "a": "她叫小花。她今年十六歲。"
+     },
+     {
+      "q": "Bạn tôi tên là Đức Minh. Anh ấy năm nay hai mươi hai tuổi.",
+      "a": "我朋友叫德明。他今年二十二歲。"
+     },
+     {
+      "q": "Em gái tôi tên là Tiểu Yến. Em ấy năm nay mười hai tuổi.",
+      "a": "我妹妹叫小燕。她今年十二歲。"
+     },
+     {
+      "q": "Thầy giáo tôi tên là Vương Minh. Thầy ấy năm nay ba mươi lăm tuổi.",
+      "a": "我老師叫王明。他今年三十五歲。"
+     }
+    ]
+   },
+   {
+    "title": "可以……，也可以……",
+    "titleVi": "có thể..., cũng có thể...",
+    "pinyin": "kě yǐ…, yě kě yǐ…",
+    "meaning": "Có thể..., cũng có thể...",
+    "usage": "Liệt kê hai hoặc nhiều điều có thể làm. 可以 = có thể / được phép; 也可以 thêm lựa chọn thứ hai. Rất phổ biến A1, dùng cả văn nói lẫn viết.",
+    "note": "可以 có hai nghĩa: (1) có khả năng; (2) được phép. Ở A1 dùng nghĩa (1) là phổ biến nhất. Không nhầm với 能: ở A1 hai từ thường dùng thay nhau được.",
+    "example": [
+     "我們可以去上學，可以去旅行，也可以認識很多新朋友。",
+     "Chúng ta có thể đi học, có thể đi du lịch, cũng có thể quen biết nhiều bạn mới."
+    ],
+    "practice": [
+     {
+      "q": "Cuối tuần tôi có thể đi chơi, cũng có thể ở nhà nghỉ ngơi.",
+      "a": "週末我可以去玩，也可以在家休息。"
+     },
+     {
+      "q": "Ở đây bạn có thể nói tiếng Trung, cũng có thể nói tiếng Anh.",
+      "a": "在這裡你可以說中文，也可以說英文。"
+     },
+     {
+      "q": "Chúng ta có thể đi bộ, cũng có thể đi xe buýt.",
+      "a": "我們可以走路，也可以坐公車。"
+     },
+     {
+      "q": "Bạn có thể gọi điện cho tôi, cũng có thể nhắn tin cho tôi.",
+      "a": "你可以打電話給我，也可以傳訊息給我。"
+     },
+     {
+      "q": "Tối nay tôi có thể nấu cơm, cũng có thể đặt đồ ăn về nhà.",
+      "a": "今天晚上我可以做飯，也可以叫外賣。"
+     }
+    ]
+   },
+   {
+    "title": "因為……",
+    "titleVi": "vì..., bởi vì...",
+    "pinyin": "yīn wèi…",
+    "meaning": "Vì..., bởi vì...",
+    "usage": "Nêu lý do hoặc nguyên nhân. 因為 đứng đầu mệnh đề nguyên nhân. Ở A1 thường dùng đơn độc (chỉ vế 因為, không cần 所以). Rất phổ biến và thực dụng.",
+    "note": "Ở A1: 因為 + lý do (câu đơn giản). Ở A2–B1: 因為…所以…(đi cặp đầy đủ). Cả hai đều đúng ngữ pháp – ở A1 dùng đơn 因為 là đủ và tự nhiên.",
+    "example": [
+     "我喜歡青春，因為每天都很開心。",
+     "Tôi thích tuổi trẻ, vì mỗi ngày đều rất vui vẻ."
+    ],
+    "practice": [
+     {
+      "q": "Tôi thích tiếng Trung vì tiếng Trung rất thú vị.",
+      "a": "我喜歡中文，因為中文很有趣。"
+     },
+     {
+      "q": "Cô ấy không đi học hôm nay vì cô ấy bị bệnh.",
+      "a": "她今天沒去上學，因為她生病了。"
+     },
+     {
+      "q": "Tôi thích mùa xuân vì thời tiết rất đẹp.",
+      "a": "我喜歡春天，因為天氣很好。"
+     },
+     {
+      "q": "Anh ấy mệt vì hôm nay làm việc rất nhiều.",
+      "a": "他很累，因為今天工作了很多。"
+     },
+     {
+      "q": "Tôi muốn đi Đài Loan vì ở đó có nhiều đồ ăn ngon.",
+      "a": "我想去台灣，因為那裡有很多好吃的東西。"
+     }
+    ]
+   },
+   {
+    "title": "有人……，有人……",
+    "titleVi": "có người..., có người...",
+    "pinyin": "yǒu rén…, yǒu rén…",
+    "meaning": "Có người..., có người... (mỗi người mỗi kiểu)",
+    "usage": "Liệt kê nhiều loại người khác nhau với những lựa chọn hoặc đặc điểm khác nhau. Cấu trúc đơn giản, dễ nhớ, phổ biến A1. Có thể dùng hai hoặc ba vế liên tiếp.",
+    "note": "有人 = có (một số) người – không chỉ một người cụ thể. Khác với 有一個人 (có một người) chỉ số ít cụ thể. 有人 mang tính khái quát hơn.",
+    "example": [
+     "有人想當醫生，有人想去旅行，也有人想學很多東西。",
+     "Có người muốn làm bác sĩ, có người muốn đi du lịch, cũng có người muốn học nhiều thứ."
+    ],
+    "practice": [
+     {
+      "q": "Có người thích ăn cơm, có người thích ăn mì.",
+      "a": "有人喜歡吃飯，有人喜歡吃麵。"
+     },
+     {
+      "q": "Có người thích mùa hè, có người thích mùa đông.",
+      "a": "有人喜歡夏天，有人喜歡冬天。"
+     },
+     {
+      "q": "Có người đi bộ đến trường, có người đi xe đạp.",
+      "a": "有人走路去學校，有人騎腳踏車。"
+     },
+     {
+      "q": "Có người thức dậy sớm, có người thức khuya.",
+      "a": "有人早起，有人睡得很晚。"
+     },
+     {
+      "q": "Có người ước mơ trở thành ca sĩ, có người muốn trở thành thầy giáo, cũng có người muốn đi du lịch khắp thế giới.",
+      "a": "有人的夢想是當歌手，有人想當老師，也有人想去環遊世界。"
+     }
+    ]
+   },
+   {
+    "title": "讓我們……",
+    "titleVi": "hãy cùng nhau..., chúng ta hãy...",
+    "pinyin": "ràng wǒ men…",
+    "meaning": "Hãy cùng nhau..., chúng ta hãy...",
+    "usage": "Lời kêu gọi, cổ vũ cùng làm một điều gì đó. 讓 = để / hãy; 我們 = chúng ta; sau đó là động từ hành động. Rất phổ biến và tự nhiên trong văn nói lẫn viết A1.",
+    "note": "讓我們 ấm áp và đoàn kết hơn 我們要: 讓我們 = mời gọi cùng làm; 我們要 = chúng ta cần phải làm (có tính nghĩa vụ hơn). Ở A1 dùng 讓我們 khi muốn khích lệ tích cực.",
+    "example": [
+     "讓我們每天多笑一笑，好好珍惜這段美好的時光。",
+     "Hãy cùng nhau mỗi ngày cười nhiều hơn, trân trọng thật tốt khoảng thời gian tươi đẹp này."
+    ],
+    "practice": [
+     {
+      "q": "Hãy cùng nhau học tiếng Trung mỗi ngày.",
+      "a": "讓我們每天一起學中文。"
+     },
+     {
+      "q": "Chúng ta hãy cùng nhau giúp đỡ những người cần giúp.",
+      "a": "讓我們一起幫助需要幫助的人。"
+     },
+     {
+      "q": "Hãy cùng nhau bảo vệ môi trường.",
+      "a": "讓我們一起保護環境。"
+     },
+     {
+      "q": "Chúng ta hãy cùng nhau cổ vũ cho đội bóng của mình.",
+      "a": "讓我們一起為自己的球隊加油。"
+     },
+     {
+      "q": "Hãy cùng nhau trân trọng mỗi ngày đẹp đẽ của tuổi trẻ.",
+      "a": "讓我們珍惜青春每一個美好的日子。"
+     }
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "title": "填填看（Điền từ）",
+    "kind": "fill",
+    "bank": [
+     "青春",
+     "珍惜",
+     "夢想",
+     "健康",
+     "開心"
+    ],
+    "items": [
+     {
+      "q": "我喜歡運動，因為運動讓身體很＿＿＿。",
+      "a": "健康"
+     },
+     {
+      "q": "今天天氣很好，我和朋友一起去玩，很＿＿＿。",
+      "a": "開心"
+     },
+     {
+      "q": "我的＿＿＿是有一天去很多國家旅行。",
+      "a": "夢想"
+     },
+     {
+      "q": "＿＿＿是很短的，我們要好好把握。",
+      "a": "青春"
+     },
+     {
+      "q": "時間過得很快，我們要＿＿＿現在的每一天。",
+      "a": "珍惜"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "排列句子（Sắp xếp câu）",
+    "kind": "order",
+    "bank": [],
+    "items": [
+     {
+      "q": "很 ／ 時光 ／ 美好的 ／ 青春是 ／ 一段",
+      "a": "青春是很美好的一段時光。"
+     },
+     {
+      "q": "可以 ／ 我們 ／ 去旅行 ／ 也可以 ／ 認識新朋友",
+      "a": "我們可以去旅行，也可以認識新朋友。"
+     },
+     {
+      "q": "因為 ／ 我喜歡青春 ／ 很開心 ／ 每天都",
+      "a": "我喜歡青春，因為每天都很開心。"
+     },
+     {
+      "q": "有人 ／ 有人 ／ 想去旅行 ／ 想當醫生",
+      "a": "有人想當醫生，有人想去旅行。"
+     },
+     {
+      "q": "讓我們 ／ 每天 ／ 多笑一笑",
+      "a": "讓我們每天多笑一笑。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "短文寫作",
+    "kind": "write",
+    "bank": [],
+    "items": [],
+    "prompt": "請用四到五句話，介紹你自己和你喜歡做的事。",
+    "hint": "我叫……、我今年……歲、我喜歡……、因為……",
+    "sample": "我叫小安。我今年二十歲。我是學生，我喜歡學中文。我也喜歡聽音樂和去旅行，因為很開心。我覺得現在的生活很好，我要好好珍惜。"
+   },
+   {
+    "title": "翻譯練習：Việt → 中文",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "Tuổi trẻ là khoảng thời gian rất đẹp. Chúng ta có sức khỏe và có nhiều thời gian.",
+      "a": "青春是很美好的時光。我們有健康的身體，也有很多時間。"
+     },
+     {
+      "q": "Tôi thích tuổi trẻ vì mỗi ngày đều vui vẻ và có nhiều bạn bè.",
+      "a": "我喜歡青春，因為每天都很開心，也有很多朋友。"
+     },
+     {
+      "q": "Hãy cùng nhau cười nhiều hơn và trân trọng những ngày tháng tươi đẹp này.",
+      "a": "讓我們多笑一笑，好好珍惜這些美好的日子。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "翻譯練習：中文 → Việt",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "年輕的時候，我們可以做很多事情，要好好把握。",
+      "a": "Khi còn trẻ, chúng ta có thể làm được nhiều thứ, hãy nắm bắt thật tốt."
+     },
+     {
+      "q": "有人的夢想是當老師，有人想去旅行，也有人想學很多新東西。",
+      "a": "Có người ước mơ trở thành giáo viên, có người muốn đi du lịch, cũng có người muốn học nhiều điều mới."
+     },
+     {
+      "q": "讓我們每天開心一點，珍惜青春這段美好的時光。",
+      "a": "Hãy cùng nhau vui vẻ hơn mỗi ngày, trân trọng khoảng thời gian tươi đẹp của tuổi trẻ này."
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   }
+  ],
+  "quote": null,
+  "file": "8cebc26f-Tu_i_Tr__A1.pdf",
+  "created": 1795454833896
+ },
+ {
+  "id": "tocfl-a1-sai-lam",
+  "subject": "zh",
+  "lang": "zh",
+  "kind": "passage",
+  "emoji": "📖",
+  "title": {
+   "zh": "錯誤",
+   "vi": "Sai Lầm",
+   "en": ""
+  },
+  "level": 1,
+  "levelCode": "A1",
+  "exam": "TOCFL",
+  "author": "Hanry Academy",
+  "authorRole": "admin",
+  "sourceType": "self",
+  "visibility": "public",
+  "official": true,
+  "text": [
+   {
+    "sp": "",
+    "zh": "在生活中，每個人都會有做錯事的時候。",
+    "vi": "Trong cuộc sống, mỗi người đều có lúc làm sai việc gì đó.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "小時候，我們會寫錯作業，也會打破東西。長大以後，我們也可能做出錯的決定。一開始，我們會覺得很難過，也會覺得害怕。",
+    "vi": "Khi còn nhỏ, chúng ta sẽ viết sai bài tập, cũng sẽ làm vỡ đồ đạc. Khi lớn lên, chúng ta cũng có thể đưa ra những quyết định sai. Lúc đầu, chúng ta sẽ cảm thấy rất buồn, cũng sẽ cảm thấy sợ hãi.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "但是，犯錯不是完全不好的事。做錯事可以讓我們學到很多好的東西。",
+    "vi": "Nhưng làm sai không phải là điều hoàn toàn không tốt. Làm sai có thể giúp chúng ta học được rất nhiều điều tốt.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "我叫小華。昨天我考試考得不好，心裡很難過。",
+    "vi": "Tôi tên là Tiểu Hoa. Hôm qua tôi thi không tốt, trong lòng rất buồn.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "媽媽說：「沒關係，做錯了沒關係，你可以再試一次。」",
+    "vi": "Mẹ nói: \"Không sao, làm sai không sao, con có thể thử lại lần nữa.\"",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "我說：「可是我很怕考不好。」",
+    "vi": "Tôi nói: \"Nhưng con rất sợ thi không tốt.\"",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "媽媽說：「不會做錯事的人，就是什麼都沒有做的人。」",
+    "vi": "Mẹ nói: \"Người không bao giờ làm sai việc gì, chính là người chẳng làm gì cả.\"",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "我聽了以後，覺得心裡好多了。",
+    "vi": "Nghe xong, tôi cảm thấy trong lòng nhẹ nhõm hơn nhiều.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "從來不犯錯的人，是因為他什麼都不做。所以，不要怕做錯事，要改正它，然後繼續努力。",
+    "vi": "Người từ trước đến giờ chưa từng làm sai, là vì người đó chẳng làm gì cả. Vì vậy, đừng sợ làm sai, hãy sửa chữa nó, rồi tiếp tục cố gắng.",
+    "en": "",
+    "indent": false
+   }
+  ],
+  "trSource": "author",
+  "questions": [
+   {
+    "type": "mc",
+    "cat": "認知題 – Nhận biết",
+    "q": "文章說，小時候我們會做錯什麼事？",
+    "o": [
+     "忘記吃飯",
+     "寫錯作業、打破東西",
+     "不喜歡上學",
+     "不會說話"
+    ],
+    "a": 1,
+    "why": "Bài nêu: nhỏ thì viết sai bài tập, làm vỡ đồ đạc."
+   },
+   {
+    "type": "mc",
+    "cat": "認知題 – Nhận biết",
+    "q": "一開始做錯事，我們會有什麼感覺？",
+    "o": [
+     "很高興、很開心",
+     "很難過、很害怕",
+     "很想睡覺",
+     "很想唱歌"
+    ],
+    "a": 1,
+    "why": "Bài nêu: lúc đầu sẽ cảm thấy rất buồn và sợ hãi."
+   },
+   {
+    "type": "mc",
+    "cat": "應用題 – Vận dụng",
+    "q": "小華考試考不好以後，媽媽說了什麼？",
+    "o": [
+     "媽媽說小華太懶惰了",
+     "媽媽說以後不要再考試了",
+     "媽媽說沒關係，可以再試一次",
+     "媽媽說要去問老師"
+    ],
+    "a": 2,
+    "why": "Mẹ nói: không sao, làm sai không sao, con có thể thử lại lần nữa."
+   },
+   {
+    "type": "mc",
+    "cat": "應用題 – Vận dụng",
+    "q": "根據文章，做錯事可以帶來什麼好處？",
+    "o": [
+     "可以讓我們學到很多好的東西",
+     "可以讓我們不用上學",
+     "可以讓我們得到很多錢",
+     "可以讓我們不用做功課"
+    ],
+    "a": 0,
+    "why": "Bài nêu: làm sai có thể giúp ta học được nhiều điều tốt."
+   },
+   {
+    "type": "mc",
+    "cat": "進階題 – Nâng cao",
+    "q": "媽媽說「不會做錯事的人，就是什麼都沒有做的人」，這句話是什麼意思？",
+    "o": [
+     "做錯事的人比較聰明",
+     "只要不做事，就不會犯錯",
+     "一直在做事、嘗試的人，才有可能犯錯",
+     "做錯事的人應該停止做事"
+    ],
+    "a": 2,
+    "why": "Câu này nghĩa là: chỉ người luôn hành động, luôn thử mới có khả năng mắc lỗi – không hành động thì không có gì để sai."
+   },
+   {
+    "type": "mc",
+    "cat": "進階題 – Nâng cao",
+    "q": "文章最後說「不要怕做錯事，要改正它，然後繼續努力」，這句話最主要想告訴我們什麼？",
+    "o": [
+     "做錯事不需要改正，繼續做就好了",
+     "面對錯誤，要勇敢修正，不要因此而停下來",
+     "只要不犯錯，就不用努力",
+     "做錯事以後，應該馬上放棄"
+    ],
+    "a": 1,
+    "why": "Câu kết khuyên: đối mặt với sai lầm, hãy dũng cảm sửa chữa, đừng vì thế mà dừng lại."
+   },
+   {
+    "type": "mc",
+    "cat": "陷阱題 – Câu đánh lừa",
+    "q": "關於這篇文章，哪一句話是正確的？",
+    "o": [
+     "文章說，做錯事是完全不好的事",
+     "小華因為考試考不好，所以決定不再考試了",
+     "媽媽鼓勵小華不要害怕犯錯，可以再試一次",
+     "文章說，只有小孩才會做錯事，大人不會"
+    ],
+    "a": 2,
+    "why": "A sai (bài nói làm sai không hoàn toàn xấu); B sai (không có chi tiết này); D sai (bài nói người lớn cũng có thể quyết định sai). Chỉ C đúng với nội dung bài."
+   }
+  ],
+  "vocab": [
+   {
+    "w": "錯誤",
+    "p": "cuò wù",
+    "vi": "Sai lầm, lỗi",
+    "note": "Trung tính; văn nói và viết; danh từ phổ biến A1",
+    "ex": [
+     "每個人都會犯錯誤。",
+     "Mỗi người đều có thể phạm sai lầm."
+    ]
+   },
+   {
+    "w": "做錯",
+    "p": "zuò cuò",
+    "vi": "Làm sai",
+    "note": "Trung tính; rất phổ biến A1; động từ + bổ ngữ kết quả",
+    "ex": [
+     "我昨天做錯了一道題。",
+     "Hôm qua tôi đã làm sai một câu hỏi."
+    ]
+   },
+   {
+    "w": "寫錯",
+    "p": "xiě cuò",
+    "vi": "Viết sai",
+    "note": "Trung tính; phổ biến A1; dùng cho bài tập, chữ viết",
+    "ex": [
+     "他寫錯了自己的名字。",
+     "Anh ấy đã viết sai tên của mình."
+    ]
+   },
+   {
+    "w": "打破",
+    "p": "dǎ pò",
+    "vi": "Làm vỡ",
+    "note": "Trung tính; phổ biến A1; dùng cho đồ vật",
+    "ex": [
+     "小貓打破了杯子。",
+     "Con mèo nhỏ đã làm vỡ cái cốc."
+    ]
+   },
+   {
+    "w": "決定",
+    "p": "jué dìng",
+    "vi": "Quyết định",
+    "note": "Trung tính; phổ biến A1–A2; dùng cả danh từ lẫn động từ",
+    "ex": [
+     "這是一個很重要的決定。",
+     "Đây là một quyết định rất quan trọng."
+    ]
+   },
+   {
+    "w": "難過",
+    "p": "nán guò",
+    "vi": "Buồn, khó chịu",
+    "note": "Tiêu cực nhẹ; văn nói phổ biến; dùng cho cảm xúc",
+    "ex": [
+     "聽到這個消息，她很難過。",
+     "Nghe tin này, cô ấy rất buồn."
+    ]
+   },
+   {
+    "w": "害怕",
+    "p": "hài pà",
+    "vi": "Sợ hãi",
+    "note": "Tiêu cực; văn nói phổ biến A1; đi với 很、非常",
+    "ex": [
+     "我害怕一個人在家。",
+     "Tôi sợ ở nhà một mình."
+    ]
+   },
+   {
+    "w": "完全",
+    "p": "wán quán",
+    "vi": "Hoàn toàn",
+    "note": "Trạng từ; trung tính; phổ biến A1–A2",
+    "ex": [
+     "這不是完全正確的答案。",
+     "Đây không phải là câu trả lời hoàn toàn đúng."
+    ]
+   },
+   {
+    "w": "學到",
+    "p": "xué dào",
+    "vi": "Học được",
+    "note": "Trung tính; phổ biến A1; động từ + bổ ngữ kết quả",
+    "ex": [
+     "我從這次經驗學到了很多。",
+     "Tôi học được nhiều điều từ kinh nghiệm này."
+    ]
+   },
+   {
+    "w": "考試",
+    "p": "kǎo shì",
+    "vi": "Thi, kỳ thi",
+    "note": "Trung tính; rất phổ biến A1; danh từ và động từ",
+    "ex": [
+     "明天我們要考試。",
+     "Ngày mai chúng ta phải thi."
+    ]
+   },
+   {
+    "w": "沒關係",
+    "p": "méi guān xi",
+    "vi": "Không sao",
+    "note": "Cụm an ủi; văn nói rất phổ biến A1",
+    "ex": [
+     "沒關係，下次再努力就好。",
+     "Không sao, lần sau cố gắng là được."
+    ]
+   },
+   {
+    "w": "再試一次",
+    "p": "zài shì yī cì",
+    "vi": "Thử lại lần nữa",
+    "note": "Cụm động từ; tích cực; văn nói phổ biến",
+    "ex": [
+     "失敗了沒關係，再試一次吧！",
+     "Thất bại không sao, hãy thử lại lần nữa!"
+    ]
+   },
+   {
+    "w": "改正",
+    "p": "gǎi zhèng",
+    "vi": "Sửa chữa, sửa lại",
+    "note": "Tích cực; văn nói và viết; dùng cho lỗi sai",
+    "ex": [
+     "老師幫我改正了錯誤的句子。",
+     "Thầy giáo đã giúp tôi sửa lại câu sai."
+    ]
+   },
+   {
+    "w": "繼續",
+    "p": "jì xù",
+    "vi": "Tiếp tục",
+    "note": "Trung tính; rất phổ biến A1; đi trước động từ",
+    "ex": [
+     "請繼續努力，不要放棄。",
+     "Hãy tiếp tục cố gắng, đừng bỏ cuộc."
+    ]
+   },
+   {
+    "w": "努力",
+    "p": "nǔ lì",
+    "vi": "Cố gắng",
+    "note": "Tích cực; rất phổ biến A1; dùng cả tính từ và động từ",
+    "ex": [
+     "她每天都很努力學習。",
+     "Cô ấy mỗi ngày đều rất cố gắng học tập."
+    ]
+   },
+   {
+    "w": "心裡",
+    "p": "xīn lǐ",
+    "vi": "Trong lòng",
+    "note": "Cụm danh từ; văn nói phổ biến; dùng cho cảm xúc nội tâm",
+    "ex": [
+     "他心裡覺得很開心。",
+     "Trong lòng anh ấy cảm thấy rất vui."
+    ]
+   },
+   {
+    "w": "好多了",
+    "p": "hǎo duō le",
+    "vi": "Tốt hơn nhiều, khá hơn nhiều",
+    "note": "Cụm tính từ + 多了; phổ biến A1; diễn tả sự cải thiện",
+    "ex": [
+     "吃了藥以後，我覺得好多了。",
+     "Sau khi uống thuốc, tôi cảm thấy khá hơn nhiều."
+    ]
+   },
+   {
+    "w": "從來",
+    "p": "cóng lái",
+    "vi": "Từ trước đến nay",
+    "note": "Trạng từ; thường đi với 不/沒; phổ biến A1–A2",
+    "ex": [
+     "他從來不遲到。",
+     "Anh ấy từ trước đến nay chưa từng đến muộn."
+    ]
+   },
+   {
+    "w": "什麼都",
+    "p": "shén me dōu",
+    "vi": "Gì cũng, mọi thứ đều",
+    "note": "Cụm nhấn mạnh; phổ biến A1; đi với 不/ 沒",
+    "ex": [
+     "他什麼都不怕。",
+     "Anh ấy không sợ gì cả."
+    ]
+   },
+   {
+    "w": "一開始",
+    "p": "yī kāi shǐ",
+    "vi": "Lúc đầu, ban đầu",
+    "note": "Cụm trạng ngữ thời gian; phổ biến A1–A2",
+    "ex": [
+     "一開始我覺得很難，後來就習慣了。",
+     "Lúc đầu tôi thấy khó, sau đó thì quen rồi."
+    ]
+   },
+   {
+    "w": "怕",
+    "p": "pà",
+    "vi": "Sợ",
+    "note": "Động từ; rất phổ biến A1; ngắn hơn 害怕",
+    "ex": [
+     "我怕黑。",
+     "Tôi sợ tối."
+    ]
+   }
+  ],
+  "grammar": [
+   {
+    "title": "會……，也會……",
+    "titleVi": "sẽ..., cũng sẽ...",
+    "pinyin": "huì…, yě huì…",
+    "meaning": "Sẽ..., cũng sẽ... (liệt kê hai khả năng xảy ra)",
+    "usage": "會 diễn tả khả năng xảy ra của một hành động; 也會 thêm khả năng thứ hai. Rất phổ biến A1, dùng để liệt kê những điều có thể xảy ra trong một hoàn cảnh.",
+    "note": "會 ở đây không phải \"biết\" (như 我會說中文) mà là \"có khả năng/sẽ\" – ngữ cảnh quyết định nghĩa. Ở A1 cần phân biệt rõ hai cách dùng của 會.",
+    "example": [
+     "小時候，我們會寫錯作業，也會打破東西。",
+     "Khi còn nhỏ, chúng ta sẽ viết sai bài tập, cũng sẽ làm vỡ đồ đạc."
+    ],
+    "practice": [
+     {
+      "q": "Khi trời lạnh, tôi sẽ 穿很多衣服，也會喝熱水。",
+      "a": "天氣冷的時候，我會穿很多衣服，也會喝熱水。"
+     },
+     {
+      "q": "Cuối tuần anh ấy sẽ đi 公園散步，也會看書。",
+      "a": "週末他會去公園散步，也會看書。"
+     },
+     {
+      "q": "Khi mệt, cô ấy sẽ 早點睡覺，也會少做事。",
+      "a": "累的時候，她會早點睡覺，也會少做事。"
+     },
+     {
+      "q": "Khi vui, em bé sẽ 笑，也會唱歌。",
+      "a": "開心的時候，小寶寶會笑，也會唱歌。"
+     },
+     {
+      "q": "Đi du lịch, chúng ta sẽ 拍照片，也會買禮物。",
+      "a": "去旅行，我們會拍照片，也會買禮物。"
+     }
+    ]
+   },
+   {
+    "title": "不是……的事",
+    "titleVi": "không phải là việc...",
+    "pinyin": "bú shì…de shì",
+    "meaning": "Không phải là việc...",
+    "usage": "Dùng để phủ nhận tính chất của một sự việc. 不是+ [tính từ/danh từ] + 的事，nhấn mạnh sự việc đó không mang đặc điểm được nêu. Phổ biến A1.",
+    "note": "的 không thể thiếu trước 事 – nếu bỏ 的 câu sẽ không tự nhiên. Cấu trúc: 不是 + tính từ + 的 + 事.",
+    "example": [
+     "做錯事不是完全不好的事。",
+     "Làm sai không phải là điều hoàn toàn không tốt."
+    ],
+    "practice": [
+     {
+      "q": "Học tiếng Trung không phải là việc khó.",
+      "a": "學中文不是難的事。"
+     },
+     {
+      "q": "Giúp đỡ 別人不是壞的事。",
+      "a": "幫助別人不是壞的事。"
+     },
+     {
+      "q": "失敗不是可怕的事。",
+      "a": "失敗不是可怕的事。"
+     },
+     {
+      "q": "一個人吃飯不是奇怪的事。",
+      "a": "一個人吃飯不是奇怪的事。"
+     },
+     {
+      "q": "慢慢學習不是不好的事。",
+      "a": "慢慢學習不是不好的事。"
+     }
+    ]
+   },
+   {
+    "title": "可以讓……",
+    "titleVi": "có thể khiến/làm cho...",
+    "pinyin": "kě yǐ ràng…",
+    "meaning": "Có thể khiến cho/làm cho...",
+    "usage": "可以 = có thể; 讓 = làm cho/khiến. Kết hợp diễn tả một hành động hoặc sự việc mang lại kết quả nào đó cho chủ thể. Rất phổ biến A1–A2.",
+    "note": "Sau 讓 phải có chủ thể bị ảnh hưởng + động từ/tính từ kết quả. Cấu trúc: 可以讓 + [người/vật] + [kết quả].",
+    "example": [
+     "做錯事可以讓我們學到很多好的東西。",
+     "Làm sai có thể khiến chúng ta học được nhiều điều tốt."
+    ],
+    "practice": [
+     {
+      "q": "運動可以讓身體更健康。",
+      "a": "運動可以讓身體更健康。"
+     },
+     {
+      "q": "看書可以讓我們學到很多知識。",
+      "a": "看書可以讓我們學到很多知識。"
+     },
+     {
+      "q": "旅行可以讓心情變好。",
+      "a": "旅行可以讓心情變好。"
+     },
+     {
+      "q": "練習可以讓中文更好。",
+      "a": "練習可以讓中文更好。"
+     },
+     {
+      "q": "微笑可以讓別人開心。",
+      "a": "微笑可以讓別人開心。"
+     }
+    ]
+   },
+   {
+    "title": "不要怕……，要……",
+    "titleVi": "đừng sợ..., hãy...",
+    "pinyin": "bú yào pà…, yào…",
+    "meaning": "Đừng sợ..., hãy...",
+    "usage": "Cấu trúc khuyên nhủ kép – phủ định nỗi sợ và đưa ra hành động nên làm. 不要怕 + [điều đáng sợ]，要 + [hành động khuyến khích]. Rất phổ biến trong văn khích lệ A1.",
+    "note": "Có thể thay 不要 bằng 別 trong văn nói thân mật hơn (別怕). Ở A1 dùng 不要 là chuẩn mực và rõ ràng nhất.",
+    "example": [
+     "不要怕做錯事，要改正它，然後繼續努力。",
+     "Đừng sợ làm sai, hãy sửa chữa nó, sau đó tiếp tục cố gắng."
+    ],
+    "practice": [
+     {
+      "q": "Đừng sợ thất bại, hãy 再試一次。",
+      "a": "不要怕失敗，要再試一次。"
+     },
+     {
+      "q": "不要怕問問題，要勇敢地問。",
+      "a": "不要怕問問題，要勇敢地問。"
+     },
+     {
+      "q": "Đừng sợ nói tiếng Trung，要多練習。",
+      "a": "不要怕說中文，要多練習。"
+     },
+     {
+      "q": "不要怕黑，要打開燈。",
+      "a": "不要怕黑，要打開燈。"
+     },
+     {
+      "q": "Đừng sợ 難，要每天努力。",
+      "a": "不要怕難，要每天努力。"
+     }
+    ]
+   },
+   {
+    "title": "聽了以後，覺得……",
+    "titleVi": "sau khi nghe..., cảm thấy...",
+    "pinyin": "tīng le yǐ hòu, jué de…",
+    "meaning": "Sau khi nghe..., cảm thấy...",
+    "usage": "動詞 + 了 + 以後 diễn tả \"sau khi làm xong việc gì\"; 覺得 nêu cảm nhận tiếp theo. Rất phổ biến A1, dùng để kể chuyện theo trình tự thời gian.",
+    "note": "了 không thể thiếu sau động từ – nó báo hiệu hành động đã hoàn thành trước khi có cảm nhận tiếp theo. Có thể đổi 聽 thành các động từ khác: 看了以後、做了以後...",
+    "example": [
+     "我聽了以後，覺得心裡好多了。",
+     "Sau khi nghe xong, tôi cảm thấy trong lòng khá hơn nhiều."
+    ],
+    "practice": [
+     {
+      "q": "Sau khi xem xong bộ phim đó, tôi cảm thấy 很感動。",
+      "a": "看了那部電影以後，我覺得很感動。"
+     },
+     {
+      "q": "吃了那個蛋糕以後，他覺得很開心。",
+      "a": "吃了那個蛋糕以後，他覺得很開心。"
+     },
+     {
+      "q": "Sau khi làm xong bài tập, em bé cảm thấy rất 轻鬆。",
+      "a": "做了功課以後，小寶寶覺得很輕鬆。"
+     },
+     {
+      "q": "看了那本書以後，我覺得學到很多。",
+      "a": "看了那本書以後，我覺得學到很多。"
+     },
+     {
+      "q": "Sau khi nghỉ ngơi xong, cô ấy cảm thấy không còn mệt nữa。",
+      "a": "休息了以後，她覺得不累了。"
+     }
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "title": "填填看（Điền từ）",
+    "kind": "fill",
+    "bank": [
+     "改正",
+     "害怕",
+     "努力",
+     "沒關係",
+     "難過"
+    ],
+    "items": [
+     {
+      "q": "做錯了沒關係，要勇敢地＿＿＿。",
+      "a": "改正"
+     },
+     {
+      "q": "我今天考試考不好，心裡很＿＿＿。",
+      "a": "難過"
+     },
+     {
+      "q": "你不要＿＿＿，慢慢來就好。",
+      "a": "害怕"
+     },
+     {
+      "q": "＿＿＿，下次再試一次就好了。",
+      "a": "沒關係"
+     },
+     {
+      "q": "只要每天都＿＿＿，就會越來越好。",
+      "a": "努力"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "排列句子（Sắp xếp câu）",
+    "kind": "order",
+    "bank": [],
+    "items": [
+     {
+      "q": "做錯事 ／ 不是 ／ 完全 ／ 不好的事",
+      "a": "做錯事不是完全不好的事。"
+     },
+     {
+      "q": "可以讓 ／ 學到 ／ 我們 ／ 很多 ／ 做錯事 ／ 好的東西",
+      "a": "做錯事可以讓我們學到很多好的東西。"
+     },
+     {
+      "q": "不要怕 ／ 要 ／ 改正它 ／ 做錯事",
+      "a": "不要怕做錯事，要改正它。"
+     },
+     {
+      "q": "聽了以後 ／ 好多了 ／ 我 ／ 心裡 ／ 覺得",
+      "a": "我聽了以後，覺得心裡好多了。"
+     },
+     {
+      "q": "什麼都 ／ 從來 ／ 不做 ／ 的人 ／ 不會做錯事",
+      "a": "不會做錯事的人，從來什麼都不做。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "短文寫作",
+    "kind": "write",
+    "bank": [],
+    "items": [],
+    "prompt": "請用四到五句話，寫一件你曾經做錯的小事，以及你後來怎麼做。",
+    "hint": "我做錯了……、一開始……、後來……、不要怕……",
+    "sample": "我以前考試考得不好。一開始我很難過，也很害怕。後來媽媽說沒關係，可以再試一次。我聽了以後，覺得好多了。現在我知道，不要怕做錯事，要改正它。"
+   },
+   {
+    "title": "翻譯練習：Việt → 中文",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "Khi còn nhỏ, ai cũng có lúc làm sai bài tập hoặc làm vỡ đồ đạc.",
+      "a": "小時候，每個人都會有寫錯作業或打破東西的時候。"
+     },
+     {
+      "q": "Làm sai không phải là điều hoàn toàn xấu，có thể giúp chúng ta học được nhiều điều tốt.",
+      "a": "做錯事不是完全不好的事，可以讓我們學到很多好的東西。"
+     },
+     {
+      "q": "Đừng sợ sai lầm, hãy sửa chữa nó và tiếp tục cố gắng.",
+      "a": "不要怕做錯事，要改正它，然後繼續努力。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "翻譯練習：中文 → Việt",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "不會做錯事的人，就是什麼都沒有做的人。",
+      "a": "Người không bao giờ làm sai, chính là người chẳng làm gì cả."
+     },
+     {
+      "q": "一開始，我們會覺得很難過，也會覺得害怕。",
+      "a": "Lúc đầu, chúng ta sẽ cảm thấy rất buồn, cũng sẽ cảm thấy sợ hãi."
+     },
+     {
+      "q": "不要怕做錯事，要改正它，然後繼續努力。",
+      "a": "Đừng sợ làm sai, hãy sửa chữa nó, rồi tiếp tục cố gắng."
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   }
+  ],
+  "quote": null,
+  "file": "7217427f-Sai_L_m_A1.pdf",
+  "created": 1795454893896
+ },
+ {
+  "id": "tocfl-a2-kien-tri-chinh-la-chien-thang",
+  "subject": "zh",
+  "lang": "zh",
+  "kind": "passage",
+  "emoji": "📖",
+  "title": {
+   "zh": "堅持就是勝利",
+   "vi": "Kiên trì chính là chiến thắng",
+   "en": ""
+  },
+  "level": 2,
+  "levelCode": "A2",
+  "exam": "TOCFL",
+  "author": "Hanry Academy",
+  "authorRole": "admin",
+  "sourceType": "self",
+  "visibility": "public",
+  "official": true,
+  "text": [
+   {
+    "sp": "",
+    "zh": "每個人都有自己的夢想。有人想當醫生，有人想當老師，也有人想環遊世界。但是，夢想不會自己實現。想要成功，我們需要一樣很重要的東西- 那就是堅持。",
+    "vi": "Mỗi người đều có ước mơ của riêng mình. Có người muốn làm bác sĩ, có người muốn làm giáo viên, cũng có người muốn đi vòng quanh thế giới. Nhưng ước mơ sẽ không tự thành hiện thực. Muốn thành công, chúng ta cần một thứ rất quan trọng — đó chính là sự kiên trì.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "什麼是堅持？堅持就是遇到困難的時候，不放棄，繼續努力。",
+    "vi": "Kiên trì là gì? Kiên trì là khi gặp khó khăn thì không bỏ cuộc, tiếp tục cố gắng.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "我剛開始學中文的時候，覺得漢字很難記，發音也很難。我常常想放棄。但是，我每天堅持學習三十分鐘。一個月、兩個月、三個月……慢慢地，我開始看懂漢字了，也可以說一些簡單的中文了。現在，我已經可以用中文聊天和寫作文。",
+    "vi": "Khi tôi mới bắt đầu học tiếng Trung, tôi thấy chữ Hán rất khó nhớ, phát âm cũng rất khó. Tôi thường muốn bỏ cuộc. Nhưng mỗi ngày tôi đều kiên trì học ba mươi phút. Một tháng, hai tháng, ba tháng… dần dần, tôi bắt đầu đọc hiểu chữ Hán, cũng có thể nói được một ít tiếng Trung đơn giản. Bây giờ, tôi đã có thể dùng tiếng Trung để trò chuyện và viết văn.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "小美問她的朋友小明：「你學中文學了多久了？」",
+    "vi": "Tiểu Mỹ hỏi bạn của cô là Tiểu Minh: “Cậu học tiếng Trung bao lâu rồi?”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小明說：「我學了一年了，但是一開始真的很難。」",
+    "vi": "Tiểu Minh nói: “Mình học được một năm rồi, nhưng lúc đầu thật sự rất khó.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小美說：「你是怎麼堅持下去的？」",
+    "vi": "Tiểu Mỹ nói: “Cậu đã kiên trì bằng cách nào vậy?”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小明說：「我告訴自己，每天只要學三十分鐘就好。慢慢來，不要急。」",
+    "vi": "Tiểu Minh nói: “Mình tự nhủ với bản thân, mỗi ngày chỉ cần học ba mươi phút là được. Cứ từ từ, đừng vội.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小美笑著說：「對！走得慢沒關係，不要停下來就好。」",
+    "vi": "Tiểu Mỹ cười nói: “Đúng vậy! Đi chậm cũng không sao, miễn là đừng dừng lại.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "沒有堅持，我們很難做好任何事情。所以，當你感到很累的時候，可以走慢一點，但是不要停下來。堅持，就是打開成功大門最重要的鑰匙。",
+    "vi": "Không có sự kiên trì, chúng ta rất khó làm tốt bất cứ việc gì. Vì vậy, khi bạn cảm thấy rất mệt, có thể đi chậm một chút, nhưng đừng dừng lại. Kiên trì chính là chiếc chìa khóa quan trọng nhất để mở cánh cửa thành công.",
+    "en": "",
+    "indent": false
+   }
+  ],
+  "trSource": "ai",
+  "questions": [
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "文章說，「堅持」是什麼意思？",
+    "o": [
+     "每天睡很多覺，讓身體休息",
+     "遇到困難的時候，不放棄，繼續努力",
+     "找一個好老師幫你學習",
+     "做事做得很快，不浪費時間"
+    ],
+    "a": 1,
+    "why": "Bài định nghĩa rõ: gặp khó khăn không bỏ cuộc, tiếp tục cố gắng."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "「我」一開始學中文的時候，覺得什麼很難？",
+    "o": [
+     "找到好的課本",
+     "記住老師的名字",
+     "漢字很難記，發音也很難",
+     "買中文書很貴"
+    ],
+    "a": 2,
+    "why": "Bài nêu: chữ Hán rất khó nhớ và phát âm rất khó."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "「我」是怎麼學好中文的？",
+    "o": [
+     "每天學習八個小時",
+     "請了一位很貴的家教老師",
+     "每天堅持學習三十分鐘",
+     "去中國住了一年"
+    ],
+    "a": 2,
+    "why": "Bài nêu: kiên trì học 30 phút mỗi ngày."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "小明說他怎麼堅持學中文的？",
+    "o": [
+     "每天背很多生詞和課文",
+     "告訴自己每天只學三十分鐘，慢慢來，不要急",
+     "和很多外國朋友一起練習說話",
+     "每個週末去上補習班"
+    ],
+    "a": 1,
+    "why": "Tiểu Minh nói: mỗi ngày chỉ học 30 phút, chậm mà chắc, không vội."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "文章說「走得慢沒關係，不要停下來就好」，這句話的意思是什麼？",
+    "o": [
+     "走路的時候要小心，不要跌倒",
+     "學習可以慢一點，但是不能放棄",
+     "做事情一定要做得很快才能成功",
+     "休息的時間太多，對學習不好"
+    ],
+    "a": 1,
+    "why": "Câu này dùng ẩn dụ: đi chậm = học chậm; không dừng = không bỏ cuộc."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "根據文章，如果一個人沒有堅持，會怎樣？",
+    "o": [
+     "他可能會更快找到成功的方法",
+     "他的朋友會幫助他繼續努力",
+     "他很難把任何事情做好",
+     "他可以休息之後再開始努力"
+    ],
+    "a": 2,
+    "why": "Bài nêu: không có kiên trì, rất khó làm tốt bất cứ việc gì."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "關於「我」學中文，下面哪一句話是對的？",
+    "o": [
+     "「我」從來沒有想過放棄學中文",
+     "「我」一開始學得很快，沒有遇到困難",
+     "「我」現在可以用中文聊天和寫作文",
+     "「我」每天學習超過兩個小時"
+    ],
+    "a": 2,
+    "why": "Đây là câu bẫy - bài có nói \"tôi\" từng muốn bỏ cuộc (loại A); không nói học nhanh (loại B); không nói học hơn 2 tiếng (loại D). Chỉ có C là đúng với nội dung bài."
+   }
+  ],
+  "vocab": [
+   {
+    "w": "堅持",
+    "p": "jiān chí",
+    "vi": "Kiên trì, tiếp tục cố gắng",
+    "note": "Tích cực; dùng cả văn nói lẫn viết; rất phổ biến",
+    "ex": [
+     "我每天堅持跑步。",
+     "Tôi kiên trì chạy bộ mỗi ngày."
+    ]
+   },
+   {
+    "w": "夢想",
+    "p": "mèng xiǎng",
+    "vi": "Ước mơ",
+    "note": "Tích cực; dùng cả văn nói lẫn viết",
+    "ex": [
+     "我的夢想是當老師。",
+     "Ước mơ của tôi là trở thành giáo viên."
+    ]
+   },
+   {
+    "w": "實現",
+    "p": "shí xiàn",
+    "vi": "Thực hiện, đạt được",
+    "note": "Thường đi với 夢想, 目標; tích cực",
+    "ex": [
+     "她終於實現了自己的夢想。",
+     "Cô ấy cuối cùng đã thực hiện được ước mơ của mình."
+    ]
+   },
+   {
+    "w": "困難",
+    "p": "kùn nán",
+    "vi": "Khó khăn",
+    "note": "Trung tính; dùng cả hai dạng văn",
+    "ex": [
+     "學習語言會遇到很多困難。",
+     "Học ngôn ngữ sẽ gặp nhiều khó khăn."
+    ]
+   },
+   {
+    "w": "放棄",
+    "p": "fàng qì",
+    "vi": "Bỏ cuộc, từ bỏ",
+    "note": "Tiêu cực; thường dùng trong câu phủ định 不放棄",
+    "ex": [
+     "不管多難，我都不放棄。",
+     "Dù khó đến đâu tôi cũng không bỏ cuộc."
+    ]
+   },
+   {
+    "w": "繼續",
+    "p": "jì xù",
+    "vi": "Tiếp tục",
+    "note": "Trung tính; đi trước động từ; rất phổ biến A2",
+    "ex": [
+     "請繼續說，我在聽。",
+     "Hãy tiếp tục nói, tôi đang nghe."
+    ]
+   },
+   {
+    "w": "努力",
+    "p": "nǔ lì",
+    "vi": "Cố gắng, nỗ lực",
+    "note": "Tích cực; dùng rất phổ biến cả nói lẫn viết",
+    "ex": [
+     "他很努力，每天都認真讀書。",
+     "Anh ấy rất cố gắng, mỗi ngày đều học nghiêm túc."
+    ]
+   },
+   {
+    "w": "漢字",
+    "p": "hàn zì",
+    "vi": "Chữ Hán",
+    "note": "Trung tính; từ chuyên biệt về chữ viết tiếng Trung",
+    "ex": [
+     "漢字有很多筆畫，不容易寫。",
+     "Chữ Hán có nhiều nét, không dễ viết."
+    ]
+   },
+   {
+    "w": "發音",
+    "p": "fā yīn",
+    "vi": "Phát âm",
+    "note": "Trung tính; dùng phổ biến trong ngữ cảnh học ngôn ngữ",
+    "ex": [
+     "她的中文發音很標準。",
+     "Phát âm tiếng Trung của cô ấy rất chuẩn."
+    ]
+   },
+   {
+    "w": "剛開始",
+    "p": "gāng kāi shǐ",
+    "vi": "Lúc mới bắt đầu",
+    "note": "Cụm trạng ngữ thời gian; văn nói phổ biến",
+    "ex": [
+     "我剛開始學的時候，什麼都不會。",
+     "Lúc tôi mới bắt đầu học, tôi chẳng biết gì cả."
+    ]
+   },
+   {
+    "w": "慢慢地",
+    "p": "màn màn de",
+    "vi": "Dần dần, từ từ",
+    "note": "Trạng từ; nhấn mạnh quá trình chậm rãi",
+    "ex": [
+     "慢慢地，他開始喜歡學中文了。",
+     "Dần dần, anh ấy bắt đầu thích học tiếng Trung."
+    ]
+   },
+   {
+    "w": "聊天",
+    "p": "liáo tiān",
+    "vi": "Trò chuyện, tán gẫu",
+    "note": "Văn nói; thân mật; phổ biến A2",
+    "ex": [
+     "我喜歡和朋友聊天。",
+     "Tôi thích trò chuyện với bạn bè."
+    ]
+   },
+   {
+    "w": "寫作文",
+    "p": "xiě zuò wén",
+    "vi": "Viết bài văn",
+    "note": "Cụm động từ; dùng trong ngữ cảnh học tập",
+    "ex": [
+     "老師叫我們寫一篇作文。",
+     "Giáo viên bảo chúng tôi viết một bài văn."
+    ]
+   },
+   {
+    "w": "成功",
+    "p": "chéng gōng",
+    "vi": "Thành công",
+    "note": "Tích cực; dùng cả nói lẫn viết; rất phổ biến",
+    "ex": [
+     "只要努力，就能成功。",
+     "Chỉ cần cố gắng là có thể thành công."
+    ]
+   },
+   {
+    "w": "鑰匙",
+    "p": "yào shi",
+    "vi": "Chìa khóa",
+    "note": "Nghĩa đen và ẩn dụ; A2 dùng nghĩa ẩn dụ rất hay",
+    "ex": [
+     "努力是成功的鑰匙。",
+     "Sự cố gắng là chìa khóa của thành công."
+    ]
+   },
+   {
+    "w": "大門",
+    "p": "dà mén",
+    "vi": "Cánh cửa lớn",
+    "note": "Thường dùng theo nghĩa ẩn dụ \"cánh cửa thành công\"",
+    "ex": [
+     "堅持才能打開成功的大門。",
+     "Kiên trì mới có thể mở cánh cửa thành công."
+    ]
+   },
+   {
+    "w": "感到",
+    "p": "gǎn dào",
+    "vi": "Cảm thấy",
+    "note": "Đi trước tính từ cảm xúc; phổ biến A2",
+    "ex": [
+     "我今天感到很累。",
+     "Hôm nay tôi cảm thấy rất mệt."
+    ]
+   },
+   {
+    "w": "累",
+    "p": "lèi",
+    "vi": "Mệt mỏi",
+    "note": "Tính từ; rất phổ biến; văn nói",
+    "ex": [
+     "學了一整天，我很累。",
+     "Học cả ngày, tôi rất mệt."
+    ]
+   },
+   {
+    "w": "停下來",
+    "p": "tíng xià lái",
+    "vi": "Dừng lại",
+    "note": "Cụm động từ hướng; dùng cả nghĩa đen lẫn ẩn dụ",
+    "ex": [
+     "累了可以休息，但不要停下來。",
+     "Mệt thì có thể nghỉ, nhưng đừng dừng lại."
+    ]
+   },
+   {
+    "w": "環遊世界",
+    "p": "huán yóu shì jiè",
+    "vi": "Du lịch vòng quanh thế giới",
+    "note": "Cụm cố định; văn nói và viết; ước mơ phổ biến",
+    "ex": [
+     "我以後想環遊世界。",
+     "Sau này tôi muốn du lịch vòng quanh thế giới."
+    ]
+   },
+   {
+    "w": "不管",
+    "p": "bù guǎn",
+    "vi": "Dù... cũng, bất kể",
+    "note": "Liên từ nhượng bộ; đi với 都; phổ biến A2– B1",
+    "ex": [
+     "不管多難，我都要試試看。",
+     "Dù khó đến đâu tôi cũng muốn thử."
+    ]
+   },
+   {
+    "w": "只要",
+    "p": "zhǐ yào",
+    "vi": "Chỉ cần",
+    "note": "Liên từ điều kiện; đi với 就; rất phổ biến",
+    "ex": [
+     "只要努力，就會進步。",
+     "Chỉ cần cố gắng là sẽ tiến bộ."
+    ]
+   }
+  ],
+  "grammar": [
+   {
+    "title": "覺得＋形容詞／句子",
+    "titleVi": "",
+    "pinyin": "jué de",
+    "meaning": "Cảm thấy..., cho rằng...",
+    "usage": "覺得 đứng trước tính từ hoặc mệnh đề để diễn tả cảm nhận chủ quan của người nói. Rất phổ biến ở A2, dùng được cả văn nói lẫn viết.",
+    "note": "Khác với 感到: 覺得 thường chỉ cảm nhận hoặc ý kiến cá nhân; 感到thiên về cảm xúc hoặc trạng thái tâm lý. Ở A2 dùng 覺得 là an toàn nhất.",
+    "example": [
+     "我覺得漢字很難記。",
+     "Tôi cảm thấy chữ Hán rất khó nhớ."
+    ],
+    "practice": [
+     {
+      "q": "Tôi cảm thấy bài tập này rất thú vị.",
+      "a": "我覺得這個作業很有趣。"
+     },
+     {
+      "q": "Cô ấy cảm thấy tiếng Trung không khó lắm.",
+      "a": "她覺得中文不太難。"
+     },
+     {
+      "q": "Chúng tôi cảm thấy thầy giáo giải thích rất rõ ràng.",
+      "a": "我們覺得老師解釋得很清楚。"
+     },
+     {
+      "q": "Anh ấy cảm thấy mỗi ngày đều rất vui.",
+      "a": "他覺得每天都很開心。"
+     },
+     {
+      "q": "Bạn có cảm thấy mệt không?",
+      "a": "你覺得累嗎？"
+     }
+    ]
+   },
+   {
+    "title": "每天＋動詞＋時間量",
+    "titleVi": "",
+    "pinyin": "měi tiān + dòng cí + shí jiān liàng",
+    "meaning": "Mỗi ngày + động từ + lượng thời gian",
+    "usage": "Diễn tả thói quen hoặc hoạt động thường ngày với thời lượng cụ thể. Thứ tự: Chủ ngữ + 每天 + động từ + thời gian. Rất thực dụng và phổ biến ở A2.",
+    "note": "Thời gian lượng đặt sau động từ, không đặt trước. Sai: 我每天三十分鐘學習 → Đúng: 我每天學習三十分鐘.",
+    "example": [
+     "我每天堅持學習三十分鐘。",
+     "Tôi kiên trì học 30 phút mỗi ngày."
+    ],
+    "practice": [
+     {
+      "q": "Anh ấy mỗi ngày chạy bộ một tiếng đồng hồ.",
+      "a": "他每天跑步一個小時。"
+     },
+     {
+      "q": "Tôi mỗi ngày luyện viết chữ Hán 20 phút.",
+      "a": "我每天練習寫漢字二十分鐘。"
+     },
+     {
+      "q": "Em gái tôi mỗi ngày đọc sách nửa tiếng.",
+      "a": "我妹妹每天看書半個小時。"
+     },
+     {
+      "q": "Chúng tôi mỗi ngày học tiếng Trung hai tiếng đồng hồ.",
+      "a": "我們每天學中文兩個小時。"
+     },
+     {
+      "q": "Cô ấy mỗi ngày nghe nhạc tiếng Trung 15 phút.",
+      "a": "她每天聽中文歌十五分鐘。"
+     }
+    ]
+   },
+   {
+    "title": "已經＋動詞＋了",
+    "titleVi": "",
+    "pinyin": "yǐ jīng + dòng cí + le",
+    "meaning": "Đã... rồi (hoàn thành hoặc thay đổi trạng thái)",
+    "usage": "已經…了 diễn tả một hành động đã hoàn thành hoặc trạng thái đã thay đổi. 了 ở cuối câu nhấn mạnh sự thay đổi. Rất phổ biến A2.",
+    "note": "Không nhầm với 了 ở sau động từ (hoàn thành hành động đơn lẻ). 已經…了 nhấn mạnh sự thay đổi so với trước - thường dịch là \"đã... rồi\".",
+    "example": [
+     "現在，我已經可以用中文聊天和寫作文了。",
+     "Bây giờ, tôi đã có thể dùng tiếng Trung để trò chuyện và viết bài văn rồi."
+    ],
+    "practice": [
+     {
+      "q": "Tôi đã học xong bài tập về nhà rồi.",
+      "a": "我已經做完作業了。"
+     },
+     {
+      "q": "Cô ấy đã biết nói tiếng Trung rồi.",
+      "a": "她已經會說中文了。"
+     },
+     {
+      "q": "Chúng tôi đã ăn cơm rồi.",
+      "a": "我們已經吃飯了。"
+     },
+     {
+      "q": "Anh ấy đã hiểu bài này rồi.",
+      "a": "他已經懂這一課了。"
+     },
+     {
+      "q": "Em trai tôi đã ngủ rồi.",
+      "a": "我弟弟已經睡覺了。"
+     }
+    ]
+   },
+   {
+    "title": "只要……就……",
+    "titleVi": "",
+    "pinyin": "zhǐ yào… jiù…",
+    "meaning": "Chỉ cần... là... / Miễn là... thì...",
+    "usage": "Diễn tả điều kiện đơn giản: chỉ cần đáp ứng điều kiện ở vế đầu là kết quả ở vế sau sẽ xảy ra. Dùng cả văn nói lẫn viết; rất phổ biến và thực dụng.",
+    "note": "只要 đứng đầu mệnh đề điều kiện; 就 đứng trước động từ của mệnh đề kết quả. Đừng bỏ 就 - câu sẽ nghe thiếu.",
+    "example": [
+     "只要努力，就會進步。",
+     "Chỉ cần cố gắng là sẽ tiến bộ."
+    ],
+    "practice": [
+     {
+      "q": "Chỉ cần kiên trì thì sẽ thành công.",
+      "a": "只要堅持，就能成功。"
+     },
+     {
+      "q": "Chỉ cần bạn cố gắng thì tôi sẽ giúp bạn.",
+      "a": "只要你努力，我就幫你。"
+     },
+     {
+      "q": "Chỉ cần học mỗi ngày một chút thì tiếng Trung sẽ ngày càng tốt hơn.",
+      "a": "只要每天學一點，中文就會越來越好。"
+     },
+     {
+      "q": "Chỉ cần trời không mưa thì chúng ta có thể đi chơi.",
+      "a": "只要不下雨，我們就可以出去玩。"
+     },
+     {
+      "q": "Chỉ cần bạn muốn học thì không bao giờ là quá muộn.",
+      "a": "只要你想學，就永遠不會太晚。"
+     }
+    ]
+   },
+   {
+    "title": "當……的時候",
+    "titleVi": "",
+    "pinyin": "dāng… de shí hòu",
+    "meaning": "Khi..., lúc...",
+    "usage": "Diễn tả thời điểm xảy ra hành động hoặc trạng thái. Đứng đầu câu hoặc giữa câu. Rất phổ biến ở A2, dùng cả văn nói lẫn viết.",
+    "note": "Có thể rút gọn thành …的時候 (bỏ 當) trong văn nói thông thường mà vẫn đúng ngữ pháp.",
+    "example": [
+     "當你感到很累的時候，可以走慢一點。",
+     "Khi bạn cảm thấy rất mệt, có thể đi chậm lại một chút."
+    ],
+    "practice": [
+     {
+      "q": "Khi tôi buồn, tôi thường nghe nhạc.",
+      "a": "當我難過的時候，我常常聽音樂。"
+     },
+     {
+      "q": "Khi bạn không hiểu, hãy hỏi thầy giáo.",
+      "a": "當你不懂的時候，要問老師。"
+     },
+     {
+      "q": "Khi trời mưa, tôi không muốn ra ngoài.",
+      "a": "當天下雨的時候，我不想出去。"
+     },
+     {
+      "q": "Khi anh ấy mới đến Đài Loan, anh ấy không biết nói tiếng Trung.",
+      "a": "當他剛來台灣的時候，他不會說中文。"
+     },
+     {
+      "q": "Khi tôi ăn sáng, tôi thích nghe radio.",
+      "a": "當我吃早餐的時候，我喜歡聽廣播。"
+     }
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "title": "填填看（Điền từ）",
+    "kind": "fill",
+    "bank": [
+     "堅持",
+     "放棄",
+     "夢想",
+     "困難",
+     "成功"
+    ],
+    "items": [
+     {
+      "q": "我的＿＿＿是有一天可以用中文看書。",
+      "a": "夢想"
+     },
+     {
+      "q": "學習的時候會遇到很多＿＿＿，但不要害怕。",
+      "a": "困難"
+     },
+     {
+      "q": "只要每天＿＿＿練習，你的中文就會越來越好。",
+      "a": "堅持"
+     },
+     {
+      "q": "不管多難，我都不會＿＿＿。",
+      "a": "放棄"
+     },
+     {
+      "q": "努力加上堅持，才能真正＿＿＿。",
+      "a": "成功"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "排列句子（Sắp xếp câu）",
+    "kind": "order",
+    "bank": [],
+    "items": [
+     {
+      "q": "每天 ／ 我 ／ 三十分鐘 ／ 學中文 ／ 堅持",
+      "a": "我每天堅持學中文三十分鐘。"
+     },
+     {
+      "q": "覺得 ／ 他 ／ 很難 ／ 漢字 ／ 記",
+      "a": "他覺得漢字很難記。"
+     },
+     {
+      "q": "已經 ／ 她 ／ 了 ／ 可以 ／ 用中文聊天",
+      "a": "她已經可以用中文聊天了。"
+     },
+     {
+      "q": "就 ／ 只要 ／ 努力 ／ 能進步",
+      "a": "只要努力，就能進步。"
+     },
+     {
+      "q": "的時候 ／ 當 ／ 你 ／ 不要停下來 ／ 累",
+      "a": "當你累的時候，不要停下來。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "短文寫作",
+    "kind": "write",
+    "bank": [],
+    "items": [],
+    "prompt": "請用五到六句話，寫一段關於你自己學習的故事。可以說你學什麼、遇到什麼困難、你怎麼堅持的。",
+    "hint": "覺得、每天、堅持、困難、已經、慢慢地",
+    "sample": "我從半年前開始學中文。一開始，我覺得漢字很難，聲調也很難。我常常想放棄。但是，我告訴自己每天只要學三十分鐘就好。慢慢地，我開始認識很多漢字了。現在，我已經可以看懂一些簡單的中文了，我很開心！"
+   },
+   {
+    "title": "翻譯練習一：Việt Nam → 中文",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "Khi tôi mệt, tôi nghỉ một chút rồi tiếp tục học.",
+      "a": "當我累的時候，我休息一下，然後繼續學習。"
+     },
+     {
+      "q": "Chỉ cần bạn kiên trì mỗi ngày, tiếng Trung của bạn sẽ ngày càng tốt hơn.",
+      "a": "只要你每天堅持，你的中文就會越來越好。"
+     },
+     {
+      "q": "Tôi đã học tiếng Trung được sáu tháng rồi và bây giờ tôi có thể nói một chút.",
+      "a": "我已經學了六個月的中文了，現在我可以說一點了。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "翻譯練習二：中文 → Việt Nam",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "學語言不容易，但是只要每天努力，就一定會進步。",
+      "a": "Học ngôn ngữ không dễ, nhưng chỉ cần cố gắng mỗi ngày thì nhất định sẽ tiến bộ."
+     },
+     {
+      "q": "我剛開始學中文的時候，覺得發音非常難。",
+      "a": "Lúc tôi mới bắt đầu học tiếng Trung, tôi cảm thấy phát âm rất khó."
+     },
+     {
+      "q": "堅持是打開成功大門最重要的鑰匙。",
+      "a": "Kiên trì là chiếc chìa khóa quan trọng nhất để mở cánh cửa thành công."
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   }
+  ],
+  "quote": {
+   "label": "A2 - 每天一小步",
+   "zh": "不怕慢，只怕站。每天進步一點點，就是最好的堅持。",
+   "py": "Bù pà màn, zhǐ pà zhàn. Měi tiān jìnbù yī diǎndiǎn, jiù shì zuì hǎo de jiānchí.",
+   "vi": "Không sợ đi chậm, chỉ sợ đứng yên. Mỗi ngày tiến bộ một chút xíu, đó chính là sự kiên trì tuyệt vời nhất."
+  },
+  "file": "ea8b17cc-Ki_n_Tr__A2.pdf",
+  "created": 1795454773896
+ },
+ {
+  "id": "tocfl-a2-cai-gia-cua-su-truong-thanh",
+  "subject": "zh",
+  "lang": "zh",
+  "kind": "passage",
+  "emoji": "📖",
+  "title": {
+   "zh": "長大的代價",
+   "vi": "Cái giá của sự trưởng thành",
+   "en": ""
+  },
+  "level": 2,
+  "levelCode": "A2",
+  "exam": "TOCFL",
+  "author": "Hanry Academy",
+  "authorRole": "admin",
+  "sourceType": "self",
+  "visibility": "public",
+  "official": true,
+  "text": [
+   {
+    "sp": "",
+    "zh": "小時候，我們都想快點長大。我們覺得大人很自由，可以做任何自己想做的事。但是，當我們真的長大以後，才發現長大也要付出很大的代價。",
+    "vi": "Khi còn nhỏ, ai trong chúng ta cũng muốn mau lớn. Chúng ta nghĩ người lớn rất tự do, có thể làm bất cứ điều gì mình muốn. Nhưng khi thật sự lớn lên rồi, chúng ta mới phát hiện trưởng thành cũng phải trả một cái giá rất lớn.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "長大的代價是什麼呢？",
+    "vi": "Cái giá của sự trưởng thành là gì?",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "長大以後，我們沒有太多時間玩了。我們要去上班，要自己賺錢，還要每天擔心生活上的很多事情。小時候，如果我們做錯事，爸爸媽媽會幫我們解決問題。但是長大以後，我們必須自己承擔所有的責任，為自己的錯誤負責。",
+    "vi": "Lớn lên rồi, chúng ta không còn nhiều thời gian để chơi nữa. Chúng ta phải đi làm, phải tự kiếm tiền, còn phải lo lắng rất nhiều chuyện trong cuộc sống mỗi ngày. Khi còn nhỏ, nếu làm sai, bố mẹ sẽ giúp chúng ta giải quyết vấn đề. Nhưng lớn lên rồi, chúng ta phải tự gánh vác mọi trách nhiệm, tự chịu trách nhiệm cho lỗi lầm của mình.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "有一天，小雯問媽媽：「媽媽，你覺得長大好嗎？」",
+    "vi": "Một hôm, Tiểu Văn hỏi mẹ: “Mẹ ơi, mẹ thấy lớn lên có tốt không?”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "媽媽想了一下，說：「長大有好的地方，也有不好的地方。」",
+    "vi": "Mẹ nghĩ một lúc rồi nói: “Lớn lên có điều tốt, cũng có điều không tốt.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小雯說：「我覺得大人好像很累，每天都要上班。」",
+    "vi": "Tiểu Văn nói: “Con thấy người lớn hình như rất mệt, ngày nào cũng phải đi làm.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "媽媽笑著說：「對，大人有很多責任。但是，長大也讓我們變得更強壯，可以自己走自己的路。」",
+    "vi": "Mẹ cười nói: “Đúng vậy, người lớn có rất nhiều trách nhiệm. Nhưng trưởng thành cũng giúp chúng ta trở nên mạnh mẽ hơn, có thể tự đi trên con đường của mình.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小雯點點頭說：「所以，長大就像爬山，很累，但是爬到山頂的時候，會很開心。」",
+    "vi": "Tiểu Văn gật đầu nói: “Vậy thì lớn lên giống như leo núi, rất mệt, nhưng khi leo lên tới đỉnh núi sẽ rất vui.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "媽媽說：「說得很好！就是這樣。」",
+    "vi": "Mẹ nói: “Con nói hay lắm! Chính là như vậy.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "長大還有一件事很不容易 - 就是和老朋友漸漸地變遠了。大家各自有了新的生活和新的朋友。我們也必須學會一個人生活，不能每次都依靠別人。",
+    "vi": "Lớn lên còn một điều rất không dễ dàng — đó là dần dần xa cách với những người bạn cũ. Mỗi người đều có cuộc sống mới và những người bạn mới của riêng mình. Chúng ta cũng phải học cách sống một mình, không thể lần nào cũng dựa vào người khác.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "雖然長大很辛苦，但是長大讓我們更勇敢、更獨立。我們學會了用自己的雙腳，走出自己的路。",
+    "vi": "Tuy trưởng thành rất vất vả, nhưng trưởng thành giúp chúng ta dũng cảm hơn, độc lập hơn. Chúng ta đã học được cách dùng chính đôi chân của mình để bước đi trên con đường của riêng mình.",
+    "en": "",
+    "indent": false
+   }
+  ],
+  "trSource": "ai",
+  "questions": [
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "小時候，我們為什麼想快點長大？",
+    "o": [
+     "因為我們不喜歡上學",
+     "因為我們覺得大人很自由，可以做自己想做的事",
+     "因為我們想要賺很多錢",
+     "因為我們想離開爸爸媽媽"
+    ],
+    "a": 1,
+    "why": "Bài nêu rõ: chúng ta nghĩ người lớn rất tự do, có thể làm mọi điều mình thích."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "長大以後，如果我們做錯事，應該怎麼辦？",
+    "o": [
+     "請爸爸媽媽幫我們解決",
+     "不管它，假裝沒有發生",
+     "自己承擔責任，為自己的錯誤負責",
+     "請朋友幫忙解決問題"
+    ],
+    "a": 2,
+    "why": "Bài nêu: khi đã lớn, bạn phải tự chịu trách nhiệm cho mọi lỗi lầm của mình."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "根據文章，長大的代價包括哪些事情？",
+    "o": [
+     "要自己賺錢、要負責任、要和老朋友漸漸變遠",
+     "要搬到新的城市，學習新的語言",
+     "要每天運動，保持健康的身體",
+     "要讀很多書，考很多試"
+    ],
+    "a": 0,
+    "why": "Ba điều được nêu trong bài: tự kiếm tiền, tự chịu trách nhiệm, xa bạn cũ."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "小雯用什麼來比喻長大這件事？",
+    "o": [
+     "在海邊游泳",
+     "種一棵大樹",
+     "爬山",
+     "騎自行車上學"
+    ],
+    "a": 2,
+    "why": "Tiểu Văn ví trưởng thành như leo núi - mệt nhưng khi đến đỉnh sẽ rất vui."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "媽媽說「長大有好的地方，也有不好的地方」。根據文章，長大「好的地方」是什麼？",
+    "o": [
+     "可以不用上學，每天玩",
+     "讓我們變得更勇敢、更獨立，可以走自己的路",
+     "可以賺很多錢，買很多東西",
+     "可以認識更多新朋友，不會孤單"
+    ],
+    "a": 1,
+    "why": "Câu kết bài: trưởng thành giúp chúng ta dũng cảm hơn, độc lập hơn, tự đi bằng đôi chân của mình."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "文章說長大以後，我們和老朋友「漸漸地變遠」。這是什麼意思？",
+    "o": [
+     "老朋友搬到很遠的地方，所以我們看不到他們",
+     "我們和老朋友吵架了，所以不再聯絡",
+     "大家各自有了新的生活，慢慢地和老朋友的聯繫變少了",
+     "老朋友不喜歡我們長大後的樣子"
+    ],
+    "a": 2,
+    "why": "漸漸地變遠 nghĩa là từ từ ít liên lạc hơn vì mỗi người có cuộc sống riêng - không phải cãi nhau hay chuyển đi xa."
+   },
+   {
+    "type": "mc",
+    "cat": "",
+    "q": "關於這篇文章，下面哪一句話是正確的？",
+    "o": [
+     "文章說長大很辛苦，所以我們不應該長大",
+     "文章說長大以後，爸爸媽媽還是會幫我們解決所有問題",
+     "文章說長大雖然辛苦，但可以讓我們變得更勇敢、更獨立",
+     "文章說長大以後，我們就不需要朋友了"
+    ],
+    "a": 2,
+    "why": "Đây là câu bẫy - A sai (bài không nói không nên lớn lên); B sai (bài nói ngược lại); D sai (bài không nói vậy). Chỉ C phản ánh đúng nội dung và tinh thần bài."
+   }
+  ],
+  "vocab": [
+   {
+    "w": "代價",
+    "p": "dài jià",
+    "vi": "Cái giá phải trả",
+    "note": "Trung tính đến tiêu cực; thường đi với 付出; văn viết và nói",
+    "ex": [
+     "成功是有代價的，需要付出很多努力。",
+     "Thành công là có cái giá, cần phải bỏ ra rất nhiều nỗ lực."
+    ]
+   },
+   {
+    "w": "付出",
+    "p": "fù chū",
+    "vi": "Bỏ ra, trả giá, hi sinh",
+    "note": "Trung tính; thường đi với 代價、努力、時間; phổ biến cả văn nói lẫn viết",
+    "ex": [
+     "她為這份工作付出了很多心血。",
+     "Cô ấy đã bỏ ra rất nhiều tâm huyết cho công việc này."
+    ]
+   },
+   {
+    "w": "自由",
+    "p": "zì yóu",
+    "vi": "Tự do",
+    "note": "Tích cực; dùng cả văn nói lẫn viết; rất phổ biến A2",
+    "ex": [
+     "週末不用上班，感覺很自由。",
+     "Cuối tuần không phải đi làm, cảm thấy rất tự do."
+    ]
+   },
+   {
+    "w": "發現",
+    "p": "fā xiàn",
+    "vi": "Phát hiện, nhận ra",
+    "note": "Trung tính; phổ biến A2; đi trước mệnh đề hoặc danh từ",
+    "ex": [
+     "我發現學中文其實很有趣。",
+     "Tôi phát hiện ra học tiếng Trung thực ra rất thú vị."
+    ]
+   },
+   {
+    "w": "擔心",
+    "p": "dān xīn",
+    "vi": "Lo lắng, lo ngại",
+    "note": "Tiêu cực nhẹ; rất phổ biến A2; văn nói",
+    "ex": [
+     "媽媽很擔心我一個人住。",
+     "Mẹ rất lo lắng khi tôi sống một mình."
+    ]
+   },
+   {
+    "w": "賺錢",
+    "p": "zuàn qián",
+    "vi": "Kiếm tiền",
+    "note": "Trung tính; văn nói phổ biến; đi với 自己、努力",
+    "ex": [
+     "他每天努力工作，為了賺更多錢。",
+     "Anh ấy mỗi ngày làm việc chăm chỉ để kiếm nhiều tiền hơn."
+    ]
+   },
+   {
+    "w": "解決",
+    "p": "jiě jué",
+    "vi": "Giải quyết",
+    "note": "Trung tính; phổ biến A2–B1; đi với 問題、困難",
+    "ex": [
+     "我們一起來解決這個問題吧。",
+     "Chúng ta cùng nhau giải quyết vấn đề này đi."
+    ]
+   },
+   {
+    "w": "承擔",
+    "p": "chéng dān",
+    "vi": "Gánh chịu, đảm nhận",
+    "note": "Trang trọng hơn 負責; văn viết; đi với 責任、後果",
+    "ex": [
+     "做錯事就要承擔後果。",
+     "Làm sai thì phải gánh chịu hậu quả."
+    ]
+   },
+   {
+    "w": "責任",
+    "p": "zé rèn",
+    "vi": "Trách nhiệm",
+    "note": "Trung tính đến tích cực; phổ biến A2; đi với 有、負、承擔",
+    "ex": [
+     "照顧家人是每個人的責任。",
+     "Chăm sóc gia đình là trách nhiệm của mỗi người."
+    ]
+   },
+   {
+    "w": "負責",
+    "p": "fù zé",
+    "vi": "Chịu trách nhiệm",
+    "note": "Tích cực; văn nói và viết; thường đi với 為…負責",
+    "ex": [
+     "你要為自己的選擇負責。",
+     "Bạn phải chịu trách nhiệm cho lựa chọn của mình."
+    ]
+   },
+   {
+    "w": "漸漸地",
+    "p": "jiàn jiàn de",
+    "vi": "Dần dần, từ từ",
+    "note": "Trạng từ; nhấn mạnh sự thay đổi chậm rãi; văn nói và viết",
+    "ex": [
+     "他漸漸地習慣了新的生活。",
+     "Anh ấy dần dần quen với cuộc sống mới."
+    ]
+   },
+   {
+    "w": "依靠",
+    "p": "yī kào",
+    "vi": "Dựa vào, nương tựa",
+    "note": "Trung tính; văn nói và viết; thường đi với 別人、家人",
+    "ex": [
+     "長大了就不能一直依靠父母。",
+     "Lớn rồi thì không thể cứ mãi dựa vào bố mẹ."
+    ]
+   },
+   {
+    "w": "獨立",
+    "p": "dú lì",
+    "vi": "Độc lập, tự lập",
+    "note": "Tích cực; phổ biến A2; đi với 生活、思考、自己",
+    "ex": [
+     "她很獨立，什麼事都自己處理。",
+     "Cô ấy rất độc lập, mọi việc đều tự xử lý."
+    ]
+   },
+   {
+    "w": "勇敢",
+    "p": "yǒng gǎn",
+    "vi": "Dũng cảm",
+    "note": "Tích cực; phổ biến A2; văn nói và viết",
+    "ex": [
+     "面對困難的時候，要勇敢一點。",
+     "Khi đối mặt với khó khăn, hãy dũng cảm hơn một chút."
+    ]
+   },
+   {
+    "w": "辛苦",
+    "p": "xīn kǔ",
+    "vi": "Vất vả, khổ cực",
+    "note": "Trung tính đến tiêu cực; văn nói thân mật; thường dùng để đồng cảm",
+    "ex": [
+     "你最近很辛苦，要多休息。",
+     "Gần đây bạn rất vất vả, hãy nghỉ ngơi nhiều hơn."
+    ]
+   },
+   {
+    "w": "各自",
+    "p": "gè zì",
+    "vi": "Mỗi người, mỗi bên (riêng của mỗi người)",
+    "note": "Trung tính; văn viết và nói; nhấn mạnh mỗi người có phần riêng",
+    "ex": [
+     "畢業後，大家各自去了不同的城市。",
+     "Sau khi tốt nghiệp, mọi người đều đến các thành phố khác nhau."
+    ]
+   },
+   {
+    "w": "強壯",
+    "p": "qiáng zhuàng",
+    "vi": "Mạnh mẽ, cứng cáp",
+    "note": "Tích cực; thường dùng cho cả thể chất lẫn tinh thần ở A2",
+    "ex": [
+     "多運動可以讓身體更強壯。",
+     "Tập thể dục nhiều hơn có thể giúp cơ thể khỏe mạnh hơn."
+    ]
+   },
+   {
+    "w": "爬山",
+    "p": "pá shān",
+    "vi": "Leo núi",
+    "note": "Nghĩa đen và ẩn dụ; văn nói phổ biến; trong bài dùng để ví von với trưởng thành",
+    "ex": [
+     "爬山很累，但是風景很美。",
+     "Leo núi rất mệt, nhưng phong cảnh rất đẹp."
+    ]
+   },
+   {
+    "w": "山頂",
+    "p": "shān dǐng",
+    "vi": "Đỉnh núi",
+    "note": "Nghĩa đen và ẩn dụ (đỉnh cao của nỗ lực); văn nói và viết",
+    "ex": [
+     "爬到山頂，可以看到很美的景色。",
+     "Leo đến đỉnh núi, có thể nhìn thấy cảnh đẹp."
+    ]
+   },
+   {
+    "w": "雙腳",
+    "p": "shuāng jiǎo",
+    "vi": "Đôi chân",
+    "note": "Nghĩa đen và ẩn dụ; cụm 用自己的雙腳走路 = tự đi bằng đôi chân của mình = tự lập",
+    "ex": [
+     "長大就是要用自己的雙腳走出自己的路。",
+     "Trưởng thành là phải dùng đôi chân của chính mình bước đi trên con đường của mình."
+    ]
+   },
+   {
+    "w": "點點頭",
+    "p": "diǎn diǎn tóu",
+    "vi": "Gật đầu",
+    "note": "Cụm văn nói; diễn tả hành động đồng ý hoặc hiểu ra điều gì",
+    "ex": [
+     "她聽完以後，慢慢地點點頭。",
+     "Sau khi nghe xong, cô ấy từ từ gật đầu."
+    ]
+   },
+   {
+    "w": "才發現",
+    "p": "cái fā xiàn",
+    "vi": "Mới nhận ra, lúc đó mới phát hiện",
+    "note": "Cụm văn nói; 才 nhấn mạnh sự nhận ra muộn hoặc sau khi trải nghiệm",
+    "ex": [
+     "長大以後，才發現小時候有多幸福。",
+     "Sau khi lớn lên mới nhận ra hồi nhỏ hạnh phúc đến nhường nào."
+    ]
+   }
+  ],
+  "grammar": [
+   {
+    "title": "當……以後，才……",
+    "titleVi": "khi... rồi mới...",
+    "pinyin": "dāng… yǐ hòu, cái…",
+    "meaning": "Khi... xong rồi, lúc đó mới... (nhận ra hoặc hiểu ra điều gì)",
+    "usage": "才 nhấn mạnh sự chậm trễ hoặc sự nhận ra sau khi trải qua một điều kiện. Thường dùng để diễn tả điều bạn không hiểu trước, chỉ sau khi có trải nghiệm mới nhận ra. Rất phổ biến A2–B1.",
+    "note": "Không bỏ 才 - nếu bỏ, câu mất đi sắc thái \"lúc đó mới hiểu\". Khác với就: 才 hàm ý muộn hơn dự tính hoặc sau một điều kiện; 就 hàm ý ngay lập tức hoặc dễ dàng.",
+    "example": [
+     "當我們真的長大以後，才發現長大也要付出很大的代價。",
+     "Khi thực sự trưởng thành rồi, lúc đó mới phát hiện trưởng thành cũng phải trả một cái giá rất lớn."
+    ],
+    "practice": [
+     {
+      "q": "Khi đến Đài Loan rồi, tôi mới nhận ra tiếng Trung quan trọng đến nhường nào.",
+      "a": "當我來到台灣以後，才發現中文有多重要。"
+     },
+     {
+      "q": "Khi mất đi rồi, chúng ta mới hiểu sức khỏe quý giá như thế nào.",
+      "a": "當失去了以後，我們才明白健康有多珍貴。"
+     },
+     {
+      "q": "Sau khi tốt nghiệp rồi, anh ấy mới biết đi làm không dễ chút nào.",
+      "a": "當畢業以後，他才知道工作一點都不容易。"
+     },
+     {
+      "q": "Khi một mình sống rồi, cô ấy mới cảm nhận được sự vất vả của bố mẹ.",
+      "a": "當一個人住了以後，她才感受到爸爸媽媽有多辛苦。"
+     },
+     {
+      "q": "Khi thất bại rồi, tôi mới hiểu kiên trì quan trọng đến thế nào.",
+      "a": "當失敗以後，我才明白堅持有多重要。"
+     }
+    ]
+   },
+   {
+    "title": "不能……必須自己……",
+    "titleVi": "không thể... phải tự mình...",
+    "pinyin": "bù néng… bì xū zì jǐ…",
+    "meaning": "Không thể... phải tự mình...",
+    "usage": "Cấu trúc đối lập diễn tả sự chuyển đổi từ phụ thuộc sang tự lập. 不能 phủ nhận điều không được làm; 必須自己 nhấn mạnh trách nhiệm cá nhân. Rất thực dụng và phổ biến A2.",
+    "note": "必須 mạnh hơn 要 và 應該: 必須 = bắt buộc phải, không có lựa chọn khác; 應該 = nên (có tính gợi ý); 要 = cần/muốn (trung gian). Chọn đúng từ tùy mức độ bắt buộc.",
+    "example": [
+     "長大以後，不能每次都依靠別人，必須自己學會一個人生活。",
+     "Sau khi lớn lên, không thể mỗi lần đều dựa vào người khác, phải tự mình học cách sống một mình."
+    ],
+    "practice": [
+     {
+      "q": "Lớn rồi thì không thể để bố mẹ giải quyết mọi vấn đề, phải tự mình chịu trách nhiệm.",
+      "a": "長大了，不能讓爸媽解決所有問題，必須自己承擔責任。"
+     },
+     {
+      "q": "Học tiếng Trung không thể chỉ đọc sách, phải tự mình nhiều luyện nói.",
+      "a": "學中文不能只看書，必須自己多練習說話。"
+     },
+     {
+      "q": "Không thể cứ chờ cơ hội, phải tự mình đi tìm.",
+      "a": "不能一直等待機會，必須自己去尋找。"
+     },
+     {
+      "q": "Không thể dựa vào may mắn, phải tự mình nỗ lực mỗi ngày.",
+      "a": "不能依靠運氣，必須自己每天努力。"
+     },
+     {
+      "q": "Không thể mãi sợ thất bại, phải tự mình dũng cảm thử xem.",
+      "a": "不能一直害怕失敗，必須自己勇敢試試看。"
+     }
+    ]
+   },
+   {
+    "title": "雖然……但是……讓我們……",
+    "titleVi": "dù... nhưng... giúp chúng ta...",
+    "pinyin": "suī rán… dàn shì… ràng wǒ men…",
+    "meaning": "Dù... nhưng... khiến / giúp chúng ta...",
+    "usage": "Cấu trúc nhượng bộ + kết quả tích cực. 雖然 thừa nhận điều khó khăn; 但是 chuyển sang mặt tích cực; 讓我們 nêu kết quả có lợi. Rất phổ biến A2, dùng cả văn nói lẫn viết.",
+    "note": "雖然 và 但是 thường đi đôi nhưng không bắt buộc - có thể chỉ dùng 雖然…卻… hoặc …但是… tùy cấu trúc câu. Ở A2 dùng đầy đủ 雖然…但是… là an toàn nhất.",
+    "example": [
+     "雖然長大很辛苦，但是長大讓我們更勇敢、更獨立。",
+     "Dù trưởng thành rất vất vả, nhưng trưởng thành giúp chúng ta dũng cảm hơn, độc lập hơn."
+    ],
+    "practice": [
+     {
+      "q": "Dù học tiếng Trung rất khó, nhưng nó giúp tôi hiểu thêm về văn hóa Đài Loan.",
+      "a": "雖然學中文很難，但是它讓我更了解台灣的文化。"
+     },
+     {
+      "q": "Dù mỗi ngày rất bận rộn, nhưng điều đó khiến tôi cảm thấy cuộc sống có ý nghĩa hơn.",
+      "a": "雖然每天很忙，但是這讓我覺得生活更有意義。"
+     },
+     {
+      "q": "Dù xa nhà rất nhớ bố mẹ, nhưng điều đó giúp tôi trưởng thành hơn nhiều.",
+      "a": "雖然離家很想念爸媽，但是這讓我成長了很多。"
+     },
+     {
+      "q": "Dù thất bại nhiều lần, nhưng mỗi lần thất bại đều dạy tôi một điều mới.",
+      "a": "雖然失敗了很多次，但是每次失敗都讓我學到新的東西。"
+     },
+     {
+      "q": "Dù một mình sống rất cô đơn, nhưng nó giúp tôi học được cách tự chăm sóc bản thân.",
+      "a": "雖然一個人住很孤單，但是這讓我學會了照顧自己。"
+     }
+    ]
+   },
+   {
+    "title": "就像……一樣",
+    "titleVi": "giống như...vậy",
+    "pinyin": "jiù xiàng… yī yàng",
+    "meaning": "Giống như... vậy, cũng như...",
+    "usage": "Cấu trúc so sánh; đặt ví von hoặc ẩn dụ vào giữa 就像 và一樣. Rất phổ biến A2, làm câu sinh động và dễ hiểu hơn. Dùng cả văn nói lẫn viết.",
+    "note": "就像…一樣 = so sánh ngang bằng; khác với 像…一樣 (giống nhau về ngoại hình/tính chất thuần túy). 就 thêm vào để tăng tính nhấn mạnh và so sánh ẩn dụ. Ở A2 hai cách đều được chấp nhận.",
+    "example": [
+     "長大就像爬山，很累，但是爬到山頂的時候，會很開心。",
+     "Trưởng thành giống như leo núi vậy, rất mệt, nhưng khi leo đến đỉnh thì sẽ rất vui."
+    ],
+    "practice": [
+     {
+      "q": "Học tiếng Trung giống như trồng cây vậy, cần kiên nhẫn tưới nước mỗi ngày.",
+      "a": "學中文就像種樹一樣，需要耐心，每天澆水。"
+     },
+     {
+      "q": "Tình bạn giống như một quyển sách vậy, càng đọc sâu càng thú vị.",
+      "a": "友情就像一本書一樣，越讀越有意思。"
+     },
+     {
+      "q": "Cuộc sống giống như đi bộ vậy, đôi khi lên dốc, đôi khi xuống dốc.",
+      "a": "生活就像走路一樣，有時候上坡，有時候下坡。"
+     },
+     {
+      "q": "Kiếm tiền giống như leo cầu thang vậy, phải từng bước từng bước mới lên được.",
+      "a": "賺錢就像爬樓梯一樣，要一步一步慢慢來。"
+     },
+     {
+      "q": "Trưởng thành giống như mùa đông vậy, lạnh và khó chịu nhưng sau đó sẽ đến mùa xuân.",
+      "a": "長大就像冬天一樣，很冷很不舒服，但是之後就會迎來春天。"
+     }
+    ]
+   },
+   {
+    "title": "要……還要……",
+    "titleVi": "phải... còn phải...",
+    "pinyin": "yào… hái yào…",
+    "meaning": "Phải... còn phải... (liệt kê nhiều việc phải làm)",
+    "usage": "Liệt kê hai hoặc nhiều nghĩa vụ hoặc việc cần làm. 要 nêu việc thứ nhất; 還要 bổ sung thêm việc thứ hai trở đi, nhấn mạnh sự nhiều và nặng nề. Rất phổ biến A2, văn nói thông thường.",
+    "note": "Có thể dùng nhiều 還要 liên tiếp để liệt kê dài. Khác với 不但…而且…:要…還要 đơn giản hơn và thường dùng trong văn nói; 不但…而且… trang trọng hơn và thuộc B1 trở lên.",
+    "example": [
+     "我們要去上班，要自己賺錢，還要每天擔心生活上的很多事情。",
+     "Chúng ta phải đi làm, phải tự kiếm tiền, còn phải mỗi ngày lo lắng rất nhiều chuyện trong cuộc sống."
+    ],
+    "practice": [
+     {
+      "q": "Mỗi ngày tôi phải đi học, còn phải làm bài tập về nhà, còn phải ôn thi nữa.",
+      "a": "我每天要上課，還要做作業，還要準備考試。"
+     },
+     {
+      "q": "Anh ấy phải đi làm, còn phải chăm sóc bố mẹ già ở nhà.",
+      "a": "他要去上班，還要在家照顧年老的父母。"
+     },
+     {
+      "q": "Cuối tuần tôi phải dọn nhà, còn phải đi mua đồ ăn.",
+      "a": "週末我要打掃房間，還要去買食物。"
+     },
+     {
+      "q": "Học tiếng Trung phải học từ vựng, còn phải luyện phát âm, còn phải đọc bài nữa.",
+      "a": "學中文要背生詞，還要練習發音，還要讀課文。"
+     },
+     {
+      "q": "Cô ấy phải nuôi con nhỏ, còn phải đi làm, thật sự rất vất vả.",
+      "a": "她要照顧小孩，還要去上班，真的很辛苦。"
+     }
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "title": "填填看（Điền từ）",
+    "kind": "fill",
+    "bank": [
+     "代價",
+     "承擔",
+     "獨立",
+     "漸漸地",
+     "發現"
+    ],
+    "items": [
+     {
+      "q": "長大以後，我＿＿＿原來生活有這麼多不容易的事。",
+      "a": "發現"
+     },
+     {
+      "q": "每個選擇都有它的＿＿＿，我們必須想清楚。",
+      "a": "代價"
+     },
+     {
+      "q": "你長大了，要學會＿＿＿生活，不能一直靠爸媽。",
+      "a": "獨立"
+     },
+     {
+      "q": "大學畢業以後，他和老朋友＿＿＿變少聯絡了。",
+      "a": "漸漸地"
+     },
+     {
+      "q": "不管做錯什麼事，都要勇敢＿＿＿自己的責任。",
+      "a": "承擔"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "排列句子（Sắp xếp câu）",
+    "kind": "order",
+    "bank": [],
+    "items": [
+     {
+      "q": "以後 ／ 才 ／ 長大 ／ 當 ／ 我們 ／ 發現 ／ 辛苦 ／ 長大很",
+      "a": "當長大以後，我們才發現長大很辛苦。"
+     },
+     {
+      "q": "雖然 ／ 但是 ／ 讓我們 ／ 長大很辛苦 ／ 更獨立 ／ 長大",
+      "a": "雖然長大很辛苦，但是長大讓我們更獨立。"
+     },
+     {
+      "q": "就像 ／ 一樣 ／ 長大 ／ 爬山 ／ 到山頂很開心 ／ 很累但是",
+      "a": "長大就像爬山一樣，很累但是到山頂很開心。"
+     },
+     {
+      "q": "要 ／ 自己賺錢 ／ 還要 ／ 上班 ／ 我們 ／ 要",
+      "a": "我們要上班，要自己賺錢，還要（擔心很多事）。"
+     },
+     {
+      "q": "必須 ／ 長大了 ／ 自己 ／ 為 ／ 負責 ／ 錯誤 ／ 的 ／ 自己",
+      "a": "長大了，必須自己為自己的錯誤負責。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "短文寫作",
+    "kind": "write",
+    "bank": [],
+    "items": [],
+    "prompt": "請用五到七句話，寫一段關於「你覺得長大最難的一件事是什麼」的短文。",
+    "hint": "發現、責任、獨立、辛苦、雖然…但是…",
+    "sample": "我覺得長大最難的一件事，就是要學會一個人解決問題。小時候，不管遇到什麼困難，爸爸媽媽都會幫我。但是長大以後，我才發現，很多事情必須自己面對。有時候我覺得很辛苦，也很孤單。雖然長大很不容易，但是每次自己解決了一個問題，我都會覺得更有自信、更獨立。我想，這就是長大的代價，也是長大最美好的地方。"
+   },
+   {
+    "title": "翻譯練習：Việt → 中文",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "Khi còn nhỏ, tôi nghĩ người lớn rất tự do, nhưng khi thực sự lớn lên rồi mới biết cuộc sống có nhiều trách nhiệm đến thế.",
+      "a": "小時候，我以為大人很自由，但是當真的長大以後，才知道生活有這麼多責任。"
+     },
+     {
+      "q": "Dù sống một mình rất cô đơn, nhưng điều đó giúp tôi học được cách tự chăm sóc bản thân và trở nên độc lập hơn.",
+      "a": "雖然一個人住很孤單，但是這讓我學會照顧自己，變得更獨立。"
+     },
+     {
+      "q": "Trưởng thành giống như leo núi vậy - con đường rất khó đi, nhưng khi đến đỉnh rồi sẽ thấy tất cả đều xứng đáng.",
+      "a": "長大就像爬山一樣 - 路很難走，但是到了山頂，就會覺得一切都值得。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "翻譯練習：中文 → Việt",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "長大以後，才知道爸爸媽媽每天有多辛苦，也才開始真正感謝他們。",
+      "a": "Sau khi lớn lên rồi mới biết bố mẹ mỗi ngày vất vả đến nhường nào, lúc đó mới thực sự bắt đầu biết ơn họ."
+     },
+     {
+      "q": "雖然和老朋友漸漸變遠了，但是那些一起度過的時光，永遠都不會忘記。",
+      "a": "Dù dần dần xa cách với những người bạn cũ, nhưng những khoảng thời gian cùng nhau trải qua sẽ mãi không quên."
+     },
+     {
+      "q": "長大最重要的一件事，就是學會為自己的選擇負責，不管結果好不好。",
+      "a": "Điều quan trọng nhất của việc trưởng thành là học cách chịu trách nhiệm cho những lựa chọn của mình, dù kết quả tốt hay không."
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   }
+  ],
+  "quote": {
+   "label": "A2 - 長大 · 勇敢 · 向前走",
+   "zh": "長大不可怕，可怕的是不敢邁出那一步。",
+   "py": "Zhǎng dà bù kě pà, kě pà de shì bù gǎn mài chū nà yī bù.",
+   "vi": "Trưởng thành không đáng sợ, điều đáng sợ là không dám bước đi bước đầu tiên đó."
+  },
+  "file": "6a2ad6e9-C_i_gi__c_a_s__tr__ng_th_nh_A2.pdf",
+  "created": 1795454953896
+ },
+ {
+  "id": "tocfl-a2-danh-tieng-va-su-cong-nhan",
+  "subject": "zh",
+  "lang": "zh",
+  "kind": "passage",
+  "emoji": "📖",
+  "title": {
+   "zh": "名聲與認可",
+   "vi": "Danh Tiếng và Sự Công Nhận",
+   "en": ""
+  },
+  "level": 2,
+  "levelCode": "A2",
+  "exam": "TOCFL",
+  "author": "Hanry Academy",
+  "authorRole": "admin",
+  "sourceType": "self",
+  "visibility": "public",
+  "official": true,
+  "text": [
+   {
+    "sp": "",
+    "zh": "被別人認可是一種非常自然的人類心理。從上學開始，一直到長大後去工作，我們總是努力認真，希望得到老師、父母和上司的稱讚。這種認可讓我們有更多動力，幫助我們繼續向前走。",
+    "vi": "Được người khác công nhận là một tâm lý rất tự nhiên của con người. Từ khi đi học cho đến khi lớn lên đi làm, chúng ta luôn nỗ lực, chăm chỉ, mong nhận được lời khen của thầy cô, cha mẹ và cấp trên. Sự công nhận này cho chúng ta thêm nhiều động lực, giúp chúng ta tiếp tục tiến về phía trước.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "在現代社會，很多年輕人很在乎名聲。他們喜歡在網路上獲得很多人追蹤，也想成為有名的人。然而，名聲就像一把雙刃劍。如果你太在意別人對你的看法，你就很容易感到焦慮和疲憊。",
+    "vi": "Trong xã hội hiện đại, rất nhiều người trẻ rất coi trọng danh tiếng. Họ thích có nhiều người theo dõi trên mạng, cũng muốn trở thành người nổi tiếng. Tuy nhiên, danh tiếng giống như một con dao hai lưỡi. Nếu bạn quá để ý đến cách người khác nhìn mình, bạn sẽ rất dễ cảm thấy lo âu và mệt mỏi.",
+    "en": "",
+    "indent": false
+   },
+   {
+    "sp": "",
+    "zh": "小傑在班上成績很好，但他每次考完試，都要等老師公布分數以後，心情才能平靜下來。",
+    "vi": "Tiểu Kiệt học rất giỏi trong lớp, nhưng mỗi lần thi xong, cậu đều phải đợi đến khi thầy cô công bố điểm thì tâm trạng mới bình tĩnh lại được.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "有一天，他跟爸爸說：「爸，我很怕考試。不是怕不會，是怕萬一我考差了，大家會覺得我沒有那麼厲害。」",
+    "vi": "Một hôm, cậu nói với bố: “Bố ơi, con rất sợ thi. Không phải sợ không biết làm, mà là sợ lỡ con thi kém, mọi người sẽ thấy con không giỏi như vậy.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "爸爸說：「你考試是為了讓別人覺得你厲害，還是為了讓自己學到東西？」",
+    "vi": "Bố nói: “Con đi thi là để người khác thấy con giỏi, hay là để bản thân học được điều gì đó?”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小傑想了一下，說：「好像……兩個都有。」",
+    "vi": "Tiểu Kiệt nghĩ một lúc rồi nói: “Hình như… cả hai đều có ạ.”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "爸爸說：「沒關係。但如果你只想要別人的稱讚，有一天稱讚消失了，你要怎麼辦？」",
+    "vi": "Bố nói: “Không sao. Nhưng nếu con chỉ muốn lời khen của người khác, thì một ngày nào đó lời khen biến mất, con sẽ làm sao?”",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "小傑沒有回答，但他把這句話記在心裡。",
+    "vi": "Tiểu Kiệt không trả lời, nhưng cậu đã ghi nhớ câu nói ấy trong lòng.",
+    "en": "",
+    "indent": true
+   },
+   {
+    "sp": "",
+    "zh": "真正的名聲應該來自你的才能和品德，而不是網路上那些假的形象。在尋求別人認可之前，先把心思放在讓自己變得更好這件事上。",
+    "vi": "Danh tiếng thật sự nên đến từ tài năng và phẩm đức của bạn, chứ không phải từ những hình ảnh giả tạo trên mạng. Trước khi tìm kiếm sự công nhận của người khác, hãy đặt tâm trí vào việc làm cho bản thân trở nên tốt hơn trước đã.",
+    "en": "",
+    "indent": false
+   }
+  ],
+  "trSource": "ai",
+  "questions": [
+   {
+    "type": "mc",
+    "cat": "認知題 – Nhận biết",
+    "q": "根據文章，「被別人認可」對我們有什麼幫助？",
+    "o": [
+     "讓我們不需要再努力了",
+     "讓我們有更多動力，幫助我們繼續向前走",
+     "讓我們可以不用聽老師的話",
+     "讓我們可以在網路上獲得很多追蹤"
+    ],
+    "a": 1,
+    "why": "Bài nêu: sự công nhận giúp chúng ta có thêm động lực, giúp tiếp tục bước về phía trước."
+   },
+   {
+    "type": "mc",
+    "cat": "認知題 – Nhận biết",
+    "q": "小傑為什麼害怕考試？",
+    "o": [
+     "因為他不喜歡讀書，覺得讀書很無聊",
+     "因為他怕萬一考差了，大家會覺得他沒那麼厲害",
+     "因為他的爸爸對他的成績要求太嚴格",
+     "因為他從來沒有考到好成績"
+    ],
+    "a": 1,
+    "why": "Tiểu Kiệt nói rõ: không phải sợ không biết làm mà sợ nếu thi kém thì mọi người sẽ nghĩ mình không giỏi như vậy."
+   },
+   {
+    "type": "mc",
+    "cat": "應用題 – Vận dụng",
+    "q": "爸爸問小傑「你考試是為了讓別人覺得你厲害，還是為了讓自己學到東西？」，這句話最主要想告訴小傑什麼？",
+    "o": [
+     "成績不重要，只要快樂就好",
+     "爸爸希望小傑以後不要再考試了",
+     "學習的目的應該是為了自己成長，而不只是得到別人的稱讚",
+     "小傑考試太多了，應該多休息"
+    ],
+    "a": 2,
+    "why": "Câu hỏi của bố hướng Tiểu Kiệt đến mục đích học tập thực sự – học để bản thân tiến bộ, không chỉ để được người khác khen."
+   },
+   {
+    "type": "mc",
+    "cat": "應用題 – Vận dụng",
+    "q": "根據文章，真正的名聲應該來自什麼？",
+    "o": [
+     "在網路上有很多追蹤者",
+     "才能和品德，而不是假的形象",
+     "考試得到很高的分數",
+     "讓很多人認識你、喜歡你"
+    ],
+    "a": 1,
+    "why": "Bài nêu: danh tiếng thật sự phải đến từ tài năng và phẩm đức, không phải hình ảnh giả tạo."
+   },
+   {
+    "type": "mc",
+    "cat": "進階題 – Nâng cao",
+    "q": "爸爸說「如果稱讚消失了，你要怎麼辦？」，這句話最主要想表達什麼？",
+    "o": [
+     "稱讚是不重要的，所以我們不需要在乎",
+     "如果只靠別人的稱讚來支撐自己，一旦稱讚不見了，就會失去方向",
+     "小傑以後一定會變成沒有人稱讚他的人",
+     "爸爸不打算再稱讚小傑了"
+    ],
+    "a": 1,
+    "why": "Lời bố hàm ý: nếu chỉ dựa vào lời khen của người khác để cảm thấy tốt, thì khi lời khen biến mất sẽ mất đi chỗ dựa."
+   },
+   {
+    "type": "mc",
+    "cat": "進階題 – Nâng cao",
+    "q": "文章說名聲「就像一把雙刃劍」，結合全文，這個比喻最主要想說什麼？",
+    "o": [
+     "名聲是完全不好的東西，我們應該完全避免追求",
+     "名聲很危險，會讓人受傷",
+     "名聲可以帶來動力，但如果太在意別人的看法，也會讓人感到焦慮和疲憊",
+     "刀子和名聲都是可以傷害人的工具"
+    ],
+    "a": 2,
+    "why": "Bài phân tích: danh tiếng có thể là động lực tốt, nhưng nếu quá chú trọng vào cái nhìn của người khác sẽ gây lo âu và mệt mỏi."
+   },
+   {
+    "type": "mc",
+    "cat": "陷阱題 – Câu đánh lừa",
+    "q": "關於這篇文章，下面哪一句話是正確的？",
+    "o": [
+     "文章說我們應該完全不在意別人的看法，只做自己",
+     "小傑的爸爸告訴他，考試成績不重要，不需要努力",
+     "文章認為，被別人認可是自然的，但名聲應來自真正的才能與品德，而不是對外在認可的過度依賴",
+     "文章說，在網路上有很多追蹤者，才是真正成功的標準"
+    ],
+    "a": 2,
+    "why": "A sai (bài không nói hoàn toàn không cần quan tâm người khác); B sai (bố không nói thành tích không quan trọng); D sai (bài nói ngược lại). Chỉ C phản ánh đúng luận điểm cân bằng của bài."
+   }
+  ],
+  "vocab": [
+   {
+    "w": "認可",
+    "p": "rèn kě",
+    "vi": "Sự công nhận, chấp nhận",
+    "note": "Trung tính đến tích cực; văn nói và viết; mạnh hơn 稱讚 vì hàm ý thừa nhận giá trị",
+    "ex": [
+     "得到老師的認可，讓她更有信心繼續努力。",
+     "Được thầy giáo công nhận khiến cô ấy tự tin hơn để tiếp tục cố gắng."
+    ]
+   },
+   {
+    "w": "自然",
+    "p": "zì rán",
+    "vi": "Tự nhiên",
+    "note": "Trung tính; rất phổ biến A2; tính từ và trạng từ",
+    "ex": [
+     "想被別人喜歡是很自然的事。",
+     "Muốn được người khác yêu thích là điều rất tự nhiên."
+    ]
+   },
+   {
+    "w": "稱讚",
+    "p": "chēng zàn",
+    "vi": "Khen ngợi, lời khen",
+    "note": "Tích cực; phổ biến A2; văn nói và viết; đi với 得到、給予",
+    "ex": [
+     "老師稱讚她的作業寫得很好。",
+     "Thầy giáo khen bài tập của cô ấy viết rất tốt."
+    ]
+   },
+   {
+    "w": "動力",
+    "p": "dòng lì",
+    "vi": "Động lực",
+    "note": "Tích cực; phổ biến A2; văn nói và viết; đi với 有、失去、找到",
+    "ex": [
+     "朋友的鼓勵給了她很大的動力。",
+     "Lời cổ vũ của bạn bè đã cho cô ấy rất nhiều động lực."
+    ]
+   },
+   {
+    "w": "在乎",
+    "p": "zài hū",
+    "vi": "Để ý, quan tâm, coi trọng",
+    "note": "Trung tính; văn nói phổ biến; thường đi với 不、太、很",
+    "ex": [
+     "他很在乎別人對他的看法。",
+     "Anh ấy rất quan tâm đến cái nhìn của người khác về mình."
+    ]
+   },
+   {
+    "w": "名聲",
+    "p": "míng shēng",
+    "vi": "Danh tiếng, tiếng tăm",
+    "note": "Trung tính; phổ biến A2; đi với 好的、不好的、追求",
+    "ex": [
+     "她希望靠自己的努力建立好的名聲。",
+     "Cô ấy hy vọng xây dựng danh tiếng tốt bằng nỗ lực của chính mình."
+    ]
+   },
+   {
+    "w": "追蹤",
+    "p": "zhuī zōng",
+    "vi": "Theo dõi (trên mạng xã hội)",
+    "note": "Trung tính; văn nói hiện đại; phổ biến A2 trong ngữ cảnh mạng xã hội",
+    "ex": [
+     "她的帳號有很多人追蹤。",
+     "Tài khoản của cô ấy có rất nhiều người theo dõi."
+    ]
+   },
+   {
+    "w": "焦慮",
+    "p": "jiāo lǜ",
+    "vi": "Lo lắng, lo âu",
+    "note": "Tiêu cực; phổ biến A2; văn nói và viết; mạnh hơn 擔心",
+    "ex": [
+     "考試前他總是很焦慮，睡不著覺。",
+     "Trước khi thi anh ấy luôn rất lo âu, ngủ không được."
+    ]
+   },
+   {
+    "w": "疲憊",
+    "p": "pí bèi",
+    "vi": "Mệt mỏi, kiệt sức",
+    "note": "Tiêu cực; văn viết; mạnh hơn 累; hàm ý mệt cả thể xác lẫn tinh thần",
+    "ex": [
+     "每天都要表現完美，讓她感到非常疲憊。",
+     "Mỗi ngày đều phải thể hiện hoàn hảo khiến cô ấy cảm thấy rất mệt mỏi."
+    ]
+   },
+   {
+    "w": "才能",
+    "p": "cái néng",
+    "vi": "Tài năng",
+    "note": "Tích cực; phổ biến A2; đi với 有、展現、發揮",
+    "ex": [
+     "她的才能讓所有人都印象深刻。",
+     "Tài năng của cô ấy đã gây ấn tượng với tất cả mọi người."
+    ]
+   },
+   {
+    "w": "品德",
+    "p": "pǐn dé",
+    "vi": "Phẩm đức, đạo đức",
+    "note": "Tích cực; văn viết nhẹ; phổ biến A2–B1; hàm ý nhân cách và đạo đức tốt",
+    "ex": [
+     "一個人的品德，比成績更重要。",
+     "Phẩm đức của một người quan trọng hơn thành tích."
+    ]
+   },
+   {
+    "w": "假的形象",
+    "p": "jiǎ de xíng xiàng",
+    "vi": "Hình ảnh giả tạo",
+    "note": "Tiêu cực; cụm phổ biến A2; văn nói và viết",
+    "ex": [
+     "不要為了得到別人的喜歡，而建立假的形象。",
+     "Đừng vì muốn được người khác yêu thích mà xây dựng hình ảnh giả tạo."
+    ]
+   },
+   {
+    "w": "看法",
+    "p": "kàn fǎ",
+    "vi": "Cái nhìn, quan điểm, ý kiến",
+    "note": "Trung tính; rất phổ biến A2; đi với 別人的、我的、不同的",
+    "ex": [
+     "每個人的看法都不一樣，要學會尊重。",
+     "Cái nhìn của mỗi người đều khác nhau, phải học cách tôn trọng."
+    ]
+   },
+   {
+    "w": "公布",
+    "p": "gōng bù",
+    "vi": "Công bố, thông báo",
+    "note": "Trung tính; phổ biến A2; đi với 成績、結果、消息",
+    "ex": [
+     "老師明天會公布這次考試的成績。",
+     "Thầy giáo ngày mai sẽ công bố kết quả bài thi lần này."
+    ]
+   },
+   {
+    "w": "平靜",
+    "p": "píng jìng",
+    "vi": "Bình tĩnh, yên bình",
+    "note": "Tích cực; phổ biến A2; tính từ; dùng cho tâm trạng và môi trường",
+    "ex": [
+     "深呼吸可以讓心情平靜下來。",
+     "Hít thở sâu có thể giúp tâm trạng bình tĩnh lại."
+    ]
+   },
+   {
+    "w": "厲害",
+    "p": "lì hài",
+    "vi": "Giỏi, giỏi giang, ghê",
+    "note": "Tích cực; văn nói rất phổ biến A2; mạnh hơn 好; hàm ý ấn tượng, vượt trội",
+    "ex": [
+     "她的中文說得真的很厲害！",
+     "Tiếng Trung của cô ấy nói thực sự rất giỏi!"
+    ]
+   },
+   {
+    "w": "心思",
+    "p": "xīn sī",
+    "vi": "Tâm trí, sự chú ý, lòng dạ",
+    "note": "Trung tính; văn nói phổ biến; thường đi với 放、花",
+    "ex": [
+     "把心思放在讓自己進步上，比在意別人的評論更重要。",
+     "Đặt tâm trí vào việc tự cải thiện bản thân quan trọng hơn là lo ý kiến của người khác."
+    ]
+   },
+   {
+    "w": "完善/完美",
+    "p": "wán shàn/wán měi",
+    "vi": "Hoàn thiện/hoàn hảo",
+    "note": "Tích cực; phổ biến A2; 完善 nghiêng về \"cải thiện\"; 完美 nghiêng về \"không có khuyết điểm\"",
+    "ex": [
+     "沒有人是完美的，但我們都可以讓自己變得更完善。",
+     "Không ai là hoàn hảo, nhưng chúng ta đều có thể làm bản thân trở nên tốt hơn."
+    ]
+   },
+   {
+    "w": "尋求",
+    "p": "xún qiú",
+    "vi": "Tìm kiếm, theo đuổi",
+    "note": "Trung tính đến tích cực; văn viết nhẹ; phổ biến A2– B1; đi với 幫助、答案、認可",
+    "ex": [
+     "在困難的時候，不要害怕尋求他人的幫助。",
+     "Khi gặp khó khăn, đừng sợ tìm kiếm sự giúp đỡ của người khác."
+    ]
+   },
+   {
+    "w": "外在",
+    "p": "wài zài",
+    "vi": "Bên ngoài, ngoại tại",
+    "note": "Trung tính; phổ biến A2– B1; đối lập với 內在; dùng cho hình thức hoặc yếu tố bên ngoài",
+    "ex": [
+     "不要只重視外在，內在的修養更重要。",
+     "Đừng chỉ chú trọng bên ngoài, sự tu dưỡng bên trong quan trọng hơn."
+    ]
+   },
+   {
+    "w": "形象",
+    "p": "xíng xiàng",
+    "vi": "Hình ảnh (của bản thân)",
+    "note": "Trung tính; phổ biến A2; văn nói và viết; dùng cho ấn tượng của người khác về mình",
+    "ex": [
+     "他很注重自己在別人眼中的形象。",
+     "Anh ấy rất chú trọng đến hình ảnh của mình trong mắt người khác."
+    ]
+   }
+  ],
+  "grammar": [
+   {
+    "title": "從……開始，一直到……",
+    "titleVi": "từ... cho đến...",
+    "pinyin": "cóng… kāi shǐ, yī zhí dào…",
+    "meaning": "Từ... cho đến... (mô tả một khoảng thời gian kéo dài từ điểm A đến điểm B)",
+    "usage": "從 + [điểm bắt đầu] + 開始，一直到 + [điểm kết thúc]. Nhấn mạnh sự liên tục hoặc kéo dài của một trạng thái, thói quen hay hành động. Rất phổ biến A2, dùng cả văn nói lẫn viết.",
+    "note": "一直到 mạnh hơn 到 đơn thuần – 一直 nhấn mạnh sự liên tục không gián đoạn. Cấu trúc thường dùng để mô tả một thói quen hoặc hành động kéo dài qua nhiều giai đoạn.",
+    "example": [
+     "從上學開始，一直到長大後去工作，我們總是努力認真，希望得到稱讚。",
+     "Từ khi còn đi học cho đến khi trưởng thành đi làm, chúng ta luôn cố gắng chăm chỉ để được khen ngợi."
+    ],
+    "practice": [
+     {
+      "q": "Từ khi còn nhỏ cho đến bây giờ, cô ấy luôn yêu thích âm nhạc.",
+      "a": "從小時候開始，一直到現在，她都非常喜歡音樂。"
+     },
+     {
+      "q": "Từ sáng sớm cho đến tối muộn, anh ấy làm việc không nghỉ.",
+      "a": "從一大早開始，一直到很晚，他都在工作，沒有休息。"
+     },
+     {
+      "q": "Từ khi bắt đầu học tiếng Trung cho đến hôm nay, tôi đã học được rất nhiều.",
+      "a": "從開始學中文，一直到今天，我學到了很多東西。"
+     },
+     {
+      "q": "Từ khi vào đại học cho đến khi tốt nghiệp, anh ấy chưa bao giờ nghỉ học một buổi nào.",
+      "a": "從進大學開始，一直到畢業，他從來沒有缺席過任何一堂課。"
+     },
+     {
+      "q": "Từ lúc mở cửa hàng cho đến khi đóng cửa, họ không có thời gian nghỉ ngơi.",
+      "a": "從開店開始，一直到關門，他們都沒有時間休息。"
+     }
+    ]
+   },
+   {
+    "title": "如果……，你就很容易……",
+    "titleVi": "nếu..., bạn sẽ dễ dàng...",
+    "pinyin": "rú guǒ…, nǐ jiù hěn róng yì…",
+    "meaning": "Nếu..., bạn sẽ rễ dàng... (diễn tả hậu quả dễ xảy ra nếu điều kiện được thỏa mãn)",
+    "usage": "如果 đặt điều kiện; 就 kết nối điều kiện với kết quả; 很容易 nhấn mạnh kết quả đó xảy ra dễ dàng, không tránh được. Phổ biến A2, dùng cả văn nói lẫn viết để cảnh báo hoặc phân tích hậu quả.",
+    "note": "很容易 + 動詞 diễn tả tính dễ xảy ra. Ở A2 cần phân biệt: 很容易 + 動詞 (dễ làm gì) ≠ 很簡單 (đơn giản). Ví dụ: 很容易感到焦慮 (dễ cảm thấy lo âu) – 容易 nhấn mạnh xu hướng tự nhiên.",
+    "example": [
+     "如果你太在意別人對你的看法，你就很容易感到焦慮和疲憊。",
+     "Nếu bạn quá để ý đến cái nhìn của người khác về mình, bạn sẽ dễ dàng cảm thấy lo lắng và mệt mỏi."
+    ],
+    "practice": [
+     {
+      "q": "如果你不好好休息，你就很容易生病。",
+      "a": "如果你不好好休息，你就很容易生病。"
+     },
+     {
+      "q": "Nếu bạn không lập kế hoạch trước, bạn sẽ dễ dàng bị lãng phí thời gian.",
+      "a": "如果你沒有提前計畫，你就很容易浪費時間。"
+     },
+     {
+      "q": "如果你一直跟別人比較，你就很容易感到不開心。",
+      "a": "如果你一直跟別人比較，你就很容易感到不開心。"
+     },
+     {
+      "q": "Nếu bạn không ngủ đủ giấc, bạn sẽ dễ dàng mất tập trung vào ngày hôm sau.",
+      "a": "如果你睡眠不夠，你隔天就很容易無法集中注意力。"
+     },
+     {
+      "q": "如果你不練習說話，學語言就很容易忘記。",
+      "a": "如果你不練習說話，學語言就很容易忘記。"
+     }
+    ]
+   },
+   {
+    "title": "……，而不是……",
+    "titleVi": "... mà không phải là...",
+    "pinyin": "…, ér bú shì…",
+    "meaning": "... mà không phải là... (xác định điều đúng và phủ nhận điều sai)",
+    "usage": "Cấu trúc nhấn mạnh và làm rõ – xác lập điều đúng (trước) rồi phủ nhận điều thường bị nhầm lẫn (sau 而不是). Phổ biến A2, dùng cả văn nói lẫn viết. Tạo sự tương phản rõ ràng và dễ hiểu.",
+    "note": "而不是 mạnh hơn 不是 đơn thuần – 而 tạo sự chuyển tiếp mượt mà và nhấn mạnh sự đối lập. Cấu trúc: [điều đúng] + 而不是 + [điều sai bị phủ nhận].",
+    "example": [
+     "真正的名聲應該來自你的才能和品德，而不是網路上那些假的形象。",
+     "Danh tiếng thật sự phải đến từ tài năng và phẩm đức của bạn, mà không phải những hình ảnh giả tạo trên mạng xã hội."
+    ],
+    "practice": [
+     {
+      "q": "學習應該是為了讓自己進步，而不是為了讓別人稱讚。",
+      "a": "學習應該是為了讓自己進步，而不是為了讓別人稱讚。"
+     },
+     {
+      "q": "Sự tự tin thực sự đến từ bên trong, mà không phải từ lời khen của người khác.",
+      "a": "真正的自信來自內心，而不是來自別人的稱讚。"
+     },
+     {
+      "q": "朋友應該是在你需要的時候陪伴你，而不是只在你成功的時候出現。",
+      "a": "朋友應該是在你需要的時候陪伴你，而不是只在你成功的時候出現。"
+     },
+     {
+      "q": "Chúng ta nên so sánh bản thân hôm nay với bản thân ngày hôm qua, mà không phải với người khác.",
+      "a": "我們應該把今天的自己和昨天的自己比，而不是跟別人比。"
+     },
+     {
+      "q": "成功應該用自己的標準來定義，而不是用別人的眼光來判斷。",
+      "a": "成功應該用自己的標準來定義，而不是用別人的眼光來判斷。"
+     }
+    ]
+   },
+   {
+    "title": "萬一……，……會怎樣？",
+    "titleVi": "lỡ như..., ... thì sao?",
+    "pinyin": "wàn yī…, … huì zěn yàng?",
+    "meaning": "Lỡ như..., ... thì sao? (diễn tả lo lắng về khả năng xấu có thể xảy ra)",
+    "usage": "萬一 = lỡ như, nếu rủi thay (nhấn mạnh khả năng xấu mà người nói lo sợ). Thường đi kèm câu hỏi biểu thị sự lo lắng. Phổ biến A2 trong văn nói, đặc biệt khi diễn tả nỗi sợ.",
+    "note": "萬一 khác với 如果: 如果 = nếu (trung tính); 萬一 = lỡ như (hàm ý lo lắng, kịch bản xấu). 萬一 thường dùng cho những điều người nói không muốn xảy ra nhưng lo sợ có thể xảy ra.",
+    "example": [
+     "我怕萬一我考差了，大家會覺得我沒那麼厲害。",
+     "Tôi sợ lỡ như thi kém, mọi người sẽ nghĩ tôi không giỏi như vậy."
+    ],
+    "practice": [
+     {
+      "q": "我怕萬一說錯了，會讓大家失望。",
+      "a": "我怕萬一說錯了，會讓大家失望。"
+     },
+     {
+      "q": "Anh ấy lo lỡ như không vượt qua được bài thi, mọi người sẽ thất vọng.",
+      "a": "他擔心萬一沒通過考試，大家會對他失望。"
+     },
+     {
+      "q": "她擔心萬一找不到工作，不知道要怎麼辦。",
+      "a": "她擔心萬一找不到工作，不知道要怎麼辦。"
+     },
+     {
+      "q": "Tôi lo lỡ như quên mang tài liệu, sẽ không làm được bài thi.",
+      "a": "我怕萬一忘記帶資料，考試就沒辦法做了。"
+     },
+     {
+      "q": "他怕萬一表現不好，老師會對他有不好的印象。",
+      "a": "他怕萬一表現不好，老師會對他有不好的印象。"
+     }
+    ]
+   },
+   {
+    "title": "在……之前，先……",
+    "titleVi": "trước khi..., hãy... trước",
+    "pinyin": "zài… zhī qián, xiān…",
+    "meaning": "Trước khi..., hãy... trước (nhấn mạnh thứ tự ưu tiên)",
+    "usage": "在 + [hành động B] + 之前，先 + [hành động A] – nhấn mạnh hành động A cần được thực hiện trước hành động B. 先= trước tiên, nhấn mạnh thứ tự. Phổ biến A2, dùng cả văn nói lẫn viết để đưa ra lời khuyên.",
+    "note": "之前 là văn viết; 以前 cũng dùng được nhưng thường chỉ thời gian trong quá khứ. Ở A2, 在…之前 phổ biến nhất khi nói về thứ tự hành động cần làm.",
+    "example": [
+     "在尋求別人認可之前，先把心思放在讓自己變得更好這件事上。",
+     "Trước khi tìm kiếm sự công nhận của người khác, hãy đặt tâm trí vào việc làm cho bản thân tốt hơn trước."
+    ],
+    "practice": [
+     {
+      "q": "在說話之前，先想清楚自己想說什麼。",
+      "a": "在說話之前，先想清楚自己想說什麼。"
+     },
+     {
+      "q": "Trước khi phán xét người khác, hãy hiểu hoàn cảnh của họ trước.",
+      "a": "在評判別人之前，先了解他們的處境。"
+     },
+     {
+      "q": "在做決定之前，先多了解一些相關的資訊。",
+      "a": "在做決定之前，先多了解一些相關的資訊。"
+     },
+     {
+      "q": "Trước khi hỏi người khác, hãy thử tự tìm câu trả lời trước.",
+      "a": "在問別人之前，先試著自己找答案。"
+     },
+     {
+      "q": "在追求名聲之前，先努力讓自己的能力真正變強。",
+      "a": "在追求名聲之前，先努力讓自己的能力真正變強。"
+     }
+    ]
+   }
+  ],
+  "exercises": [
+   {
+    "title": "填填看（Điền từ）",
+    "kind": "fill",
+    "bank": [
+     "稱讚",
+     "在乎",
+     "才能",
+     "焦慮",
+     "形象"
+    ],
+    "items": [
+     {
+      "q": "真正的名聲來自一個人的＿＿＿和品德，而不是假的＿＿＿。",
+      "a": "才能、形象"
+     },
+     {
+      "q": "如果你太＿＿＿別人的看法，你就很容易感到＿＿＿。",
+      "a": "在乎、焦慮"
+     },
+     {
+      "q": "老師的一句＿＿＿，讓她更有信心繼續努力。",
+      "a": "稱讚"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "排列句子（Sắp xếp câu）",
+    "kind": "order",
+    "bank": [],
+    "items": [
+     {
+      "q": "從上學 ／ 一直到 ／ 開始 ／ 工作 ／ 我們都希望 ／ 得到別人的認可",
+      "a": "從上學開始，一直到工作，我們都希望得到別人的認可。"
+     },
+     {
+      "q": "如果 ／ 很容易 ／ 太在意別人 ／ 感到疲憊 ／ 你就",
+      "a": "如果你太在意別人，你就很容易感到疲憊。"
+     },
+     {
+      "q": "真正的名聲 ／ 而不是 ／ 來自才能和品德 ／ 假的形象",
+      "a": "真正的名聲來自才能和品德，而不是假的形象。"
+     },
+     {
+      "q": "萬一 ／ 考差了 ／ 大家 ／ 他怕 ／ 會覺得他不厲害",
+      "a": "他怕萬一考差了，大家會覺得他不厲害。"
+     },
+     {
+      "q": "在 ／ 之前 ／ 尋求別人認可 ／ 先讓自己變得更好",
+      "a": "在尋求別人認可之前，先讓自己變得更好。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "短文寫作",
+    "kind": "write",
+    "bank": [],
+    "items": [],
+    "prompt": "請用五到六句話，說說你覺得「真正的成功」是什麼，以及它和「別人的認可」有什麼關係。",
+    "hint": "我覺得真正的成功是……、而不是……、如果……，就很",
+    "sample": "我覺得真正的成功是讓自己每天都有一點進步，而不是得到很多人的稱讚。如果只靠別人的認可來感覺自己有價值，一旦稱讚消失，就很容易感到迷茫和不安。在追求別人的認可之前，我們應該先問自己，真正想要的是什麼。名聲可以是動力，但不應該是唯一的目標。我相信，只要努力讓自己變得更好，好的名聲自然就會跟著來。"
+   },
+   {
+    "title": "翻譯練習：Việt → 中文",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "Nhu cầu được người khác công nhận là điều rất tự nhiên, từ khi còn đi học cho đến khi trưởng thành đi làm.",
+      "a": "被別人認可是非常自然的事，從上學開始，一直到長大後去工作都是這樣。"
+     },
+     {
+      "q": "Nếu bạn quá chú trọng vào cái nhìn của người khác, bạn sẽ dễ dàng cảm thấy lo lắng và mệt mỏi.",
+      "a": "如果你太在意別人的看法，你就很容易感到焦慮和疲憊。"
+     },
+     {
+      "q": "Danh tiếng thật sự phải đến từ tài năng và phẩm đức, mà không phải từ những hình ảnh giả tạo trên mạng xã hội.",
+      "a": "真正的名聲應該來自才能和品德，而不是網路上那些假的形象。"
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   },
+   {
+    "title": "翻譯練習：中文 → Việt",
+    "kind": "translate",
+    "bank": [],
+    "items": [
+     {
+      "q": "被別人稱讚是很好的事，但如果你只靠別人的稱讚來決定自己的價值，有一天稱讚消失了，你就會不知道自己是誰。",
+      "a": "Được người khác khen ngợi là điều rất tốt, nhưng nếu bạn chỉ dựa vào lời khen của người khác để xác định giá trị của mình, một ngày lời khen biến mất, bạn sẽ không biết mình là ai."
+     },
+     {
+      "q": "在追求名聲之前，先問問自己，你真正想要的是什麼，而不是別人希望你成為什麼樣的人。",
+      "a": "Trước khi theo đuổi danh tiếng, hãy tự hỏi bản thân, điều bạn thực sự muốn là gì, chứ không phải người khác muốn bạn trở thành người như thế nào."
+     },
+     {
+      "q": "從小到大，我們都在尋求別人的認可，但真正讓我們快樂的，往往是那些我們自己真心喜歡做的事。",
+      "a": "Từ nhỏ đến lớn, chúng ta luôn tìm kiếm sự công nhận của người khác, nhưng điều thực sự khiến chúng ta hạnh phúc thường là những điều chúng ta tự mình thực sự yêu thích."
+     }
+    ],
+    "prompt": "",
+    "hint": "",
+    "sample": ""
+   }
+  ],
+  "quote": null,
+  "file": "063b72ad-Danh_Ti_ng_v__S__C_ng_Nh_n_A2.pdf",
+  "created": 1795455013896
+ }
+]

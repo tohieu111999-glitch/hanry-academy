@@ -71,8 +71,11 @@
   ZH.curated = curated;
   ZH.addCurated = function (v, lessonId) {
     if (!v || !v.w) return;
-    if (!curated.has(v.w)) curated.set(v.w, Object.assign({ lesson: lessonId }, v));
-    addKey(v.w, null);
+    const item = Object.assign({ lesson: lessonId }, v, { syn: v.syn || [], ant: v.ant || [] });
+    const simp = ZH.toSimp(v.w);
+    if (!curated.has(v.w)) curated.set(v.w, item);
+    if (simp !== v.w && !curated.has(simp)) curated.set(simp, item);
+    addKey(v.w, null); addKey(simp, null);
   };
   let maxLen = 1;
   function addKey(k, idx) {
@@ -146,8 +149,12 @@
     return cc ? cc(s) : null;
   };
   ZH.toTradChar = (c) => { const r = ZH.cc(c); return r && [...r].length === 1 ? r : D.s2t.get(c) || c; };
+  let t2s = null;
   ZH.toSimp = function (text) {
-    return [...(text || '')].map((c) => (D.sSet.has(c) ? c : D.t2s.get(c) || c)).join('');
+    text = text || '';
+    if (!t2s && window.OpenCC) { try { t2s = window.OpenCC.Converter({ from: 'tw', to: 'cn' }); } catch (e) { t2s = false; } }
+    if (t2s) { const r = t2s(text); if ([...r].length === [...text].length) return r; }
+    return [...text].map((c) => (D.sSet.has(c) ? c : D.t2s.get(c) || c)).join('');
   };
 
   /* ---------- Segmentation + pinyin ---------- */
@@ -206,6 +213,7 @@
     const simpText = tokens.map((t) => (t.han ? t.simp : t.text)).join('');
     let pp = [];
     try { pp = window.pinyinPro.pinyin(simpText, { type: 'array', toneSandhi: false }); } catch (e) { pp = []; }
+    const srcTrad = simpText !== text;
     const tradAll = ZH.cc(simpText);
     const tradChars = tradAll && [...tradAll].length === [...simpText].length ? [...tradAll] : null;
     let pos = 0;
@@ -215,7 +223,8 @@
         const ctx = pp.slice(pos, pos + len);
         t.py = choosePinyin(t, ctx, len);
         // traditional rendering
-        if (tradChars) t.trad = tradChars.slice(pos, pos + len).join('');
+        if (srcTrad) t.trad = t.text;
+        else if (tradChars) t.trad = tradChars.slice(pos, pos + len).join('');
         else {
           const tr = (t.ents || []).find((x) => x.s === t.simp && !/^[A-Z]/.test(x.p)) || (t.ents || [])[0];
           t.trad = tr && [...tr.t].length === len ? tr.t : [...t.simp].map(ZH.toTradChar).join('');
@@ -311,7 +320,7 @@
     const tip = opts.tip !== false;
     return ZH.analyze(text).map((t) => {
       if (!t.han) return HA.ui.esc(t.text);
-      const display = script === 't' ? [...t.trad] : [...t.text];
+      const display = script === 't' ? [...t.trad] : [...t.simp];
       let inner;
       if (phon === 'none') inner = HA.ui.esc(display.join(''));
       else {
@@ -329,8 +338,9 @@
   // Display a word in selected script without ruby
   ZH.disp = function (text) {
     const st = HA.state ? HA.state.settings : {};
-    if (st.script !== 't') return text;
-    return ZH.analyze(text).map((t) => (t.han ? t.trad : t.text)).join('');
+    const tr = st.script === 't';
+    if (!tr && ZH.toSimp(text) === text) return text;
+    return ZH.analyze(text).map((t) => (t.han ? (tr ? t.trad : t.simp) : t.text)).join('');
   };
   ZH.phon = function (pinyin) {
     const st = HA.state ? HA.state.settings : {};

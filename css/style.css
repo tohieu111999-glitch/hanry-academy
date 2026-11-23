@@ -510,3 +510,52 @@ details.adv summary { cursor: pointer; font-weight: 800; }
   .searchbar .btn { padding: 8px 10px; }
   .ph-meta small { display: block; }
 }
+
+/* ===================== v3: official reading lessons ===================== */
+.reading .line.indent { margin-left: 34px; border-left: 4px solid var(--purple); background: rgba(206, 130, 255, .07); border-radius: 0 14px 14px 0; }
+.lesson-banner { display: flex; gap: 14px; align-items: center; background: linear-gradient(135deg, rgba(88, 204, 2, .14), rgba(28, 176, 246, .14)); border-radius: 18px; padding: 14px 18px; margin-bottom: 12px; }
+.lb-level { display: inline-block; background: var(--green); color: #fff; font-weight: 900; border-radius: 10px; padding: 4px 10px; font-size: .9rem; white-space: nowrap; }
+.lb-title { font-size: 1.6rem; font-weight: 800; line-height: 2; }
+.lv-head { display: flex; align-items: center; gap: 8px; margin: 16px 0 4px; }
+.sec-nav { position: sticky; top: 62px; z-index: 6; display: flex; gap: 6px; overflow-x: auto; padding: 8px 0; background: var(--bg); }
+.sec-nav button { flex: 0 0 auto; border: 2px solid var(--line); background: var(--card); color: var(--text); border-radius: 99px; padding: 6px 12px; font: inherit; font-weight: 800; cursor: pointer; }
+.sec-nav button:hover { border-color: var(--blue); }
+.q-cat { list-style: none; margin: 18px 0 8px -22px; font-weight: 900; color: var(--purple-d); border-bottom: 2px dashed var(--line); padding-bottom: 4px; }
+.why { background: rgba(255, 200, 0, .14); border-radius: 10px; padding: 8px 12px; margin-top: 6px; font-size: .92rem; }
+.vtable { display: flex; flex-direction: column; gap: 8px; }
+.vrow { display: grid; grid-template-columns: 230px 1fr; gap: 14px; background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+.vr-word { display: flex; flex-direction: column; gap: 2px; }
+.vr-zh { font-size: 1.7rem; font-weight: 700; } .vr-py { color: var(--blue-d); font-weight: 800; } .vr-btns { display: flex; }
+.vr-body { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.vr-ex { background: var(--soft); border-radius: 10px; padding: 6px 10px; display: flex; flex-direction: column; line-height: 2.1; }
+.vr-ex .small { line-height: 1.4; color: var(--muted); }
+.g-py { color: var(--blue-d); font-weight: 800; margin: -2px 0 6px; }
+.g-note { background: rgba(255, 150, 0, .1); border-radius: 10px; padding: 8px 12px; }
+.g-ex { background: var(--soft); border-radius: 12px; padding: 10px 12px; margin: 8px 0; line-height: 2.2; }
+.g-ex .muted { line-height: 1.4; }
+.prac { padding-left: 22px; display: flex; flex-direction: column; gap: 10px; margin: 8px 0; }
+.prac li { line-height: 2.1; }
+.pr-a summary { cursor: pointer; color: var(--blue-d); font-weight: 800; font-size: .9rem; }
+.pr-a > div { background: rgba(88, 204, 2, .1); border-radius: 10px; padding: 4px 10px; display: inline-block; }
+.pr-a.inline { display: inline-block; margin-left: 8px; }
+.fill-bank { justify-content: flex-start; margin: 6px 0 10px; }
+.fill-bank .tile { cursor: pointer; font-size: 1.1rem; }
+.fill-in { border: 0; border-bottom: 3px solid var(--blue); background: rgba(28, 176, 246, .08); color: var(--text); font-size: 1.1rem; width: 5em; text-align: center; margin: 0 3px; border-radius: 6px 6px 0 0; }
+.fill-item.ok .fill-in { border-color: var(--green); background: rgba(88, 204, 2, .12); }
+.fill-res { margin-left: 8px; font-weight: 800; }
+.order-item .bank { justify-content: flex-start; }
+.order-item .tile { font-size: 1.05rem; padding: 6px 10px; }
+.answer-line.small-line { min-height: 48px; margin: 6px 0; }
+.answer-line.good { border-color: var(--green); background: rgba(88, 204, 2, .1); }
+.answer-line.bad { border-color: var(--red); background: rgba(255, 75, 75, .08); }
+.exercise h3 { margin-top: 0; }
+.quote-card { margin: 26px 0; text-align: center; background: linear-gradient(135deg, #58cc02, #1cb0f6 60%, #ce82ff); color: #fff; border-radius: 24px; padding: 26px 20px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.quote-card small { font-weight: 900; letter-spacing: 1px; opacity: .9; }
+.qc-zh { font-size: 1.7rem; font-weight: 800; line-height: 1.6; }
+.qc-zh .w:hover { background: rgba(255,255,255,.2); }
+.qc-py { font-style: italic; opacity: .95; } .qc-vi { font-weight: 700; }
+@media (max-width: 640px) {
+  .vrow { grid-template-columns: 1fr; }
+  .reading .line.indent { margin-left: 8px; }
+  .lb-title { font-size: 1.3rem; }
+}

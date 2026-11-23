@@ -33,8 +33,9 @@ HA.config = {
     { id: 'other', name: 'Khác', en: 'Other', lang: 'vi', icon: '📚' }
   ],
 
-  // Hiện các bài đọc mẫu do Hanry Academy soạn trên bảng tin (đặt false để ẩn khi đã có bài thật)
-  showSamplePosts: true,
+  // Bài đọc chính thức của Hanry Academy nằm trong data/posts/official.json (nhập từ PDF bằng tools/import-lesson.py).
+  // Bộ 29 bài mẫu cũ do trợ lý soạn: đặt true nếu muốn hiện lại trên bảng tin.
+  showSamplePosts: false,
 
   // DỊCH MÁY khi rê chuột vào câu / tìm kiếm.
   //  provider 'mymemory': miễn phí, không cần cài đặt, giới hạn ~5.000 ký tự/ngày cho mỗi người dùng.

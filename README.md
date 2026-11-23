@@ -49,7 +49,7 @@ firestore.rules       luật phân quyền phía máy chủ
 ## Giấy phép dữ liệu bên thứ ba
 - CVDICT © Phong Phan và CC-CEDICT © MDBG: giấy phép CC BY-SA 4.0 (file `data/dict-vi.tsv`, `data/dict-en.tsv`, chia sẻ lại theo cùng giấy phép).
 - Unicode Unihan: Unicode License (`data/hanviet.tsv`).
-- pinyin-pro: MIT (`js/vendor/pinyin-pro.js`). opencc-js: MIT (`js/vendor/opencc-cn2t.js`).
+- pinyin-pro: MIT (`js/vendor/pinyin-pro.js`). opencc-js: MIT (`js/vendor/opencc-full.js`).
 - Hanzi Writer và dữ liệu Make Me a Hanzi: tải từ jsDelivr khi chạy.
 
 Nội dung bài học, giao diện và mã nguồn © Hanry Academy. Bảo lưu mọi quyền.

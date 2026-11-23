@@ -34,6 +34,7 @@
     list.forEach((P) => { P.user = true; (P.vocab || []).forEach((v) => HA.zh.addCurated(v, P.id)); });
     if (!filter || (!filter.mine && !filter.classId)) {
       if (S.user) { try { (await HA.api.listLessons({ mine: true })).filter((P) => P.visibility === 'private').forEach((P) => { P.user = true; list.push(P); }); } catch (e) {} }
+      list = list.concat(await HA.loadOfficial());
       if (HA.config.showSamplePosts) list = list.concat(HA.lessons);
     }
     const seen = new Set();
@@ -54,13 +55,13 @@
       : lines.map((x) => '<p class="pl ' + lang + '"' + F.lineAttrs(x, P) + '>' + (x.sp ? '<b class="sp">' + esc(HA.zh.disp(x.sp)) + '：</b>' : '') + '<span class="' + (lang === 'zh' ? 'zh' : '') + '">' + F.render(x.zh, P) + '</span>' + (showTr && trLine(x) ? '<span class="pl-tr">' + esc(trLine(x)) + '</span>' : '') + '</p>').join('');
     return '<article class="post" data-id="' + esc(P.id) + '">' +
       '<header class="post-head"><span class="avatar sm" style="--c:' + (P.sample ? '#58cc02' : '#ce82ff') + '">' + esc(author[0].toUpperCase()) + '</span>' +
-      '<div class="ph-meta"><div><b>' + esc(author) + '</b> ' + roleBadge(P.authorRole) + (P.sample ? ' <span class="badge">' + t('samplePost') + '</span>' : '') + '</div>' +
-      '<small class="muted">' + F.timeAgo(P.created) + ' · ' + sub.icon + ' ' + esc(HA.subjectName(sub)) + (P.level ? ' · ' + esc(HA.levelOf(P.level).name) : '') + (P.visibility === 'private' ? ' · 🔒 ' + t('visPrivate') : P.visibility === 'class' ? ' · 🏫 ' + t('visClass') : ' · 🌐') + '</small></div>' +
+      '<div class="ph-meta"><div><b>' + esc(author) + '</b> ' + roleBadge(P.authorRole) + (P.sample ? ' <span class="badge">' + t('samplePost') + '</span>' : '') + (P.official ? ' <span class="badge good">✔ ' + t('official') + '</span>' : '') + '</div>' +
+      '<small class="muted">' + F.timeAgo(P.created) + ' · ' + sub.icon + ' ' + esc(HA.subjectName(sub)) + (P.level ? ' · ' + esc(P.levelCode && P.exam ? P.levelCode + ' · ' + P.exam : HA.levelOf(P.level).name) : '') + (P.visibility === 'private' ? ' · 🔒 ' + t('visPrivate') : P.visibility === 'class' ? ' · 🏫 ' + t('visClass') : ' · 🌐') + '</small></div>' +
       '<div class="ph-act">' + (canEdit(P) ? '<a class="icon-btn" href="#/compose/' + encodeURIComponent(P.id) + '" title="' + t('edit') + '">✏️</a><button class="icon-btn" data-del-post="' + esc(P.id) + '" title="' + t('delete') + '">🗑</button>' : '') + '<button class="icon-btn" data-report="' + esc(P.id) + '" title="' + t('report') + '">🚩</button></div></header>' +
       '<a class="post-title" href="' + postUrl(P) + '"><span class="pt-emoji">' + esc(P.emoji || sub.icon) + '</span><span><span class="pt-main ' + (lang === 'zh' ? 'zh' : '') + '">' + esc(lang === 'zh' ? HA.zh.disp(P.title.zh) : P.title.zh) + '</span>' + (trTitle(P) ? '<span class="pt-tr">' + esc(trTitle(P)) + '</span>' : '') + '</span></a>' +
       '<div class="post-body">' + body + '</div>' +
       (more ? '<a class="more-link" href="' + postUrl(P) + '">' + t('readMore') + ' →</a>' : '') +
-      '<div class="post-tags">' + ((P.vocab || []).length ? '<span class="chip">🔤 ' + P.vocab.length + ' ' + t('words') + '</span>' : '') + ((P.grammar || []).length ? '<span class="chip">🧩 ' + P.grammar.length + ' ' + t('tabGrammar') + '</span>' : '') + ((P.questions || []).length ? '<span class="chip">❓ ' + P.questions.length + ' ' + t('questionsOf') + '</span>' : '') + (P.sourceType ? '<span class="chip ghost-chip">' + esc(srcName(P.sourceType)) + (P.sourceRef ? ': ' + esc(P.sourceRef).slice(0, 40) : '') + '</span>' : '') + '</div>' +
+      '<div class="post-tags">' + ((P.vocab || []).length ? '<span class="chip">🔤 ' + P.vocab.length + ' ' + t('words') + '</span>' : '') + ((P.grammar || []).length ? '<span class="chip">🧩 ' + P.grammar.length + ' ' + t('tabGrammar') + '</span>' : '') + ((P.questions || []).length ? '<span class="chip">❓ ' + P.questions.length + ' ' + t('questionsOf') + '</span>' : '') + ((P.exercises || []).length ? '<span class="chip">✏️ ' + P.exercises.length + ' ' + t('exercises') + '</span>' : '') + (P.sourceType ? '<span class="chip ghost-chip">' + esc(srcName(P.sourceType)) + (P.sourceRef ? ': ' + esc(P.sourceRef).slice(0, 40) : '') + '</span>' : '') + '</div>' +
       '<footer class="post-foot"><button class="pf-btn" data-like="' + esc(P.id) + '">🤍 <span>' + t('like') + '</span> <b class="n-like"></b></button>' +
       '<a class="pf-btn" href="' + postUrl(P) + '#comments">💬 <span>' + t('comment') + '</span> <b class="n-com"></b></a>' +
       (lang !== 'code' ? '<button class="pf-btn" data-play="' + esc(P.id) + '">🔊 <span>' + t('listen') + '</span></button>' : '') + '</footer></article>';
@@ -208,7 +209,8 @@
     const ts = [...new Set(terms.filter(Boolean).map((x) => String(x).toLowerCase()))];
     const tsSimp = ts.concat(ts.map((x) => HA.zh.toSimp(x)));
     const score = (P) => {
-      const hay = [P.title.zh, P.title.vi, P.title.en].concat((P.text || []).map((x) => x.zh + ' ' + (x.vi || '') + ' ' + (x.en || ''))).concat((P.vocab || []).map((v) => v.w + ' ' + v.vi + ' ' + v.en)).join('\n').toLowerCase();
+      const raw = [P.title.zh, P.title.vi, P.title.en].concat((P.text || []).map((x) => x.zh + ' ' + (x.vi || '') + ' ' + (x.en || ''))).concat((P.vocab || []).map((v) => v.w + ' ' + (v.vi || '') + ' ' + (v.en || ''))).join('\n');
+      const hay = (raw + '\n' + HA.zh.toSimp(raw)).toLowerCase();
       return tsSimp.reduce((n, term) => n + (term && hay.includes(term) ? (HA.zh.hasHan(term) ? 3 : 1) : 0), 0);
     };
     const res = posts.map((P) => [P, score(P)]).filter((x) => x[1] > 0).sort((a, b) => b[1] - a[1]).slice(0, 12).map((x) => x[0]);
@@ -220,6 +222,7 @@
   /* ---------- Post page ---------- */
   HA.route(/^\/post\/([^?#]+)/, async function (id) {
     let P = HA.lessonById[id];
+    if (!P) { await HA.loadOfficial(); P = HA.lessonById[id]; }
     if (!P) {
       view().innerHTML = '<div class="loading">' + t('loading') + '</div>';
       try { P = await HA.api.getLesson(id); } catch (e) { P = null; }
@@ -237,25 +240,31 @@
     const colors = ['#1cb0f6', '#ff9600', '#ce82ff', '#58cc02', '#ff4b4b'];
     const reading = lang === 'code'
       ? '<pre class="code-block">' + esc((P.text || []).map((x) => x.zh).join('\n')) + '</pre>'
-      : (P.text || []).map((x, i) => '<div class="line ' + (x.sp && speakers.indexOf(x.sp) % 2 ? 'right' : '') + '"' + F.lineAttrs(x, P) + ' data-i="' + i + '">' +
+      : (P.text || []).map((x, i) => '<div class="line ' + (x.sp && speakers.indexOf(x.sp) % 2 ? 'right ' : '') + (x.indent ? 'indent' : '') + '"' + F.lineAttrs(x, P) + ' data-i="' + i + '">' +
         (x.sp ? '<div class="spk" style="--c:' + colors[speakers.indexOf(x.sp) % 5] + '"><span class="av">' + esc(HA.zh.disp(x.sp)[0]) + '</span><span class="' + (isZh ? 'zh' : '') + '">' + esc(HA.zh.disp(x.sp)) + '</span></div>' : '') +
         '<div class="bubble-line"><div class="' + (isZh ? 'zh ' : '') + 'lg">' + F.render(x.zh, P) + '</div>' + (showTr ? '<div class="trans" data-trfor="' + i + '">' + esc(trLine(x)) + '</div>' : '') + '</div>' +
         '<button class="icon-btn" data-speakline="' + i + '" aria-label="play">🔊</button></div>').join('');
+    const sec = [];
+    const add = (id, icon, title, html) => { if (html) sec.push({ id, icon, title, html }); };
+    add('sec-q', '❓', t('tabQuestions'), (P.questions || []).length ? questionsHTML(P, isZh) : '');
+    add('sec-v', '🔤', t('tabVocab'), (P.vocab || []).length ? '<div class="row wrap mb"><button class="btn sm yellow" id="addAll">⭐ ' + t('addNote') + ' (' + P.vocab.length + ')</button><a class="btn sm blue" href="#/game/flash?post=' + encodeURIComponent(P.id) + '">🃏 ' + t('reviewGames') + '</a></div>' + (P.official ? vocabTable(P) : '<div class="vocab-grid">' + P.vocab.map(vocabCard).join('') + '</div>') : '');
+    add('sec-g', '🧩', t('tabGrammar'), (P.grammar || []).length ? P.grammar.map((g, i) => grammarHTML(g, i, P)).join('') : '');
+    add('sec-x', '✏️', t('exercises'), (P.exercises || []).length ? P.exercises.map((x, i) => exerciseHTML(x, i, P)).join('') : '');
+    const levelCode = P.levelCode || (P.level ? HA.levelOf(P.level).code : '');
     view().innerHTML =
       '<a class="back" href="#/">← ' + t('navHome') + '</a>' +
       '<div class="single">' + F.card(Object.assign({}, P, { text: [] }), {}).replace('<div class="post-body"></div>', '') + '</div>' +
-      '<div class="toolbar">' + (lang !== 'code' ? '<button class="btn sm blue" id="playAll">▶ ' + t('playAll') + '</button><button class="btn sm ghost" id="stopAll">■</button>' : '') +
+      (P.official ? '<div class="lesson-banner"><span class="lb-level">' + esc(levelCode) + (P.exam ? ' · ' + esc(P.exam) : '') + '</span><div><div class="zh lb-title">' + F.render(P.title.zh, P) + '</div><div class="muted">' + esc(P.title.vi || '') + '</div></div></div>' : '') +
+      (sec.length ? '<nav class="sec-nav"><button data-goto="sec-read">📖 ' + t('tabRead') + '</button>' + sec.map((x) => '<button data-goto="' + x.id + '">' + x.icon + ' ' + x.title + '</button>').join('') + '<button data-goto="comments">💬 ' + t('comments') + '</button></nav>' : '') +
+      '<div class="toolbar" id="sec-read">' + (lang !== 'code' ? '<button class="btn sm blue" id="playAll">▶ ' + t('playAll') + '</button><button class="btn sm ghost" id="stopAll">■</button>' : '') +
       (isZh ? '<button class="btn sm ' + (S.settings.showRuby ? 'purple' : 'ghost') + '" id="toggleRuby">' + (S.settings.phon === 'zhuyin' ? 'ㄅㄆㄇ' : 'pīnyīn') + '</button>' : '') +
       '<button class="btn sm ' + (showTr ? 'orange' : 'ghost') + '" id="toggleTrans">' + (showTr ? t('hideTrans') : t('showTrans')) + '</button>' +
       (lang !== 'code' ? '<button class="btn sm ghost" id="mtAll">🌐 ' + t('translateAll') + '</button>' : '') + '</div>' +
       '<p class="hint">💡 ' + t('tapHint') + '</p>' +
       '<div class="reading card ' + (P.kind === 'dialogue' ? 'dlg' : 'psg') + '">' + reading + '</div>' +
-      ((P.vocab || []).length ? '<h2 class="sec-title">🔤 ' + t('tabVocab') + '</h2><div class="row wrap mb"><button class="btn sm yellow" id="addAll">⭐ ' + t('addNote') + ' (' + P.vocab.length + ')</button></div><div class="vocab-grid">' + P.vocab.map(vocabCard).join('') + '</div>' : '') +
-      ((P.grammar || []).length ? '<h2 class="sec-title">🧩 ' + t('tabGrammar') + '</h2>' + P.grammar.map((g, i) => '<div class="card grammar"><div class="g-num">' + (i + 1) + '</div><h3>' + esc(HA.tr(g.t)) + '</h3>' + (g.f ? '<div class="formula zh">' + esc(HA.zh.disp(g.f)) + '</div>' : '') + '<p>' + esc(HA.tr(g.ex)) + '</p><ul class="examples">' + g.examples.map((x) => '<li' + F.lineAttrs(x, P) + '><button class="icon-btn" data-speak="' + esc(x.zh) + '">🔊</button><div><div class="zh lg">' + F.render(x.zh, P) + '</div><div class="muted">' + esc(HA.tr(x)) + '</div></div></li>').join('') + '</ul></div>').join('') : '') +
-      ((P.questions || []).length ? '<h2 class="sec-title">❓ ' + t('tabQuestions') + '</h2><div class="card"><p class="muted">' + t('readFirst') + '</p><ol class="quiz">' + P.questions.map((q, i) => '<li class="q" data-i="' + i + '"' + F.lineAttrs({ zh: q.q, vi: q.qvi, en: '' }, P) + '><div class="q-text ' + (isZh ? 'zh' : '') + '">' + F.render(q.q, P) + '</div>' + (S.settings.lang === 'vi' && q.qvi ? '<div class="muted small">' + esc(q.qvi) + '</div>' : '') +
-        '<div class="opts">' + (q.type === 'tf' ? '<label class="opt"><input type="radio" name="q' + i + '" value="1"> ✔ ' + t('trueW') + '</label><label class="opt"><input type="radio" name="q' + i + '" value="0"> ✘ ' + t('falseW') + '</label>'
-          : q.o.map((o, k) => '<label class="opt"><input type="radio" name="q' + i + '" value="' + k + '"> <b>' + 'ABCD'[k] + '.</b> <span class="' + (isZh ? 'zh' : '') + '">' + F.render(o, P) + '</span></label>').join('')) + '</div></li>').join('') +
-        '</ol><div id="quizRes"></div><button class="btn green" id="submitQuiz">' + t('submit') + '</button></div>' : '') +
+      (showTr && P.trSource === 'ai' ? '<p class="tiny muted">🤖 ' + t('aiTranslationNote') + '</p>' : '') +
+      sec.map((x) => '<h2 class="sec-title" id="' + x.id + '">' + x.icon + ' ' + x.title + '</h2>' + x.html).join('') +
+      (P.quote && P.quote.zh ? quoteHTML(P.quote, P) : '') +
       '<h2 class="sec-title" id="comments">💬 ' + t('comments') + '</h2><div class="card"><div id="comList"><div class="loading">' + t('loading') + '</div></div>' +
       '<form id="comForm" class="row com-form"><input class="input" id="comText" maxlength="1000" placeholder="' + t('writeComment') + '"><button class="btn blue sm">' + t('send') + '</button></form><p class="tiny muted">' + t('commentRule') + ' <a href="#/legal/community">' + t('navCommunityRules') + '</a></p></div>';
     const loadComments = async () => {
@@ -284,6 +293,30 @@
       const wr = e.target.closest('[data-write]'); if (wr) HA.games.writeModal(wr.dataset.write);
       const dc = e.target.closest('[data-delcom]'); if (dc && (await HA.ui.confirm(t('confirmDelete')))) { await HA.api.deleteComment(dc.dataset.delcom); loadComments(); }
       const rc = e.target.closest('[data-reportcom]'); if (rc) HA.reportModal('content', 'comment:' + rc.dataset.reportcom);
+      const gt = e.target.closest('[data-goto]'); if (gt) { const el = document.getElementById(gt.dataset.goto); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); }
+      const cf = e.target.closest('[data-check-fill]');
+      if (cf) {
+        const norm = (x) => HA.zh.toSimp(String(x || '')).replace(/[\s、，,／/。]/g, '');
+        $$('.fill-item', cf.closest('.exercise')).forEach((li) => {
+          const want = (li.dataset.ans || '').split(/[、，,]/).map(norm).filter(Boolean);
+          const got = $$('.fill-in', li).map((inp) => norm(inp.value));
+          const ok = want.length > 0 && ((got.length === want.length && got.every((g, k) => g === want[k])) || norm(got.join('')) === norm(want.join('')));
+          $('.fill-res', li).textContent = ok ? '✅' : '❌ ' + HA.zh.disp(li.dataset.ans);
+          li.classList.toggle('ok', ok);
+        });
+      }
+      const tile = e.target.closest('.order-item .tile');
+      if (tile) {
+        const li = tile.closest('.order-item'); const line = $('.answer-line', li);
+        if (tile.parentElement === line) $('.bank', li).appendChild(tile); else line.appendChild(tile);
+        const built = $$('.tile', line).map((x) => x.textContent).join('');
+        const want = HA.zh.disp(li.dataset.ans || '').replace(/[，。！？、\s]/g, '');
+        const done = $$('.bank .tile', li).length === 0;
+        const ok = done && HA.zh.toSimp(built) === HA.zh.toSimp(want);
+        line.classList.toggle('good', ok);
+        line.classList.toggle('bad', done && !ok);
+        if (done) HA.games.beep(ok);
+      }
       const id = e.target.id;
       if (id === 'playAll') F.playAll(P, $('.reading'));
       if (id === 'stopAll') HA.zh.stop();
@@ -306,12 +339,77 @@
           const correct = q.type === 'tf' ? (q.a ? '1' : '0') : String(q.a);
           $$('.opt', li).forEach((o) => { const v = $('input', o).value; o.classList.toggle('right', v === correct); o.classList.toggle('wrong', !!(sel && sel.value === v && v !== correct)); });
           if (sel && sel.value === correct) ok++;
+          const why = $('.why', li); if (why) why.hidden = false;
         });
         const score = Math.round((ok / P.questions.length) * 100);
         $('#quizRes').innerHTML = '<div class="result ' + (score >= 60 ? 'good' : 'bad') + '">' + t('score') + ': <b>' + ok + '/' + P.questions.length + '</b> (' + score + '%)</div>';
         S.data.lessons[P.id] = Object.assign(S.data.lessons[P.id] || {}, { quiz: score }); HA.saveData();
       }
     };
+  }
+  /* ---------- Official lesson sections ---------- */
+  function questionsHTML(P, isZh) {
+    let lastCat = null;
+    return '<div class="card"><p class="muted">' + t('readFirst') + '</p><ol class="quiz">' + P.questions.map((q, i) => {
+      const head = q.cat && q.cat !== lastCat ? '<li class="q-cat">' + esc(q.cat) + '</li>' : '';
+      lastCat = q.cat;
+      return head + '<li class="q" data-i="' + i + '" value="' + (i + 1) + '"' + F.lineAttrs({ zh: q.q, vi: q.qvi || '', en: '' }, P) + '><div class="q-text ' + (isZh ? 'zh' : '') + '">' + F.render(q.q, P) + '</div>' + (S.settings.lang === 'vi' && q.qvi ? '<div class="muted small">' + esc(q.qvi) + '</div>' : '') +
+        '<div class="opts">' + (q.type === 'tf' ? '<label class="opt"><input type="radio" name="q' + i + '" value="1"> ✔ ' + t('trueW') + '</label><label class="opt"><input type="radio" name="q' + i + '" value="0"> ✘ ' + t('falseW') + '</label>'
+          : q.o.map((o, k) => '<label class="opt"><input type="radio" name="q' + i + '" value="' + k + '"> <b>' + 'ABCDEFGH'[k] + '.</b> <span class="' + (isZh ? 'zh' : '') + '">' + F.render(o, P) + '</span></label>').join('')) + '</div>' +
+        (q.why ? '<div class="why" hidden>💡 ' + esc(q.why) + '</div>' : '') + '</li>';
+    }).join('') + '</ol><div id="quizRes"></div><button class="btn green" id="submitQuiz">' + t('submit') + '</button></div>';
+  }
+  function vocabTable(P) {
+    return '<div class="vtable">' + P.vocab.map((v) => {
+      const inNb = HA.nb.has(v.w);
+      return '<div class="vrow"><div class="vr-word"><span class="zh vr-zh">' + HA.R(v.w, { ruby: false }) + '</span><span class="vr-py">' + esc(HA.zh.phon(v.p || HA.zh.pinyinOf(v.w))) + '</span>' +
+        '<span class="vr-btns"><button class="icon-btn" data-speak="' + esc(v.w) + '">🔊</button><button class="icon-btn star ' + (inNb ? 'on' : '') + '" data-note="' + esc(v.w) + '">' + (inNb ? '★' : '☆') + '</button><button class="icon-btn" data-write="' + esc(v.w) + '">✍️</button></span></div>' +
+        '<div class="vr-body"><b>' + esc(v.vi || '') + '</b>' + (v.note ? '<div class="small muted">' + esc(v.note) + '</div>' : '') +
+        (v.ex && v.ex[0] ? '<div class="vr-ex" data-src="' + esc(v.ex[0]) + '" data-tr="' + esc(v.ex[1] || '') + '" data-lang="zh"><span class="zh">' + HA.R(v.ex[0]) + '</span><span class="small">' + esc(v.ex[1] || '') + '</span></div>' : '') + '</div></div>';
+    }).join('') + '</div>';
+  }
+  function practiceList(items, P, kind) {
+    return '<ol class="prac">' + items.map((x) => '<li><div class="pr-q ' + (HA.zh.hasHan(x.q) ? 'zh' : '') + '"' + (HA.zh.hasHan(x.q) ? F.lineAttrs({ zh: x.q, vi: '', en: '' }, P) : '') + '>' + (HA.zh.hasHan(x.q) ? F.render(x.q, P) : esc(x.q)) + '</div>' +
+      (x.a ? '<details class="pr-a"><summary>' + t('showAnswer') + '</summary><div class="' + (HA.zh.hasHan(x.a) ? 'zh' : '') + '"' + (HA.zh.hasHan(x.a) ? F.lineAttrs({ zh: x.a, vi: '', en: '' }, P) : '') + '>' + (HA.zh.hasHan(x.a) ? F.render(x.a, P) : esc(x.a)) + '</div>' + (HA.zh.hasHan(x.a) ? '<button class="icon-btn" data-speak="' + esc(x.a) + '">🔊</button>' : '') + '</details>' : '') + '</li>').join('') + '</ol>';
+  }
+  function grammarHTML(g, i, P) {
+    if (g.t && g.examples) {  // community-post format
+      return '<div class="card grammar"><div class="g-num">' + (i + 1) + '</div><h3>' + esc(HA.tr(g.t)) + '</h3>' + (g.f ? '<div class="formula zh">' + esc(HA.zh.disp(g.f)) + '</div>' : '') + '<p>' + esc(HA.tr(g.ex)) + '</p><ul class="examples">' + g.examples.map((x) => '<li' + F.lineAttrs(x, P) + '><button class="icon-btn" data-speak="' + esc(x.zh) + '">🔊</button><div><div class="zh lg">' + F.render(x.zh, P) + '</div><div class="muted">' + esc(HA.tr(x)) + '</div></div></li>').join('') + '</ul></div>';
+    }
+    return '<div class="card grammar"><div class="g-num">' + (i + 1) + '</div>' +
+      '<div class="formula zh">' + esc(HA.zh.disp(g.title)) + (g.titleVi ? ' <span class="muted small">(' + esc(g.titleVi) + ')</span>' : '') + '</div>' +
+      (g.pinyin ? '<div class="g-py">' + esc(g.pinyin) + '</div>' : '') +
+      (g.meaning ? '<p><b>' + t('meaning') + ':</b> ' + esc(g.meaning) + '</p>' : '') +
+      (g.usage ? '<p><b>' + t('usageLabel') + ':</b> ' + esc(g.usage) + '</p>' : '') +
+      (g.note ? '<p class="g-note">⚠️ ' + esc(g.note) + '</p>' : '') +
+      (g.example && g.example[0] ? '<div class="g-ex"' + F.lineAttrs({ zh: g.example[0], vi: g.example[1] || '', en: '' }, P) + '><small class="muted">' + t('exampleInText') + '</small><div class="zh lg">' + F.render(g.example[0], P) + ' <button class="icon-btn" data-speak="' + esc(g.example[0]) + '">🔊</button></div><div class="muted">' + esc(g.example[1] || '') + '</div></div>' : '') +
+      ((g.practice || []).length ? '<details class="adv"><summary>✏️ ' + t('grammarPractice') + ' (' + g.practice.length + ')</summary>' + practiceList(g.practice, P) + '</details>' : '') + '</div>';
+  }
+  function exerciseHTML(x, i, P) {
+    let body = '';
+    if (x.kind === 'fill') {
+      body = (x.bank.length ? '<div class="bank fill-bank">' + x.bank.map((w) => '<span class="tile zh" data-speak="' + esc(w) + '">' + esc(HA.zh.disp(w)) + '</span>').join('') + '</div>' : '') +
+        '<ol class="prac">' + x.items.map((it, k) => '<li class="fill-item" data-ans="' + esc(it.a) + '"><div class="zh">' + F.render(it.q.replace(/＿[\s＿]*/g, '＿＿'), P).replace(/＿＿/g, '<input class="fill-in zh" size="4" autocomplete="off">') + '</div><span class="fill-res"></span></li>').join('') + '</ol>' +
+        '<div class="row"><button class="btn sm green" data-check-fill>' + t('check') + '</button><details class="pr-a inline"><summary>' + t('showAnswer') + '</summary><span class="zh">' + x.items.map((it, k) => (k + 1) + '. ' + esc(HA.zh.disp(it.a))).join(' ／ ') + '</span></details></div>';
+    } else if (x.kind === 'order') {
+      body = '<ol class="prac">' + x.items.map((it) => {
+        const parts = it.q.split(/[／\/]/).map((s) => s.trim()).filter(Boolean);
+        return '<li class="order-item" data-ans="' + esc(it.a) + '"><div class="bank">' + HA.ui.shuffle(parts).map((w) => '<button class="tile zh">' + esc(HA.zh.disp(w)) + '</button>').join('') + '</div><div class="answer-line small-line"></div>' +
+          '<details class="pr-a"><summary>' + t('showAnswer') + '</summary><div class="zh"' + F.lineAttrs({ zh: it.a, vi: '', en: '' }, P) + '>' + F.render(it.a, P) + '</div></details></li>';
+      }).join('') + '</ol>';
+    } else if (x.kind === 'write') {
+      body = '<div class="card soft"><b class="zh">' + F.render(x.prompt || '', P) + '</b>' + (x.hint ? '<div class="small muted">' + t('hint') + ': <span class="zh">' + esc(HA.zh.disp(x.hint)) + '</span></div>' : '') +
+        '<textarea class="input zh" rows="4" placeholder="' + t('writeHere') + '"></textarea>' +
+        (x.sample ? '<details class="pr-a"><summary>' + t('sampleAnswer') + '</summary><div class="zh"' + F.lineAttrs({ zh: x.sample, vi: '', en: '' }, P) + '>' + F.render(x.sample, P) + '</div></details>' : '') + '</div>';
+    } else {
+      body = practiceList(x.items, P);
+    }
+    return '<div class="card exercise"><h3>' + (i + 1) + '. <span class="zh">' + esc(HA.zh.disp(x.title)) + '</span></h3>' + body + '</div>';
+  }
+  function quoteHTML(q, P) {
+    return '<div class="quote-card"' + F.lineAttrs({ zh: q.zh, vi: q.vi, en: '' }, P) + '>' + (q.label ? '<small>' + esc(HA.zh.disp(q.label)) + '</small>' : '') +
+      '<div class="qc-zh zh">' + F.render(q.zh, P, { ruby: false }) + '</div>' + (q.py ? '<div class="qc-py">' + esc(q.py) + '</div>' : '') + '<div class="qc-vi">' + esc(q.vi) + '</div>' +
+      '<button class="btn sm white" data-speak="' + esc(q.zh) + '">🔊</button></div>';
   }
   function vocabCard(v, i) {
     const inNb = HA.nb.has(v.w);

@@ -356,6 +356,16 @@
     yourRights: ['Quyền của bạn', 'Your rights', '你的权利', '你的權利', 'あなたの権利'],
     yourRightsD: ['Bạn có quyền xem, tải về, sửa, xoá dữ liệu cá nhân và rút lại sự đồng ý bất kỳ lúc nào.', 'You can view, download, correct and delete your data and withdraw consent at any time.', '你可随时查看、下载、更正、删除个人数据并撤回同意。', '你可隨時查看、下載、更正、刪除個人資料並撤回同意。', 'いつでもデータの閲覧・取得・訂正・削除・同意撤回ができます。'],
     exportData: ['Tải dữ liệu của tôi', 'Download my data', '下载我的数据', '下載我的資料', 'データをダウンロード'],
+    exercises: ['Bài tập bổ sung', 'Extra exercises', '补充练习', '補充練習', '追加練習'],
+    showAnswer: ['Xem đáp án', 'Show answer', '查看答案', '查看答案', '答えを見る'],
+    sampleAnswer: ['Xem bài mẫu', 'Sample answer', '参考答案', '參考答案', '模範解答'],
+    writeHere: ['Viết bài của bạn ở đây…', 'Write your answer here…', '在这里写…', '在這裡寫…', 'ここに書く…'],
+    aiTranslationNote: ['Bản dịch tiếng Việt của bài này do trợ lý AI soạn để tham khảo, chưa qua biên tập của tác giả.', 'This translation was drafted by an AI assistant for reference and has not been reviewed by the author.', '本课译文由 AI 助手草拟，仅供参考，尚未经作者审校。', '本課譯文由 AI 助手草擬，僅供參考，尚未經作者審校。', 'この訳はAIが作成した参考訳で、著者の校正前です。'],
+    usageLabel: ['Cách dùng', 'Usage', '用法', '用法', '用法'],
+    exampleInText: ['Ví dụ trong bài', 'Example from the text', '课文例句', '課文例句', '本文の例'],
+    grammarPractice: ['Bài tập dịch Việt → Trung', 'Translation practice', '翻译练习', '翻譯練習', '翻訳練習'],
+    readingPath: ['Bài đọc theo cấp độ', 'Readings by level', '分级阅读', '分級閱讀', 'レベル別読解'],
+    readingPathD: ['Bài đọc kèm câu hỏi, từ vựng, ngữ pháp và bài tập do Hanry Academy biên soạn.', 'Readings with questions, vocabulary, grammar and exercises by Hanry Academy.', 'Hanry Academy 编写的课文，附问题、生词、语法和练习。', 'Hanry Academy 編寫的課文，附問題、生詞、語法和練習。', 'Hanry Academy による問題・単語・文法・練習付きの読解。'],
     other: ['Khác', 'Other', '其他', '其他', 'その他']
   };
   HA.t = function (key) {

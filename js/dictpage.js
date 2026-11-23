@@ -106,8 +106,8 @@
     const dispW = HA.state.settings.script === 't' ? trad : w;
     const chars = [...w].filter(Z.isHan);
     const sentences = [];
-    HA.lessons.forEach((L) => L.text.forEach((x) => { if (x.zh.includes(w) && sentences.length < 6) sentences.push({ x, L }); }));
-    HA.lessons.forEach((L) => L.vocab.forEach((v) => { if (v.ex && v.ex[0].includes(w) && sentences.length < 8 && !sentences.find((s) => s.x.zh === v.ex[0])) sentences.push({ x: { zh: v.ex[0], vi: v.ex[1] }, L }); }));
+    (HA.official || []).concat(HA.config.showSamplePosts ? HA.lessons : []).forEach((L) => L.text.forEach((x) => { if (HA.zh.toSimp(x.zh).includes(HA.zh.toSimp(w)) && sentences.length < 6) sentences.push({ x, L }); }));
+    (HA.official || []).concat(HA.config.showSamplePosts ? HA.lessons : []).forEach((L) => L.vocab.forEach((v) => { if (v.ex && HA.zh.toSimp(v.ex[0]).includes(HA.zh.toSimp(w)) && sentences.length < 8 && !sentences.find((s) => s.x.zh === v.ex[0])) sentences.push({ x: { zh: v.ex[0], vi: v.ex[1] }, L }); }));
     const compounds = [];
     if ([...w].length <= 2) for (const e of Z.dict.entries) { if (compounds.length >= 24) break; if (e.s !== w && e.s.startsWith(w) && e.s.length <= w.length + 2 && !/^[A-Z]/.test(e.p)) compounds.push(e); }
     const inNb = HA.nb.has(w);

@@ -89,11 +89,12 @@
       [...w].forEach((c) => { const r = Z.lookup(c); const e = r.cur || r.list[0]; if (e) means.push('<li><b class="zh">' + ui.esc(HA.zh.disp(c)) + '</b> ' + ui.esc(ui.meaningOf(e)).slice(0, 100) + '</li>'); });
     }
     h += '<ul class="wc-mean">' + means.join('') + '</ul>';
-    if (cur && cur.ex) h += '<div class="wc-sec"><b>' + HA.t('usage') + '</b><div class="zh">' + ui.esc(HA.zh.disp(cur.ex[0])) + '</div><div class="muted small">' + ui.esc(Z.pinyinOf(cur.ex[0])) + '</div>' + (lang === 'vi' && cur.ex[1] ? '<div class="small">' + ui.esc(cur.ex[1]) + '</div>' : '') + '</div>';
-    if (cur && (cur.syn.length || cur.ant.length)) {
+    if (cur && cur.note) h += '<div class="wc-sec small">📌 ' + ui.esc(cur.note) + '</div>';
+    if (cur && cur.ex && cur.ex[0]) h += '<div class="wc-sec"><b>' + HA.t('usage') + '</b><div class="zh">' + ui.esc(HA.zh.disp(cur.ex[0])) + '</div><div class="muted small">' + ui.esc(Z.pinyinOf(cur.ex[0])) + '</div>' + (lang === 'vi' && cur.ex[1] ? '<div class="small">' + ui.esc(cur.ex[1]) + '</div>' : '') + '</div>';
+    if (cur && ((cur.syn || []).length || (cur.ant || []).length)) {
       h += '<div class="wc-sec chips">';
-      if (cur.syn.length) h += '<b>' + HA.t('synonyms') + ':</b> ' + cur.syn.map((s) => '<a class="chip zh" data-act="dict" data-w="' + ui.esc(s) + '">' + ui.esc(HA.zh.disp(s)) + '</a>').join('');
-      if (cur.ant.length) h += ' <b>' + HA.t('antonyms') + ':</b> ' + cur.ant.map((s) => '<a class="chip red zh" data-act="dict" data-w="' + ui.esc(s) + '">' + ui.esc(HA.zh.disp(s)) + '</a>').join('');
+      if ((cur.syn || []).length) h += '<b>' + HA.t('synonyms') + ':</b> ' + cur.syn.map((s) => '<a class="chip zh" data-act="dict" data-w="' + ui.esc(s) + '">' + ui.esc(HA.zh.disp(s)) + '</a>').join('');
+      if ((cur.ant || []).length) h += ' <b>' + HA.t('antonyms') + ':</b> ' + cur.ant.map((s) => '<a class="chip red zh" data-act="dict" data-w="' + ui.esc(s) + '">' + ui.esc(HA.zh.disp(s)) + '</a>').join('');
       h += '</div>';
     }
     const inNb = HA.nb.has(w);

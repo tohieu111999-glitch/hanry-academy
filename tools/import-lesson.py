@@ -48,6 +48,7 @@ def clean_cell(s):
 
 
 def slugify(s):
+    s = s.replace('đ', 'd').replace('Đ', 'D')
     s = unicodedata.normalize('NFD', s).encode('ascii', 'ignore').decode()
     return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-') or 'bai'
 
@@ -81,7 +82,8 @@ def extract(path):
                     continue
                 gap = (top - prev_bottom) if prev_bottom is not None else 99
                 prev_bottom = bottom
-                lines.append({'t': text, 'x': x0, 'gap': gap, 'h': bottom - top, 'page': pno, 'top': top})
+                lines.append({'t': text, 'x': x0, 'gap': gap, 'h': bottom - top, 'page': pno, 'top': top,
+                              'chars': [(c['text'], c['x0'], c['x1']) for c in ln.get('chars', [])]})
             lines.append({'t': '', 'x': 0, 'gap': 99, 'h': 0, 'page': pno, 'top': 9999, 'pagebreak': True})
     return lines, tables
 
@@ -122,7 +124,7 @@ def parse_questions(qlines):
         if m and '閱讀測驗' not in t:
             cat = m.group(1)
             continue
-        if t.startswith('【Câu hỏi】'):
+        if t.startswith('【Câu hỏi】') or re.match(r'^Câu hỏi\b', t):
             continue
         m = re.match(r'^(\d+)[.、]\s*(.*)$', t)
         if m and not re.match(r'^[A-D][.、]', t):
@@ -189,7 +191,12 @@ def vocab_tables(tables):
             out.append({'w': r[0].replace(' ', ''), 'p': r[1], 'vi': r[2], 'note': r[3], 'ex': [r[4], r[5]]})
     for v in out:
         v['ex'][0] = clean_cell(v['ex'][0])
-    return out
+    seen, uniq = set(), []
+    for v in out:            # the same word listed twice in a table: keep the first entry
+        if v['w'] in seen:
+            continue
+        seen.add(v['w']); uniq.append(v)
+    return uniq
 
 
 def numbered(lines):
@@ -210,13 +217,15 @@ def parse_grammar(glines):
         t = l['t']
         if not t or 'Ngữ Pháp' in t:
             continue
-        if re.match('^[' + CN_NUM + r']+[、：:]', t):
-            cur = {'lines': [], 'head': re.sub('^[' + CN_NUM + r']+[、：:]\s*', '', t)}
+        if re.match('^[' + CN_NUM + r']+[、：:]', t) or re.match(r'^\d+[：:]', t):
+            cur = {'lines': [], 'head': re.sub('^(?:[' + CN_NUM + r']+[、：:]|\d+[：:])\s*', '', t)}
             blocks.append(cur)
+        elif cur and '（' in cur['head'] and '）' not in cur['head'] and not cur['lines']:
+            cur['head'] = join(cur['head'], t)   # title wrapped onto the next line
         elif cur:
             cur['lines'].append(t)
     out = []
-    labels = ['Pinyin:', 'Nghĩa:', 'Cách dùng chi tiết:', 'Cách dùng:', 'Lưu ý:', 'Ví dụ trong bài:', 'Dịch:', 'Bài tập dịch Việt → Trung:', 'Bài tập', 'Đáp án mẫu:']
+    labels = ['Pinyin:', 'Nghĩa:', 'Cách dùng chi tiết:', 'Cách dùng:', 'Lưu ý:', 'Ví dụ trong bài:', 'Ví dụ:', 'Dịch:', 'Bài tập dịch Việt → Trung:', 'Bài tập', 'Đáp án mẫu:']
     for b in blocks:
         m = re.match(r'^(.*?)[（(](.*)[)）]\s*$', b['head'])
         g = {'title': m.group(1).strip() if m else b['head'], 'titleVi': m.group(2).strip() if m else '', 'pinyin': '', 'meaning': '', 'usage': '', 'note': '', 'example': ['', ''], 'practice': []}
@@ -251,7 +260,7 @@ def parse_grammar(glines):
         g['meaning'] = segs.get('Nghĩa:', '')
         g['usage'] = segs.get('Cách dùng chi tiết:', segs.get('Cách dùng:', ''))
         g['note'] = segs.get('Lưu ý:', '')
-        g['example'] = [segs.get('Ví dụ trong bài:', ''), segs.get('Dịch:', '')]
+        g['example'] = [segs.get('Ví dụ trong bài:', segs.get('Ví dụ:', '')), segs.get('Dịch:', '')]
         qs, ans = numbered(prac), numbered(answers)
         g['practice'] = [{'q': q, 'a': ans[i] if i < len(ans) else ''} for i, q in enumerate(qs)]
         out.append(g)
@@ -290,9 +299,13 @@ def parse_exercises(elines):
         rest = []
         for t in s['lines']:
             if t.startswith('Đáp án:'):
-                inline = t[len('Đáp án:'):]
+                inline = t[len('Đáp án:'):].strip()
                 ans = [re.sub(r'^\d+[.、]\s*', '', x.strip()).strip() for x in re.split(r'[／/]', inline) if x.strip()]
                 mode = 'done'; continue
+            if mode == 'done' and (han(t) or '／' in t) and not re.match(r'^[A-C][12]\s*[-–]', t):
+                inline = join(inline, t)            # inline answers wrapped onto the next line
+                ans = [re.sub(r'^\d+[.、]\s*', '', x.strip()).strip() for x in re.split(r'[／/]', inline) if x.strip()]
+                continue
             if t.startswith('Đáp án mẫu:'):
                 mode = 'ans'; continue
             if t.startswith('Đáp án tham khảo:'):
@@ -311,6 +324,8 @@ def parse_exercises(elines):
                 ans.append(t)
             elif mode == 'sample':
                 sample.append(t)
+            elif mode == 'done' and re.match(r'^\d+[.、]', t):   # inline answers wrapped to the next line
+                ans += [re.sub(r'^\d+[.、]\s*', '', x.strip()).strip() for x in re.split(r'[／/]', t) if x.strip()]
             elif mode == 'done':
                 rest.append(t)
         if mode == 'ans':
@@ -334,26 +349,66 @@ def parse_exercises(elines):
 VI_CHARS = re.compile(r'[ăâđêôơưạảãẹẻẽịỉĩọỏõụủũỳỷỹỵấầẩẫậắằẳẵặếềểễệốồổỗộớờởỡợứừửữự]', re.I)
 
 
+def chars_to_text(chars):
+    out, prev = '', None
+    for ch, x0, x1 in chars:
+        if prev is not None and x0 - prev > 1.5 and not (han(ch) and han(out[-1:])):
+            out += ' '
+        out += ch
+        prev = x1
+    return out.strip()
+
+
 def parse_quote(qlines):
     label = re.sub(r'\s+', ' ', qlines[0]['t']).strip()
+    body = [l for l in qlines[1:] if l['t']]
+    hanc = re.compile(r'[㐀-鿿，。！？、；：「」…]')
+
+    def vi_start(l):
+        cs = l.get('chars') or []
+        for k, (ch, x0, x1) in enumerate(cs):
+            if VI_CHARS.search(ch):
+                m = k
+                while m > 0 and cs[m - 1][0].strip() and cs[m][1] - cs[m - 1][2] < 1.5:
+                    m -= 1
+                return cs[m][1], cs
+        return None, cs
+    # Column layout (Chinese | pinyin | Vietnamese side by side): a line holds pinyin on the left, Vietnamese on the right
+    columnar = False
+    for l in body:
+        st, cs = vi_start(l)
+        if st is not None and any(re.match(r'[A-Za-zÀ-ỹ]', c) and x0 < st - 20 for c, x0, x1 in cs):
+            columnar = True
+    if columnar:
+        vi_x = min([x0 for l in body for ch, x0, x1 in l.get('chars', []) if VI_CHARS.search(ch)] or [9999])
+        # first Vietnamese column start = left edge of the word holding the first Vietnamese letter
+        starts = []
+        for l in body:
+            cs = l.get('chars', [])
+            for k, (ch, x0, x1) in enumerate(cs):
+                if VI_CHARS.search(ch):
+                    m = k
+                    while m > 0 and cs[m - 1][0].strip() and cs[m][1] - cs[m - 1][2] < 1.5:
+                        m -= 1
+                    starts.append(cs[m][1]); break
+        col = min(starts) - 2 if starts else vi_x
+        zh, py, vi = [], [], []
+        for l in body:
+            cs = l.get('chars') or [(c, l['x'], l['x']) for c in l['t']]
+            zh.append(''.join(c for c, x0, x1 in cs if hanc.match(c)))
+            py.append(chars_to_text([c for c in cs if not hanc.match(c[0]) and c[1] < col]))
+            vi.append(chars_to_text([c for c in cs if not hanc.match(c[0]) and c[1] >= col]))
+        j_ = lambda xs: re.sub(r'\s+', ' ', ' '.join(x for x in xs if x)).strip()
+        return {'label': label, 'zh': ''.join(zh), 'py': j_(py), 'vi': j_(vi)}
     zh, py, vi = [], [], []
-    for l in qlines[1:]:
+    for l in body:
         t = l['t']
-        hz = ''.join(re.findall(r'[\u3400-\u9fff，。！？、；：「」…]+', t))
-        if hz:
-            zh.append(hz)
-        latin = re.sub(r'[\u3400-\u9fff，。！？、；：「」…]+', ' ', t).split()
-        if not latin:
-            continue
-        if not hz and l['x'] > 300:      # right-column continuation (Vietnamese)
-            vi.append(' '.join(latin)); continue
-        k = next((i for i, w in enumerate(latin) if VI_CHARS.search(w)), len(latin))
-        if py and k == 0 and not hz and not vi:
-            pass
-        if k > 0:
-            py.append(' '.join(latin[:k]))
-        if k < len(latin):
-            vi.append(' '.join(latin[k:]))
+        if han(t):
+            zh.append(''.join(re.findall(r'[㐀-鿿，。！？、；：「」…]+', t)))
+        elif not VI_CHARS.search(t) and not vi:
+            py.append(t)
+        else:
+            vi.append(t)
     return {'label': label, 'zh': ''.join(zh), 'py': ' '.join(py), 'vi': ' '.join(vi)}
 
 
@@ -387,20 +442,23 @@ def parse(path):
     lines, tables = extract(path)
     T = lambda pred, s=0: find(lines, pred, s)
     i_read = T(lambda t: t.startswith('【Bài đọc】'))
-    i_level = T(lambda t: t.startswith('Cấp độ'), i_read)
+    if i_read >= len(lines):      # some files start directly with the title (no 【Bài đọc】 line)
+        i_read = -1
+    i_level = T(lambda t: t.startswith('Cấp độ'), max(i_read, 0))
     head = [l['t'] for l in lines[i_read + 1:i_level] if l['t']]
     title_zh = next((h for h in head if han(h) and not h.startswith('（')), '')
-    title_vi = next((h.strip('（）() ') for h in head if h.startswith('（') or h.startswith('(')), '')
+    title_vi = next((h.strip('（）() ') for h in head if h.startswith('（') or h.startswith('(')), '') \
+        or next((h.strip('（）() ') for h in head if not han(h)), '')
     level_txt = lines[i_level]['t'] if i_level < len(lines) else ''
-    lm = re.search(r'([A-C][12])', level_txt)
+    lm = re.search(r'([A-C][12])', level_txt) or re.search(r'(?<![A-Za-z])([A-C][12])(?![0-9])', os.path.basename(path))
     level_code = lm.group(1) if lm else 'A1'
     exam = 'TOCFL' if 'TOCFL' in level_txt else ('HSK' if 'HSK' in level_txt else '')
-    i_q = T(lambda t: t.startswith('【Câu hỏi】'), i_level)
+    i_q = T(lambda t: t.startswith('【Câu hỏi】') or bool(re.match(r'^Câu hỏi\s', t)), i_level)
     reading = paragraphs(lines[i_level + 1:i_q])
     i_ans = T(lambda t: t.startswith('✅') or t.startswith('Đáp án') and 'mẫu' not in t, i_q)
     i_tr = T(lambda t: t.startswith('【Dịch bài đọc】'), i_q)
-    i_vocab = T(lambda t: 'Từ Vựng' in t and '【' in t, i_q)
-    i_gram = T(lambda t: 'Ngữ Pháp' in t and '【' in t, i_vocab)
+    i_vocab = T(lambda t: 'Từ Vựng' in t and ('【' in t or bool(re.match(r'^[IVX]+[.、]', t))), i_q)
+    i_gram = T(lambda t: 'Ngữ Pháp' in t and ('【' in t or bool(re.match(r'^[IVX]+[.、]', t))), i_vocab)
     i_ex = T(lambda t: 'Bài tập bổ sung' in t, i_gram)
     questions = parse_questions(lines[i_q:min(i_ans, i_tr, i_vocab)])
     answers = answer_table([tb for tb in tables])

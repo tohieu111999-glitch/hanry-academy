@@ -97,6 +97,9 @@ def paragraphs(lines, base_x=None):
         if l.get('pagebreak'):
             continue
         new = cur is None or l['gap'] > max(4, l['h'] * 0.45)
+        # a page break can cut a sentence in two: keep joining until the sentence really ends
+        if new and cur is not None and not re.search(r'[。！？!?」』”"：:…）)]\s*$', cur['t']):
+            new = False
         if new:
             cur = {'t': l['t'], 'indent': l['x'] > base_x + 15}
             paras.append(cur)

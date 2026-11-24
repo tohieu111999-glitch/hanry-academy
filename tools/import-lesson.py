@@ -77,7 +77,7 @@ def extract(path):
             raw.sort(key=lambda ln: (round(ln['top'] / 3), ln['x0']))
             for ln in raw:
                 x0, top, bottom = ln['x0'], ln['top'], ln['bottom']
-                text = ln['text'].strip()
+                text = re.sub(r'\ufffd[A-Za-z]?\s*', '', ln['text']).strip()   # drop broken glyphs from the PDF
                 if not text or re.fullmatch(r'\d{1,3}', text):
                     continue
                 gap = (top - prev_bottom) if prev_bottom is not None else 99

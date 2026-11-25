@@ -53,3 +53,4 @@ firestore.rules       luật phân quyền phía máy chủ
 - Hanzi Writer và dữ liệu Make Me a Hanzi: tải từ jsDelivr khi chạy.
 
 Nội dung bài học, giao diện và mã nguồn © Hanry Academy. Bảo lưu mọi quyền.
+Web: https://tohieu111999-glitch.github.io/hanry-academy/

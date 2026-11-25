@@ -52,9 +52,11 @@ HA.config = {
   // KHÔNG bảo mật — chỉ dùng để thử nghiệm). Xem hướng dẫn trong docs/HUONG-DAN-QUAN-TRI.md
   // ---------------------------------------------------------
   firebase: {
-    apiKey: '',
-    authDomain: '',
-    projectId: '',
-    appId: ''
+    apiKey: 'AIzaSyDct20BzCEwKx-q2XhnPVLGO57wJfO9N_k',
+    authDomain: 'hanry-academy.firebaseapp.com',
+    projectId: 'hanry-academy',
+    storageBucket: 'hanry-academy.firebasestorage.app',
+    messagingSenderId: '325705266814',
+    appId: '1:325705266814:web:c86ecf30c5f9b789fa8a2f'
   }
 };

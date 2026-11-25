@@ -1,0 +1,174 @@
+rules_version = '2';
+// Hanry Academy — Firestore Security Rules
+// Phân quyền được kiểm tra TRÊN MÁY CHỦ: người dùng không thể vượt qua dù sửa mã nguồn trình duyệt.
+// QUAN TRỌNG: danh sách email admin dưới đây phải trùng với HA.config.adminEmails trong js/config.js
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function email() { return request.auth.token.email.lower(); }
+    function verified() { return signedIn() && request.auth.token.email_verified == true; }
+    function isAdmin() { return verified() && email() in ['hanryacademy@gmail.com']; }
+    function userPath(uid) { return /databases/$(database)/documents/users/$(uid); }
+    function myRole() {
+      return isAdmin() ? 'admin'
+        : (exists(userPath(request.auth.uid)) ? get(userPath(request.auth.uid)).data.role : 'student');
+    }
+    function isTeacher() { return isAdmin() || (verified() && myRole() == 'teacher'); }
+    function str(v, max) { return v is string && v.size() <= max; }
+    function optStr(d, k, max) { return !(k in d) || d[k] == null || str(d[k], max); }
+
+    // ---------- Users ----------
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['email', 'name', 'role', 'created'])
+        && request.resource.data.role == 'student'
+        && request.resource.data.email == email()
+        && str(request.resource.data.name, 80);
+      allow update: if isAdmin() || (signedIn() && request.auth.uid == uid && (
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name']) && str(request.resource.data.name, 80))
+        || (
+          // Nâng cấp thành giáo viên: chỉ khi key hợp lệ, chưa dùng, và được đánh dấu dùng trong CÙNG một batch
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'teacherKey'])
+          && request.resource.data.role == 'teacher'
+          && exists(/databases/$(database)/documents/teacherKeys/$(request.resource.data.teacherKey))
+          && get(/databases/$(database)/documents/teacherKeys/$(request.resource.data.teacherKey)).data.usedBy == null
+          && getAfter(/databases/$(database)/documents/teacherKeys/$(request.resource.data.teacherKey)).data.usedBy == request.auth.uid
+        )
+      ));
+      allow delete: if signedIn() && (request.auth.uid == uid || isAdmin());
+    }
+
+    // ---------- Teacher keys (chỉ admin đọc/tạo; người dùng chỉ "đánh dấu đã dùng") ----------
+    match /teacherKeys/{key} {
+      allow read, create, delete: if isAdmin();
+      allow update: if isAdmin() || (verified()
+        && resource.data.usedBy == null
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['usedBy', 'usedEmail', 'usedAt'])
+        && request.resource.data.usedBy == request.auth.uid
+        && request.resource.data.usedEmail == email()
+        && getAfter(userPath(request.auth.uid)).data.role == 'teacher'
+        && getAfter(userPath(request.auth.uid)).data.teacherKey == key);
+    }
+
+    // ---------- Lessons (bài đăng của cộng đồng / giáo viên / admin) ----------
+    function isClassMember(classId) {
+      let c = get(/databases/$(database)/documents/classes/$(classId)).data;
+      return c.ownerUid == request.auth.uid || request.auth.uid in c.members;
+    }
+    function validLesson(d) {
+      return d.title.zh is string && d.title.zh.size() > 0 && d.title.zh.size() <= 120
+        && str(d.author, 80) && d.author.size() > 0
+        && d.sourceType in ['self', 'collected', 'cited']
+        && optStr(d, 'sourceRef', 300)
+        && d.visibility in ['public', 'class', 'private']
+        && d.level is int && d.level >= 0 && d.level <= 6
+        && optStr(d, 'subject', 20) && optStr(d, 'lang', 10)
+        && d.text is list && d.text.size() > 0 && d.text.size() <= 400
+        && (!('vocab' in d) || d.vocab.size() <= 80)
+        && (!('grammar' in d) || d.grammar.size() <= 20)
+        && (!('questions' in d) || d.questions.size() <= 30)
+        && (d.visibility != 'private' || isTeacher())
+        && (d.visibility != 'class' || (isTeacher()
+            && get(/databases/$(database)/documents/classes/$(d.classId)).data.ownerUid == request.auth.uid));
+    }
+    match /lessons/{id} {
+      allow read: if resource.data.visibility == 'public'
+        || isAdmin()
+        || (signedIn() && resource.data.ownerUid == request.auth.uid)
+        || (signedIn() && resource.data.visibility == 'class' && isClassMember(resource.data.classId));
+      allow create: if verified()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerEmail == email()
+        && request.resource.data.authorRole == myRole()
+        && validLesson(request.resource.data);
+      allow update: if signedIn()
+        && (resource.data.ownerUid == request.auth.uid || isAdmin())
+        && request.resource.data.ownerUid == resource.data.ownerUid
+        && request.resource.data.ownerEmail == resource.data.ownerEmail
+        && request.resource.data.authorRole == resource.data.authorRole
+        && validLesson(request.resource.data);
+      allow delete: if signedIn() && (resource.data.ownerUid == request.auth.uid || isAdmin());
+    }
+
+    // ---------- Classes ----------
+    match /classes/{id} {
+      allow read: if signedIn() && (resource.data.ownerUid == request.auth.uid || request.auth.uid in resource.data.members || isAdmin());
+      allow create: if isTeacher()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.members.size() == 0
+        && str(request.resource.data.name, 80) && str(request.resource.data.ownerName, 80)
+        && getAfter(/databases/$(database)/documents/classCodes/$(request.resource.data.code)).data.classId == id;
+      allow update: if signedIn() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['members'])
+        && request.resource.data.members.size() <= 500
+        && (
+          // tham gia lớp: chỉ được thêm chính mình
+          (request.resource.data.members.toSet().difference(resource.data.members.toSet()) == [request.auth.uid].toSet()
+            && resource.data.members.toSet().difference(request.resource.data.members.toSet()).size() == 0)
+          // rời lớp: chỉ được xoá chính mình
+          || (resource.data.members.toSet().difference(request.resource.data.members.toSet()) == [request.auth.uid].toSet()
+            && request.resource.data.members.toSet().difference(resource.data.members.toSet()).size() == 0)
+          // giáo viên chủ lớp có thể xoá thành viên
+          || (resource.data.ownerUid == request.auth.uid
+            && request.resource.data.members.toSet().difference(resource.data.members.toSet()).size() == 0)
+        );
+      allow delete: if signedIn() && (resource.data.ownerUid == request.auth.uid || isAdmin());
+    }
+    match /classCodes/{code} {
+      allow get: if signedIn();
+      allow list: if false;
+      allow create: if isTeacher() && request.resource.data.ownerUid == request.auth.uid && code.size() == 6;
+      allow delete: if signedIn() && (resource.data.ownerUid == request.auth.uid || isAdmin());
+    }
+
+    // ---------- Licensed books (chỉ Gmail được cấp quyền) ----------
+    function hasBookAccess() { return verified() && exists(/databases/$(database)/documents/bookAccess/$(email())); }
+    match /books/{id} {
+      allow read: if isAdmin() || hasBookAccess();
+      allow write: if isAdmin();
+    }
+    match /bookAccess/{em} {
+      allow get: if verified() && (email() == em || isAdmin());
+      allow list, write: if isAdmin();
+    }
+
+    // ---------- Likes (one doc per post+user) & comments ----------
+    match /likes/{likeId} {
+      allow read: if true;
+      allow create: if verified()
+        && request.resource.data.keys().hasOnly(['postId', 'uid', 'created'])
+        && request.resource.data.uid == request.auth.uid
+        && str(request.resource.data.postId, 120)
+        && likeId == request.resource.data.postId + '__' + request.auth.uid;
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+    match /comments/{cid} {
+      allow read: if true;
+      allow create: if verified()
+        && request.resource.data.keys().hasOnly(['postId', 'uid', 'name', 'text', 'created'])
+        && request.resource.data.uid == request.auth.uid
+        && str(request.resource.data.postId, 120)
+        && str(request.resource.data.name, 80)
+        && str(request.resource.data.text, 1000) && request.resource.data.text.size() > 0;
+      // the commenter, the post's author, or an admin can delete
+      allow delete: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin()
+        || (exists(/databases/$(database)/documents/lessons/$(resource.data.postId))
+            && get(/databases/$(database)/documents/lessons/$(resource.data.postId)).data.ownerUid == request.auth.uid));
+    }
+
+    // ---------- Reports & feedback ----------
+    match /reports/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['type', 'message', 'link', 'ref', 'page', 'email', 'uid', 'created'])
+        && request.resource.data.type in ['bug', 'idea', 'content', 'copyright', 'other']
+        && str(request.resource.data.message, 3000) && request.resource.data.message.size() > 0
+        && optStr(request.resource.data, 'link', 500) && optStr(request.resource.data, 'ref', 200)
+        && optStr(request.resource.data, 'page', 300) && optStr(request.resource.data, 'email', 120)
+        && (request.resource.data.uid == null || (signedIn() && request.resource.data.uid == request.auth.uid));
+      allow read, delete: if isAdmin();
+    }
+
+    // Mọi thứ khác: từ chối
+    match /{document=**} { allow read, write: if false; }
+  }
+}

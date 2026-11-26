@@ -152,7 +152,18 @@ Công cụ đọc theo mẫu PDF của anh, gồm:
 
 Nhập lại cùng một bài thì công cụ cập nhật bài cũ, không tạo bài trùng. Nếu PDF chưa có 【Dịch bài đọc】, bản dịch tiếng Việt do trợ lý AI soạn sẽ được giữ lại và hiện kèm ghi chú "chưa qua biên tập". Khi anh thêm 【Dịch bài đọc】 vào PDF rồi nhập lại, bản của anh sẽ thay thế bản AI.
 
-Bài đã nhập xuất hiện trên **bảng tin** (nhãn "Chính thức") và trong **Lộ trình học → Phần 2: Bài đọc theo cấp độ** (A1, A2, B1…).
+Bài đã nhập chỉ xuất hiện trên **bảng tin** (nhãn "Chính thức"), không đưa vào Lộ trình học (lộ trình dành cho giáo trình Hanry).
+
+### Mẫu "Luyện kỹ năng đọc TOCFL" (N.閱讀測驗：…)
+
+Sách *TOCFL練習閱讀技巧* và các bài lẻ cùng mẫu (*Mê Cung Số*, *Tổng Quan Về Nhạc Cụ*) dùng 2 công cụ khác:
+
+```bash
+python3 tools/import-reading-skill.py rs.json "TOCFL練習閱讀技巧.pdf" "Mê Cung Số Check.pdf" ...
+python3 tools/build-readings.py rs.json thu-muc-ban-dich/
+```
+
+Bước 1 đọc bài, câu hỏi (答：(X), 解析), bảng từ vựng, ngữ pháp, 課文翻譯. Bước 2 ghép bản dịch tiếng Việt và các chỗ sửa (mỗi bài một mục trong thư mục bản dịch) rồi ghi vào `data/posts/official.json` với mã `doc-tocfl-01`…`doc-tocfl-50`, `doc-me-cung-so`, `doc-tong-quan-nhac-cu`. Chạy lại thì bài cũ được cập nhật; audio đã tạo được giữ nếu nội dung bài không đổi.
 
 ---
 

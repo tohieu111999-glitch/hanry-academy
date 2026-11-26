@@ -213,6 +213,7 @@
     const simpText = tokens.map((t) => (t.han ? t.simp : t.text)).join('');
     let pp = [];
     try { pp = window.pinyinPro.pinyin(simpText, { type: 'array', toneSandhi: false }); } catch (e) { pp = []; }
+    fixDe(simpText, pp);
     const srcTrad = simpText !== text;
     const tradAll = ZH.cc(simpText);
     const tradChars = tradAll && [...tradAll].length === [...simpText].length ? [...tradAll] : null;
@@ -235,6 +236,31 @@
     if (cache.size > 3000) cache.clear();
     cache.set(text, tokens);
     return tokens;
+  };
+  /* 地 is "de" as the adverbial particle (慢慢地走, 相反地), "dì" in words about land/place (地方, 特地, 當地).
+     pinyin-pro always says dì, so fix it here; shared with the TTS (the voice reads particle 地 as 的). */
+  const DI_PREV = /(天|土|本|當|当|外|各|內|内|陸|陆|草|場|场|基|境|餘|余|特|原|就|遍|滿|满|落|在|田|心|的|園|园|領|领|墓|產|产|大|營|营|工|空|平|高|山|林|綠|绿|民|據|据|之|盆|耕|濕|湿|聖|圣|勝|胜|寶|宝|腹|席|死|此|該|该|某|兩|两|異|异|重|險|险|陣|阵|殖|處|处|塌)$/;
+  const DI_NEXT = /^(方|圖|图|址|點|点|區|区|球|鐵|铁|下|上|面|板|位|震|帶|带|步|產|产|理|獄|狱|毯|瓜|主|道|形|勢|势|質|质|域|價|价|名|盤|盘|標|标|層|层|段|基|雷|皮|攤|摊|心|平|窖|租|契|界)/;
+  const FUNC_PREV = /(的|在|到|這|这|那|個|个|了|是|有|一|各|此|滿|满|把|往|向|從|从|和|與|与|及|上|中|裡|里|全|整|當|当|本|多|少|些|種|种|麼|么|好|新|老|大|小|個)$/;
+  const DI_STRONG = /^(位|帶|带|圖|图|區|区|球|址|鐵|铁|震|獄|狱|毯|瓜|盤|盘|基)/;   // 地位, 灰色地帶, 地圖 … always dì
+  ZH.isParticleDe = function (prev, next, prev2, next2) {
+    if (!prev || !ZH.isHan(prev)) return false;
+    if (prev2 && prev2 === prev) return true;                 // 慢慢地, 一天天地
+    if (prev2 === '天') return false;                          // 驚天動地, 冰天雪地, 歡天喜地
+    if (next && DI_STRONG.test(next) && !(next === '基' && /[於于]/.test(next2 || ''))) return false;
+    if (DI_PREV.test(prev) && !(prev2 && prev2 === prev)) return false;
+    if (prev2 && prev2 === prev) return true;                 // 慢慢地, 好好地
+    if (next && DI_NEXT.test(next) && FUNC_PREV.test(prev)) return false;
+    return true;
+  };
+  function fixDe(simp, pp) {
+    const cs = [...simp];
+    cs.forEach((c, i) => { if (c === '地' && pp[i] && /^d[iì]$/.test(pp[i]) && ZH.isParticleDe(cs[i - 1], cs[i + 1], cs[i - 2], cs[i + 2])) pp[i] = 'de'; });
+  }
+  // Text sent to the voice: particle 地 → 的 (same sound "de"), so engines don't read it as dì
+  ZH.ttsText = function (text) {
+    const cs = [...String(text)];
+    return cs.map((c, i) => (c === '地' && ZH.isParticleDe(cs[i - 1], cs[i + 1], cs[i - 2], cs[i + 2]) ? '的' : c)).join('');
   };
   ZH.hasHanAll = (w) => [...w].every((c) => ZH.isHan(c));
   function splitCurated(cs) {
@@ -495,6 +521,7 @@
     const rate = opts.rate || st.rate || 0.9;
     const isZh = lang === 'zh' || lang === 'zht';
     const cast = opts.cast && opts.cast.lang === lang ? opts.cast : ZH.newCast(lang);
+    if (isZh) text = ZH.ttsText(text);
     const segs = isZh && String(text).length > 6 ? ZH.parseDialog(text) : [{ t: text, who: null }];
     const queue = [];
     segs.forEach((sg, k) => {

@@ -195,3 +195,28 @@ Nguồn: CVDICT (https://github.com/ph0ngp/CVDICT), CC-CEDICT (https://www.mdbg.
 ## 10. Liên hệ hiển thị trên web
 
 Sửa trong `js/config.js` → `contact`: email `hanryacademy@gmail.com`, điện thoại `(+84) 367 120 674` và `(+886) 938 482 468`.
+
+## 5B. Đề thi (`data/exams/exams.json`)
+
+Gửi đề thi (PDF/ảnh) cho Claude: Claude nhập đề, **giải lại từng câu để kiểm tra đáp án**, ghi rõ câu nào đã sửa so với bản gốc, và **ước tính cấp độ/band** (TOCFL Band A = A1–A2, Band B = B1–B2, Band C = C1–C2).
+
+Mỗi đề là một mục trong mảng JSON:
+
+```json
+{
+  "id": "tocfl-a-01",
+  "title": { "zh": "模擬試題一", "vi": "Đề luyện số 1" },
+  "exam": "TOCFL", "band": "A", "level": "A2",
+  "levelNote": "Lý do ước tính cấp độ (từ vựng, ngữ pháp, độ dài bài)",
+  "duration": 60,
+  "source": "Hanry Academy",
+  "checked": { "by": "ai", "fixes": [{ "q": 5, "from": "B", "to": "C", "why": "..." }] },
+  "sections": [
+    { "title": "閱讀", "kind": "reading", "instructions": "...", "passage": "đoạn văn (tuỳ chọn)",
+      "questions": [{ "q": "câu hỏi", "o": ["A", "B", "C", "D"], "a": 0, "why": "giải thích" }] },
+    { "title": "聽力", "kind": "listening", "audio": "link mp3 (tuỳ chọn)", "script": "lời thoại để máy đọc nếu không có audio",
+      "questions": [] }
+  ]
+}
+```
+`a` là vị trí đáp án đúng, đếm từ 0 (A = 0, B = 1, …).

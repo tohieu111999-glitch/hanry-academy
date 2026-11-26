@@ -598,3 +598,16 @@ details.pack { margin: 8px 0; border: 2px solid var(--line); border-radius: 14px
 details.pack > summary { cursor: pointer; padding: 6px 0; list-style: revert; }
 details.pack[open] > summary { margin-bottom: 8px; }
 .unit-item.locked { opacity: .75; }
+
+/* Vocabulary books */
+.vw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.vw { padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+.vw-top { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.vw-w { font-size: 1.6rem; font-weight: 700; }
+.vw-top .py { color: var(--blue); }
+.vw-act { margin-left: auto; display: flex; gap: 4px; }
+.vw-act .on { color: #f5a524; }
+.vw-ex { background: var(--bg); border-radius: 10px; padding: 8px 10px; }
+.vw-use { color: var(--muted); }
+.lb-level.sm { font-size: .7rem; padding: 2px 6px; }
+@media (max-width: 480px) { .vw-grid { grid-template-columns: 1fr; } }

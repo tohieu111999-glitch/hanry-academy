@@ -236,3 +236,15 @@ Mỗi đề là một mục trong mảng JSON:
 - Mỗi đề có trường `pack`: `hanry-band-a` (đề Hanry), `eduverse-trai-nghiem`, `eduverse-luyen-tap`, `eduverse-chuyen-sau`.
 - Trang **Quản trị → Khoá gói đề thi**: bấm để khoá/mở từng gói. Gói bị khoá chỉ mở cho Gmail trong danh sách cấp quyền (cùng danh sách với Sách bản quyền). Lưu ý: đây là khoá trên giao diện; dữ liệu đề vẫn nằm trong file tĩnh `data/exams/exams.json`.
 - Nhập đề: `tools/import-exam.py` (mẫu Hanry, cắt ảnh câu xem tranh) và `tools/import-exam-eduverse.py` (mẫu EduVerse), sau đó chạy `python3 tools/join-wrapped.py data/exams/exams.json` để ghép các dòng bị xuống dòng giữa câu.
+
+---
+
+## 5C. Từ vựng TOCFL Band A / B / C
+
+Mục **📚 Từ vựng** (`#/vocab`) lấy từ 3 cuốn *Từ Vựng TOCFL Band A/B/C* của Hanry Academy (1.200 + 3.801 + 5.002 từ). Khi cập nhật sách, nhập lại:
+
+```bash
+python3 tools/import-vocab-book.py A "Từ Vựng TOCFL Band A - Hanry Academy.pdf"   # → data/vocab/band-a.json
+```
+
+Công cụ đọc bảng (STT, Chữ Hán, Pinyin, Từ loại, Nghĩa, Ví dụ, Cách dùng) theo cấp độ và chủ đề, và báo lỗi nếu số từ của một chủ đề khác số ghi trong sách.

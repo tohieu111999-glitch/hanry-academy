@@ -177,6 +177,12 @@ service cloud.firestore {
       allow delete: if signedIn() && (resource.data.from == request.auth.uid || isAdmin());
     }
 
+    // ---------- Site settings (exam pack locks …): everyone reads, only the admin writes ----------
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     // ---------- Reports & feedback ----------
     match /reports/{id} {
       allow create: if request.resource.data.keys().hasOnly(['type', 'message', 'link', 'ref', 'page', 'email', 'uid', 'created'])

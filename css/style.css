@@ -592,3 +592,9 @@ body.no-ruby .reading .line { padding-top: 4px; padding-bottom: 4px; }
 .person { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
 .person:last-child { border-bottom: 0; }
 .person .pn { flex: 1; color: var(--text); min-width: 0; }
+
+/* exam packs */
+details.pack { margin: 8px 0; border: 2px solid var(--line); border-radius: 14px; padding: 8px 12px; background: var(--card); }
+details.pack > summary { cursor: pointer; padding: 6px 0; list-style: revert; }
+details.pack[open] > summary { margin-bottom: 8px; }
+.unit-item.locked { opacity: .75; }

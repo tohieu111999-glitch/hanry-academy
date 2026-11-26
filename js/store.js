@@ -201,7 +201,10 @@
       async unfollow(to) { const d = db(); const u = me(); d.follows = d.follows.filter((f) => !(f.from === u.uid && f.to === to)); put(d); },
       async listFollowing(id) { return db().follows.filter((f) => f.from === id).map((f) => f.to); },
       async listFollowers(id) { return db().follows.filter((f) => f.to === id).map((f) => f.from); },
-      async listByOwner(id) { return db().lessons.filter((l) => l.ownerUid === id && l.visibility === 'public').sort((a, b) => b.created - a.created); }
+      async listByOwner(id) { return db().lessons.filter((l) => l.ownerUid === id && l.visibility === 'public').sort((a, b) => b.created - a.created); },
+      // exam packs locked by the admin (only Gmail accounts with access can open them)
+      async getExamLocks() { return db().examLocks || []; },
+      async setExamLock(pack, locked) { const d = db(); const l = new Set(d.examLocks || []); locked ? l.add(pack) : l.delete(pack); d.examLocks = [...l]; put(d); }
     };
     function pub(u) { return { uid: u.uid, email: u.email, name: u.name, role: u.role, verified: true }; }
     return A;
@@ -358,7 +361,9 @@
       async unfollow(to) { await fs.collection('follows').doc(me().uid + '__' + to).delete(); },
       async listFollowing(id) { return (await fs.collection('follows').where('from', '==', id).limit(500).get()).docs.map((d) => d.data().to); },
       async listFollowers(id) { return (await fs.collection('follows').where('to', '==', id).limit(500).get()).docs.map((d) => d.data().from); },
-      async listByOwner(id) { return all(await fs.collection('lessons').where('ownerUid', '==', id).where('visibility', '==', 'public').limit(100).get()).sort((a, b) => (b.created || 0) - (a.created || 0)); }
+      async listByOwner(id) { return all(await fs.collection('lessons').where('ownerUid', '==', id).where('visibility', '==', 'public').limit(100).get()).sort((a, b) => (b.created || 0) - (a.created || 0)); },
+      async getExamLocks() { const s = await fs.collection('settings').doc('examLocks').get().catch(() => null); return (s && s.exists && s.data().locked) || []; },
+      async setExamLock(pack, locked) { await fs.collection('settings').doc('examLocks').set({ locked: locked ? FV.arrayUnion(pack) : FV.arrayRemove(pack), updated: Date.now() }, { merge: true }); }
     };
     return A;
   }

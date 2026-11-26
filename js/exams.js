@@ -110,7 +110,7 @@
       $$('.opt', li).forEach((o, k) => { o.classList.toggle('right', k === q.a); o.classList.toggle('wrong', k === v && v !== q.a); });
       $$('input', li).forEach((x) => (x.disabled = true));
       const why = $('.why', li);
-      why.innerHTML = (v === -1 ? '⚪ ' + t('examBlank') + ' · ' : '') + '✔ ' + t('examAnswer') + ': <b>' + 'ABCDEFGH'[q.a] + '</b>' + (q.why ? ' — ' + esc(q.why) : '');
+      why.innerHTML = (v === -1 ? '⚪ ' + t('examBlank') + ' · ' : '') + '✔ ' + t('examAnswer') + ': <b>' + 'ABCDEFGH'[q.a] + '</b>' + (q.why ? ' — ' + esc(HA.zh.disp(q.why)) : '');
       why.hidden = false;
     });
     const pct = Q.length ? Math.round((right / Q.length) * 100) : 0;

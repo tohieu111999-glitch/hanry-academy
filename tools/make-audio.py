@@ -109,8 +109,34 @@ class Cast:
         return self.roles[who]
 
 
+# 地 = "de" as the adverbial particle (慢慢地走), "dì" in place words (地方, 特地). Same rule as js/zh.js.
+DI_PREV = re.compile(r'(天|土|本|當|当|外|各|內|内|陸|陆|草|場|场|基|境|餘|余|特|原|就|遍|滿|满|落|在|田|心|的|園|园|領|领|墓|產|产|大|營|营|工|空|平|高|山|林|綠|绿|民|據|据|之|盆|耕|濕|湿|聖|圣|勝|胜|寶|宝|腹|席|死|此|該|该|某|兩|两|異|异|重|險|险|陣|阵|殖|處|处|塌)$')
+DI_NEXT = re.compile(r'^(方|圖|图|址|點|点|區|区|球|鐵|铁|下|上|面|板|位|震|帶|带|步|產|产|理|獄|狱|毯|瓜|主|道|形|勢|势|質|质|域|價|价|名|盤|盘|標|标|層|层|段|基|雷|皮|攤|摊|心|平|窖|租|契|界)')
+FUNC_PREV = re.compile(r'(的|在|到|這|这|那|個|个|了|是|有|一|各|此|滿|满|把|往|向|從|从|和|與|与|及|上|中|裡|里|全|整|當|当|本|多|少|些|種|种|麼|么|好|新|老|大|小|個)$')
+HAN = re.compile(r'[\u4e00-\u9fff]')
+
+
+DI_STRONG = re.compile(r'^(位|帶|带|圖|图|區|区|球|址|鐵|铁|震|獄|狱|毯|瓜|盤|盘|基)')
+
+
+def particle_de(prev, nxt, prev2, nxt2=''):
+    if not prev or not HAN.match(prev): return False
+    if prev2 and prev2 == prev: return True
+    if prev2 == '天': return False
+    if nxt and DI_STRONG.match(nxt) and not (nxt == '基' and re.match(r'[於于]', nxt2 or '')): return False
+    if DI_PREV.search(prev) and prev2 != prev: return False
+    if prev2 and prev2 == prev: return True
+    if nxt and DI_NEXT.match(nxt) and FUNC_PREV.search(prev): return False
+    return True
+
+
+def tts_text(t):
+    """The voice reads particle 地 as 的 (same sound) so it never says dì by mistake."""
+    return ''.join('的' if c == '地' and particle_de(t[i - 1] if i else '', t[i + 1] if i + 1 < len(t) else '', t[i - 2] if i > 1 else '', t[i + 2] if i + 2 < len(t) else '') else c for i, c in enumerate(t))
+
+
 def tts(text, voice, prev, nxt, path):
-    body = {'text': text, 'model_id': MODEL, 'voice_settings': SETTINGS, 'previous_text': prev or None, 'next_text': nxt or None}
+    body = {'text': tts_text(text), 'model_id': MODEL, 'voice_settings': SETTINGS, 'previous_text': prev or None, 'next_text': nxt or None}
     req = urllib.request.Request(f'https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format={FORMAT}',
                                  data=json.dumps(body).encode(), method='POST',
                                  headers={'xi-api-key': os.environ.get('ELEVENLABS_API_KEY', ''), 'Content-Type': 'application/json'})

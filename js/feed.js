@@ -98,11 +98,12 @@
     let i = 0;
     const lang = langOf(P);
     const items = (P.text || []);
+    const cast = HA.zh.newCast(lang === 'zh' && S.settings.script === 't' ? 'zht' : lang);  // same voice for each character across the whole text
     const next = () => {
       lines.forEach((l) => l.classList.remove('playing'));
       if (i >= items.length) return;
       const el = lines[i]; if (el) { el.classList.add('playing'); if (root.closest('#view') && el.getBoundingClientRect().top > window.innerHeight - 80) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
-      HA.zh.speak(items[i].zh, { lang, onend: () => { i++; setTimeout(next, 350); } });
+      HA.zh.speak(items[i].zh, { lang, cast, onend: () => { i++; setTimeout(next, 600); } });
     };
     next();
   };

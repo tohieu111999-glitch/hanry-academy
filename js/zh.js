@@ -387,13 +387,86 @@
   }
   function pauseAfter(p) {
     const c = p.slice(-1);
-    if ('。！？!?…'.includes(c) || c === '.') return 420;
-    if ('，,、；;：:'.includes(c)) return 160;
+    if ('。！？!?…」”'.includes(c) || c === '.') return 520;   // exam-recording pace: clear stop after each sentence
+    if ('，,、；;：:'.includes(c)) return 200;
     return 60;
   }
   let speakToken = 0;
   ZH.stop = () => { speakToken++; if (window.speechSynthesis) speechSynthesis.cancel(); };
-  // speak(text, rateOrOpts) ; opts: {rate, lang, onend, onphrase}
+
+  /* ---------- Voices for several speakers (dialogues read like an exam recording) ---------- */
+  const FEMALE = /xiaoxiao|xiaoyi|xiaohan|xiaomo|xiaochen|xiaoqiu|xiaorui|xiaoshuang|xiaoxuan|xiaoyan|xiaozhen|hsiaochen|hsiaoyu|yating|hanhan|huihui|yaoyao|tingting|meijia|sinji|lili|female|女/i;
+  const MALE = /yunxi|yunjian|yunyang|yunye|yunze|yunfeng|yunhao|yunjhe|zhiwei|kangkang|danny|male(?!.*female)|男/i;
+  const genderOf = (v) => (MALE.test(v.name) && !FEMALE.test(v.name) ? 'm' : FEMALE.test(v.name) ? 'f' : (/google/i.test(v.name) ? 'f' : '?'));
+  const FEM_NAME = /她|女|小姐|太太|媽|姐|妹|阿姨|奶奶|婆|老闆娘|美|婷|玲|雅|靜|晴|璇|純|如|真|英|芳|華|珍|琪|娟|家家|安安|曉/;
+  const MALE_NAME = /他|男|先生|爸|哥|弟|叔|伯|爺|公公|偉|哲|傑|凱|豪|明|廷|強|志|剛|軍|遠/;
+  // Cast: narrator + up to several characters, each with a voice and pitch. Shared across paragraphs of one text.
+  ZH.newCast = function (lang) {
+    const list = ZH.voicesFor(lang);
+    const narrator = pickVoice(lang);
+    const fem = list.filter((v) => genderOf(v) === 'f'), mal = list.filter((v) => genderOf(v) === 'm');
+    return { lang, narrator, fem, mal, roles: {}, n: 0 };
+  };
+  function roleVoice(cast, name) {
+    if (!name) return { voice: cast.narrator, pitch: 1 };
+    if (cast.roles[name]) return cast.roles[name];
+    let g = /^(男|B)$/.test(name) ? 'm' : /^(女|A)$/.test(name) ? 'f' : MALE_NAME.test(name) && !FEM_NAME.test(name) ? 'm' : FEM_NAME.test(name) ? 'f' : (cast.n % 2 ? 'f' : 'm');
+    const pool = g === 'm' ? cast.mal : cast.fem;
+    const used = Object.values(cast.roles).map((r) => r.voice);
+    let voice = pool.find((v) => v !== cast.narrator && !used.includes(v)) || pool.find((v) => !used.includes(v)) || pool[0];
+    // only one voice on this device: keep it but change the pitch so speakers still sound different
+    let pitch = 1;
+    if (!voice) { voice = cast.narrator; pitch = g === 'm' ? 0.78 : 1.18; }
+    else {
+      // the same voice already speaks for someone else (narrator or another character): shift the pitch
+      const taken = used.filter((u) => u === voice).length + (voice === cast.narrator ? 1 : 0);
+      if (taken) pitch = g === 'm' ? 1 - 0.1 * taken : 1 + 0.1 * taken;
+    }
+    cast.n++;
+    return (cast.roles[name] = { voice, pitch });
+  }
+  // Split a text into [{t, who}] — who = speaker name (null = narrator).
+  //  • script lines:  "A：……", "小美：……", "男：……"  (several on one line are split too)
+  //  • stories:       阿偉問：「……」   →  narration + the quote in the character's voice
+  const SAY = /(說|問|道|喊|回答|寫道)(?:我|他|她|你|我們|大家)?[：:，,]?\s*$/;
+  const MARK = /微笑著|笑著|輕聲|平靜地|靜靜地|緩緩地|想了一下|沉默片刻|聽完以後|聽完|搖搖頭|點點頭|看著|對著|跟|向|也|又|就|說|問|道|喊|回答|寫/;
+  // who is speaking: the subject at the start of the clause that ends with 說/問…
+  function speakerOf(before) {
+    if (!SAY.test(before)) return null;
+    const cl = before.split(/[，,。！？；]/).map((x) => x.trim()).filter(Boolean);
+    let c = cl.pop() || '';
+    if (/^(說|問|道|回答)/.test(c) && cl.length) c = cl.pop();
+    c = c.replace(/^(有一天|那天|然後|後來|最後|於是|這時候?|突然|忽然)/, '');
+    const m = c.search(MARK);
+    const who = (m > 0 ? c.slice(0, m) : c).trim().slice(0, 4);
+    return who || null;
+  }
+  ZH.parseDialog = function (text) {
+    const out = [];
+    String(text).split(/\n+/).forEach((line) => {
+      line = line.trim(); if (!line) return;
+      const parts = line.split(/\s+(?=(?:[A-Z]|[男女])[：:])/);
+      parts.forEach((ln) => {
+        const m = ln.match(/^((?:[A-Z]|[男女])|[一-鿿]{1,4})[：:]\s*(?![「“])(.+)$/);
+        if (m && !/[，。]/.test(m[1])) { out.push({ t: m[2], who: m[1] }); return; }
+        let last = 0, who = null; const re = /[「“]([^」”]+)[」”]/g; let q;
+        while ((q = re.exec(ln))) {
+          const before = ln.slice(last, q.index);
+          const sp = speakerOf(before);
+          if (sp && q[1].length > 4) {
+            if (before.trim()) out.push({ t: before, who: null });
+            who = sp;
+            out.push({ t: q[1], who });
+          } else out.push({ t: before + q[0], who: null });
+          last = re.lastIndex;
+        }
+        const rest = ln.slice(last); if (rest.trim()) out.push({ t: rest, who: null });
+      });
+    });
+    return out.reduce((a, x) => { const p = a[a.length - 1]; if (p && p.who === x.who) p.t += x.t; else a.push(x); return a; }, []);
+  };
+
+  // speak(text, rateOrOpts) ; opts: {rate, lang, onend, onphrase, cast}
   ZH.speak = function (text, opts) {
     if (!window.speechSynthesis) { HA.ui.toast(HA.t('noTts')); return; }
     if (typeof opts === 'number') opts = { rate: opts };
@@ -402,24 +475,30 @@
     if (lang === 'zh' && HA.state && HA.state.settings.script === 't') lang = 'zht';
     ZH.stop();
     const tok = speakToken;
-    const v = pickVoice(lang);
     const st = HA.state ? HA.state.settings : {};
     const rate = opts.rate || st.rate || 0.9;
-    const parts = phrases(text, lang);
+    const isZh = lang === 'zh' || lang === 'zht';
+    const cast = opts.cast && opts.cast.lang === lang ? opts.cast : ZH.newCast(lang);
+    const segs = isZh && String(text).length > 6 ? ZH.parseDialog(text) : [{ t: text, who: null }];
+    const queue = [];
+    segs.forEach((sg, k) => {
+      const r = roleVoice(cast, sg.who);
+      phrases(sg.t, lang).forEach((p, j, arr) => queue.push({ p, r, gap: j === arr.length - 1 && k < segs.length - 1 ? 650 : pauseAfter(p) }));
+    });
     let i = 0;
     const next = () => {
       if (tok !== speakToken) return;
-      if (i >= parts.length) { opts.onend && opts.onend(); return; }
-      const p = parts[i++];
-      const u = new SpeechSynthesisUtterance(p);
-      if (v) u.voice = v;
-      u.lang = v ? v.lang : VLANG[lang] || lang;
+      if (i >= queue.length) { opts.onend && opts.onend(); return; }
+      const it = queue[i++];
+      const u = new SpeechSynthesisUtterance(it.p);
+      if (it.r.voice) u.voice = it.r.voice;
+      u.lang = it.r.voice ? it.r.voice.lang : VLANG[lang] || lang;
       u.rate = rate;
-      // a slightly lower pitch and a lift on questions make the reading less flat
-      u.pitch = /[？?]$/.test(p) ? 1.08 : 1.0;
-      u.onend = () => setTimeout(next, parts.length > 1 ? pauseAfter(p) : 0);
+      // a lift on questions makes the reading less flat
+      u.pitch = it.r.pitch * (/[？?]$/.test(it.p) ? 1.06 : 1.0);
+      u.onend = () => setTimeout(next, queue.length > 1 ? it.gap : 0);
       u.onerror = () => setTimeout(next, 50);
-      opts.onphrase && opts.onphrase(p, i - 1);
+      opts.onphrase && opts.onphrase(it.p, i - 1);
       speechSynthesis.speak(u);
     };
     next();

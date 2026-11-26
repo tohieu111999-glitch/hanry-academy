@@ -611,3 +611,29 @@ details.pack[open] > summary { margin-bottom: 8px; }
 .vw-use { color: var(--muted); }
 .lb-level.sm { font-size: .7rem; padding: 2px 6px; }
 @media (max-width: 480px) { .vw-grid { grid-template-columns: 1fr; } }
+
+/* Grammar books */
+.gp-head .py { color: var(--blue); }
+.gp-meta { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 12px 0; }
+.gp-meta > div { background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 8px 12px; display: flex; flex-direction: column; }
+.gp-sec h2 { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; }
+.formula-box { background: rgba(28, 176, 246, .08); border: 2px dashed var(--blue); border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; font-weight: 700; text-align: center; }
+.formula-box > div + div { font-weight: 400; font-size: .95em; margin-top: 4px; }
+.gp-table { width: 100%; border-collapse: collapse; }
+.gp-table th, .gp-table td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+.gp-table th { white-space: nowrap; }
+.gp-table.cmp th { background: var(--bg); }
+.table-wrap { overflow-x: auto; }
+.gp-list li { margin: 6px 0; }
+.gp-ex li { margin: 10px 0; }
+.gp-ex .py, .gp-mis .py { color: var(--blue); }
+.gp-an { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.gp-an > div { display: flex; flex-direction: column; align-items: center; border: 2px solid var(--line); border-radius: 12px; padding: 6px 10px; }
+.gp-an small { color: var(--muted); }
+.gp-mis { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.gp-mis .bad { color: #e5484d; } .gp-mis .good { color: #2f9e44; }
+.gp-tip { background: rgba(255, 200, 0, .12); border-color: rgba(255, 200, 0, .5); }
+.gp-exer li { margin: 10px 0; }
+.gp-ans { background: rgba(88, 204, 2, .1); border-radius: 8px; padding: 6px 10px; margin-top: 4px; }
+@media (max-width: 480px) { .gp-table th { white-space: normal; } }
+.gp-sec .g-num { position: static; flex: none; }

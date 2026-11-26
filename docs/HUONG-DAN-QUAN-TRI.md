@@ -248,3 +248,11 @@ python3 tools/import-vocab-book.py A "Từ Vựng TOCFL Band A - Hanry Academy.p
 ```
 
 Công cụ đọc bảng (STT, Chữ Hán, Pinyin, Từ loại, Nghĩa, Ví dụ, Cách dùng) theo cấp độ và chủ đề, và báo lỗi nếu số từ của một chủ đề khác số ghi trong sách.
+
+## 5D. Ngữ pháp TOCFL Band A / B / C
+
+Mục **🧩 Ngữ pháp** (`#/grammar`) lấy từ 3 cuốn *Ngữ Pháp TOCFL Band A/B/C* (119 + 133 + 131 chủ điểm). Mỗi chủ điểm gồm: công thức, cách dùng, bảng ví dụ, phân tích câu, so sánh, lỗi sai, mẹo ghi nhớ, bài tập và đáp án (lấy từ phần Đáp án cuối sách). Nhập lại khi sách cập nhật:
+
+```bash
+python3 tools/import-grammar-book.py A "Ngữ Pháp TOCFL Band A HANRY Academy.pdf"   # → data/grammar/band-a.json
+```

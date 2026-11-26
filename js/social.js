@@ -102,6 +102,7 @@
     view().innerHTML = '<div class="page-head"><h1>🛡️ ' + t('navAdmin') + '</h1></div>' + (HA.api.mode === 'local' ? '<div class="note bad">⚠️ ' + t('insecureLocal') + '</div>' : '<div class="note good">✅ Firebase</div>') +
       '<div class="admin-grid">' +
       '<div class="card"><h3>📧 ' + t('adminBookAccess') + '</h3><div class="row"><input class="input" id="accEmail" type="email" placeholder="hocvien@gmail.com"><button class="btn green" id="accAdd">' + t('add') + '</button></div><ul class="plain" id="accList"></ul></div>' +
+      '<div class="card"><h3>🔒 ' + t('adminExamLocks') + '</h3><p class="small muted">' + t('adminExamLocksD') + '</p><ul class="plain" id="lockList"></ul></div>' +
       '<div class="card"><h3>🔑 ' + t('adminKeys') + '</h3><div class="row"><input class="input" id="keyNote" placeholder="' + t('description') + ' (Cô Lan – THPT A)"><button class="btn purple" id="keyGen">' + t('generate') + '</button></div><ul class="plain" id="keyList"></ul></div>' +
       '<div class="card wide"><h3>📕 ' + t('adminBooks') + '</h3><p class="note">💡 ' + t('bookNote') + '</p><form id="bookForm" class="grid2"><input class="input" name="title" required maxlength="160" placeholder="' + t('bookTitle') + '"><input class="input" name="author" maxlength="120" placeholder="' + t('author') + ' / NXB"><input class="input" name="url" maxlength="500" placeholder="' + t('bookLink') + '"><input class="input" name="cover" maxlength="4" placeholder="📕"><textarea class="input" name="desc" rows="2" maxlength="1000" placeholder="' + t('description') + '"></textarea><textarea class="input zh" name="content" rows="2" maxlength="20000" placeholder="(Tuỳ chọn) Nội dung văn bản"></textarea><input type="hidden" name="id"><button class="btn green">' + t('save') + '</button></form><div id="bookList" class="lc-list"></div></div>' +
       '<div class="card wide"><h3>🚩 ' + t('adminReports') + '</h3><div id="repList"></div></div>' +
@@ -114,8 +115,9 @@
     const loadReps = async () => { const l = await A.listReports(); $('#repList').innerHTML = l.length ? '<table class="tbl"><tr><th>📅</th><th>' + t('fbType') + '</th><th>Email</th><th>' + t('fbMessage') + '</th><th></th></tr>' + l.map((r) => '<tr><td>' + fmtDate(r.created) + '</td><td>' + esc(r.type) + '<br><small>' + esc(r.ref || '') + '</small></td><td>' + esc(r.email || '') + '</td><td>' + esc(r.message || '') + (r.link ? '<br><a href="' + esc(r.link) + '" target="_blank" rel="noopener nofollow">' + esc(r.link).slice(0, 60) + '</a>' : '') + '</td><td><button class="icon-btn" data-rm-rep="' + esc(r.id) + '">✕</button></td></tr>').join('') + '</table>' : '<p class="muted">—</p>'; };
     let modList = [];
     const loadMod = async () => { modList = (await A.listLessons({})).map((P) => Object.assign(P, { user: true })); $('#modList').innerHTML = modList.map((P) => HA.feed.card(P)).join('') || '<p class="muted">—</p>'; };
+    const loadLocks = async () => { const l = await HA.examLocks(true); $('#lockList').innerHTML = Object.keys(HA.examPacks || {}).map((k) => '<li><span>' + esc(t(HA.examPacks[k])) + '</span><button class="btn sm ' + (l.includes(k) ? 'red' : 'ghost') + '" data-lock="' + esc(k) + '" data-on="' + (l.includes(k) ? 1 : 0) + '">' + (l.includes(k) ? '🔒 ' + t('lockedW') : '🔓 ' + t('openW')) + '</button></li>').join(''); };
     const safe = (fn) => fn().catch((e) => HA.ui.toast(e.message, 'bad'));
-    [loadAcc, loadKeys, loadBooks, loadReps, loadMod].forEach(safe);
+    [loadAcc, loadKeys, loadBooks, loadReps, loadMod, loadLocks].forEach(safe);
     view().onclick = async (e) => {
       const d = e.target.dataset;
       try {
@@ -127,6 +129,7 @@
         if (d.rmBook && (await HA.ui.confirm(t('confirmDelete')))) { await A.deleteBook(d.rmBook); loadBooks(); }
         if (d.editBook) { const b = books.find((x) => x.id === d.editBook); const f = $('#bookForm'); ['title', 'author', 'url', 'cover', 'desc', 'content', 'id'].forEach((k) => (f[k].value = b[k] || '')); f.scrollIntoView({ behavior: 'smooth' }); }
         if (d.rmRep) { await A.deleteReport(d.rmRep); loadReps(); }
+        if (d.lock) { await A.setExamLock(d.lock, d.on !== '1'); loadLocks(); }
         if (e.target.closest('[data-del-post],[data-report],[data-like],[data-play]')) HA.feed.actions(view(), modList)(e);
       } catch (err) { HA.ui.toast(err.message, 'bad'); }
     };

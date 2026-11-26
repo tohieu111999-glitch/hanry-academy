@@ -220,3 +220,8 @@ Mỗi đề là một mục trong mảng JSON:
 }
 ```
 `a` là vị trí đáp án đúng, đếm từ 0 (A = 0, B = 1, …).
+
+### Gói đề & khoá gói
+- Mỗi đề có trường `pack`: `hanry-band-a` (đề Hanry), `eduverse-trai-nghiem`, `eduverse-luyen-tap`, `eduverse-chuyen-sau`.
+- Trang **Quản trị → Khoá gói đề thi**: bấm để khoá/mở từng gói. Gói bị khoá chỉ mở cho Gmail trong danh sách cấp quyền (cùng danh sách với Sách bản quyền). Lưu ý: đây là khoá trên giao diện; dữ liệu đề vẫn nằm trong file tĩnh `data/exams/exams.json`.
+- Nhập đề: `tools/import-exam.py` (mẫu Hanry, cắt ảnh câu xem tranh) và `tools/import-exam-eduverse.py` (mẫu EduVerse), sau đó chạy `python3 tools/join-wrapped.py data/exams/exams.json` để ghép các dòng bị xuống dòng giữa câu.

@@ -19,22 +19,32 @@
   const bandOf = (E) => E.band || (Object.keys(BANDS).find((b) => BANDS[b].includes(E.level)) || '');
   const fmtTime = (s) => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
 
+  /* ---------- Packs & locks ---------- */
+  const PACKS = { 'hanry-band-a': 'packHanryA', 'eduverse-trai-nghiem': 'packTrial', 'eduverse-luyen-tap': 'packPractice', 'eduverse-chuyen-sau': 'packAdvanced' };
+  HA.examPacks = PACKS;
+  let locksP = null;
+  HA.examLocks = (force) => (locksP && !force ? locksP : (locksP = HA.api.getExamLocks().catch(() => [])));
+  const canOpen = async (E) => !E.pack || !(await HA.examLocks()).includes(E.pack) || HA.isAdmin(S.user) || S.bookAccess;
+
   /* ---------- List ---------- */
   HA.route(/^\/exams$/, async function () {
     view().innerHTML = '<div class="loading">…</div>';
-    const list = await HA.loadExams();
+    const [list, locks] = await Promise.all([HA.loadExams(), HA.examLocks(true)]);
+    const free = HA.isAdmin(S.user) || S.bookAccess;
     const groups = {};
-    list.forEach((E) => { const b = bandOf(E) || '?'; (groups[b] = groups[b] || []).push(E); });
+    list.forEach((E) => { const b = bandOf(E) || '?'; const k = E.pack || ''; ((groups[b] = groups[b] || {})[k] = groups[b][k] || []).push(E); });
     const card = (E) => {
       const r = results()[E.id];
       const n = allQ(E).length;
-      return '<a class="unit-item ' + (r ? 'done' : '') + '" href="#/exam/' + encodeURIComponent(E.id) + '"><span class="lb-level">' + esc(E.level || bandOf(E)) + '</span>' +
-        '<span class="ui-text"><b>' + R(E.title.zh || E.title.vi) + '</b><small>' + esc(E.title.vi || '') + ' · ' + n + ' ' + t('examQs') + (E.duration ? ' · ' + E.duration + ' ' + t('examMin') : '') +
+      const lock = E.pack && locks.includes(E.pack) && !free;
+      return '<a class="unit-item ' + (r ? 'done' : '') + (lock ? ' locked' : '') + '" href="#/exam/' + encodeURIComponent(E.id) + '"><span class="lb-level">' + esc(E.level || bandOf(E)) + '</span>' +
+        '<span class="ui-text"><b>' + (lock ? '🔒 ' : '') + R(E.title.zh || E.title.vi) + '</b><small>' + esc(E.title.vi || '') + ' · ' + n + ' ' + t('examQs') + (E.duration ? ' · ' + E.duration + ' ' + t('examMin') : '') +
         (r ? ' · ' + t('best') + ' ' + r.best + '%' : '') + '</small></span><span>›</span></a>';
     };
     view().innerHTML =
       '<div class="page-head"><div><h1>📝 ' + t('navExams') + '</h1><p class="muted">' + t('examsIntro') + '</p></div></div>' +
-      (list.length ? Object.keys(groups).sort().map((b) => '<section class="unit-block"><div class="ub-head"><div><small>' + esc(list.find((E) => bandOf(E) === b).exam || 'TOCFL') + '</small><h2>Band ' + esc(b) + (BANDS[b] ? ' <span class="muted small">(' + BANDS[b].join(' – ') + ')</span>' : '') + '</h2></div></div><div class="unit-list">' + groups[b].map(card).join('') + '</div></section>').join('')
+      (list.length ? Object.keys(groups).sort().map((b) => '<section class="unit-block"><div class="ub-head"><div><small>TOCFL</small><h2>Band ' + esc(b) + (BANDS[b] ? ' <span class="muted small">(' + BANDS[b].join(' – ') + ')</span>' : '') + '</h2></div></div>' +
+        Object.keys(groups[b]).map((k) => '<details class="pack" ' + (Object.keys(groups[b]).length === 1 ? 'open' : '') + '><summary><b>' + esc(PACKS[k] ? t(PACKS[k]) : k || '—') + '</b> <span class="muted small">· ' + groups[b][k].length + ' ' + t('navExams').toLowerCase() + (locks.includes(k) ? ' · 🔒 ' + t('lockedW') : '') + '</span></summary><div class="unit-list">' + groups[b][k].map(card).join('') + '</div></details>').join('') + '</section>').join('')
         : '<div class="card empty"><p>📭 ' + t('noExams') + '</p></div>');
   });
 
@@ -45,6 +55,7 @@
     const list = await HA.loadExams();
     const E = list.find((x) => x.id === decodeURIComponent(id));
     if (!E) { view().innerHTML = '<div class="card empty"><p>' + t('notFound') + '</p><a class="btn" href="#/exams">← ' + t('navExams') + '</a></div>'; return; }
+    if (!(await canOpen(E))) { view().innerHTML = '<a class="back" href="#/exams">← ' + t('navExams') + '</a><div class="card empty"><p>🔒 ' + t('packLocked') + '</p><a class="btn blue" href="#/contact">✉️ ' + t('navContact') + '</a></div>'; return; }
     const Q = allQ(E);
     const r = results()[E.id];
     const fixes = (E.checked && E.checked.fixes) || [];

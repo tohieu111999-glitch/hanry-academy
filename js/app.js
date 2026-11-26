@@ -9,6 +9,7 @@
   function navItems() {
     const u = S.user;
     const items = [['#/', '🏠', 'navHome'], ['#/learn', '🧭', 'navLearn'], ['#/exams', '📝', 'navExams'], ['#/notebook', '⭐', 'navNotebook'], ['#/classes', '🏫', 'navClasses']];
+    if (u) items.push(['#/u/me', '👥', 'friendsW']);
     if (S.bookAccess) items.push(['#/books', '📕', 'navBooks']);
     if (HA.isAdmin(u)) items.push(['#/admin', '🛡️', 'navAdmin']);
     return items;
@@ -19,7 +20,7 @@
     document.body.classList.toggle('no-ruby', !S.settings.showRuby);
     const u = S.user;
     const route = (location.hash.split('?')[0].split('/').slice(0, 2).join('/')) || '#/';
-    const isActive = (h) => (h === '#/' ? ['#/', '#', '', '#/post', '#/search'].includes(route) : route === h || (h === '#/notebook' && route === '#/game') || (h === '#/exams' && route === '#/exam'));
+    const isActive = (h) => (h === '#/' ? ['#/', '#', '', '#/post', '#/search'].includes(route) : route === h || (h === '#/notebook' && route === '#/game') || (h === '#/exams' && route === '#/exam') || (h === '#/u/me' && route === '#/u'));
     $('#side').innerHTML =
       '<a class="logo" href="#/"><span class="logo-mark">H</span><span class="logo-text">Hanry<b>Academy</b></span></a>' +
       '<a class="btn green full compose-btn" href="#/compose">✍️ ' + t('compose') + '</a>' +
@@ -186,6 +187,7 @@
       '<div class="grid3"><div class="card stat-mini"><b>⭐ ' + d.notebook.length + '</b><span>' + t('statWords') + '</span></div><div class="card stat-mini"><b>📖 ' + Object.keys(d.lessons).length + '</b><span>' + t('postsRead') + '</span></div><div class="card stat-mini"><b>🧭 ' + Object.keys(d.course || {}).length + '</b><span>' + t('unitsDone') + '</span></div></div>' +
       '<div class="card"><h3>⚙️ ' + t('settings') + '</h3><div class="row wrap"><button class="btn ghost" onclick="HA.openSettings()">' + t('settings') + '</button>' +
       (u ? '<a class="btn ghost" href="#/compose?mine=1">📁 ' + t('myLessons') + '</a>' : '') +
+      (u ? '<a class="btn ghost" href="#/u/me">👥 ' + t('myPage') + '</a>' : '') +
       (u && role === 'student' ? '<a class="btn purple" href="#/classes">🔑 ' + t('teacherKey') + '</a>' : '') +
       (u ? '<button class="btn ghost" id="logout">' + t('logout') + '</button>' : '') + '</div></div>' +
       '<div class="card"><h3>🛟 ' + t('yourRights') + '</h3><p class="small">' + t('yourRightsD') + '</p><div class="row wrap"><button class="btn ghost sm" id="exportData">⬇ ' + t('exportData') + '</button><a class="btn ghost sm" href="#/legal/rights">' + t('navRights') + '</a></div></div>' +
@@ -221,6 +223,7 @@
     HA.dispatch();
     HA.api.onAuth(async (u) => {
       S.user = u;
+      if (HA.people) HA.people.reset();
       HA.loadUserData();
       S.bookAccess = false;
       HA.renderShell();

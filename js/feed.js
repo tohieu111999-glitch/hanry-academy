@@ -55,7 +55,7 @@
       : lines.map((x) => '<p class="pl ' + lang + '"' + F.lineAttrs(x, P) + '>' + (x.sp ? '<b class="sp">' + esc(HA.zh.disp(x.sp)) + '：</b>' : '') + '<span class="' + (lang === 'zh' ? 'zh' : '') + '">' + F.render(x.zh, P) + '</span>' + (showTr && trLine(x) ? '<span class="pl-tr">' + esc(trLine(x)) + '</span>' : '') + '</p>').join('');
     return '<article class="post" data-id="' + esc(P.id) + '">' +
       '<header class="post-head"><span class="avatar sm" style="--c:' + (P.sample ? '#58cc02' : '#ce82ff') + '">' + esc(author[0].toUpperCase()) + '</span>' +
-      '<div class="ph-meta"><div><b>' + esc(author) + '</b> ' + roleBadge(P.authorRole) + (P.sample ? ' <span class="badge">' + t('samplePost') + '</span>' : '') + (P.official ? ' <span class="badge good">✔ ' + t('official') + '</span>' : '') + '</div>' +
+      '<div class="ph-meta"><div>' + (P.ownerUid ? '<a class="ph-name" href="#/u/' + encodeURIComponent(P.ownerUid) + '"><b>' + esc(author) + '</b></a>' : '<b>' + esc(author) + '</b>') + ' ' + roleBadge(P.authorRole) + (P.ownerUid && HA.people ? ' ' + HA.people.btn(P.ownerUid, true).replace('class="btn sm follow-btn"', 'class="btn sm follow-btn mini"') : '') + (P.sample ? ' <span class="badge">' + t('samplePost') + '</span>' : '') + (P.official ? ' <span class="badge good">✔ ' + t('official') + '</span>' : '') + '</div>' +
       '<small class="muted">' + F.timeAgo(P.created) + ' · ' + sub.icon + ' ' + esc(HA.subjectName(sub)) + (P.level ? ' · ' + esc(P.levelCode && P.exam ? P.levelCode + ' · ' + P.exam : HA.levelOf(P.level).name) : '') + (P.visibility === 'private' ? ' · 🔒 ' + t('visPrivate') : P.visibility === 'class' ? ' · 🏫 ' + t('visClass') : ' · 🌐') + '</small></div>' +
       '<div class="ph-act">' + (canEdit(P) ? '<a class="icon-btn" href="#/compose/' + encodeURIComponent(P.id) + '" title="' + t('edit') + '">✏️</a><button class="icon-btn" data-del-post="' + esc(P.id) + '" title="' + t('delete') + '">🗑</button>' : '') + '<button class="icon-btn" data-report="' + esc(P.id) + '" title="' + t('report') + '">🚩</button></div></header>' +
       '<a class="post-title" href="' + postUrl(P) + '"><span class="pt-emoji">' + esc(P.emoji || sub.icon) + '</span><span><span class="pt-main ' + (lang === 'zh' ? 'zh' : '') + '">' + esc(lang === 'zh' ? HA.zh.disp(P.title.zh) : P.title.zh) + '</span>' + (trTitle(P) ? '<span class="pt-tr">' + esc(trTitle(P)) + '</span>' : '') + '</span></a>' +
@@ -67,6 +67,7 @@
       (lang !== 'code' ? '<button class="pf-btn" data-play="' + esc(P.id) + '">🔊 <span>' + t('listen') + '</span></button>' : '') + '</footer></article>';
   };
   F.fillReactions = async function (root, posts) {
+    if (HA.people) HA.people.fill(root);
     if (!posts.length) return;
     let r = {};
     try { r = await HA.api.getReactions(posts.map((P) => P.id)); } catch (e) { return; }
@@ -126,7 +127,7 @@
       '<div id="sres"></div>' +
       '<div id="feedWrap"' + (q ? ' hidden' : '') + '>' +
       '<a class="composer-card" href="#/compose"><span class="avatar sm">' + esc(S.user ? (S.user.name || S.user.email)[0].toUpperCase() : '✍') + '</span><span class="cc-ph">' + t('composerPrompt') + '</span><span class="btn sm green">' + t('compose') + '</span></a>' +
-      '<div class="chips-row subj-row"><button class="chip big ' + (!sel ? 'on' : '') + '" data-subj="">' + t('all') + '</button>' + subs.map((s) => '<button class="chip big ' + (sel === s.id ? 'on' : '') + '" data-subj="' + s.id + '">' + s.icon + ' ' + esc(HA.subjectName(s)) + '</button>').join('') + '</div>' +
+      '<div class="chips-row subj-row"><button class="chip big ' + (!sel ? 'on' : '') + '" data-subj="">' + t('all') + '</button>' + (S.user ? '<button class="chip big ' + (sel === 'following' ? 'on' : '') + '" data-subj="following">👥 ' + t('followingW') + '</button>' : '') + subs.map((s) => '<button class="chip big ' + (sel === s.id ? 'on' : '') + '" data-subj="' + s.id + '">' + s.icon + ' ' + esc(HA.subjectName(s)) + '</button>').join('') + '</div>' +
       '<div id="feed" class="feed"><div class="loading">' + t('loading') + '</div></div></div></div>' +
       '<aside class="home-side">' +
       '<a class="card side-card" href="#/learn"><b>🧭 ' + t('navLearn') + '</b><span class="small muted">' + (S.settings.phon === 'zhuyin' ? t('courseZhuyin') : t('coursePinyin')) + '</span></a>' +
@@ -138,10 +139,11 @@
     form.onsubmit = (e) => { e.preventDefault(); const v = inp.value.trim(); if (v) { history.replaceState(null, '', '#/search/' + encodeURIComponent(v)); doSearch(v); } };
     inp.oninput = () => { clearTimeout(timer); const v = inp.value.trim(); if (!v) { $('#sres').innerHTML = ''; $('#feedWrap').hidden = false; history.replaceState(null, '', '#/'); return; } timer = setTimeout(() => doSearch(v), 500); };
     let posts = [];
-    const draw = () => {
+    const draw = async () => {
       const s = S.feedSubject || '';
-      const list = s ? posts.filter((P) => (P.subject || 'zh') === s) : posts;
-      $('#feed').innerHTML = list.length ? list.map((P) => F.card(P)).join('') : '<div class="empty card">📭 ' + t('noPosts') + '</div>';
+      const fol = s === 'following' ? await HA.people.following() : null;
+      const list = fol ? posts.filter((P) => P.ownerUid && fol.has(P.ownerUid)) : s ? posts.filter((P) => (P.subject || 'zh') === s) : posts;
+      $('#feed').innerHTML = list.length ? list.map((P) => F.card(P)).join('') : '<div class="empty card">📭 ' + t(fol ? 'followFeedEmpty' : 'noPosts') + '</div>';
       F.fillReactions($('#feed'), list);
     };
     view().onclick = (e) => {
@@ -193,8 +195,9 @@
         related = related.concat(res.slice(0, 4).map((e) => e.s));
       } else if (!Z.dict.loaded.vi && !Z.dict.loaded.en) html += '<div class="card search-card muted">' + t('dictLoading') + '</div>';
     }
-    html += '<h3 class="sec-title">📰 ' + t('relatedPosts') + '</h3><div id="relPosts" class="feed"><div class="loading">' + t('loading') + '</div></div>';
+    html += '<div id="peopleRes"></div><h3 class="sec-title">📰 ' + t('relatedPosts') + '</h3><div id="relPosts" class="feed"><div class="loading">' + t('loading') + '</div></div>';
     box.innerHTML = html;
+    if (HA.people) HA.people.searchHTML(q).then((h) => { const pr = $('#peopleRes'); if (pr && h) { pr.innerHTML = h; HA.people.fill(pr); } });
     box.querySelector('[data-close-search]').onclick = () => { $('#q').value = ''; box.innerHTML = ''; $('#feedWrap').hidden = false; history.replaceState(null, '', '#/'); };
     // translation
     const from = lang === 'pinyin' ? 'vi' : lang;

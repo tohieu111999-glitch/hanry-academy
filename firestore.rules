@@ -157,6 +157,26 @@ service cloud.firestore {
             && get(/databases/$(database)/documents/lessons/$(resource.data.postId)).data.ownerUid == request.auth.uid));
     }
 
+    // ---------- Public profiles (no email) & follows ----------
+    match /profiles/{uid} {
+      allow read: if true;
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name', 'nameLower', 'photo', 'role', 'updated'])
+        && str(request.resource.data.name, 80) && request.resource.data.nameLower == request.resource.data.name.lower()
+        && str(request.resource.data.photo, 500)
+        && request.resource.data.role == myRole();
+      allow delete: if signedIn() && (request.auth.uid == uid || isAdmin());
+    }
+    match /follows/{fid} {
+      allow read: if true;
+      allow create: if verified()
+        && request.resource.data.keys().hasOnly(['from', 'to', 'created'])
+        && request.resource.data.from == request.auth.uid
+        && str(request.resource.data.to, 128) && request.resource.data.to != request.auth.uid
+        && fid == request.auth.uid + '__' + request.resource.data.to;
+      allow delete: if signedIn() && (resource.data.from == request.auth.uid || isAdmin());
+    }
+
     // ---------- Reports & feedback ----------
     match /reports/{id} {
       allow create: if request.resource.data.keys().hasOnly(['type', 'message', 'link', 'ref', 'page', 'email', 'uid', 'created'])

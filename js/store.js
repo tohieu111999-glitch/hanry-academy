@@ -100,7 +100,7 @@
    * LOCAL ADAPTER — everything in this browser (demo / offline)
    * ========================================================= */
   function LocalAdapter() {
-    const db = () => Object.assign({ users: {}, lessons: [], classes: [], books: [], bookAccess: [], keys: [], reports: [], likes: {}, comments: [] }, LS.get('ha_db', {}));
+    const db = () => Object.assign({ users: {}, lessons: [], classes: [], books: [], bookAccess: [], keys: [], reports: [], likes: {}, comments: [], follows: [] }, LS.get('ha_db', {}));
     const put = (d) => LS.set('ha_db', d);
     async function sha(s) {
       if (!crypto.subtle) return s;
@@ -192,7 +192,16 @@
         const d = db(); const u = me(); if (!u) throw new Error(HA.t('needLogin'));
         d.comments.push({ id: uid(), postId: id, uid: u.uid, name: u.name || u.email, text: text.slice(0, 1000), created: Date.now() }); put(d);
       },
-      async deleteComment(cid) { const d = db(); const u = me(); d.comments = d.comments.filter((c) => !(c.id === cid && (c.uid === u.uid || HA.isAdmin(u)))); put(d); }
+      async deleteComment(cid) { const d = db(); const u = me(); d.comments = d.comments.filter((c) => !(c.id === cid && (c.uid === u.uid || HA.isAdmin(u)))); put(d); },
+      // ---- People: public profiles + follows (two people following each other = friends)
+      async saveProfile() {},
+      async getProfile(id) { const x = Object.values(db().users).find((u) => u.uid === id); return x ? { uid: x.uid, name: x.name, role: HA.isAdmin(x) ? 'admin' : x.role } : null; },
+      async searchProfiles(q) { q = q.toLowerCase(); return Object.values(db().users).filter((u) => (u.name || '').toLowerCase().includes(q)).slice(0, 20).map((x) => ({ uid: x.uid, name: x.name, role: HA.isAdmin(x) ? 'admin' : x.role })); },
+      async follow(to) { const d = db(); const u = me(); if (!u) throw new Error(HA.t('needLogin')); if (to !== u.uid && !d.follows.some((f) => f.from === u.uid && f.to === to)) d.follows.push({ from: u.uid, to, created: Date.now() }); put(d); },
+      async unfollow(to) { const d = db(); const u = me(); d.follows = d.follows.filter((f) => !(f.from === u.uid && f.to === to)); put(d); },
+      async listFollowing(id) { return db().follows.filter((f) => f.from === id).map((f) => f.to); },
+      async listFollowers(id) { return db().follows.filter((f) => f.to === id).map((f) => f.from); },
+      async listByOwner(id) { return db().lessons.filter((l) => l.ownerUid === id && l.visibility === 'public').sort((a, b) => b.created - a.created); }
     };
     function pub(u) { return { uid: u.uid, email: u.email, name: u.name, role: u.role, verified: true }; }
     return A;
@@ -221,7 +230,9 @@
             snap = await ref.get().catch(() => null);
           }
           const d = (snap && snap.data()) || {};
-          cb({ uid: fu.uid, email: (fu.email || '').toLowerCase(), name: d.name || fu.displayName, role: d.role || 'student', verified: fu.emailVerified, photo: fu.photoURL });
+          const user = { uid: fu.uid, email: (fu.email || '').toLowerCase(), name: d.name || fu.displayName, role: d.role || 'student', verified: fu.emailVerified, photo: fu.photoURL };
+          A.saveProfile(user).catch(console.warn);
+          cb(user);
         });
       },
       async signIn() { const p = new firebase.auth.GoogleAuthProvider(); p.setCustomParameters({ prompt: 'select_account' }); await auth.signInWithPopup(p); },
@@ -229,7 +240,9 @@
       async deleteAccount() {
         const u = me(); if (!u) return;
         const mine = await fs.collection('lessons').where('ownerUid', '==', u.uid).get();
-        const b = fs.batch(); mine.docs.forEach((d) => b.delete(d.ref)); b.delete(fs.collection('users').doc(u.uid)); await b.commit();
+        const fol = await fs.collection('follows').where('from', '==', u.uid).get().catch(() => ({ docs: [] }));
+        const b = fs.batch(); mine.docs.forEach((d) => b.delete(d.ref)); fol.docs.forEach((d) => b.delete(d.ref));
+        b.delete(fs.collection('profiles').doc(u.uid)); b.delete(fs.collection('users').doc(u.uid)); await b.commit();
         LS.del('ha_data_' + u.email);
         await auth.currentUser.delete().catch(async () => { await A.signOut(); throw new Error('Please sign in again, then retry.'); });
       },
@@ -325,7 +338,27 @@
         const u = me(); if (!u) throw new Error(HA.t('needLogin'));
         await fs.collection('comments').add({ postId: id, uid: u.uid, name: String(u.name || u.email).slice(0, 80), text: text.slice(0, 1000), created: Date.now() });
       },
-      async deleteComment(cid) { await fs.collection('comments').doc(cid).delete(); }
+      async deleteComment(cid) { await fs.collection('comments').doc(cid).delete(); },
+      // ---- People: public profiles (no email) + follows. Two people following each other = friends.
+      async saveProfile(u) {
+        const name = String(u.name || u.email.split('@')[0]).slice(0, 80);
+        await fs.collection('profiles').doc(u.uid).set({ name, nameLower: name.toLowerCase(), photo: String(u.photo || '').slice(0, 500), role: HA.isAdmin(u) ? 'admin' : u.role || 'student', updated: Date.now() });
+      },
+      async getProfile(id) { const s = await fs.collection('profiles').doc(id).get().catch(() => null); return s && s.exists ? Object.assign({ uid: id }, s.data()) : null; },
+      async searchProfiles(q) {
+        q = q.trim().toLowerCase(); if (!q) return [];
+        const snap = await fs.collection('profiles').where('nameLower', '>=', q).where('nameLower', '<=', q + '\uf8ff').limit(20).get().catch(() => ({ docs: [] }));
+        return snap.docs.map((d) => Object.assign({ uid: d.id }, d.data()));
+      },
+      async follow(to) {
+        const u = me(); if (!u) throw new Error(HA.t('needLogin'));
+        if (to === u.uid) return;
+        await fs.collection('follows').doc(u.uid + '__' + to).set({ from: u.uid, to, created: Date.now() });
+      },
+      async unfollow(to) { await fs.collection('follows').doc(me().uid + '__' + to).delete(); },
+      async listFollowing(id) { return (await fs.collection('follows').where('from', '==', id).limit(500).get()).docs.map((d) => d.data().to); },
+      async listFollowers(id) { return (await fs.collection('follows').where('to', '==', id).limit(500).get()).docs.map((d) => d.data().from); },
+      async listByOwner(id) { return all(await fs.collection('lessons').where('ownerUid', '==', id).where('visibility', '==', 'public').limit(100).get()).sort((a, b) => (b.created || 0) - (a.created || 0)); }
     };
     return A;
   }

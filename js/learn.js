@@ -33,7 +33,7 @@
   ];
   const FINALS1 = [
     ['a', '啊', 'ā', 'Như "a"', 'Like "a" in "father"'],
-    ['o', '哦', 'ó', 'Như "ô" hơi kéo về "ua" (thường đi sau b p m f)', 'Like "aw", often after b p m f'],
+    ['o', '波', 'bō', 'Như "ô" hơi kéo về "ua" (thường đi sau b p m f)', 'Like "aw", often after b p m f'],
     ['e', '饿', 'è', 'Giữa "ơ" và "ưa", miệng không tròn', 'Like "uh" with unrounded lips'],
     ['i', '一', 'yī', 'Như "i". Sau zh ch sh r z c s đọc thành âm "ư" ngắn', 'Like "ee"; after zh ch sh r z c s it is a buzzy "r/z" sound'],
     ['u', '五', 'wǔ', 'Như "u"', 'Like "oo"'],
@@ -113,6 +113,21 @@
     return mode() === 'pinyin' ? (kind === 'ini' ? ZI_ONLY : ZF_ONLY)[item[0]] || '' : item[0];
   };
   const exPhon = (py) => (mode() === 'zhuyin' ? zy(py) : py);
+  // How each letter itself is read (the "alphabet" sound: b → bō, ㄅ → ㄅㄛ, a → ā …)
+  const NAME = { b: '玻', p: '坡', m: '摸', f: '佛', d: '得', t: '特', n: '訥', l: '勒', g: '哥', k: '科', h: '喝', j: '基', q: '欺', x: '希', zh: '知', ch: '吃', sh: '詩', r: '日', z: '資', c: '雌', s: '思',
+    a: '啊', o: '喔', e: '鵝', i: '衣', u: '烏', ü: '迂', ai: '哀', ei: '欸', ao: '熬', ou: '歐', er: '兒', ia: '鴨', ie: '耶', iao: '腰', iu: '優', ua: '蛙', uo: '窩', uai: '歪', ui: '威', üe: '約',
+    an: '安', en: '恩', ang: '昂', eng: '鞥', ian: '煙', in: '因', iang: '央', ing: '英', iong: '雍', uan: '彎', un: '溫', uang: '汪', ueng: '翁', üan: '冤', ün: '暈' };
+  HA.courseNames = NAME;
+  // recorded audio (tools/make-course-audio.py): data/audio/course/<utf-8 hex>.mp3, device voice as fallback
+  const hex = (s) => Array.from(new TextEncoder().encode(s)).map((b) => b.toString(16).padStart(2, '0')).join('');
+  function say(list, i) {
+    i = i || 0;
+    if (i >= list.length) return;
+    const txt = list[i];
+    const next = () => setTimeout(() => say(list, i + 1), 350);
+    Z.playFile('data/audio/course/' + hex(txt) + '.mp3', { onend: next, onerror: () => { Z.speak(txt, { rate: 0.75 }); } });
+  }
+  const sayItem = (it, kind) => say(kind !== 'tone' && NAME[it[0]] ? [NAME[it[0]], it[1]] : [it[1]]);
 
   const UNITS = [
     { id: 'tones', icon: '🎵', kind: 'tone', items: TONES, vi: 'Thanh điệu', en: 'Tones', zyvi: 'Dấu thanh', zyen: 'Tone marks' },
@@ -149,7 +164,7 @@
       const rules = mode() === 'zhuyin' ? RULES_ZY : RULES_PY;
       body = '<div class="rule-list">' + rules.map((r, i) => '<div class="card rule"><div class="g-num">' + (i + 1) + '</div><h3>' + esc(vi() ? r[0] : r[1]) + '</h3><p>' + esc(r[2]) + '</p><div class="rule-ex zh" data-speak="' + esc(r[3].replace(/[a-zA-Zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü'→\s,，;()ㄅ-ㄩˉˊˇˋ˙]+/g, '，')) + '">🔊 ' + esc(r[3]) + '</div></div>').join('') + '</div>';
     } else {
-      body = '<div class="sym-grid">' + u.items.map((it) => '<button class="sym-card" data-speak="' + esc(it[1]) + '"><span class="sym ' + (mode() === 'zhuyin' ? 'zy' : '') + '">' + esc(symbolOf(it, u.kind)) + '</span><span class="sym-other">' + esc(otherOf(it, u.kind)) + '</span>' +
+      body = '<div class="sym-grid">' + u.items.map((it, k) => '<button class="sym-card" data-item="' + k + '"><span class="sym ' + (mode() === 'zhuyin' ? 'zy' : '') + '">' + esc(symbolOf(it, u.kind)) + '</span><span class="sym-other">' + esc(otherOf(it, u.kind)) + '</span>' +
         '<span class="sym-ex"><b class="zh">' + esc(Z.disp(it[1])) + '</b> ' + esc(exPhon(it[2])) + '</span><span class="sym-tip">' + esc(vi() ? it[3] : it[4]) + '</span></button>').join('') + '</div>';
     }
     view().innerHTML = '<a class="back" href="#/learn">← ' + t('navLearn') + '</a>' +
@@ -158,7 +173,8 @@
       '<div class="row center mt wrap">' + (u.kind !== 'rule' ? '<a class="btn green lg" href="#/learn/practice/' + u.id + '">🎯 ' + t('practiceUnit') + '</a>' : '<button class="btn green lg" id="markRules">✓ ' + t('completed') + '</button>') +
       (UNITS[idx + 1] ? '<a class="btn ghost lg" href="#/learn/unit/' + UNITS[idx + 1].id + '">' + t('next') + ' →</a>' : '') + '</div>';
     view().onclick = (e) => {
-      const sp = e.target.closest('[data-speak]'); if (sp) HA.zh.speak(sp.dataset.speak, { rate: 0.75 });
+      const it = e.target.closest('[data-item]'); if (it) { sayItem(u.items[+it.dataset.item], u.kind); return; }
+      const sp = e.target.closest('[data-speak]'); if (sp) say([sp.dataset.speak]);
       if (e.target.id === 'markRules') { mark('rules', 100); HA.ui.toast(t('completed'), 'good'); location.hash = '#/learn'; }
     };
   });
@@ -192,7 +208,7 @@
       box.innerHTML = '<div class="muted center">' + (i + 1) + ' / ' + qs.length + '</div><p class="center">' + t('listenPick') + '</p>' +
         '<div class="p-prompt"><button class="btn purple xl" id="pl">🔊</button><button class="btn ghost" id="slow">🐢</button></div>' +
         '<div class="p-opts four">' + opts.map((o, k) => '<button class="p-opt sym-opt" data-k="' + k + '"><span class="sym ' + (mode() === 'zhuyin' ? 'zy' : '') + '">' + esc(symbolOf(o.it, o.kind)) + '</span></button>').join('') + '</div>';
-      const play = (r) => HA.zh.speak(q.it[1], { rate: r || 0.75 });
+      const play = (r) => { if (r) HA.zh.speak(q.kind !== 'tone' && NAME[q.it[0]] ? NAME[q.it[0]] + '，' + q.it[1] : q.it[1], { rate: r }); else sayItem(q.it, q.kind); };
       $('#pl').onclick = () => play(); $('#slow').onclick = () => play(0.5);
       setTimeout(play, 250);
       $('.p-opts', box).onclick = (e) => {

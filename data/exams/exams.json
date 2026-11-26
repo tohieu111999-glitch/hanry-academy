@@ -1,1 +1,664 @@
-[]
+[
+ {
+  "id": "tocfl-band-a-01",
+  "title": {
+   "zh": "華語文能力測驗 Band A 模擬試題 第 1 套（閱讀）",
+   "vi": "Đề luyện TOCFL Band A — Đề số 1 (Đọc hiểu)"
+  },
+  "exam": "TOCFL",
+  "band": "A",
+  "level": "A2",
+  "duration": 60,
+  "source": "Hanry Academy · biên soạn theo giáo trình 當代中文課程 1–2",
+  "author": "Hanry Academy",
+  "levelNote": "A2 (cuối Band A). Ngữ pháp kiểm tra: 把, 越來越, 不但……而且, 要是……就, bổ ngữ khả năng (想不出), 並沒有, 還是……吧 — thuộc trình độ A2; từ vựng đời sống hằng ngày (mua sắm, đi lại, thuê nhà, thư từ); bài đọc ngắn 80–150 chữ. Phù hợp người đã học xong 當代中文課程 quyển 1–2.",
+  "checked": {
+   "by": "ai",
+   "fixes": [
+    {
+     "q": 3,
+     "from": "A",
+     "to": "D",
+     "why": "Câu gốc \"我跟他等了一個小時，他才來\" mâu thuẫn: anh ấy đến muộn thì không thể \"cùng đợi\". Sửa đề thành \"我在車站等了他一個小時\" với đáp án 在."
+    },
+    {
+     "q": 21,
+     "from": "B",
+     "to": "B",
+     "why": "Đề gốc thiếu chữ 越 sau chỗ trống (\"中文 (21) 好了\") nên 比較 cũng đúng. Đã sửa đoạn văn thành \"(21) 越好了\" để chỉ 越來 đúng."
+    }
+   ]
+  },
+  "sections": [
+   {
+    "title": "一、完成句子（第 1–15 題）",
+    "kind": "reading",
+    "instructions": "請從Ⓐ、Ⓑ、Ⓒ、Ⓓ中選出最合適的答案。",
+    "questions": [
+     {
+      "q": "我昨天買的那件外套 ______ 有一點大。",
+      "o": [
+       "穿起來",
+       "穿過",
+       "穿完",
+       "穿著"
+      ],
+      "a": 0,
+      "why": "\"穿起來有一點大\" = mặc vào thấy hơi rộng. 起來 diễn đạt cảm nhận khi trải nghiệm. · Các phương án khác: Ⓑ穿過 (đã từng mặc); Ⓒ穿完 (mặc xong); Ⓓ穿著 (đang mặc). · Ngữ pháp: 動詞 + 起來（看起來、吃起來、穿起來）：cảm nhận chủ quan. · Mẹo: Nói cảm nhận sau khi dùng thử đồ → V + 起來."
+     },
+     {
+      "q": "他每天都運動， ______ 身體越來越好。",
+      "o": [
+       "因為",
+       "所以",
+       "雖然",
+       "除了"
+      ],
+      "a": 1,
+      "why": "\"每天都運動，所以身體越來越好\" = ngày nào cũng tập nên sức khỏe ngày càng tốt. 所以 dẫn kết quả. · Các phương án khác: Ⓐ因為 (nguyên nhân đã ở vế trước); Ⓒ雖然 (chuyển ý); Ⓓ除了 (cần 以外). · Ngữ pháp: （原因），所以 +（結果） · Mẹo: Vế trước là việc làm, vế sau là kết quả phát sinh → 所以."
+     },
+     {
+      "q": "我 ______ 車站等了他一個小時，他才來。",
+      "o": [
+       "跟",
+       "對",
+       "給",
+       "在"
+      ],
+      "a": 3,
+      "why": "\"我在車站等了他一個小時\" = tôi đợi anh ấy ở nhà ga một tiếng. 在 + nơi chốn đứng trước động từ để chỉ nơi xảy ra hành động. · Các phương án khác: Ⓐ跟 (cùng với — mâu thuẫn với 他才來: anh ấy đến muộn thì không thể cùng đợi); Ⓑ對 (đối với); Ⓒ給 (cho). · Ngữ pháp: 在 + 地點 + 動詞 · Mẹo: Sau chỗ trống là một địa điểm → 在."
+     },
+     {
+      "q": "這家店的咖啡 ______ 好喝 ______ 不貴。",
+      "o": [
+       "越……越",
+       "又……又",
+       "一……就",
+       "雖然……可是"
+      ],
+      "a": 1,
+      "why": "\"又好喝又不貴\" = vừa ngon vừa không đắt. Hai ưu điểm song song. · Các phương án khác: Ⓐ越…越 (ngày càng); Ⓒ一…就 (nối tiếp); Ⓓ雖然…可是 (cần hai vế trái ngược, nhưng đây đều là ưu điểm). · Ngữ pháp: 又 + 形容詞1 + 又 + 形容詞2 · Mẹo: Hai đặc điểm cùng chiều → 又…又; trái chiều mới dùng 雖然…可是."
+     },
+     {
+      "q": "這個字我不會念，你可以教我 ______ 嗎？",
+      "o": [
+       "一次",
+       "一下",
+       "一遍",
+       "一趟"
+      ],
+      "a": 1,
+      "why": "\"教我一下\" = dạy tôi một chút. 一下 dùng cho hành động ngắn, nhẹ nhàng, lịch sự khi nhờ vả. · Các phương án khác: Ⓐ一次 (một lần, đếm số lần); Ⓒ一遍 (một lượt trọn vẹn, dùng cho đọc/viết); Ⓓ一趟 (một chuyến đi). · Mẹo: Câu nhờ vả lịch sự hay kết thúc bằng 一下 để làm nhẹ yêu cầu."
+     },
+     {
+      "q": "從我家 ______ 公司要坐四十分鐘的車。",
+      "o": [
+       "離",
+       "在",
+       "到",
+       "跟"
+      ],
+      "a": 2,
+      "why": "\"從我家到公司\" = từ nhà tôi đến công ty. 從 đi cặp với 到. · Các phương án khác: Ⓐ離 (cần 遠/近 ở sau); Ⓑ在 (chỉ vị trí); Ⓓ跟 (với). · Ngữ pháp: 從 A 到 B · Mẹo: Thấy 從 ở đầu thì gần như chắc chắn cần 到 phía sau."
+     },
+     {
+      "q": "我 ______ 沒去過日本，明年想去看看。",
+      "o": [
+       "剛才",
+       "從來",
+       "已經",
+       "馬上"
+      ],
+      "a": 1,
+      "why": "\"我從來沒去過日本\" = tôi chưa từng đến Nhật. 從來 hô ứng với 沒…過. · Các phương án khác: Ⓐ剛才 (vừa nãy); Ⓒ已經 (mâu thuẫn với 沒); Ⓓ馬上 (ngay). · Ngữ pháp: 從來 + 沒 + 動詞 + 過 · Mẹo: Có \"沒……過\" thì đầu câu là 從來."
+     },
+     {
+      "q": "他把桌上的書 ______ 得整整齊齊的。",
+      "o": [
+       "買",
+       "看",
+       "放",
+       "帶"
+      ],
+      "a": 2,
+      "why": "\"把書放得整整齊齊的\" = xếp sách ngay ngắn. Bổ ngữ 整齊 đi với động từ 放. · Các phương án khác: Ⓐ買、Ⓑ看、Ⓓ帶 không kết hợp được với 整整齊齊. · Ngữ pháp: 把 + 受詞 + 動詞 + 得 + 形容詞 · Mẹo: Nhìn bổ ngữ phía sau để chọn động từ tương ứng."
+     },
+     {
+      "q": "外面在下雨，你 ______ 帶把傘吧。",
+      "o": [
+       "還是",
+       "就是",
+       "只是",
+       "可是"
+      ],
+      "a": 0,
+      "why": "\"你還是帶把傘吧\" = bạn nên mang ô thì hơn. 還是…吧 dùng để khuyên chọn phương án an toàn. · Các phương án khác: Ⓑ就是、Ⓒ只是、Ⓓ可是 không dùng để đưa lời khuyên. · Mẹo: Cấu trúc 還是……吧 luôn mang nghĩa khuyên nhủ, khác với 還是 nghĩa “vẫn”."
+     },
+     {
+      "q": "我等 ______ 他下班，我們就一起去吃飯。",
+      "o": [
+       "了",
+       "到",
+       "著",
+       "過"
+      ],
+      "a": 1,
+      "why": "\"等到他下班\" = đợi đến khi anh ấy tan làm. 到 chỉ việc đạt tới thời điểm chờ đợi. · Các phương án khác: Ⓐ了、Ⓒ著、Ⓓ過 không diễn đạt được ý “chờ tới lúc”. · Ngữ pháp: 等到 + 事情發生，就 + 動作 · Mẹo: Có 就 ở vế sau chỉ việc tiếp nối thì vế trước thường là 等到."
+     },
+     {
+      "q": "老師 ______ 我們下星期要考試。",
+      "o": [
+       "說",
+       "聽",
+       "問",
+       "告訴"
+      ],
+      "a": 3,
+      "why": "\"老師告訴我們下星期要考試\" = thầy nói cho chúng tôi biết tuần sau thi. 告訴 + người + nội dung. · Các phương án khác: Ⓐ說 phải là 跟我們說; Ⓑ聽 (nghe); Ⓒ問 (hỏi). · Ngữ pháp: 告訴 + 人 + 事情（khác với 跟 + 人 + 說） · Mẹo: Ghi nhớ: 告訴我 (đúng) ↔ 說我 (sai), phải là 跟我說."
+     },
+     {
+      "q": "這個問題太難了，我 ______ 出答案。",
+      "o": [
+       "想不",
+       "不想",
+       "沒想",
+       "別想"
+      ],
+      "a": 0,
+      "why": "\"我想不出答案\" = tôi nghĩ không ra đáp án. 出 chỉ việc tạo ra kết quả mới. · Các phương án khác: Ⓑ不想 (không muốn); Ⓒ沒想 (chưa nghĩ); Ⓓ別想 (đừng nghĩ). · Ngữ pháp: 動詞 + 不 + 出（來） · Mẹo: “Không có khả năng” → V + 不 + bổ ngữ; “không muốn” → 不 + V."
+     },
+     {
+      "q": "他不但會說中文， ______ 會寫漢字。",
+      "o": [
+       "可是",
+       "而且",
+       "所以",
+       "因為"
+      ],
+      "a": 1,
+      "why": "\"不但會說中文，而且會寫漢字\" = không những nói được mà còn viết được. 不但 đi cặp với 而且. · Các phương án khác: Ⓐ可是 (chuyển ý); Ⓒ所以、Ⓓ因為 (nhân quả). · Ngữ pháp: 不但 A，而且 B · Mẹo: Có 不但 ở vế trước thì vế sau gần như luôn là 而且/還/也."
+     },
+     {
+      "q": "天氣冷了，我 ______ 買一件新外套。",
+      "o": [
+       "打算",
+       "已經",
+       "剛才",
+       "從來"
+      ],
+      "a": 0,
+      "why": "\"我打算買一件新外套\" = tôi định mua áo khoác mới. 打算 chỉ kế hoạch chưa thực hiện. · Các phương án khác: Ⓑ已經 (đã, mâu thuẫn với việc chưa mua); Ⓒ剛才 (vừa nãy); Ⓓ從來 (cần phủ định). · Mẹo: Ngữ cảnh “trời lạnh rồi” dẫn tới ý định trong tương lai → 打算."
+     },
+     {
+      "q": "你 ______ 有問題，就打電話給我。",
+      "o": [
+       "因為",
+       "雖然",
+       "要是",
+       "為了"
+      ],
+      "a": 2,
+      "why": "\"你要是有問題，就打電話給我\" = nếu bạn có vấn đề thì gọi cho tôi. 要是 nêu điều kiện, đi với 就. · Các phương án khác: Ⓐ因為、Ⓓ為了 (nhân quả/mục đích); Ⓑ雖然 (chuyển ý). · Ngữ pháp: 要是 A，就 B（= 如果 A，就 B） · Mẹo: Có 就 ở vế sau và ý giả định ở vế trước → 要是/如果."
+     }
+    ]
+   },
+   {
+    "title": "二、選詞填空（一）第 16–21 題",
+    "kind": "reading",
+    "instructions": "請根據短文內容，從Ⓐ、Ⓑ、Ⓒ、Ⓓ中選出最合適的答案。",
+    "questions": [
+     {
+      "q": "（16）",
+      "o": [
+       "有點",
+       "一點",
+       "不太",
+       "最"
+      ],
+      "a": 0,
+      "why": "\"買東西也有點緊張\" = đi mua đồ cũng hơi căng thẳng. 有點 + tính từ tiêu cực nhẹ. · Các phương án khác: Ⓑ一點 phải đứng sau tính từ; Ⓒ不太 (không lắm, mâu thuẫn với việc gì cũng không hiểu); Ⓓ最 (nhất). · Mẹo: Nhớ vị trí: 有點緊張 (hơi căng) ↔ 緊張一點 (căng hơn chút)."
+     },
+     {
+      "q": "（17）",
+      "o": [
+       "才",
+       "就",
+       "都",
+       "也"
+      ],
+      "a": 2,
+      "why": "\"我每天早上都去那裡買豆漿\" = sáng nào tôi cũng tới đó mua sữa đậu nành. 每天 hô ứng với 都. · Các phương án khác: Ⓐ才 (muộn/ít); Ⓑ就 (liền); Ⓓ也 (cũng). · Ngữ pháp: 每 + 時間 + 都 + 動詞 · Mẹo: Thấy 每天/每個 thì gần như luôn cần 都 ở sau."
+     },
+     {
+      "q": "（18）",
+      "o": [
+       "熱鬧",
+       "方便",
+       "親切",
+       "健康"
+      ],
+      "a": 2,
+      "why": "\"老闆娘很親切，每次都慢慢地跟我說話\" = bà chủ rất niềm nở. 親切 tả thái độ ân cần với người. · Các phương án khác: Ⓐ熱鬧 (tả nơi chốn); Ⓑ方便 (tả việc/vật); Ⓓ健康 (khỏe mạnh). · Mẹo: Chọn tính từ phải khớp đối tượng: người → 親切/客氣, nơi chốn → 熱鬧."
+     },
+     {
+      "q": "（19）",
+      "o": [
+       "為了",
+       "因為",
+       "到底",
+       "除了"
+      ],
+      "a": 2,
+      "why": "\"你今天到底想吃什麼？\" = rốt cuộc hôm nay bạn muốn ăn gì? 到底 đi với từ nghi vấn để hỏi cho rõ. · Các phương án khác: Ⓐ為了、Ⓑ因為 (nhân quả/mục đích); Ⓓ除了 (cần 以外). · Mẹo: 到底 luôn đi kèm từ nghi vấn (什麼、誰、怎麼) trong câu hỏi."
+     },
+     {
+      "q": "（20）",
+      "o": [
+       "因為",
+       "所以",
+       "雖然",
+       "可是"
+      ],
+      "a": 1,
+      "why": "\"那天我很高興，所以多買了一個蛋餅\" = hôm đó tôi rất vui nên mua thêm một cái bánh trứng. · Các phương án khác: Ⓐ因為 (nguyên nhân đã ở vế trước); Ⓒ雖然、Ⓓ可是 (chuyển ý). · Mẹo: Cảm xúc ở vế trước dẫn tới hành động ở vế sau → 所以."
+     },
+     {
+      "q": "（21）",
+      "o": [
+       "比較",
+       "越來",
+       "一邊",
+       "因為"
+      ],
+      "a": 1,
+      "why": "\"我的中文越來越好了\" = tiếng Trung của tôi ngày càng tốt. Chỗ trống + 越好 ghép thành 越來越好. · Các phương án khác: Ⓐ比較、Ⓒ一邊、Ⓓ因為 không ghép được với “越好了”. · Mẹo: Thấy \"越……了\" ở sau chỗ trống thì điền 越來."
+     }
+    ],
+    "passage": "我來臺灣學中文已經半年了。剛開始的時候，我什麼都聽不懂，去買東西也 （16） 緊張。後來我住的地方樓下有一家早餐店，我每天早上 （17） 去那裡買豆漿。老闆娘很 （18） ，每次都慢慢地跟我說話。\n有一天她問我：「你今天 （19） 想吃什麼？」我忽然發現，我聽懂了每一個字。那天我很高興，（20） 多買了一個蛋餅。\n現在我的中文 （21） 越好了，可是我還是每天去那家店。"
+   },
+   {
+    "title": "二、選詞填空（二）第 22–27 題",
+    "kind": "reading",
+    "instructions": "請根據短文內容，從Ⓐ、Ⓑ、Ⓒ、Ⓓ中選出最合適的答案。",
+    "questions": [
+     {
+      "q": "（22）",
+      "o": [
+       "才",
+       "就",
+       "也",
+       "都"
+      ],
+      "a": 1,
+      "why": "\"坐八點的火車，十點半就到了\" = đi chuyến tám giờ, mười giờ rưỡi đã tới. 就 nhấn mạnh sớm hơn mong đợi. · Các phương án khác: Ⓐ才 (muộn, ngược nghĩa); Ⓒ也、Ⓓ都 không hợp. · Mẹo: Nhớ cặp đối lập: 就 = sớm/nhanh, 才 = muộn/chậm."
+     },
+     {
+      "q": "（23）",
+      "o": [
+       "因為",
+       "所以",
+       "而且",
+       "雖然"
+      ],
+      "a": 2,
+      "why": "\"小吃很有名，而且東西都不貴\" = món ăn vặt nổi tiếng, hơn nữa còn rẻ. 而且 bổ sung ưu điểm cùng chiều. · Các phương án khác: Ⓐ因為、Ⓑ所以 (nhân quả); Ⓓ雖然 (chuyển ý). · Mẹo: Hai ưu điểm nối nhau → 而且; một ưu một nhược → 可是."
+     },
+     {
+      "q": "（24）",
+      "o": [
+       "真",
+       "會",
+       "被",
+       "把"
+      ],
+      "a": 0,
+      "why": "\"真好吃！\" = ngon thật! 真 dùng để cảm thán, nhấn mạnh cảm nhận. · Các phương án khác: Ⓑ會、Ⓒ被、Ⓓ把 không dùng để cảm thán. · Ngữ pháp: 真 + 形容詞（câu cảm thán） · Mẹo: Có dấu \"！\" ở cuối thì chỗ trống thường là 真."
+     },
+     {
+      "q": "（25）",
+      "o": [
+       "特別",
+       "一定",
+       "千萬",
+       "到處"
+      ],
+      "a": 0,
+      "why": "\"房子都很舊，可是特別漂亮\" = nhà đều cũ nhưng lại đẹp một cách đặc biệt. 特別nhấn mạnh mức độ nổi bật. · Các phương án khác: Ⓑ一定 (nhất định); Ⓒ千萬 (lời dặn); Ⓓ到處 (khắp nơi). · Mẹo: Sau 可是, chỗ trống phải là từ làm nổi bật ưu điểm trái với vế trước."
+     },
+     {
+      "q": "（26）",
+      "o": [
+       "有點",
+       "一點",
+       "不太",
+       "最"
+      ],
+      "a": 0,
+      "why": "\"我有點累，可是心情很好\" = tôi hơi mệt nhưng tâm trạng rất tốt. · Các phương án khác: Ⓑ一點 sai vị trí; Ⓒ不太 (làm mất ý tương phản với 可是); Ⓓ最 (nhất). · Mẹo: Cấu trúc “有點 A，可是 B” rất phổ biến: thừa nhận mặt trừ rồi nêu mặt cộng."
+     },
+     {
+      "q": "（27）",
+      "o": [
+       "卻",
+       "並",
+       "又",
+       "才"
+      ],
+      "a": 1,
+      "why": "\"一個人旅行並沒有我想的那麼可怕\" = đi du lịch một mình hoàn toàn không đáng sợ như tôi tưởng. · Các phương án khác: Ⓐ卻 (cần vế đối lập rõ); Ⓒ又、Ⓓ才 không dùng để tăng cường phủ định. · Ngữ pháp: 並 + 沒有 +（phủ định điều vẫn tưởng） · Mẹo: Khi phủ định một lo lắng đã nêu trước đó, hay dùng 並不/並沒有."
+     }
+    ],
+    "passage": "上個週末我第一次自己去臺南玩。我坐早上八點的火車，（22） 十點半就到了。\n臺南的小吃很有名，（23） 東西都不貴。我中午吃了一碗牛肉湯，（24） 好吃！下午我到處走走，看了好幾個老地方。有一條街上的房子都很舊，可是 （25） 漂亮。\n晚上回家的時候，我 （26） 累，可是心情很好。這一天讓我知道，一個人旅行 （27） 沒有我想的那麼可怕。"
+   },
+   {
+    "title": "三、材料閱讀【材料一】手機訊息（第 28–30 題）",
+    "kind": "reading",
+    "instructions": "請閱讀下面的材料，回答問題。",
+    "questions": [
+     {
+      "q": "家明和小美明天要在哪裡見面？",
+      "o": [
+       "電影院",
+       "捷運站二號出口",
+       "餐廳",
+       "學校"
+      ],
+      "a": 1,
+      "why": "內文寫 \"在捷運站二號出口見面\"，所以見面地點是捷運站二號出口。 · Các phương án khác: Ⓐ電影院 là nơi họ đến sau; Ⓒ餐廳、Ⓓ學校 không được nhắc là nơi gặp. · Mẹo: Câu hỏi “ở đâu” thì tìm cụm có 在……見面."
+     },
+     {
+      "q": "他們見面以後，要先做什麼？",
+      "o": [
+       "看電影",
+       "吃晚飯",
+       "買書",
+       "上課"
+      ],
+      "a": 0,
+      "why": "\"先去看電影，看完以後再一起去吃晚飯\"，vậy việc đầu tiên là xem phim. · Các phương án khác: Ⓑ吃晚飯 là việc sau; Ⓒ買書、Ⓓ上課 không có trong kế hoạch. · Ngữ pháp: 先 A 再 B · Mẹo: Bám các từ chỉ thứ tự 先/再/以後 để xác định việc nào trước."
+     },
+     {
+      "q": "家明請小美帶什麼東西？",
+      "o": [
+       "電影票",
+       "手機",
+       "晚飯",
+       "中文書"
+      ],
+      "a": 3,
+      "why": "\"別忘了帶那本中文書還我\"，nên đồ cần mang là sách tiếng Trung. · Các phương án khác: Ⓐ電影票、Ⓑ手機、Ⓒ晚飯 không được nhắc. · Mẹo: Cụm \"別忘了帶……\" là chỗ ra câu hỏi về đồ vật cần mang."
+     }
+    ],
+    "passage": "小美：\n明天下午三點，我們在捷運站二號出口見面，好嗎？\n先去看電影，看完以後再一起去吃晚飯。\n對了，別忘了帶那本中文書還我。\n– 家明"
+   },
+   {
+    "title": "三、材料閱讀【材料二】小吃店菜單（第 31–33 題）",
+    "kind": "reading",
+    "instructions": "",
+    "questions": [
+     {
+      "q": "一碗牛肉麵原來多少錢？",
+      "o": [
+       "40 元",
+       "60 元",
+       "130 元",
+       "25 元"
+      ],
+      "a": 2,
+      "why": "菜單上寫 牛肉麵 130 元，那是原價。 · Các phương án khác: Ⓐ40 là giá 青菜; Ⓑ60 là giá 餃子; Ⓓ25 là giá 紅茶. · Mẹo: Dò đúng hàng của món được hỏi, đừng lấy nhầm dòng khác."
+     },
+     {
+      "q": "下面哪個時間吃牛肉麵比較便宜？",
+      "o": [
+       "早上九點",
+       "中午十二點",
+       "下午三點",
+       "晚上七點"
+      ],
+      "a": 1,
+      "why": "優惠時間是中午十一點到下午兩點，只有「中午十二點」在這個時間內。 · Các phương án khác: Ⓐ早上九點、Ⓒ下午三點、Ⓓ晚上七點 đều ngoài khung giờ. · Mẹo: Đối chiếu từng lựa chọn với khung giờ trong bài trước khi chọn."
+     },
+     {
+      "q": "王先生點了一盤炒飯和一杯紅茶，要付多少錢？",
+      "o": [
+       "95 元",
+       "70 元",
+       "130 元",
+       "110 元"
+      ],
+      "a": 0,
+      "why": "炒飯 70 元 + 紅茶 25 元 = 95 元。 · Các phương án khác: Ⓑ70 chỉ tính cơm rang; Ⓒ130 là giá mì bò; Ⓓ110 tính sai. · Mẹo: Cộng đúng các món được gọi, bỏ qua món không liên quan."
+     }
+    ],
+    "passage": "快樂小吃店 菜單\n牛肉麵 130 元\n餃子（十個） 60 元\n炒飯 70 元\n青菜 40 元\n紅茶 25 元\n★ 中午十一點到下午兩點，牛肉麵便宜二十元"
+   },
+   {
+    "title": "三、材料閱讀【材料三】中文中心通知（第 34–36 題）",
+    "kind": "reading",
+    "instructions": "",
+    "questions": [
+     {
+      "q": "這張通知主要想告訴同學什麼事？",
+      "o": [
+       "要考試了",
+       "星期三停課",
+       "要換老師",
+       "教室換了"
+      ],
+      "a": 1,
+      "why": "通知的重點是 \"下星期三的中文課停課一次\"。 · Các phương án khác: Ⓐ考試、Ⓒ換老師、Ⓓ換教室 không đúng (thông báo ghi rõ 地點一樣). · Mẹo: Câu hỏi “chủ yếu nói gì” thì tìm thông tin ở đầu thông báo."
+     },
+     {
+      "q": "停的課什麼時候補上？",
+      "o": [
+       "星期三下午",
+       "星期三早上",
+       "星期五下午",
+       "星期五早上"
+      ],
+      "a": 2,
+      "why": "\"在下星期五下午兩點補上\"，所以補課時間是星期五下午。 · Các phương án khác: Ⓐ星期三下午、Ⓑ星期三早上 là buổi bị nghỉ; Ⓓ星期五早上 sai buổi. · Mẹo: Phân biệt buổi nghỉ và buổi học bù — hai mốc khác nhau."
+     },
+     {
+      "q": "同學有問題的時候，可以怎麼做？",
+      "o": [
+       "打電話問辦公室",
+       "去別的教室",
+       "寫信給老師",
+       "下星期再問"
+      ],
+      "a": 0,
+      "why": "\"有問題請打電話問辦公室\"。 · Các phương án khác: Ⓑ去別的教室、Ⓒ寫信給老師、Ⓓ下星期再問 không có. · Mẹo: Câu bắt đầu bằng 請 chính là hướng dẫn hành động — chỗ ra đề."
+     }
+    ],
+    "passage": "各位同學：\n因為老師要開會，下星期三的中文課停課一次。\n停的課會在下星期五下午兩點補上，地點一樣在 305 教室。\n請大家準時來上課。\n有問題請打電話問辦公室：02-2345-6789\n中文中心辦公室"
+   },
+   {
+    "title": "三、材料閱讀【材料四】租房子廣告（第 37–38 題）",
+    "kind": "reading",
+    "instructions": "",
+    "questions": [
+     {
+      "q": "這個房子有什麼好處？",
+      "o": [
+       "離捷運站很遠",
+       "附近沒有商店",
+       "房間很舊",
+       "生活很方便"
+      ],
+      "a": 3,
+      "why": "廣告強調離捷運站近、附近有商店，最後寫 \"生活很方便\"。 · Các phương án khác: Ⓐ離捷運站很遠 (sai, chỉ 5 phút); Ⓑ附近沒有商店 (sai); Ⓒ房間很舊 (sai, 乾淨明亮). · Mẹo: Quảng cáo liệt kê ưu điểm; đáp án là ý khái quát được nhấn mạnh."
+     },
+     {
+      "q": "關於這個房子，下面哪個是對的？",
+      "o": [
+       "房租一個月一萬元",
+       "走路到捷運站要半個小時",
+       "房間裡有冷氣和網路",
+       "水電費包括在房租裡"
+      ],
+      "a": 2,
+      "why": "廣告寫 \"有冷氣、網路\"，所以Ⓒ正確。 · Các phương án khác: Ⓐ一萬元 (sai, 一萬兩千元); Ⓑ半個小時 (sai, 五分鐘); Ⓓ水電包括在房租裡 (sai, 水電另外算). · Mẹo: Loại câu “cái nào đúng” cần đối chiếu từng lựa chọn với bài."
+     }
+    ],
+    "passage": "近師大 套房出租\n房間乾淨、明亮，有冷氣、網路。\n走路到捷運站只要五分鐘，附近有便利商店和小吃店，生活很方便。\n一個月一萬兩千元（水電另外算）\n有興趣請打電話：0912-345-678 找林小姐"
+   },
+   {
+    "title": "四、短文閱讀（一）第 39–42 題",
+    "kind": "reading",
+    "instructions": "請閱讀下面的短文，回答問題。",
+    "questions": [
+     {
+      "q": "安安星期六早上常常做什麼？",
+      "o": [
+       "上課",
+       "跑步",
+       "打工",
+       "睡覺"
+      ],
+      "a": 1,
+      "why": "\"每個星期六早上都會去公園跑步\"。 · Các phương án khác: Ⓐ上課、Ⓒ打工、Ⓓ睡覺 không được nhắc cho sáng thứ Bảy. · Mẹo: Bám mốc thời gian cụ thể (星期六早上) để tìm đúng câu."
+     },
+     {
+      "q": "安安跑完步以後，會做什麼？",
+      "o": [
+       "回家睡覺",
+       "去上課",
+       "跟朋友喝咖啡",
+       "去買東西"
+      ],
+      "a": 2,
+      "why": "\"跑完步以後，我常常跟朋友一起去喝咖啡、聊天\"。 · Các phương án khác: Ⓐ回家睡覺、Ⓑ去上課、Ⓓ去買東西 không có trong bài. · Ngữ pháp: 動詞 + 完 + 以後 · Mẹo: Chú ý \"……以後\" để xác định hành động tiếp theo."
+     },
+     {
+      "q": "安安覺得運動有什麼好處？",
+      "o": [
+       "心情好、身體健康",
+       "可以賺錢",
+       "可以學中文",
+       "可以認識老師"
+      ],
+      "a": 0,
+      "why": "\"運動以後心情特別好，身體也比較健康\"。 · Các phương án khác: Ⓑ賺錢、Ⓒ學中文、Ⓓ認識老師 không liên quan. · Mẹo: Câu hỏi “có lợi ích gì” thì tìm các cụm chỉ kết quả tích cực."
+     },
+     {
+      "q": "關於安安的媽媽，我們可以知道什麼？",
+      "o": [
+       "她很會跑步",
+       "她一直都很喜歡運動",
+       "她現在也開始運動了",
+       "她不喜歡走路"
+      ],
+      "a": 2,
+      "why": "\"媽媽本來不喜歡運動，可是現在她也常常跟我一起去公園走路了\" — cho thấy mẹ giờ đã bắt đầu vận động. · Các phương án khác: Ⓐ很會跑步 (bài không nói); Ⓑ一直都很喜歡運動 (sai, 本來不喜歡); Ⓓ不喜歡走路(sai). · Ngữ pháp: 本來……，可是現在……（chỉ sự thay đổi） · Mẹo: Cặp \"本來……現在……\" báo hiệu một thay đổi — chỗ ra câu hỏi suy luận."
+     }
+    ],
+    "passage": "我叫林安安，今年二十歲，是大學生。我很喜歡運動，每個星期六早上都會去公園跑步。跑完步以後，我常常跟朋友一起去喝咖啡、聊天。\n我覺得運動以後心情特別好，身體也比較健康。\n我的媽媽本來不喜歡運動，可是現在她也常常跟我一起去公園走路了。"
+   },
+   {
+    "title": "四、短文閱讀（二）第 43–46 題",
+    "kind": "reading",
+    "instructions": "",
+    "questions": [
+     {
+      "q": "家家現在在哪裡？",
+      "o": [
+       "日本",
+       "臺灣",
+       "美國",
+       "學校"
+      ],
+      "a": 0,
+      "why": "\"我來日本工作已經三個月了\"。 · Các phương án khác: Ⓑ臺灣 là quê hương cô nhớ; Ⓒ美國、Ⓓ學校 sai. · Mẹo: Thư từ thường nêu nơi ở của người viết ngay đoạn đầu."
+     },
+     {
+      "q": "家家剛到那裡的時候，為什麼覺得不習慣？",
+      "o": [
+       "工作太忙",
+       "天氣太冷",
+       "沒有朋友",
+       "沒有東西吃"
+      ],
+      "a": 1,
+      "why": "\"日本的冬天比臺灣冷多了，我剛來的時候很不習慣，常常覺得冷\"。 · Các phương án khác: Ⓐ工作太忙 (có nhắc nhưng không phải lý do không quen); Ⓒ沒有朋友 (sai, 同事很親切); Ⓓ沒有東西吃 (sai). · Ngữ pháp: A 比 B + 形容詞 + 多了 · Mẹo: Tìm câu có quan hệ nhân quả gần từ khóa 不習慣."
+     },
+     {
+      "q": "家家最想念臺灣的什麼？",
+      "o": [
+       "天氣",
+       "同事",
+       "小吃",
+       "工作"
+      ],
+      "a": 2,
+      "why": "\"我最想念的是臺灣的小吃\"。 · Các phương án khác: Ⓐ天氣 (cô thấy lạnh); Ⓑ同事 (ở Nhật); Ⓓ工作 sai. · Mẹo: Từ 最 thường đánh dấu thông tin trọng tâm mà câu hỏi nhắm tới."
+     },
+     {
+      "q": "家家寫這封信，主要想跟美美說什麼？",
+      "o": [
+       "請美美幫她找工作",
+       "請美美寄小吃給她",
+       "告訴美美她要回臺灣了",
+       "告訴美美自己的生活，並請她來玩"
+      ],
+      "a": 3,
+      "why": "全信講家家在日本的生活，最後寫 \"歡迎妳來日本玩\"。 · Các phương án khác: Ⓐ找工作、Ⓑ寄小吃、Ⓒ要回臺灣 đều không phải ý chính. · Mẹo: Câu hỏi mục đích thư cần tổng hợp cả bài, đừng bám một chi tiết."
+     }
+    ],
+    "passage": "親愛的美美：\n好久不見，妳好嗎？\n我來日本工作已經三個月了。這裡的生活跟臺灣很不一樣。日本的冬天比臺灣冷多了，我剛來的時候很不習慣，常常覺得冷，現在好一點了。\n工作雖然有點忙，可是同事都很親切，教了我很多事情。\n我最想念的是臺灣的小吃。這裡的東西也很好吃，但是我還是覺得臺灣的最好吃。\n有空的時候，歡迎妳來日本玩，我帶妳到處走走。\n想妳的 家家"
+   },
+   {
+    "title": "四、短文閱讀（三）第 47–50 題",
+    "kind": "reading",
+    "instructions": "",
+    "questions": [
+     {
+      "q": "這篇短文主要在說什麼？",
+      "o": [
+       "怎麼做小吃",
+       "臺灣的天氣",
+       "怎麼買衣服",
+       "臺灣的夜市"
+      ],
+      "a": 3,
+      "why": "全文都在談臺灣的夜市：小吃、買東西、營業時間、文化意義。 · Các phương án khác: Ⓐ怎麼做小吃、Ⓑ臺灣的天氣、Ⓒ怎麼買衣服 chỉ là chi tiết hoặc không có. · Mẹo: Chủ đề là cái được nhắc lặp lại xuyên suốt đoạn."
+     },
+     {
+      "q": "關於夜市的小吃，下面哪個是對的？",
+      "o": [
+       "很貴",
+       "不好吃",
+       "價錢不貴",
+       "只有一種"
+      ],
+      "a": 2,
+      "why": "\"價錢都不貴\"，所以Ⓒ正確。 · Các phương án khác: Ⓐ很貴 (mâu thuẫn); Ⓑ不好吃 (sai, 很喜歡); Ⓓ只有一種 (sai, 很多). · Mẹo: Đáp án đúng thường là cách diễn đạt lại cùng ý của câu gốc."
+     },
+     {
+      "q": "為什麼很多人下班以後才去夜市？",
+      "o": [
+       "夜市晚上才開始",
+       "晚上東西比較便宜",
+       "白天要上課",
+       "晚上人比較少"
+      ],
+      "a": 0,
+      "why": "\"夜市大部分晚上才開始，所以很多人下班、下課以後才會去逛\"。 · Các phương án khác: Ⓑ晚上比較便宜、Ⓓ人比較少 bài không nói; Ⓒ白天要上課 không phải lý do chính được nêu. · Mẹo: Tìm chữ 所以 để xác định câu trả lời cho “vì sao”."
+     },
+     {
+      "q": "這篇短文最後想告訴讀者什麼？",
+      "o": [
+       "夜市的東西太貴，不要買",
+       "來臺灣可以去夜市看看",
+       "夜市很危險",
+       "夜市白天比較好玩"
+      ],
+      "a": 1,
+      "why": "最後一句 \"如果你來臺灣，別忘了去夜市走走\" 是正面的邀請。 · Các phương án khác: Ⓐ太貴不要買、Ⓒ很危險、Ⓓ白天比較好玩 đều trái với thái độ của bài. · Ngữ pháp: 如果……，別忘了…… · Mẹo: Thái độ tác giả thường lộ ở câu kết."
+     }
+    ],
+    "passage": "在臺灣，很多人喜歡去夜市。夜市裡有很多好吃的小吃，價錢都不貴，很多人吃過以後都很喜歡。除了吃東西以外，夜市裡還可以買衣服、玩遊戲，非常熱鬧。\n夜市大部分晚上才開始，所以很多人下班、下課以後才會去逛。\n對很多外國人來說，逛夜市是認識臺灣文化很好的方法。如果你來臺灣，別忘了去夜市走走。"
+   }
+  ]
+ }
+]

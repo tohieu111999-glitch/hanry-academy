@@ -127,7 +127,6 @@
 
   /* ---------- Path ---------- */
   HA.route(/^\/learn$/, async function () {
-    const official = await HA.loadOfficial();
     const subs = HA.config.subjects.filter((s) => s.id !== 'other');
     view().innerHTML =
       '<div class="page-head"><div><h1>🧭 ' + t('navLearn') + '</h1><p class="muted">' + t('learnIntro') + '</p></div></div>' +
@@ -136,19 +135,9 @@
       '<div class="seg" id="modeSeg"><button data-v="pinyin" class="' + (mode() === 'pinyin' ? 'on' : '') + '">Pinyin<br><small>hàn yǔ</small></button><button data-v="zhuyin" class="' + (mode() === 'zhuyin' ? 'on' : '') + '">Zhuyin 注音<br><small>ㄏㄢˋ ㄩˇ</small></button></div></div>' +
       '<div class="unit-list">' + UNITS.map((u, i) => '<a class="unit-item ' + (done(u.id) != null ? 'done' : '') + '" href="#/learn/unit/' + u.id + '"><span class="ui-n">' + (done(u.id) != null ? '✓' : i + 1) + '</span><span class="ui-icon">' + u.icon + '</span><span class="ui-text"><b>' + esc(unitName(u)) + '</b><small>' + (u.items ? u.items.length + ' ' + t('items') : t('rulesLabel')) + (done(u.id) != null ? ' · ' + t('best') + ' ' + done(u.id) + '%' : '') + '</small></span><span>›</span></a>').join('') +
       '<a class="unit-item practice" href="#/learn/practice/all"><span class="ui-n">★</span><span class="ui-icon">🎯</span><span class="ui-text"><b>' + t('practiceAll') + '</b><small>' + t('practiceAllD') + '</small></span><span>›</span></a></div></section>' +
-      readingSection(official) +
-      [[3, '📚', 'part2'], [4, '🗣️', 'part3'], [5, '✍️', 'part4']].map(([n, i, k]) => '<section class="unit-block locked"><div class="ub-head"><div><small>' + t('part') + ' ' + n + '</small><h2>' + i + ' ' + t(k) + '</h2><p class="small muted">⏳ ' + t('updatingSoon') + '</p></div></div></section>').join('');
+      [[2, '📚', 'part2'], [3, '🗣️', 'part3'], [4, '✍️', 'part4']].map(([n, i, k]) => '<section class="unit-block locked"><div class="ub-head"><div><small>' + t('part') + ' ' + n + '</small><h2>' + i + ' ' + t(k) + '</h2><p class="small muted">⏳ ' + t('updatingSoon') + '</p></div></div></section>').join('');
     $('#modeSeg').onclick = (e) => { const b = e.target.closest('button'); if (!b) return; S.settings.phon = b.dataset.v; HA.saveSettings(); HA.refresh(); };
   });
-
-  function readingSection(list) {
-    if (!list.length) return '';
-    const byLv = {};
-    list.forEach((L) => { const k = L.levelCode || HA.levelOf(L.level).code; (byLv[k] = byLv[k] || []).push(L); });
-    return '<section class="unit-block"><div class="ub-head"><div><small>' + t('part') + ' 2</small><h2>📖 ' + t('readingPath') + '</h2><p class="small">' + t('readingPathD') + '</p></div></div>' +
-      Object.keys(byLv).sort().map((k) => '<h3 class="lv-head"><span class="lb-level">' + esc(k) + '</span> ' + esc((byLv[k][0].exam || '')) + '</h3><div class="unit-list">' +
-        byLv[k].map((L, i) => { const read = (S.data.lessons[L.id] || {}); return '<a class="unit-item ' + (read.quiz != null ? 'done' : '') + '" href="#/post/' + encodeURIComponent(L.id) + '"><span class="ui-n">' + (read.quiz != null ? '✓' : i + 1) + '</span><span class="ui-text"><b class="zh">' + esc(Z.disp(L.title.zh)) + '</b><small>' + esc(L.title.vi || '') + (read.quiz != null ? ' · ' + t('score') + ' ' + read.quiz + '%' : read.read ? ' · 👁' : '') + '</small></span><span>›</span></a>'; }).join('') + '</div>').join('') + '</section>';
-  }
 
   /* ---------- Unit ---------- */
   HA.route(/^\/learn\/unit\/(\w+)$/, function (id) {

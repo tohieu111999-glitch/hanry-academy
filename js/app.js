@@ -8,7 +8,7 @@
   /* ---------- Shell ---------- */
   function navItems() {
     const u = S.user;
-    const items = [['#/', '🏠', 'navHome'], ['#/learn', '🧭', 'navLearn'], ['#/notebook', '⭐', 'navNotebook'], ['#/classes', '🏫', 'navClasses']];
+    const items = [['#/', '🏠', 'navHome'], ['#/learn', '🧭', 'navLearn'], ['#/exams', '📝', 'navExams'], ['#/notebook', '⭐', 'navNotebook'], ['#/classes', '🏫', 'navClasses']];
     if (S.bookAccess) items.push(['#/books', '📕', 'navBooks']);
     if (HA.isAdmin(u)) items.push(['#/admin', '🛡️', 'navAdmin']);
     return items;
@@ -19,7 +19,7 @@
     document.body.classList.toggle('no-ruby', !S.settings.showRuby);
     const u = S.user;
     const route = (location.hash.split('?')[0].split('/').slice(0, 2).join('/')) || '#/';
-    const isActive = (h) => (h === '#/' ? ['#/', '#', '', '#/post', '#/search'].includes(route) : route === h || (h === '#/notebook' && route === '#/game'));
+    const isActive = (h) => (h === '#/' ? ['#/', '#', '', '#/post', '#/search'].includes(route) : route === h || (h === '#/notebook' && route === '#/game') || (h === '#/exams' && route === '#/exam'));
     $('#side').innerHTML =
       '<a class="logo" href="#/"><span class="logo-mark">H</span><span class="logo-text">Hanry<b>Academy</b></span></a>' +
       '<a class="btn green full compose-btn" href="#/compose">✍️ ' + t('compose') + '</a>' +
@@ -42,7 +42,7 @@
       '<div class="foot-grid">' +
       '<div><div class="logo"><span class="logo-mark">H</span><span class="logo-text">Hanry<b>Academy</b></span></div><p class="muted">' + t('tagline') + '</p>' +
       '<p>✉️ <a href="mailto:' + HA.config.contact.email + '">' + HA.config.contact.email + '</a><br>' + HA.config.contact.phones.map((p) => '📞 <a href="tel:' + p.tel + '">' + p.value + '</a>').join('<br>') + '</p></div>' +
-      '<div><h4>Hanry Academy</h4><a href="#/">' + t('navHome') + '</a><a href="#/learn">' + t('navLearn') + '</a><a href="#/notebook">' + t('navNotebook') + '</a><a href="#/classes">' + t('navClasses') + '</a></div>' +
+      '<div><h4>Hanry Academy</h4><a href="#/">' + t('navHome') + '</a><a href="#/learn">' + t('navLearn') + '</a><a href="#/exams">' + t('navExams') + '</a><a href="#/notebook">' + t('navNotebook') + '</a><a href="#/classes">' + t('navClasses') + '</a></div>' +
       '<div><h4>' + t('legal') + '</h4><a href="#/legal/terms">' + t('navTerms') + '</a><a href="#/legal/privacy">' + t('navPrivacy') + '</a><a href="#/legal/rights">' + t('navRights') + '</a><a href="#/legal/copyright">' + t('navCopyright') + '</a><a href="#/legal/community">' + t('navCommunityRules') + '</a><a href="#/legal/cookies">' + t('navCookies') + '</a></div>' +
       '<div><h4>' + t('navContact') + '</h4><a href="#/contact">' + t('navContact') + '</a><a href="#/feedback">' + t('navFeedback') + '</a><a href="#/feedback/copyright">' + t('fbCopyright') + '</a></div>' +
       '</div><p class="tiny muted">© ' + new Date().getFullYear() + ' Hanry Academy. ' + t('footerRights') + ' ' + t('dictCredit') + '</p>';

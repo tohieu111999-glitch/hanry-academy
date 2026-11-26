@@ -562,3 +562,19 @@ details.adv summary { cursor: pointer; font-weight: 800; }
 /* plain reading (no pinyin/zhuyin above characters) */
 body.no-ruby .reading, body.no-ruby .post-body, body.no-ruby .q-text, body.no-ruby .opt, body.no-ruby .prac li, body.no-ruby .g-ex, body.no-ruby .vr-ex { line-height: 1.9; }
 body.no-ruby .reading .line { padding-top: 4px; padding-bottom: 4px; }
+
+/* ---------- Exams ---------- */
+.exam-head h1 { margin: .4rem 0 .2rem; }
+.eh-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.eh-meta { display: flex; gap: 16px; flex-wrap: wrap; font-weight: 700; margin: .6rem 0; }
+.ex-sec { margin-top: 1rem; }
+.ex-sec h2 { margin-top: 0; }
+.ex-passage { background: var(--soft); border-radius: 12px; padding: 12px 16px; margin: .8rem 0; font-size: 1.15rem; line-height: 2.1; }
+.ex-passage p { margin: .3rem 0; }
+.ex-img { max-width: 100%; border-radius: 10px; margin: 6px 0; }
+.ex-timer { position: sticky; top: 70px; z-index: 5; margin: 1rem 0 0 auto; width: max-content; background: var(--card); border: 2px solid var(--blue); border-radius: 999px; padding: 6px 16px; font-weight: 900; font-size: 1.1rem; }
+.ex-timer.low { border-color: var(--red); color: var(--red); }
+.ex-score { font-size: 2rem; font-weight: 900; text-align: center; padding: 10px; border-radius: 14px; }
+.ex-score.good { color: var(--green); background: rgba(88, 204, 2, .1); }
+.ex-score.ok { color: #c98a00; background: rgba(255, 200, 0, .14); }
+.ex-score.low { color: var(--red); background: rgba(255, 75, 75, .1); }

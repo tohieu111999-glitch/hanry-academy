@@ -81,6 +81,7 @@
         (s.passage ? '<div class="ex-passage">' + s.passage.split(/\n+/).map((p) => '<p>' + R(p) + '</p>').join('') + '</div>' : '') +
         '<ol class="quiz">' + s.questions.map(qHTML).join('') + '</ol></div>').join('') +
       '<div class="card"><div id="exRes"></div><button class="btn green full" id="exSubmit">' + t('submit') + '</button></div>';
+    $('#exBody').classList.toggle('no-tip', timed);  // timed = real exam conditions: no word look-up until submitted
     $('#exBody').scrollIntoView({ behavior: 'smooth' });
     $('#exBody').onclick = (e) => { const sp = e.target.closest('[data-speak]'); if (sp) HA.zh.speak(sp.dataset.speak); };
     if (timed && E.duration) {
@@ -101,6 +102,7 @@
 
   function grade(E, Q) {
     clearInterval(timer);
+    $('#exBody').classList.remove('no-tip');
     let right = 0;
     Q.forEach((q, i) => {
       const li = $('.q[data-i="' + i + '"]');

@@ -93,6 +93,12 @@
       if (rp) HA.reportModal('content', 'post:' + rp.dataset.report);
     };
   };
+  // read one paragraph: the recorded file when the lesson has one, otherwise the device voice
+  F.speakPara = function (P, i, opts) {
+    const lang = langOf(P);
+    if (P.audio && i < P.audio) HA.zh.playFile('data/audio/' + encodeURIComponent(P.id) + '/' + i + '.mp3', { onend: opts.onend, onerror: () => HA.zh.speak(P.text[i].zh, Object.assign({ lang }, opts)) });
+    else HA.zh.speak(P.text[i].zh, Object.assign({ lang }, opts));
+  };
   F.playAll = function (P, root) {
     const lines = root ? $$('[data-src]', root) : [];
     let i = 0;
@@ -103,7 +109,7 @@
       lines.forEach((l) => l.classList.remove('playing'));
       if (i >= items.length) return;
       const el = lines[i]; if (el) { el.classList.add('playing'); if (root.closest('#view') && el.getBoundingClientRect().top > window.innerHeight - 80) el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
-      HA.zh.speak(items[i].zh, { lang, cast, onend: () => { i++; setTimeout(next, 600); } });
+      F.speakPara(P, i, { cast, onend: () => { i++; setTimeout(next, P.audio ? 450 : 600); } });
     };
     next();
   };
@@ -287,7 +293,7 @@
     const act = F.actions(view(), [P]);
     view().onclick = async (e) => {
       act(e);
-      const sl = e.target.closest('[data-speakline]'); if (sl) HA.zh.speak(P.text[+sl.dataset.speakline].zh, { lang });
+      const sl = e.target.closest('[data-speakline]'); if (sl) F.speakPara(P, +sl.dataset.speakline, {});
       const sp = e.target.closest('[data-speak]'); if (sp) HA.zh.speak(sp.dataset.speak, { lang });
       const nb = e.target.closest('[data-note]');
       if (nb) { const ok = HA.nb.toggle(HA.ui.noteItem(nb.dataset.note)); nb.classList.toggle('on', ok); nb.textContent = ok ? '★' : '☆'; HA.ui.toast(ok ? t('added') : t('removed'), ok ? 'good' : ''); }

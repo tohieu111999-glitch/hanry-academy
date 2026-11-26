@@ -392,7 +392,23 @@
     return 60;
   }
   let speakToken = 0;
-  ZH.stop = () => { speakToken++; if (window.speechSynthesis) speechSynthesis.cancel(); };
+  let player = null;
+  ZH.stop = () => { speakToken++; if (window.speechSynthesis) speechSynthesis.cancel(); if (player) { player.onended = player.onerror = null; player.pause(); } };
+  // Recorded audio (ElevenLabs, tools/make-audio.py). Falls back to the device voice if the file can't play.
+  ZH.playFile = function (url, opts) {
+    opts = opts || {};
+    ZH.stop();
+    const tok = speakToken;
+    player = player || new Audio();
+    player.src = url;
+    const st = HA.state ? HA.state.settings : {};
+    player.playbackRate = Math.min(1.5, Math.max(0.6, (st.rate || 0.9) / 0.9));
+    player.preservesPitch = true;
+    player.onended = () => { if (tok === speakToken) opts.onend && opts.onend(); };
+    player.onerror = () => { if (tok === speakToken) opts.onerror ? opts.onerror() : opts.onend && opts.onend(); };
+    const pr = player.play();
+    if (pr && pr.catch) pr.catch(() => { if (tok === speakToken && player.error) player.onerror(); });
+  };
 
   /* ---------- Voices for several speakers (dialogues read like an exam recording) ---------- */
   const FEMALE = /xiaoxiao|xiaoyi|xiaohan|xiaomo|xiaochen|xiaoqiu|xiaorui|xiaoshuang|xiaoxuan|xiaoyan|xiaozhen|hsiaochen|hsiaoyu|yating|hanhan|huihui|yaoyao|tingting|meijia|sinji|lili|female|女/i;

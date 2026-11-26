@@ -185,7 +185,7 @@
   document.addEventListener('mouseover', (e) => {
     if (!fine) return;
     const el = e.target.closest && e.target.closest('.w');
-    if (el) { clearTimeout(hideT); clearTimeout(showT); showT = setTimeout(() => showTip(el), 220); }
+    if (el && !el.closest('.no-tip')) { clearTimeout(hideT); clearTimeout(showT); showT = setTimeout(() => showTip(el), 220); }
   });
   document.addEventListener('mouseout', (e) => {
     if (!fine) return;

@@ -124,9 +124,31 @@ service cloud.firestore {
 
     // ---------- Licensed books (chỉ Gmail được cấp quyền) ----------
     function hasBookAccess() { return verified() && exists(/databases/$(database)/documents/bookAccess/$(email())); }
+    // visibility: 'admin' (chỉ admin) | 'access' (Gmail được cấp quyền) | 'public' (ai đăng nhập cũng thấy, đọc khi đã mở khoá)
+    function bk(id) { return get(/databases/$(database)/documents/books/$(id)).data; }
+    function vis(d) { return d.get('visibility', 'access'); }
+    function unlocked(id) {
+      return signedIn() && (exists(/databases/$(database)/documents/unlocks/$(request.auth.uid + '_' + id))
+        || exists(/databases/$(database)/documents/unlocks/$(email() + '_' + id)));
+    }
     match /books/{id} {
-      allow read: if isAdmin() || hasBookAccess();
+      allow read: if isAdmin() || (signedIn() && vis(resource.data) == 'public') || (vis(resource.data) == 'access' && hasBookAccess());
       allow write: if isAdmin();
+      match /chapters/{c} {
+        allow read: if isAdmin() || (vis(bk(id)) == 'access' && hasBookAccess()) || (vis(bk(id)) == 'public' && unlocked(id));
+        allow write: if isAdmin();
+      }
+    }
+    // Mở khoá sách: sách miễn phí (price 0) người dùng tự mở; sách có giá do admin mở sau khi nhận thanh toán
+    match /unlocks/{uk} {
+      allow get: if signedIn() && (uk == request.auth.uid + '_' + resource.data.book || resource.data.email == email() || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isAdmin() || (verified()
+        && uk == request.auth.uid + '_' + request.resource.data.book
+        && request.resource.data.keys().hasOnly(['book', 'uid', 'email', 'at', 'by'])
+        && request.resource.data.uid == request.auth.uid && request.resource.data.email == email()
+        && vis(bk(request.resource.data.book)) == 'public' && bk(request.resource.data.book).get('price', 0) == 0);
+      allow update, delete: if isAdmin();
     }
     match /bookAccess/{em} {
       allow get: if verified() && (email() == em || isAdmin());

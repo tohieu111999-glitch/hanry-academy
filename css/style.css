@@ -637,3 +637,15 @@ details.pack[open] > summary { margin-bottom: 8px; }
 .gp-ans { background: rgba(88, 204, 2, .1); border-radius: 8px; padding: 6px 10px; margin-top: 4px; }
 @media (max-width: 480px) { .gp-table th { white-space: normal; } }
 .gp-sec .g-num { position: static; flex: none; }
+
+/* Book reader */
+.book-head { display: flex; gap: 16px; align-items: flex-start; }
+.book-cover.big { font-size: 3.5rem; }
+.book-body .bl { margin: 8px 0; }
+.book-body.no-py .bpy, .book-body.no-vi .bvi { display: none; }
+.book-body .bpy { color: var(--blue); }
+.dialog .dl { display: grid; grid-template-columns: 90px 1fr; gap: 8px; border-bottom: 1px dashed var(--line); padding: 6px 0; }
+.dialog .sp { color: var(--purple); }
+.bh { margin: 18px 0 8px; }
+.book .chip.sm { margin-top: 4px; }
+@media (max-width: 480px) { .dialog .dl { grid-template-columns: 1fr; } .book-head { flex-direction: column; } }

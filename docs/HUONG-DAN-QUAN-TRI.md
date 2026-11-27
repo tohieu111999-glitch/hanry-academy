@@ -256,3 +256,12 @@ Mục **🧩 Ngữ pháp** (`#/grammar`) lấy từ 3 cuốn *Ngữ Pháp TOCFL 
 ```bash
 python3 tools/import-grammar-book.py A "Ngữ Pháp TOCFL Band A HANRY Academy.pdf"   # → data/grammar/band-a.json
 ```
+
+## 5E. Sách: mở khoá, giá, nhập bài
+
+Mỗi sách trong **Quản trị → Sách** có:
+- **Hiển thị:** 🛡️ Chỉ admin (mặc định, dùng khi chưa có giấy phép) · 📧 Gmail được cấp quyền · 🌐 Mọi người (người dùng bấm "Mở khoá").
+- **Giá (đ):** 0 = miễn phí, học viên tự mở khoá. Có giá thì học viên bấm "Liên hệ để mở khoá"; sau khi nhận tiền, anh nhập Gmail của học viên ở ô **Mở khoá sách cho học viên**.
+- **📥 Nhập bài (JSON):** chọn file bài học (ví dụ `ddz1-l01.json`). Nội dung bài được lưu trong Firebase (chỉ người có quyền đọc được), KHÔNG nằm trong mã nguồn công khai trên GitHub.
+
+Sau khi cập nhật, nhớ dán lại `firestore.rules` vào Firebase → Rules → Publish (có thêm `books/{id}/chapters` và `unlocks`).

@@ -165,7 +165,15 @@
       async deleteClass(id) { const d = db(); d.classes = d.classes.filter((c) => !(c.id === id && c.ownerUid === me().uid)); put(d); },
       async myClasses() { const d = db(); const u = me(); if (!u) return []; return d.classes.filter((c) => c.ownerUid === u.uid || c.members.includes(u.uid)); },
       async hasBookAccess() { const u = me(); if (!u) return false; return HA.isAdmin(u) || db().bookAccess.includes(u.email); },
-      async listBooks() { return (await A.hasBookAccess()) ? db().books : []; },
+      async listBooks() {
+        const u = me(); const acc = await A.hasBookAccess();
+        return db().books.filter((b) => (u && HA.isAdmin(u)) || ((b.visibility || 'access') === 'public' && u) || ((b.visibility || 'access') === 'access' && acc));
+      },
+      async getChapters(bookId) { const c = LS.get('ha_chapters', {}); return (c[bookId] || []).map((x) => ({ id: x.id, title: x.title, n: x.n })); },
+      async getChapter(bookId, cid) { const c = LS.get('ha_chapters', {}); return (c[bookId] || []).find((x) => x.id === cid) || null; },
+      async saveChapters(bookId, list) { const c = LS.get('ha_chapters', {}); const old = c[bookId] || []; list.forEach((x) => { const i = old.findIndex((o) => o.id === x.id); if (i >= 0) old[i] = x; else old.push(x); }); c[bookId] = old.sort((a, b) => (a.n || 0) - (b.n || 0)); LS.set('ha_chapters', c); },
+      async isUnlocked(bookId) { const u = me(); if (!u) return false; const l = LS.get('ha_unlocks', []); return l.includes(u.uid + '_' + bookId) || l.includes(u.email + '_' + bookId); },
+      async unlockBook(bookId, email) { const u = me(); const l = LS.get('ha_unlocks', []); const k = (email ? email.toLowerCase() : u.uid) + '_' + bookId; if (!l.includes(k)) l.push(k); LS.set('ha_unlocks', l); },
       async saveBook(b) { const d = db(); if (b.id) { const i = d.books.findIndex((x) => x.id === b.id); d.books[i] = b; } else { b.id = 'b-' + uid(); b.created = Date.now(); d.books.push(b); } put(d); },
       async deleteBook(id) { const d = db(); d.books = d.books.filter((b) => b.id !== id); put(d); },
       async listAccess() { return db().bookAccess; },
@@ -303,7 +311,27 @@
         const u = me(); if (!u) return false; if (HA.isAdmin(u)) return true;
         const s = await fs.collection('bookAccess').doc(u.email).get().catch(() => null); return !!(s && s.exists);
       },
-      async listBooks() { try { return all(await fs.collection('books').get()); } catch (e) { return []; } },
+      async listBooks() {
+        const u = me(); if (!u) return [];
+        if (HA.isAdmin(u)) return all(await fs.collection('books').get());
+        const out = all(await fs.collection('books').where('visibility', '==', 'public').get().catch(() => ({ docs: [] })));
+        if (await A.hasBookAccess()) out.push(...all(await fs.collection('books').where('visibility', '==', 'access').get().catch(() => ({ docs: [] }))));
+        return out;
+      },
+      async getChapters(bookId) { const s = await fs.collection('books').doc(bookId).collection('chapters').get(); return all(s).map((x) => ({ id: x.id, title: x.title, n: x.n })).sort((a, b) => (a.n || 0) - (b.n || 0)); },
+      async getChapter(bookId, cid) { const s = await fs.collection('books').doc(bookId).collection('chapters').doc(cid).get(); return s.exists ? Object.assign({ id: s.id }, s.data()) : null; },
+      async saveChapters(bookId, list) { for (const x of list) { const d = JSON.parse(JSON.stringify(x)); const id = d.id; delete d.id; await fs.collection('books').doc(bookId).collection('chapters').doc(id).set(d); } },
+      async isUnlocked(bookId) {
+        const u = me(); if (!u) return false;
+        const a = await fs.collection('unlocks').doc(u.uid + '_' + bookId).get().catch(() => null);
+        if (a && a.exists) return true;
+        const b = await fs.collection('unlocks').doc(u.email.toLowerCase() + '_' + bookId).get().catch(() => null);
+        return !!(b && b.exists);
+      },
+      async unlockBook(bookId, email) {   // free book: the user unlocks it; paid book: the admin unlocks it for an email
+        const u = me(); const id = (email ? email.toLowerCase() : u.uid) + '_' + bookId;
+        await fs.collection('unlocks').doc(id).set({ book: bookId, uid: email ? null : u.uid, email: email ? email.toLowerCase() : u.email.toLowerCase(), at: Date.now(), by: u.email });
+      },
       async saveBook(b) { const d = JSON.parse(JSON.stringify(b)); if (b.id) { const id = d.id; delete d.id; await fs.collection('books').doc(id).set(d); } else { d.created = Date.now(); await fs.collection('books').add(d); } },
       async deleteBook(id) { await fs.collection('books').doc(id).delete(); },
       async listAccess() { return (await fs.collection('bookAccess').get()).docs.map((d) => d.id); },

@@ -10,7 +10,7 @@
     const u = S.user;
     const items = [['#/', '🏠', 'navHome'], ['#/learn', '🧭', 'navLearn'], ['#/exams', '📝', 'navExams'], ['#/vocab', '📚', 'navVocab'], ['#/grammar', '🧩', 'navGrammar'], ['#/notebook', '⭐', 'navNotebook'], ['#/classes', '🏫', 'navClasses']];
     if (u) items.push(['#/u/me', '👥', 'friendsW']);
-    if (S.bookAccess) items.push(['#/books', '📕', 'navBooks']);
+    if (u) items.push(['#/books', '📕', 'navBooks']);
     if (HA.isAdmin(u)) items.push(['#/admin', '🛡️', 'navAdmin']);
     return items;
   }
@@ -20,7 +20,7 @@
     document.body.classList.toggle('no-ruby', !S.settings.showRuby);
     const u = S.user;
     const route = (location.hash.split('?')[0].split('/').slice(0, 2).join('/')) || '#/';
-    const isActive = (h) => (h === '#/' ? ['#/', '#', '', '#/post', '#/search'].includes(route) : route === h || (h === '#/notebook' && route === '#/game') || (h === '#/exams' && route === '#/exam') || (h === '#/vocab' && route === '#/vocab') || (h === '#/grammar' && route === '#/grammar') || (h === '#/u/me' && route === '#/u'));
+    const isActive = (h) => (h === '#/' ? ['#/', '#', '', '#/post', '#/search'].includes(route) : route === h || (h === '#/notebook' && route === '#/game') || (h === '#/exams' && route === '#/exam') || (h === '#/vocab' && route === '#/vocab') || (h === '#/grammar' && route === '#/grammar') || (h === '#/books' && route === '#/books') || (h === '#/u/me' && route === '#/u'));
     $('#side').innerHTML =
       '<a class="logo" href="#/"><span class="logo-mark">H</span><span class="logo-text">Hanry<b>Academy</b></span></a>' +
       '<a class="btn green full compose-btn" href="#/compose">✍️ ' + t('compose') + '</a>' +

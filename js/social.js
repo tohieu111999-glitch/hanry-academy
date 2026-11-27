@@ -70,31 +70,7 @@
     } catch (e) { view().innerHTML = errBox(e); }
   });
 
-  /* ---------- Licensed books ---------- */
-  const embedUrl = (u) => { const m = /drive\.google\.com\/file\/d\/([^/]+)/.exec(u || ''); return m ? 'https://drive.google.com/file/d/' + m[1] + '/preview' : null; };
-  HA.route(/^\/books(?:\/([^/]+))?$/, async function (bookId) {
-    const head = '<div class="page-head"><div><h1>📕 ' + t('navBooks') + '</h1><p class="muted">' + t('booksLocked') + '</p></div></div>';
-    // The licensed area is invisible to anyone without access: same page as an unknown address
-    const notFound = '<div class="empty"><h2>404</h2><a class="btn green" href="#/">' + t('navHome') + '</a></div>';
-    if (!S.user) { view().innerHTML = notFound; return; }
-    view().innerHTML = '<div class="loading"></div>';
-    let ok = false;
-    try { ok = await HA.api.hasBookAccess(); } catch (e) {}
-    if (!ok) { view().innerHTML = notFound; return; }
-    let books = [];
-    try { books = await HA.api.listBooks(); } catch (e) { view().innerHTML = head + errBox(e); return; }
-    if (bookId) {
-      const b = books.find((x) => x.id === bookId);
-      if (!b) { view().innerHTML = head + '<div class="empty card">404</div>'; return; }
-      const em = embedUrl(b.url);
-      view().innerHTML = '<a class="back" href="#/books">← ' + t('navBooks') + '</a><div class="card"><h1>' + esc(b.cover || '📕') + ' ' + esc(b.title) + '</h1><p>✍️ ' + esc(b.author || '') + '</p><p>' + esc(b.desc || '') + '</p>' +
-        (b.url ? '<a class="btn blue" href="' + esc(b.url) + '" target="_blank" rel="noopener">📖 ' + t('openBook') + '</a>' : '') + '<p class="tiny muted">© ' + esc(b.author || '') + ' — ' + t('navCopyright') + '</p></div>' +
-        (em ? '<div class="book-embed"><iframe src="' + esc(em) + '" allow="autoplay" loading="lazy" referrerpolicy="no-referrer"></iframe></div>' : '') +
-        (b.content ? '<div class="card reading psg">' + b.content.split('\n').filter(Boolean).map((p) => '<p class="line"><span class="zh lg">' + HA.R(p) + '</span></p>').join('') + '</div>' : '');
-      return;
-    }
-    view().innerHTML = head + '<div class="book-grid">' + (books.length ? books.map((b) => '<a class="book" href="#/books/' + esc(b.id) + '"><span class="book-cover">' + esc(b.cover || '📕') + '</span><b>' + esc(b.title) + '</b><small>' + esc(b.author || '') + '</small></a>').join('') : '<div class="empty card">' + t('noBooks') + '</div>') + '</div>';
-  });
+  /* Licensed books: js/books.js */
 
   /* ---------- Admin ---------- */
   HA.route(/^\/admin$/, async function () {
@@ -104,14 +80,15 @@
       '<div class="card"><h3>📧 ' + t('adminBookAccess') + '</h3><div class="row"><input class="input" id="accEmail" type="email" placeholder="hocvien@gmail.com"><button class="btn green" id="accAdd">' + t('add') + '</button></div><ul class="plain" id="accList"></ul></div>' +
       '<div class="card"><h3>🔒 ' + t('adminExamLocks') + '</h3><p class="small muted">' + t('adminExamLocksD') + '</p><ul class="plain" id="lockList"></ul></div>' +
       '<div class="card"><h3>🔑 ' + t('adminKeys') + '</h3><div class="row"><input class="input" id="keyNote" placeholder="' + t('description') + ' (Cô Lan – THPT A)"><button class="btn purple" id="keyGen">' + t('generate') + '</button></div><ul class="plain" id="keyList"></ul></div>' +
-      '<div class="card wide"><h3>📕 ' + t('adminBooks') + '</h3><p class="note">💡 ' + t('bookNote') + '</p><form id="bookForm" class="grid2"><input class="input" name="title" required maxlength="160" placeholder="' + t('bookTitle') + '"><input class="input" name="author" maxlength="120" placeholder="' + t('author') + ' / NXB"><input class="input" name="url" maxlength="500" placeholder="' + t('bookLink') + '"><input class="input" name="cover" maxlength="4" placeholder="📕"><textarea class="input" name="desc" rows="2" maxlength="1000" placeholder="' + t('description') + '"></textarea><textarea class="input zh" name="content" rows="2" maxlength="20000" placeholder="(Tuỳ chọn) Nội dung văn bản"></textarea><input type="hidden" name="id"><button class="btn green">' + t('save') + '</button></form><div id="bookList" class="lc-list"></div></div>' +
+      '<div class="card wide"><h3>📕 ' + t('adminBooks') + '</h3><p class="note">💡 ' + t('bookNote') + '</p><form id="bookForm" class="grid2"><input class="input" name="title" required maxlength="160" placeholder="' + t('bookTitle') + '"><input class="input" name="author" maxlength="120" placeholder="' + t('author') + ' / NXB"><input class="input" name="url" maxlength="500" placeholder="' + t('bookLink') + '"><input class="input" name="cover" maxlength="4" placeholder="📕"><select class="input" name="visibility"><option value="admin">🛡️ ' + t('visAdmin') + '</option><option value="access">📧 ' + t('visAccess') + '</option><option value="public">🌐 ' + t('visPublicBook') + '</option></select><input class="input" name="price" type="number" min="0" step="1000" placeholder="' + t('bookPrice') + ' (0 = ' + t('free') + ')"><textarea class="input" name="desc" rows="2" maxlength="1000" placeholder="' + t('description') + '"></textarea><textarea class="input zh" name="content" rows="2" maxlength="20000" placeholder="(Tuỳ chọn) Nội dung văn bản"></textarea><input type="hidden" name="id"><button class="btn green">' + t('save') + '</button></form><div id="bookList" class="lc-list"></div></div>' +
+      '<div class="card"><h3>🔓 ' + t('adminUnlock') + '</h3><p class="small muted">' + t('adminUnlockD') + '</p><div class="row"><input class="input" id="ulEmail" type="email" placeholder="hocvien@gmail.com"><select class="input" id="ulBook"></select><button class="btn green" id="ulAdd">' + t('unlockBtn') + '</button></div></div>' +
       '<div class="card wide"><h3>🚩 ' + t('adminReports') + '</h3><div id="repList"></div></div>' +
       '<div class="card wide"><h3>📝 ' + t('adminLessons') + '</h3><div id="modList" class="lc-list"></div></div></div>';
     const A = HA.api;
     const loadAcc = async () => { const l = await A.listAccess(); $('#accList').innerHTML = l.map((e) => '<li><span>' + esc(e) + '</span><button class="icon-btn" data-rm-acc="' + esc(e) + '">✕</button></li>').join('') || '<li class="muted">—</li>'; };
     const loadKeys = async () => { const l = await A.listKeys(); $('#keyList').innerHTML = l.sort((a, b) => (b.created || 0) - (a.created || 0)).map((k) => '<li><code>' + esc(k.key) + '</code> <small>' + esc(k.note || '') + '</small> ' + (k.usedBy ? '<span class="badge">' + t('used') + ': ' + esc(k.usedEmail || k.usedBy) + '</span>' : '<span class="badge good">' + t('unused') + '</span> <button class="icon-btn" data-copy="' + esc(k.key) + '">📋</button>') + '<button class="icon-btn" data-rm-key="' + esc(k.key) + '">✕</button></li>').join('') || '<li class="muted">—</li>'; };
     let books = [];
-    const loadBooks = async () => { books = await A.listBooks(); $('#bookList').innerHTML = books.map((b) => '<div class="lcard"><div class="lc-main"><span class="lc-emoji">' + esc(b.cover || '📕') + '</span><div><h3>' + esc(b.title) + '</h3><p class="small">' + esc(b.author || '') + ' · ' + esc(b.url || '').slice(0, 60) + '</p></div></div><div class="lc-act"><button class="icon-btn" data-edit-book="' + esc(b.id) + '">✏️</button><button class="icon-btn" data-rm-book="' + esc(b.id) + '">🗑</button></div></div>').join(''); };
+    const loadBooks = async () => { books = await A.listBooks(); const sel = $('#ulBook'); if (sel) sel.innerHTML = books.map((b) => '<option value="' + esc(b.id) + '">' + esc(b.title) + '</option>').join(''); $('#bookList').innerHTML = books.map((b) => '<div class="lcard"><div class="lc-main"><span class="lc-emoji">' + esc(b.cover || '📕') + '</span><div><h3>' + esc(b.title) + '</h3><p class="small">' + esc(b.author || '') + ' · ' + ({ admin: '🛡️', access: '📧', public: '🌐' }[b.visibility || 'access']) + ' · ' + (b.price ? Number(b.price).toLocaleString() + ' đ' : t('free')) + '</p></div></div><div class="lc-act"><label class="btn sm ghost" title="' + t('importChapters') + '">📥<input type="file" accept=".json" hidden data-imp-book="' + esc(b.id) + '"></label><button class="icon-btn" data-edit-book="' + esc(b.id) + '">✏️</button><button class="icon-btn" data-rm-book="' + esc(b.id) + '">🗑</button></div></div>').join(''); };
     const loadReps = async () => { const l = await A.listReports(); $('#repList').innerHTML = l.length ? '<table class="tbl"><tr><th>📅</th><th>' + t('fbType') + '</th><th>Email</th><th>' + t('fbMessage') + '</th><th></th></tr>' + l.map((r) => '<tr><td>' + fmtDate(r.created) + '</td><td>' + esc(r.type) + '<br><small>' + esc(r.ref || '') + '</small></td><td>' + esc(r.email || '') + '</td><td>' + esc(r.message || '') + (r.link ? '<br><a href="' + esc(r.link) + '" target="_blank" rel="noopener nofollow">' + esc(r.link).slice(0, 60) + '</a>' : '') + '</td><td><button class="icon-btn" data-rm-rep="' + esc(r.id) + '">✕</button></td></tr>').join('') + '</table>' : '<p class="muted">—</p>'; };
     let modList = [];
     const loadMod = async () => { modList = (await A.listLessons({})).map((P) => Object.assign(P, { user: true })); $('#modList').innerHTML = modList.map((P) => HA.feed.card(P)).join('') || '<p class="muted">—</p>'; };
@@ -127,15 +104,26 @@
         if (d.copy) { navigator.clipboard && navigator.clipboard.writeText(d.copy); HA.ui.toast(t('copied'), 'good'); }
         if (d.rmKey && (await HA.ui.confirm(t('confirmDelete')))) { await A.deleteKey(d.rmKey); loadKeys(); }
         if (d.rmBook && (await HA.ui.confirm(t('confirmDelete')))) { await A.deleteBook(d.rmBook); loadBooks(); }
-        if (d.editBook) { const b = books.find((x) => x.id === d.editBook); const f = $('#bookForm'); ['title', 'author', 'url', 'cover', 'desc', 'content', 'id'].forEach((k) => (f[k].value = b[k] || '')); f.scrollIntoView({ behavior: 'smooth' }); }
+        if (d.editBook) { const b = books.find((x) => x.id === d.editBook); const f = $('#bookForm'); ['title', 'author', 'url', 'cover', 'desc', 'content', 'id', 'visibility', 'price'].forEach((k) => (f[k].value = b[k] == null ? (k === 'visibility' ? 'access' : '') : b[k])); f.scrollIntoView({ behavior: 'smooth' }); }
         if (d.rmRep) { await A.deleteReport(d.rmRep); loadReps(); }
+        if (e.target.id === 'ulAdd') { const em = $('#ulEmail').value.trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return HA.ui.toast(t('invalidEmail'), 'bad'); await A.unlockBook($('#ulBook').value, em); $('#ulEmail').value = ''; HA.ui.toast(t('unlockBtn') + ' ✓', 'good'); }
         if (d.lock) { await A.setExamLock(d.lock, d.on !== '1'); loadLocks(); }
         if (e.target.closest('[data-del-post],[data-report],[data-like],[data-play]')) HA.feed.actions(view(), modList)(e);
       } catch (err) { HA.ui.toast(err.message, 'bad'); }
     };
+    view().addEventListener('change', async (e) => {
+      const id = e.target.dataset && e.target.dataset.impBook; if (!id || !e.target.files[0]) return;
+      try {
+        const data = JSON.parse(await e.target.files[0].text());
+        const list = Array.isArray(data) ? data : data.chapters;
+        if (!Array.isArray(list) || !list.every((c) => c.id && c.title && Array.isArray(c.blocks))) throw new Error('JSON: { chapters: [{ id, title, n, blocks: [] }] }');
+        await A.saveChapters(id, list); HA.ui.toast(t('importChapters') + ': ' + list.length + ' ✓', 'good');
+      } catch (err) { HA.ui.toast(err.message, 'bad'); }
+      e.target.value = '';
+    });
     $('#bookForm').onsubmit = async (e) => {
       e.preventDefault();
-      const f = e.target; const b = {}; ['title', 'author', 'url', 'cover', 'desc', 'content'].forEach((k) => (b[k] = f[k].value.trim()));
+      const f = e.target; const b = {}; ['title', 'author', 'url', 'cover', 'desc', 'content', 'visibility'].forEach((k) => (b[k] = f[k].value.trim())); b.price = Math.max(0, parseInt(f.price.value, 10) || 0);
       if (b.url && !/^https:\/\//.test(b.url)) return HA.ui.toast('URL https:// ✗', 'bad');
       if (f.id.value) b.id = f.id.value;
       try { await A.saveBook(b); f.reset(); f.id.value = ''; loadBooks(); HA.ui.toast(t('save') + ' ✓', 'good'); } catch (err) { HA.ui.toast(err.message, 'bad'); }
